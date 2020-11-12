@@ -1,5 +1,5 @@
 ---
-title: "Tema 2 - Variables Aleatorias"
+title: "Tema 2 - Variables Aleatorias continuas"
 author: "Ricardo Alberich, Juan Gabriel Gomila y  Arnau Mir"
 date: 
 output: 
@@ -15,142 +15,17 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-# Introducción a las variables aleatorias
-
-
-## Introducción
-
-* Hasta ahora nuestros sucesos han sido de varios tipos: $\{C,+\}$ en
-la moneda, nombres de periódicos, ángulos en una ruleta, número de
-veces que sale cara en el lanzamiento de una moneda etc\ldots.
-* Necesitamos estandarizar de alguna manera todos estos sucesos. Una
-solución es asignar a cada suceso un cierto conjunto de
-números reales, es decir, convertir todos los sucesos en
-*sucesos de números reales* para trabajar con ellos de forma
-unificada.
-* Para conseguirlo utilizaremos  unas funciones que
-transformen los elementos del espacio muestral en números; esta funciones son las
-variables aleatorias.
-
-
-## Definición de variable aleatoria
- Comenzaremos dando una definición poco rigurosa, pero suficiente, de  variable aleatoria.
-
-<l class="definition"> Variable Aleatoria (definición práctica) </l>
-
-
-Una variable aleatoria (v.a.) es una aplicación que toma valores numéricos determinados por el resultado de un experimento aleatorio
-
-<div class="observ">
-**Notación**:
-</div>
-* Normalmente representaremos las v.a. por letras mayúsculas $X,Y,Z\ldots$
-* Los valores que "*toman*" las v.a. los representaremos por letras minúsculas (las mismas en principio) $x,y,z\ldots$
-
-
-## Ejemplo
-
-<div class="example">
-**Ejemplo**
-
-Lanzamos un dado convencional de parchís el espacio muestral del experimento es
-
-$$\Omega=\{1,2, 3, 4,  5, 6\}.$$
-
-
-</div>
-
-<div class="example-sol">
-Una v.a $X:\Omega\to\mathbb{R}$
-sobre este espacio queda definida por 
-
-\begin{equation*}
-\begin{split}
-X(1)&=1,X(2)=2,X(3)=3,\\
-X(4)&=4,X(5)=5,X(6)=6.
-\end{split}
-\end{equation*}
-
-* Ahora el suceso $A=\{2, 4, 6\}$, es decir "salir
-número par", es equivalente a $\{X=2,X=4,X=6\}$.
-* El suceso $B=\{1,2,3\}$, es decir "salir un número
-inferior o igual a $3$" es  en términos de la v.a. $\{X=1,X=2,X=3\}$ o también $\{X\leq
-3\}$.
-
-</div>
-
-## Ejemplo
-
-<div class="example">
-**Ejemplo**
-
-Consideremos el experimento lanzar una anilla al cuello de una botella. Si acertamos a
-ensartar la anilla en la botella el resultado del experimento es **éxito** y
-**fracaso** en caso contrario. 
-</div>
-
-<div class="example-sol">
-El espacio muestral asociado a este experimento será
-$\Omega=\{\mbox{éxito, fracaso}\}$. Construyamos la siguiente variable aleatoria:
-
-$$X:\{\mbox{éxito, fracaso}\}\to\mathbb{R}$$
-
-definida por 
-
-$$X(\mbox{éxito})=1 \mbox{ y } X(\mbox{fracaso})=0.$$
-
-</div>
-
-
-## Tipos de variables aleatorias
-
-Hay dos tipos fundamentales de variables aleatorias, las discretas y las continuas.
-
-Damos a continuación una definición informal.
-
-<l class="definition">Variables Aleatorias Discretas y Continuas </l>
-
-* Una variable aleatoria es **discreta** si sólo puede tomar una cantidad numerable de valores con probabilidad positiva.
-* Las variables aleatorias **continuas**  toman  valores en intervalos.
-* También existen las variables aleatorias **mixtas**; con una parte discreta y otra continua.
-
-
-
-## Ejemplo
-
-<div class="example">
-**Ejemplo**
-
-Son variables *aleatorias discretas*:
-      
-*  Número de artículos defectuosos en un cargamento.
-*  Número de clientes que llegan a una ventanilla de un banco en una hora.
-*  Número de errores detectados en las cuentas de una compañía.
-*  Número de reclamaciones de una póliza de un seguro médico.
-      
-Son variables *aleatorias continuas*:
-      
-* Renta anual de una familia.
-* Cantidad de petróleo importado por un país.
-* Variación del precio de las acciones de una compañía de telecomunicaciones.
-* Porcentaje de impurezas en un lote de productos químicos.
-      
-</div>
-
-
 
 # Variables aleatorias continuas
 
 ## Variables aleatorias continuas definición.
 
-* Como ya hemos dicho las variables aleatorias continuas toman valores en
-intervalos o áreas.
+* Las variables aleatorias **continuas**  toman  valores en intervalos.
+ 
 * Lo más habitual es que estas variables tengan función de distribución continua y
-derivable (salvo  a los más en una cantidad finita o numerable de puntos:-)).
-* En lo que sigue supondremos que la función de distribución de variables
-aleatorias continuas cumplen estas propiedades.
-* Notemos que si $X$ es una v.a. con función de distribución continua se tiene que
-$P(X=x_0)=F_X(x_0)-F(x_0^{-})=0$. Por lo que no tiene sentido definir *función de probabilidad*.
+derivable.
+
+* En general, dado un valor $x_0$, $P(X=x_0)=0$ por lo que no nos es útil definir *función de probabilidad*.
 
 
 
@@ -172,9 +47,9 @@ posibles partida por la *medida* de los casos favorables.
 
 **Ejemplo: distancia dardo centro de la diana** 
 
-Supongamos que lanzamos un dardo a una diana de radio $1$, de forma que sea *equiprobable* cualquier distancia al centro (¡Cuidado! esto no es equivalentea que cualquier punto de la diana  sea *equiprobable*).
+Supongamos que elegimos un número al azar en el intervalo $[0,1]$.
 
-Consideremos la v.a. continua $X=$ distancia al centro de la diana.
+Consideremos la v.a. continua $X=$ número elegido.
 </div>
 
 <div class="example-sol">
@@ -209,85 +84,6 @@ curve(punif(x,0,1),xlim=c(-1,2),col="blue",
       main="Función de distribución de una v.a. uniforme en el intervalo unidad.")
 ```
 
-## Propiedades
-
-En las variables continuas los sucesos del tipo $\{X\leq x \}$ y $\{X< x \}$ tendrán la
-misma probabilidad, y otros tipos de sucesos similares también, algunas de estas
-propiedades se explicitan en la siguiente proposición.
-
-<l class="prop">Propiedades</l>
-
-Dada una v.a. continua $X$ se tiene que:
- 
-* $P(X\leq b)=P(X<b)$.
-* $P(X<b)=P(X<a)+P(a<X<b)$.
-* $P(a<X<b)=P(X<b)-P(X<a)$.
-  
-## Demostración  
-  
-<div class="dem">
-**Demostración:**
-
-La primera es evidente  $P(X\leq b)=P(X<b)+P(X=b)=P(X<b).$
-
-Para demostrar la segunda, tenemos
-
-$$\{X\leq a\}\cap \{a<X<b\}=\emptyset$$ 
-$$\{X\leq a\}\cup \{a<X<b\}=\{X<b\},$$ 
-
-entonces
-
-$$
-\begin{eqnarray*}
-P(X< b)&= & P(\{X\leq a\}\cup \{a<X<b\})\\
-& =& P(X\leq a)+P(a<X<b)\\
-& =& P(X< a)+P(a<X<b)
-\end{eqnarray*}
-$$
-
-
-</div>
-
-<div class="exercise">
-**Ejercicio**
-
-La demostración de la tercera propiedad es similar a la segunda pero aplicando la primera. La dejamos como ejercicio.
-</div>
-
-
-## Propiedades de la función de distribución
-
-Las propiedades anteriores  y combinaciones de ellas se pueden
-escribir utilizando la función de distribución de $X$:
-
-
-<l class="prop"> Propiedades de la Función de Distribución </l>
-
-Dada una variable aleatoria continua se tiene que:
-
-* $F_{X}(b)=F_{X}(a)+P(a<X<b)$.
-* $P(a<X<b)=F_{X}(b)-F_{X}(a)$.
-* $P(a\leq X\leq b)=F_{X}(b)-F_{X}(a)$.
-
-
-
-<div class="exercise"> 
-
-**Ejercicio**
-
-Se deja la demostración como ejercicio 
-</div>
-
-
-## Ejemplo 
-
-<div class="example"> **Ejemplo: diana (continuación)**
-
-
-En el ejemplo de la diana:
-
-$$P(0.25<X<0.3)=F_{X}(0.3)-F_{X}(0.25)=0.3-0.25=0.05.$$
-</div>
 
 ## Función de densidad
 
@@ -309,7 +105,7 @@ Sea $X$ una v.a. con función de distribución $F_X$. Sea $f:\mathbb{R}\to\mathb
 
 $$F_X(x)=\displaystyle\int_{-\infty}^{x} f_X(t) dt.\mbox{ para todo } x\in\mathbb{R},$$
 
-Entonces $X$ es una variable aleatoria continua y $f_X$ es la densidad de la v.a.  $X$.
+Entonces $X$ es una variable aleatoria continua y $f_X$ es la densidad de la v.a. $X$.
 
 
 ##  Dominio de una variable aleatoria continua

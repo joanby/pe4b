@@ -30,7 +30,7 @@ La variable aleatoria que nos da la medición en 10 años sería una variable al
 Recordemos que una **variable aleatoria** $X$ es una aplicación que toma valores numéricos para cada resultado de un experimento aleatorio:
 $$
 \begin{array}{rl}
-(X,Y): \Omega & \longrightarrow \mathbb{R}\\
+X: \Omega & \longrightarrow \mathbb{R}\\
 w & \longrightarrow X(w).
 \end{array}
 $$
@@ -40,7 +40,7 @@ A partir de la definición anterior, generalizamos la noción de **variable alea
 Dado un experimento aleatorio con **espacio muestral** $\Omega$, definimos **variable aleatoria bidimensional** $(X,Y)$ a toda aplicación 
 $$
 \begin{array}{rl}
-X: \Omega & \longrightarrow \mathbb{R}^2\\
+(X,Y): \Omega & \longrightarrow \mathbb{R}^2\\
 w & \longrightarrow (X(w),Y(w)).
 \end{array}
 $$

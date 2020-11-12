@@ -1,0 +1,395 @@
+---
+title: "Tema 3 - Variables Aleatorias discretas"
+author: "Ricardo Alberich, Juan Gabriel Gomila y  Arnau Mir"
+date: 
+output: 
+  ioslides_presentation: 
+    css: Mery_style.css
+    keep_md: no
+    logo: Images/matriz_mov.gif
+    widescreen: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Variables aleatorias discretas
+
+
+## Función de probabilidad para variables discretas
+
+<l class="definition"> **Función de Probabilidad**</l>
+
+La **función de probabilidad** (*probability mass function* o incluso abusando de notación *probability density function*)
+de una variable aleatoria discreta $X$ a la que denotaremos por $P_{X}(x)$ está definida por
+
+$$P_{X}(x)=P(X=x),$$
+
+es decir la probabilidad de que $X$ tome el valor $x$.
+
+Si $X$ no asume ese valor $x$, entonces
+$P_{X}(x)=0$.
+</div>
+
+## Función  de probabilidad discreta
+
+<l class="definition"> **Dominio de una variable aleatoria discreta** </l> 
+
+El conjunto $$D_X=\{ x\in\mathbb{R} \mid P_X(x)>0\}$$ recibe el nombre de
+**dominio** de la v.a. y son los valores posibles de esta variable. 
+
+En el caso discreto lo más habitual es que $X(\Omega)=D_X$.
+
+## Propiedades de la función de probabilidad.
+
+<l class="prop">Propiedades básicas de la función de probabilidad </l>
+
+Sea $X$ una v.a. discreta $X:\Omega:\to\mathbb{R}$ con dominio $D_X$. Su función de probabilidad $P_{X}$ verifica las siguientes propiedades:
+
+* $0\leq P_{X}(x)\leq 1$ para todo $x\in\mathbb{R},$
+* $\sum\limits_{x\in D_X} P_{X}(x)=1.$
+
+
+## Función de distribución de variables aleatorias
+
+<l class="definition">Distribución de Probabilidad</l>
+
+La función de *distribución de probabilidad* (acumulada) de la v.a. $X$ (de cualquier tipo;
+discreta o continua) $F_{X}(x)$ representa la probabilidad de que $X$  tome un menor o igual que  $x$, es decir,
+
+$$F_{X}(x)=P(X\leq x).$$
+
+Esta función también se denomina función de **distribución de
+probabilidad o simplemente función de distribución** de una v.a., y en inglés
+*cumulative distribution function* por lo que se abrevia con el acrónimo `cdf`.
+
+
+
+## Propiedades
+
+
+<l class="definition">Propiedades de la Función de Distribución</l>
+
+Sea $X$ una v.a. y $F_{X}$ su función
+de distribución:
+
+1. $P(X>x)=1-P(X\leq x)=1-F_{X}(x).$
+2.  Sea a y b tales que $a<b$, $P(a<X\leq b)=P(X\leq b)-P(X\leq a)=F_{X}(b)-F_{X}(a).$
+
+
+## Propiedades
+
+<l class="definition"> **Propiedades de la Función de Distribución**</l>
+
+Sea $F_{X}$ la función de distribución  de una  v.a. $X$ entonces:
+ 
+* $0\leq F_{X}(x)\leq 1$.
+* La función $F_{X}$ es no decreciente.
+* La función $F_{X}$ es continua por la derecha.
+* Si denotamos por $F_X(x_0^{-})=\displaystyle \lim_{x\to x_0^{-}} F(x)$,
+entonces se cumple que $P(X< x_0)=F_X(x_0^{-})$ y que $P(X=x_0)=F_X(x_0)-F_X(x_0^{-})$.
+
+## Propiedades
+
+<l class="definition"> **Propiedades de la Función de Distribución**</l>
+
+* Se cumple que $\displaystyle \lim_{x\to\infty} F_{X}(x)=1$; $\displaystyle \lim_{x\to-\infty}F_{X}(x)=0$.
+* Toda función $F$ verificando las propiedades anteriores es función de distribución de alguna v.a. $X$.
+* $P(X>x)=1-F_{X}(x)$.
+* Dados $a,b\in \mathbb{R}$ con $a<b$ $$P(a<X\leq b)=F_{X}(b)-F_{X}(a).$$
+
+
+## Propiedades de la función de distribución
+
+<l class="prop">Propiedad</l>
+
+Sea $X$ una variable con función de distribución $F_{X}$ entonces:
+ 
+* $0\leq F_{X}(x)\leq 1$ para todo $x$,
+* Si $x<x'$, entonces $$F_{X}(x)\leq F_{X}(x').$$
+Es una función creciente,es decir, no necesariamente estrictamente creciente.
+* $\displaystyle \lim_{x\to -\infty}F_{X}(x)=0$ y $\displaystyle \lim_{x\to +\infty}F_{X}(x)=1.$
+* Es continua por la derecha $\displaystyle \lim_{x\to x_0^{+}}F_{X}(x)=F_{X}(x_0)$.
+  
+
+# Valores esperados  o esperanza
+
+## Esperanza  de un variable aleatoria discreta
+
+
+<l class="definition">Esperanza de una variable aleatoria discreta </l>
+
+El valor **esperado o esperanza** (*expected value* en inglés) $E(X)$ de una v.a. discreta $X$, se define como
+
+$$
+E(X)=\sum_{x\in X(\Omega)} x\cdot P_{X}(x).
+$$
+
+
+En ocasiones se denomina **media** (*mean* en inglés, *mitjana* en catalán) poblacional o simplemente media y muy frecuentemente se la denota $\mu_{X}=E(X)$ o simplemente $\mu=E(X)$.
+
+
+## Esperanzas de funciones de variables aleatorias discretas
+
+<l class="definition"> Esperanzas de funciones de variables aleatorias discretas</l>
+
+Sea $X$ una v.a. discreta con función de probabilidad $P_{X}$ y de distribución
+$F_{X}$. Entonces el *valor esperado de una función* $g(x)$ es:
+
+$$E(g(X))=\sum_{x}g(x) \cdot  P_{X}(x).$$
+
+
+## Propiedades de los valores esperados
+
+
+<l class="prop"> Propiedades</l>
+ 
+* $E(k)=k$ para cualquier constante $k$.
+* Si $a\leq X\leq b$ entonces $a\leq E(X)\leq b$.
+* Si $X$ es una v.a. discreta que toma valores enteros no negativos entonces
+$E(X)=\sum_{x=0}^{+\infty}(1- F_X(x)).$
+
+
+# Varianza y desviación típica
+
+
+## Varianza y desviación típica
+
+
+<l class="definition"> Varianza </l>
+
+Sea $X$ una v.a. Llamaremos **varianza** de $X$ a
+
+$$Var(X)=E((X-E(X))^2).$$
+
+Por lo tanto, la varianza es el momento central de orden $2$.
+
+De forma frecuente se utiliza la notación $$\sigma_{X}^2=Var(X).$$
+    
+A la raíz cuadrada positiva de la varianza
+$$\sigma_{X}=+\sqrt{Var(X)}.$$
+   
+se la denomina desviación típica  o estándar de $X$.
+
+
+
+
+## Propiedades de la varianza
+ 
+<l class="prop">Propiedad </l>
+
+* Si $X$ es una v.a. discreta con función de probabilidad $P_X$ su varianza es 
+ $$\sigma_{X}^2=Var(X)=E((X-E(X))^2)=\sum_{x}(x-E(X))^2\dot  P_{X}(x).$$
+* Sea $X$ una v.a.
+ $$Var(X)=E(X^2)-(E(X))^2=\sum_{x} x^2\cdot  P_{X}(X)-(E(X))^2$$
+  
+
+
+## Propiedades de la varianza
+ 
+ 
+<l class="prop"> **Propiedades de la varianza**</l>
+
+* $Var(X)\geq 0$.
+* $Var(cte)=E(cte^2)-(E(cte))^2= cte^2 - cte^2=0$.
+* El mínimo de $E((X-C)^2)$ se alcanza cuando $C=E(X)$ y es $Var(X)$. Esta propiedad es una de las que hace útil a la varianza como medida de dispersión.
+
+
+# Esperanza y varianza de transformaciones lineales.
+
+
+## Transformaciones lineales. 
+
+<l class="definition"> Transformación lineal </l>
+
+Un **cambio de variable lineal** o **transformación lineal** de una v.a. $X$ es otra v.a. $Y= a+ b\cdot  X$  donde $a,b\in\mathbb{R}$.
+
+<l class="prop">Esperanza de una transformación lineal</l>
+
+Sea $X$ una v.a. con $E(X)=\mu_{X}$ y $Var(X)=\sigma_{X}^2$ y $a,b\in\mathbb{R}$.
+Entonces si $Y=a+b\cdot  X$:
+ 
+* $E(Y)=E(a + b X)=a+ b E(X)= a + b \cdot \mu_{X}$.
+* $Var(Y)=Var(a+bX)=b^2 Var(X)= b^2\cdot  \sigma_{X}^2$.
+* $\sigma_{Y}=\sqrt{Var(Y)}=\sqrt{b^2 Var(X)}=|b| \cdot \sigma_{X}$.
+
+
+
+
+# Distribuciones notables
+
+## Variable aleatoria Bernoulli
+
+
+$X$  Bernoulli | $Ber(p)$
+----------:|:--------
+$D_X=$ | $\{0,1\}$
+$P_X(x)=P(X=x)=$ |  $\left\{\begin{array}{ll} q & \mbox{si } x=0\\ p & \mbox{si } x=1\\0 & \mbox{en otro caso}\end{array}\right.$ 
+$F_X(x)=P(X\leq X)=$ | $\left\{\begin{array}{ll} 0 & \mbox{ si } x<0\\q & \mbox{ si } 0\leq x<1\\1 & \mbox{ si } 1\leq x \end{array}\right.$
+$E(X)=p$ | $Var(X)=p\cdot q$
+
+## Distribución Bernoulli. 
+
+```{r fig.align='center',echo=FALSE}
+par(mfrow=c(1,2))
+plot(x=c(0,1),y=dbinom(c(0,1),size=1,prob=0.25),
+     ylim=c(0,1),xlim=c(-1,2),xlab="x",
+     main="Función de probabilidad\n Ber(p=0.25)")
+lines(x=c(0,0,1,1),y=c(0,0.75,0,0.25), type = "h", lty = 2,col="blue")
+curve(pbinom(x,size=1,prob=0.25),
+      xlim=c(-1,2),col="blue",
+      main="Función de distribución\n Ber(p=0.25)")
+par(mfrow=c(1,1))
+```
+
+## Variable aleatoria binomial $B(n,p)$
+
+$X$ binomial | $B(n,p)$ 
+-------------:|:--------
+$D_X=$ |  $\{0,1,\ldots n\}$ 
+$P_X(x)=P(X=x)=$ |$\left\{\begin{array}{ll}{n\choose x}\cdot  p^x\cdot  (1-p)^{n-x} & \mbox{ si } x=0,1,\ldots,n\\0  & \mbox{ en otro caso.}\end{array}\right.$
+$F_X(x)=P(X\leq X)=$ | no tiene fórmula 
+$E(X)=$ |  $n\cdot p$
+$Var(X)=$ | $n\cdot p \cdot (1-p)$
+
+
+## Gráficas de la distribución binomial
+
+El siguiente código de R dibuja las función de probabilidad y la de distribución de una  $B(n=10,p=0.25)$
+
+
+```{r fig.align='center',echo=FALSE}
+par(mfrow=c(1,2))
+aux=rep(0,22)
+aux[seq(2,22,2)]=dbinom(c(0:10),size=10,prob=0.25)
+plot(x=c(0:10),y=dbinom(c(0:10),size=10,prob=0.25),
+  ylim=c(0,1),xlim=c(-1,11),xlab="x",
+  main="Función de probabilidad\n B(n=10,p=0.25)")
+lines(x=rep(0:10,each=2),y=aux, type = "h", lty = 2,col="blue")
+curve(pbinom(x,size=10,prob=0.25),
+  xlim=c(-1,11),col="blue",
+  main="Función de distribución\n B(n=10,p=0.25)")
+par(mfrow=c(1,1))
+```
+
+## Resumen $Ge(p)$
+
+$X=$ Geométrica (empieza en $0$)  | número de fracasos  para conseguir el primer éxito
+------:|:-----
+$D_X=$ | $\{0,1,\ldots n,\ldots\}$ 
+$P_X(x)=P(X=x)=$ |$\left\{\begin{array}{ll}(1-p)^{x}\cdot p & \mbox{ si } x=0,1,2,\ldots \\0  & \mbox{ en otro caso.}\end{array}\right.$
+$F_X(x)=P(X\leq X)=$ | $\left\{\begin{array}{ll} 0 & \mbox{ si } x<0\\
+  1- (1-p)^{k+1} & \mbox{ si } \left\{ \begin{array}{l}k\leq x< k+1\\\mbox{para } k=0,1,2,\ldots\end{array}
+    \right.\end{array}\right.$ 
+$E(X)=\frac{1-p}{p}$ | $Var(X)=\frac{1-p}{p^2}$
+
+## Propiedad de la falta de memoria
+
+<l class="prop"> Propiedad de la falta  de memoria </l>
+
+Sea $X$ una v.a. discreta con dominio $D_X=\{0,1,2,\ldots\}$, con $P(X=0)=p$.
+
+Entonces $X$ sigue una ley $Ge(p)$ si, y sólo si,
+$$
+P\left(X> k+j\big| X\geq j\right)=P(X> k)
+$$
+para todo $k,j=0,1,2,3\ldots$.
+
+##  Gráficos
+
+
+```{r graficos22, fig.align='center',echo=FALSE}
+  par(mfrow=c(1,2))
+  p=0.25
+  n=30
+  aux=rep(0,(n+1)*2)
+  aux[seq(2,(n+1)*2,2)]=dgeom(c(0:n),prob=p)
+  plot(x=c(0:n),y=dgeom(c(0:n),prob=p),
+       ylim=c(0,1),xlim=c(-1,n+1),xlab="x",
+       main=paste0(c("Función de probabilidad\n Ge(p=",p,")"),collapse = ""))
+  lines(x=rep(0:n,each=2),y=aux, type = "h", lty = 2,col="blue")
+  curve(pgeom(x,prob=p),
+        xlim=c(-1,n+1),col="blue",
+        main=paste0(c("Función de distribución\n Ge(p=",p,")"),collapse = ""))
+  par(mfrow=c(1,1))
+```
+
+
+## Distribución  Poisson  $X\equiv Po(\lambda)$
+
+$X$ Poisson |  $\lambda$
+-------:|:-------
+$D_X=$|  $\{0,1,\ldots \}$ 
+$P_X(x)=P(X=x)=$ | $\left\{\begin{array}{ll}  \frac{\lambda^x}{x!}e^{-\lambda} & \mbox{ si } x=0,1,\ldots\\ 0  & \mbox{ en otro caso.}\end{array}\right.$
+$F_X(x)=P(X\leq X)=$ |  $\begin{array}{l}\left\{\begin{array}{ll} 0 & \mbox{si } x<0\\\displaystyle\sum_{i=0}^{k} P(X=i)= \displaystyle\sum_{i=0}^{k} \frac{\lambda^i}{i!}\cdot e^{-\lambda} & \mbox{si  }\left\{\begin{array}{l}k\leq x< k+1\\k=0,1,2,\ldots\end{array}\right.\end{array}\right.
+\\
+\end{array}$     
+$E(X)=\lambda$ | $Var(X)=\lambda$
+
+## Gráficos  de la distribución Poisson
+
+```{r graficosPOISON, fig.align='center',echo=FALSE}
+lambda=20
+par(mfrow=c(1,2))
+n=qpois(0.99,lambda=lambda)
+aux=rep(0,(n+1)*2)
+aux[seq(2,(n+1)*2,2)]=dpois(c(0:n),lambda=lambda)
+ymax=max(ppois(0:n,lambda=lambda))
+plot(x=c(0:n),y=dpois(c(0:n),lambda=lambda),
+     ylim=c(0,ymax),xlim=c(-1,n+1),xlab="x",ylab="Función de probabilidad",
+     main=paste0(c("Función de probabilidad\n  Po(lambda=",lambda,")"),collapse = ""))
+lines(x=rep(0:n,each=2),y=aux,pch=21, type = "h", lty = 2,col="blue")
+curve(ppois(x,lambda=lambda),
+      xlim=c(-1,n+1),col="blue",ylab="Función de Distribución",
+      main=paste0(c("Función de distribución \n Po(lambda=",lambda,")"),collapse = ""))
+par(mfrow=c(1,1))
+```
+
+## Distribución hipergeométrica $H(m,n,k)$.
+
+$X=$número de éxitos en $k$ intentos sin reposición de entre $m$ casos de éxito y $n$ de fracaso.| $H(m,n,k)$
+------:|:------
+$D_X$= | $\left\{x\in\mathbf{N}\mid \max\{0,k-n\}\leq  x \leq \min\{m,k\}\right\}$
+$P_X(x)=P(X=x)=$ | $\left\{
+\begin{array}{ll}
+\frac{\binom{m}{x}\cdot \binom{n}{k-x}}{\binom{m+n}{k}}, & \mbox{ si }
+\max\{0,k-n\}\leq x \leq \min\{m,k\}, \\
+0,  & \mbox{en otro caso.}\end{array}\right.$
+$F_X(x)=P(X\leq x)$ | No tiene una expresión explícita.
+$E(X)=\frac{k\cdot m}{m+n}$   | $Var(X)=k\cdot\frac{m}{m+n}\cdot\left(1-\frac{m}{m+n}\right) \cdot\frac{m+n-k}{m+n-1}$
+
+## Gráficas
+
+```{r fig.align='center',echo=FALSE}
+par(mfrow=c(1,2))
+m=15
+n=10
+k=3
+a=max(c(0,k-n))
+b=min(c(m,k))
+l=b-a+1
+aux=rep(0,2*l)
+aux[seq(2,2*l,2)]=dhyper(c(a:b),m=m,n=n,k=k)
+x=a:b
+plot(x,y=dhyper(x,m=m,n=n,k=k),
+  ylim=c(0,0.6),xlim=c(a-1,b+1),xlab="x",
+  main=paste0("Función de probabilidad\n H(m=",m,", n=",n,", k=",k,")"))
+lines(x=rep(a:b,each=2),y=aux, type = "h", lty = 2,col="blue")
+curve(phyper(x,m=m,n=n,k=k),
+  xlim=c(a-1,b+1),col="blue",
+  main=paste0("Función de distribución\n H(m=",m,", n=",n,", k=",k,")"))
+par(mfrow=c(1,1))
+```
+
+# Variables aleatorias bidimensionales
+
+## Dos variables aleatorias
+
+RESUMIR 176-180 CON EJEMPLO INCLUIDO HASTA MEDIA Y VARIANZA CONDICIONAL
+
+
+## Covarianza y correlación
+
+RESUMIR FUSILAR PÁGINA 182. EJEMPLO DE LA PÁGINA 183 + RESUMEN 184 Y 185
