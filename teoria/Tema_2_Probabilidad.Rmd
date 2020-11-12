@@ -1,5 +1,5 @@
 ---
-title: "Tema 1 - Probabilidad"
+title: "Tema 2 - Probabilidad"
 author: " Ricardo Alberich, Juan Gabriel Gomila y Arnau Mir"
 date: ''
 output:
@@ -347,14 +347,3 @@ Las siguientes afirmaciones son equivalentes:
 4. $A^c$ y $B^c$ son independientes.
 
 
-## Sucesos independientes vs disjuntos
-
-<div class="exercise">
-**Ejercicio**
-
-1. Dos sucesos $A$ y $B$ disjuntos, ¿son necesariamente independientes?
-2. Dos sucesos $A$ y $B$ independientes, ¿son necesariamente disjuntos?
-3. $\emptyset$ y un suceso cualquiera $A$, ¿son necesariamente independientes? 
-4. $\Omega$ y un suceso cualquiera $A$, ¿son necesariamente independientes? 
-5. ¿Qué condiciones se tienen que dar para que un suceso $A$ sea independiente de si mismo?
-</div>
