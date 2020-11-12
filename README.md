@@ -1,2 +1,1 @@
-# pe4b
-Probabilidad y Estadística para Negocios
+# Probabilidad y Estadística aplicada a Negocios
