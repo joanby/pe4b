@@ -453,3 +453,4 @@ de $L(\theta|x_1,\ldots,x_n)$. Será una función de $x_1,\ldots,x_n$.
 <l class="definition">Estimador máximo verosímil.</l>
 Un estimador $\hat{\theta}$ de un parámetro  $\theta$ es **máximo verosímil** (**MV**) cuando, para cada m.a.s, la probabilidad de observarlo es máxima, cuando el parámetro toma el valor del estimador aplicado a la muestra,  es decir, si la función de verosimilitud
 $$L(\theta|x_1,x_2,\ldots,x_n)= P(x_1,x_2,\ldots,x_n|\theta)$$ alcanza su máximo.
+

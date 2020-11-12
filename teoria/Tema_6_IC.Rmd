@@ -1,0 +1,403 @@
+---
+title: "Tema 6 - Intervalos de confianza"
+author: "Ricardo Alberich, Juan Gabriel Gomila y Arnau Mir"
+date: ""
+output:
+  ioslides_presentation:
+    css: Mery_style.css
+    logo: Images/matriz_mov.gif
+    widescreen: yes
+  beamer_presentation: default
+header-includes: \usepackage{tikz}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Definiciones básicas
+
+
+## Definición de intervalo de confianza
+<l class="definition">Intervalo de confianza. </l>
+Dado un parámetro $\theta$, el intervalo $(A,B)$ es un intervalo de confianza del $(1-\alpha)\cdot 100$% para al parámetro $\theta$ cuando
+$$
+P(A<\theta<B)=1-\alpha.
+$$
+El valor $(1-\alpha)\cdot 100$% (o contiene solo el $1-\alpha$) recibe el nombre de **nivel de confianza**.
+
+El valor $\alpha$ recibe el nombre de **nivel de significación**.
+ 
+## Definición de intervalo de confianza
+
+Por defecto, buscaremos  intervalos bilaterales tales que la **cola de probabilidad sobrante** $\alpha$ se reparta por igual a cada lado  del intervalo:
+$$
+P(\theta<A)=P(\theta>B)=\frac{\alpha}{2}
+$$
+
+<div class="center">
+```{r, echo=FALSE, label=simple,fig.cap="",out.width = "450px"}
+knitr::include_graphics("Images/interval1.png",dpi=400)
+```
+</div>
+Por ejemplo, para buscar  un intervalo de confianza  $(A,B)$ del $95$%, buscaremos valores $A,B$ de manera que 
+$$
+P(\theta<A)=0.025\quad\mbox{ y }\quad P(\theta>B)=0.025.
+$$
+
+# Intervalos de confianza para el parámetro $\mu$ de una población normal
+
+
+## Intervalos de confianza para el parámetro $\mu$ de una población normal con $\sigma$ conocida
+<l class="prop">Teorema.</l>
+Sea $X\sim N(\mu,\sigma)$ con $\mu$ desconocida y $\sigma$ conocida.
+
+Tomamos una m.a.s. de $X$ de tamaño $n$, con media $\overline{X}$.
+
+Un intervalo de confianza  del $(1-\alpha)\cdot 100$% para $\mu$ es
+$$
+\left(\overline{X} -z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}, \overline{X}+z_{1-\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}
+\right)
+$$
+donde $z_{1-\frac{\alpha}{2}}$ es el $(1-\frac{\alpha}{2})$-cuantil de la normal  estándar $Z$ (es decir, $z_{1-\frac{\alpha}{2}}=F_Z^{-1}(1-\frac{\alpha}{2})$, o $P(Z\leq z_{1-\frac{\alpha}{2}})=1-\frac{\alpha}{2}$).
+
+
+## Intervalos de confianza para el parámetro $\mu$ de una población normal con $\sigma$ conocida
+Si $X$ es normal con $\sigma$ conocida, un intervalo de confianza  I.C. para $\mu$ de población normal con $\sigma$ conocida $\mu$ del $(1-\alpha)\cdot 100$% es
+$$
+\overline{X} \pm z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}:=\left(\overline{X} -z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}, \overline{X}+z_{1-\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}.
+\right)
+$$
+Observad que está centrado en $\overline{X}$.
+
+## Intervalos de confianza para el parámetro $\mu$ de una población normal con $\sigma$ conocida
+La tabla siguiente muestra los cuantiles más usados:
+
+<div class="center">
+| Confianza $1-\alpha$ | Significación $\alpha$  | Cuantil $z_{1-\frac{\alpha}{2}}$|
+|-----------|----------------|---------|
+| 0.90      | 0.1            | 1.645   |
+| 0.95      | 0.05           | 1.96    |
+| 0.975     | 0.025          | 2.241   |
+</div>
+
+
+
+
+```{r,echo=FALSE}
+set.seed(1012)
+mu=1.5; sigma=1; alpha=0.05
+Población=rnorm(10^6,mu,sigma)
+ICZ=function(x,sigma,alpha){
+  c(mean(x)-qnorm(1-alpha/2)*sigma/sqrt(length(x)), 
+  mean(x)+qnorm(1-alpha/2)*sigma/sqrt(length(x)))}
+set.seed(2)
+M=replicate(100,ICZ(sample(Población,50,replace=T),
+ sigma,alpha))
+```
+
+
+
+## Simulación de intervalos de confianza
+<div class="example-sol">
+<div class="center">
+```{r, echo=FALSE,fig=TRUE}
+plot(1:10,type="n",xlim=c(1.2,1.8),ylim=c(0,100),
+xlab="Valores",ylab="Replicaciones")
+seg.int=function(i){color="grey";
+  if((mu<M[1,i]) | (mu>M[2,i])){color = "red"}
+  segments(M[1,i],i,M[2,i],i,col=color,lwd=3)}
+invisible(sapply(1:100,FUN=seg.int))
+abline(v=mu,lwd=3)
+```
+</div>
+</div>
+
+## Amplitud y error máximo
+<l class="observ"> Amplitud del intervalo de confianza.</l> 
+La amplitud $A$ del intervalo de confianza a un nivell $100\cdot (1-\alpha)$% de confianza será:
+$$
+A =  \overline{X}+ z_{1-\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}-\Big(\overline{X} -z_{1-\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}\Big)= 2\cdot z_{1-\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}.
+$$
+
+<l class="observ"> Error máximo cometido. </l>
+El error máximo, al nivel de confianza  $100\cdot (1-\alpha)$%, que cometemos al estimar $\mu$
+por  $\overline{X}$ es la mitad de la amplitud, 
+
+$$
+z_{1-\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}.
+$$
+
+## Amplitud y error máximo
+
+<l class="prop">Propiedades</l>
+
+* La **amplitud** del intervalo de confianza para el parámetro $\mu$ de una población normal con $\sigma$ conocida, $n$ y $\alpha$ fijos **crece**, si **$\sigma$ crece**.
+
+* La **amplitud** del intervalo de confianza para el parámetro $\mu$ de una población normal con $\sigma$ conocida y $\alpha$ fijo **decrece**, si **$n$ crece**.
+
+* La **amplitud** del intervalo de confianza para el parámetro $\mu$ de una población normal con $\sigma$ conocida y $n$ fijo **crece**, si **$1-\alpha$ crece**, o si **$\alpha$ decrece**.
+
+
+## Amplitud y error máximo
+
+<l class="observ"> Problema:</l> hallar el tamaño  $n$ mínimo de la muestra para asegurar que el intervalo de confianza  para $\mu$ al nivel de confianza $(1-\alpha)$ tenga una amplitud prefijada máxima $A_0$ (o un
+error máximo $A_0/2$).
+
+<l class="observ"> Resolución:</l> usando que la amplitud máxima tiene que ser $A_0$ tenemos que se tiene que verificar $A_0\geq 2z_{1-\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}$.
+
+Despejando $n$ de la expresión anterior, tendremos que el tamaño de la muestra mínimo será:
+$$
+n\geq \left( 2 z_{1-\frac{\alpha}{2}}\frac{\sigma}{A_0}\right)^2.
+$$
+
+
+## Intervalos de confianza para el parámetro $\mu$ de una población normal con $\sigma$ desconocida
+Recordemos que para hallar el intervalo de confianza para el parámetro $\mu$ de una población normal, era clave la variable aleatoria $\frac{\overline{X}-\mu}{\sigma/\sqrt{n}}.$
+
+El problema es que ahora no la podemos usar al no conocer $\sigma$.
+
+Lo que haremos será sustituir la desviación típica poblacional $\sigma$ por la desviación típica muestral $\widetilde{S}_{X}$ y nos quedará:
+$\frac{\overline{X}-\mu}{\widetilde{S}_{X}/\sqrt{n}},$
+donde $\overline{X}$ es la media muestral y $n$, el tamaño de la muestra.
+
+## Intervalos de confianza para el parámetro $\mu$ de una población normal con $\sigma$ desconocida
+La distribución de la variable anterior $\frac{\overline{X}-\mu}{\widetilde{S}_{X}/\sqrt{n}},$ no será normal sino $t$ de Student con $n-1$ grados de libertad como nos dice el teorema siguiente:
+
+<l class="prop"> Teorema. </l>
+Sea $X\sim N(\mu,\sigma)$. 
+Sea $X_1,\ldots,X_n$ una m.a.s. de $X$, con media $\overline{X}$ y desviación típica muestral $\widetilde{S}_{X}$
+
+En estas condiciones, la v.a.
+$t=\frac{\overline{X}-\mu}{\widetilde{S}_{X}/\sqrt{n}},$
+sigue una distribución $t$ de Student con $n-1$ grados de libertad, $t_{n-1}$.
+
+
+## Distribución $t$ de Student
+La distribución $t$ de Student con $\nu$ grados de libertad, $t_{\nu}$ tiene como función de densidad
+$$
+f_{t_\nu}(x) = \frac{\Gamma(\frac{\nu+1}{2})} {\sqrt{\nu\pi}\,\Gamma(\frac{\nu}{2})} \Big(1+\frac{x^2}{\nu} \Big)^{-\frac{\nu+1}{2}},
+$$
+donde $\Gamma(x)=\int_{0}^{\infty} t^{x-1}e^{-t}\, dt$ si $x> 0$. 
+
+
+## Distribución $t$ de Student
+
+<l class="prop">Propiedades</l>
+
+* $E(t_{\nu})=0$  si $\nu>1$ y $Var(t_{\nu})=\dfrac{\nu}{\nu-2}$ si $\nu>2$.
+* Su  función de distribución es simétrica respecto de $E(t_{\nu})=0$ (como la de una $N(0,1)$):
+$$
+P(t_{\nu}\leq -x)=P(t_{\nu}\geq x)=1-P(t_{\nu}\leq x).
+$$
+* Si $\nu$ es grande, su distribución es aproximadamente la de $N(0,1)$ (pero con más varianza: un poco más aplastada)
+
+##  Distribución $t$ de Student
+
+Gráficas de las densidades de diferentes distribuciones $t$ de Student junto con la densidad de la $N(0,1)$:
+
+<div class="center">
+```{r, echo=FALSE,fig=TRUE}
+curve(dnorm(x, 0, 1), xlim = c(-4, 4), ylim = c(0, 0.4),
+      col = "black", ylab = "densidad", xlab = "x")
+legend("topleft",  legend = c("Normal estándar", "Student gl=2",
+                              "Student gl=3", "Student gl=4",
+                              "Student gl=5", "Student gl=10"),
+       fill = c("black", "brown", "green", "tomato", 
+                "pink", "darkblue"),cex = 0.8)
+curve(dt(x, df = 2), col = "brown", add = TRUE)
+curve(dt(x, df = 3), col = "green", add = TRUE)
+curve(dt(x, df = 4), col = "tomato", add = TRUE)
+curve(dt(x, df = 5), col = "pink", add = TRUE)
+curve(dt(x, df = 10), col = "darkblue", add = TRUE)
+```
+</div>
+
+
+## Distribución $t$ de Student
+
+Indicaremos con
+$t_{\nu,q}$ el  $q$-cuantil de una  v.a. $X$ que sigue una distribución $t_\nu$:
+$$
+P(X\leq t_{\nu,q})=q
+$$
+
+Por simetría,
+$t_{\nu,q}=-t_{\nu,1-q}$.
+
+## Intervalos de confianza para el parámetro $\mu$ de una población normal con $\sigma$ desconocida
+Consideremos la situación siguiente:
+
+* $X$ una v.a.  normal con $\mu$ y $\sigma$ desconocidas.
+
+* $X_1,\ldots,X_n$ una m.a.s. de $X$  de  tamaño  $n$, con media  $\overline{X}$ y varianza muestral $\widetilde{S}_X^2$.
+
+<l class="prop"> Intervalo de confianza para el parámetro</l> $\mu$.
+En estas  condiciones, un intervalo  de confianza  del $(1-\alpha)\cdot 100$% para el parámetro $\mu$ de una población normal con $\sigma$ desconocida es 
+$$
+\left( 
+\overline{X}-t_{n-1,1-\frac{\alpha}{2}} \frac{\widetilde{S}_{X}}{\sqrt{n}},
+\overline{X}+t_{n-1,1-\frac{\alpha}{2}}\frac{\widetilde{S}_{X}}{\sqrt{n}} \right).
+$$
+
+
+## Intervalos de confianza para el parámetro $\mu$ de una población cualquiera con $\sigma$ conocida y tamaño muestral grande
+Consideremos la situación siguiente:
+
+*  $X$ una v.a. **cualquiera** con media   poblacional $\mu$ desconocida y desviación típica $\sigma$ desconocida.
+
+* $X_1,\ldots,X_n$ una m.a.s. de $X$, con media $\overline{X}$.
+
+* **$n$ es grande** (pongamos que $n\geq 40$)
+
+## Intervalos de confianza para el parámetro $\mu$ de una población cualquiera con $\sigma$ conocida y tamaño muestral grande
+En estas  condiciones, usando el **Teorema Central del Límite**
+$\frac{\overline{X}-\mu}{\frac{\sigma}{\sqrt{n}}}\approx N(0,1)$.
+
+<l class="prop">Teorema. </l>
+En las condiciones anteriores, podemos tomar como intervalo  de confianza  del $(1-\alpha)\cdot 100\%$ de confianza para el parámetro $\mu$ de una población cualquiera con $\sigma$ conocida la expresión siguiente:
+$$
+\left(\overline{X}-z_{1-\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}},
+    \overline{X}+z_{1-\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}\right)
+$$
+
+## Intervalos de confianza para el parámetro $\mu$ de una población cualquiera con $\sigma$ desconocida y tamaño muestral grande
+Si la $\sigma$ es desconocida, podemos aplicar el Teorema anterior sustituyendo $\sigma$ por $\widetilde{S}_X$:
+
+<l class="prop">Teorema. </l>
+En las condiciones anteriores, podemos tomar como intervalo  de confianza  del $(1-\alpha)\cdot 100\%$ de confianza para el parámetro $\mu$ de una población cualquiera con $\sigma$ desconocida la expresión siguiente:
+$$
+\left(\overline{X}-z_{1-\frac{\alpha}{2}}\frac{\widetilde{S}_X}{\sqrt{n}},
+    \overline{X}+z_{1-\frac{\alpha}{2}}\frac{\widetilde{S}_X}{\sqrt{n}}\right)
+$$
+
+
+# Intervalos de confianza para el parámetro $p$ de una población de Bernoulli
+
+## Método de Laplace
+
+
+Consideremos la situación siguiente  :
+
+* $X$ una v.a. Bernoulli con $p$ desconocida.
+
+* $X_1,\ldots,X_n$ una m.a.s. de $X$, con $n$  grande (por Ejemplo, $n\geq 40$) y frecuencia relativa de éxitos $\widehat{p}_{X}$.
+
+En estas  condiciones (por el  Teorema Central del Límite), 
+$$
+Z=\dfrac{\widehat{p}_{X}-p} {\sqrt{\frac{p(1-p)}{n}}}\approx N(0,1)
+$$
+
+## Caso del tamaño $n$ de la muestra grande
+
+Por lo tanto
+
+$$
+P\left(-z_{1-\frac{\alpha}{2}}\leq \dfrac{\widehat{p}_{X}-p}
+{\sqrt{\frac{p(1-p)}{n}}}\leq z_{1-\frac{\alpha}{2}}\right)=1-\alpha.
+$$
+
+El problema es que no conocemos $p$...
+
+La literatura plantea otras soluciones como por ejemplo la fórmula de Laplace (1812)
+
+
+
+## Fórmula de Laplace.
+
+Supongamos que la proporción muestral de éxitos $\widehat{p}_{X}$ está alejada de 0 y de 1. 
+
+* Es decir, $n\geq 100$ y que $n\widehat{p}_{X}\geq 10$ y $n(1-\widehat{p}_{X})\geq 10$.
+
+* En este caso, podemos usar la fórmula de **Laplace**:
+$$
+\widehat{p}_{X}\pm z_{1-\alpha/2}\sqrt{\frac{\widehat{p}_{X}
+(1-\widehat{p}_{X})}{n}}.
+$$
+
+
+## Fórmula de Laplace. Amplitud
+
+<l class="prop">Problema:</l> hallar el tamaño de la muestra fijada la amplitud del intervalo de confianza.
+
+
+La **amplitud** del intervalo de confianza usando la fórmulade Laplace es 
+$$
+A=2 z_{1-\frac{\alpha}{2}} \sqrt{\frac{\widehat{p}_{X} (1-\widehat{p}_{X})}{n}}.
+$$
+
+No podemos determinar el tamaño de la muestra para que el intervalo de confianza  tenga como máximo una cierta amplitud sin
+conocer $\widehat{p}_{X}$.
+
+Vamos a considerar que estamos en el peor de los casos.
+
+O sea, usando que $\widehat{p}_{X}\in [0,1]$, nos planteamos hallar el máximo de la expresión $\widehat{p}_{X} (1-\widehat{p}_{X})$ que aparece en la fórmula de la amplitud.
+
+## Fórmula de Laplace. Amplitud
+El máximo de la función anterior, para $\widehat{p}_{X}\in [0,1]$ se alcanza en $\widehat{p}_{X}=\frac{1}{2}$ y dicho máximo vale $\frac{1}{4}$:
+
+```{r,echo=FALSE,fig=TRUE,fig.align="center"}
+x=seq(from=0,to=1,by=0.01)
+plot(x,x*(1-x),xlab="p",type="l",ylab=expression(p*(1-p)),xaxp=c(0,1,10))
+abline(v=0.5,lty=2,col="blue")
+abline(h=0.25,lty=2,col="blue")
+points(0.5,0.25,col="red")
+```
+
+## Fórmula de Laplace. Amplitud
+En resumen, calcularemos $n$ para obtener una  amplitud máxima $A_0$ suponiendo el peor de los casos ($\widehat{p}_{X}=0.5$):
+$$
+A_0\geq 2z_{1-\frac{\alpha}{2}}\sqrt{\frac{0.5^2}{n}}=\frac{z_{1-\frac{\alpha}{2}}}{\sqrt{n}}
+\Rightarrow
+n\geq \left\lceil\frac{z_{1-\frac{\alpha}{2}}^2}{A_0^2}\right\rceil.
+$$
+
+# Intervalo de confianza para la varianza de una población normal 
+
+## Intervalo de confianza para la varianza de una población normal 
+Consideremos la siguiente situación:
+
+*  Consideramos una $X$ una v.a. normal con $\mu$ y $\sigma$ desconocidas.
+
+* Sea $X_1,\ldots,X_n$ una m.a.s. de $X$ y varianza muestral $\widetilde{S}_X^2$.
+
+En estas condiciones tenemos el siguiente:
+
+<l class="prop">Teorema.</l>
+
+La variable aleatoria $\frac{(n-1) \tilde{S}_{X}^2}{\sigma^2}$
+se distribuye según una distribución $\chi^2_{n-1}$.
+
+## Intervalo de confianza para la varianza de una población normal 
+<l class="prop">Teorema.</l>
+
+En las condiciones anteriores, un intervalo  de confianza  del $(1-\alpha)\cdot 100\%$ para la varianza $\sigma^2$ de la población $X$ es 
+$$
+\left( \frac{(n-1)\widetilde{S}_{X}^2}{\chi_{n-1,1-\frac{\alpha}{2}}^2},
+\frac{(n-1)\widetilde{S}_{X}^2}{\chi_{n-1,\frac{\alpha}{2}}^2}
+\right),
+$$
+donde $\chi_{\nu,q}^2$ es el $q$-cuantil de la distribución $\chi_{\nu}^2$.
+
+
+# Bootstrap o remuestreo
+
+## Técnicas de remuestreo
+
+Cuando no se satisfacen las condiciones teóricas que garantizan que el intervalo obtenido contiene el 95% de las veces el parámetro poblacional deseado, podemos recurrir a un método no paramétrico. El más utilizado es el **bootstrap**, que básicamente consiste en:
+
+  1. **Remuestrear** la muestra: tomar muchas muestras aleatorias simples de la muestra de la que disponemos, cada una de ellas del mismo tamaño que la muestra original (pero simples, es decir, con reposición).
+
+  2. Calcular el estimador sobre cada una de estas submuestras.
+
+  3. Organizar los resultados en un vector.
+
+  4. Usar este vector para calcular un intervalo de confianza. 
+  
+  
+## Bootstrap: método de los percentiles
+
+La manera más sencilla de llevar a cabo el cálculo final del intervalo de confianza es el llamado **método de los percentiles** , en el que se toman como extremos del intervalo de confianza del $(1-\alpha)\cdot 100%$ los cuantiles de orden $\frac{\alpha}{2}$ y $1-\frac{\alpha}{2}$ del vector de estimadores.
+
+
