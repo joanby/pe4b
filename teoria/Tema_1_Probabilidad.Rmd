@@ -14,6 +14,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+
 # Probabilidades Básicas
 
 ## Definiciones básicas
@@ -22,56 +23,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 <div class="example"> 
-**Ejemplo**
 
-Tirar un dado de 6 caras y anotar el número de puntos de la cara superior.
-</div>
-
-<l class="definition">Suceso elemental</l>: cada uno de los posibles resultados del experimento aleatorio
-
-
-<div class="example"> 
-**Ejemplo** 
-
-Los sucesos elementales del ejemplo anterior serían:
-
-<div class="center">
-```{r, echo=FALSE}
-knitr::include_graphics(c("Images/proba1dibujos/dice/1.png", 
-                          "Images/proba1dibujos/dice/2.png",
-                          "Images/proba1dibujos/dice/3.png",
-                          "Images/proba1dibujos/dice/4.png",
-                          "Images/proba1dibujos/dice/5.png",
-                          "Images/proba1dibujos/dice/6.png"))
-```
-</div>
-</div>
 
 ## Definiciones básicas
 
 <l class="definition"> Espacio muestral</l>: el conjunto  $\Omega$ formado por todos los sucesos elementales del experimento aleatorio
-
-
-<div class="example"> 
-**Ejemplo**
-
-El espacio muestral del ejemplo anterior del dado es 
-<div class="center">
-$\Omega=\Big\{$`r knitr::include_graphics("Images/proba1dibujos/dice/1.png")`,
-`r knitr::include_graphics("Images/proba1dibujos/dice/2.png")`,
-`r knitr::include_graphics("Images/proba1dibujos/dice/3.png")`,
-`r knitr::include_graphics("Images/proba1dibujos/dice/4.png")`,
-`r knitr::include_graphics("Images/proba1dibujos/dice/5.png")`,
-`r knitr::include_graphics("Images/proba1dibujos/dice/6.png")`$\Big\}$
-</div>
-pero por comodidad, a partir de ahora pondremos
-$$\Omega = \{1,2,3,4,5,6\}$$
-</div>
-
-
-
-## Definiciones básicas
-
 
 <l class="definition"> Suceso </l> : Cualquier subconjunto del espacio muestral.
 
@@ -80,40 +36,6 @@ $$\Omega = \{1,2,3,4,5,6\}$$
 * <l class="definition">Suceso seguro o cierto</l>: $\Omega$
 * <l class="definition">Suceso imposible o vacio</l>: $\emptyset$
 * <l class="definition">Partes de un conjunto</l>: $\mathcal{P}(\Omega)$: conjunto de todos los sucesos del experimento aleatorio (es decir, el conjunto de todos los subconjuntos de $\Omega$)
-
-<div class="exercise">
-**Ejercicio**
-
-¿Cuantos elementos contiene el conjunto de partes de $\Omega$ del experimento anterior?
-</div>
-
-## Ejemplo $n$-grama
-
-Se define un $n$-grama de una palabra como el conjunto de $n$ letras consecutivas de la misma (contando los blancos de inicio y final de palabra que marcamos como "\_"). 
-
-<div class="example">
-
-**Ejemplo**
-
-Consideremos el experimento aleatorio que consiste en escoger al  azar un 3-grama de la palabra "\_Baleares\_". Vamos a escribir el espacio muestral y algunos sucesos elementales del mismo.
-
-</div>
-
-<div class="example-sol">
-
-En este caso, si consideramos la palabra "\_Baleares\_", el espacio muestral del experimento sería:
-
-$$\Omega=\{\_Ba, Bal, ale, lea, ear, are, res, es\_\}$$
-
-
-Algunos sucesos serían: 
-
-* 3-gramas que empiezan por  $a$: $\{ale,are\}.$
-* 3-gramas de inicio y final de palabra: $\{\_Ba,es\_\}.$
-* 3-gramas que contengan una $l$: $\{Bal,ale,lea\}.$
-
-</div>
-
 ## Operaciones con sucesos
 
 Si tenemos dos sucesos $A,B\subseteq \Omega$, podemos definir:
@@ -134,6 +56,7 @@ Si tenemos dos sucesos $A,B\subseteq \Omega$, podemos definir:
 **Ejemplo**
 
 Supongamos que el sexo se divide entre Mujeres y Hombres. Vamos a definir el espacio muestral, los sucesos elementales y a realizar algunas operaciones entre ellos.
+
 </div>
 
 <div class="example-sol">
