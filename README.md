@@ -2,7 +2,7 @@
 
 0. Introducción y Recursos Adicionales - JB
 1. Entender numéricamente y gráficamente los datos - JB
-2. Cálculo de Probabilidades
+2. Cálculo de Probabilidades - JB
 3. Distribuciones de Probabilidad Discretas
    * Variables Aletorias Discretas
    * Distribuciones Notables Discretas
