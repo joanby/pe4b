@@ -46,30 +46,6 @@ Si tenemos dos sucesos $A,B\subseteq \Omega$, podemos definir:
 <l class="definition"> Sucesos incompatibles</l>: $A$ y $B$ son *incompatibles* (o *disjuntos*) cuando  $A\cap B=\emptyset$.
 
 
-## Ejemplo género
-
-<div class="example">
-**Ejemplo**
-
-Supongamos que el sexo se divide entre Mujeres y Hombres. Vamos a definir el espacio muestral, los sucesos elementales y a realizar algunas operaciones entre ellos.
-
-</div>
-
-<div class="example-sol">
-* Estudiantes de esta clase: $\Omega$.
-* Mujeres de esta clase: $A$.
-* Estudiantes que son zurdos $B$.
-
-Algunas operaciones entre los conjuntos:
-
-* $A\cup B$: Est. que son mujeres o que son zurdos.
-* $A\cap B$: Mujeres de esta clase que son zurdas.
-* $A^c$: Hombres de esta clase.
-* $A-B$: Mujeres de la clases que NO son zurdas.
-* $B-A$: Hombres de la clase que son zurdos.
-* ¡Cuidado! No son incompatibles.
-</div>
-
 ## Propiedades
 
 <l class="definition">Conmutativas</l>: 
@@ -86,81 +62,23 @@ $$A\cap(B\cup C)=(A\cap B)\cup (A\cap C), \quad A\cup(B\cap C)=(A\cup B)\cap (A\
 
 
 
-## Propiedades
 
-| $A$ | $B\cap C$ | $A\cup (B\cap C)$ |
-|:--:|:--:|:--:| 
-| ![](Images/proba1dibujos/distr11.jpg){height="200px"} | ![](Images/proba1dibujos/distr12.jpg){height="200px"} | ![](Images/proba1dibujos/distr13.jpg){height="200px"} |
-
-## Propiedades
-
-| $A\cup B$ | $A\cup C$ | $(A\cup B)\cap (A\cup C)$ |
-|:--:|:--:|:--:| 
-| ![](Images/proba1dibujos/distr21.jpg){height="200px" .image-caption} | ![](Images/proba1dibujos/distr22.jpg){height="200px"} | ![](Images/proba1dibujos/distr23.jpg){height="200px"} |
 
 ## Propiedades 
 
 <l class="definition"> Complementario del complementario </l> 
 $$(A^c)^c=A$$
 
-| $A$ | $A^c$ | $(A^c)^c$ |
-|:--:|:--:|:--:| 
-| ![](Images/proba1dibujos/dd2.jpg){height="200px"} | ![](Images/proba1dibujos/dd1.jpg){height="200px"} | ![](Images/proba1dibujos/dd3.jpg){height="200px"} |
-
-## Propiedades 
 
 <l class="definition">Leyes de De Morgan</l>
 
 $$(A\cup B)^c=A^c\cap B^c$$
 
-| $A\cup B$ | $(A\cup B)^c$ |
-|:--:|:--:|
-| ![](Images/proba1dibujos/demorgan6.jpg){height="200px"} | ![](Images/proba1dibujos/demorgan7.jpg){height="200px"} |
-
-## Propiedades 
-
-<l class="definition">Leyes de De Morgan</l>
-
-$$(A\cup B)^c=A^c\cap B^c$$
-
-| $A^c$ | $B^c$ | $A^c\cap B^c$
-|:--:|:--:|:--:|
-| ![](Images/proba1dibujos/demorgan8.jpg){height="200px"} | ![](Images/proba1dibujos/demorgan9.jpg){height="200px"} | ![](Images/proba1dibujos/demorgan10.jpg){height="200px"} |
-
-
-## Propiedades 
 
 <l class="definition">Leyes de De Morgan</l>
 
 $$(A\cap B)^c=A^c\cup B^c$$
 
-| $A\cap B$ | $(A\cap B)^c$ |
-|:--:|:--:|
-| ![](Images/proba1dibujos/demorgan1.jpg){height="200px"} | ![](Images/proba1dibujos/demorgan2.jpg){height="200px"} |
-
-## Propiedades 
-
-<l class="definition">Leyes de De Morgan</l>
-
-$$(A\cap B)^c=A^c\cup B^c$$
-
-| $A^c$ | $B^c$ | $A^c\cup B^c$
-|:--:|:--:|:--:|
-| ![](Images/proba1dibujos/demorgan3.jpg){height="200px"} | ![](Images/proba1dibujos/demorgan5.jpg){height="200px"} | ![](Images/proba1dibujos/demorgan4.jpg){height="200px"} |
-
-## Definición de probabilidad
-
-La probabilidad de un suceso es una puntuación (*score*) numérico entre 0 y 1 que mide la verosimilitud de que este evento se produzca.
-
-Esta verosimilitud puede estar justificada por:
-
-* Estimación personal
-
-* Estimación de expertos
-
-* La frecuencia con la que se da 
-
-* Cálculo formal
 
 ## Definición de probabilidad
 
@@ -179,38 +97,13 @@ $$
 
 Si $a\in \Omega$ es un suceso elemental cometeremos el abuso de notación de poner $P(a)$ en lugar de $P(\{a\})$
 
-## Ejemplo: grupos sanguíneos
-
-<div class="example">
-**Ejemplo**
-
-En la página de la [Fundación Banco de Sangre y Tejidos de las Islas Baleares](http://www.donasang.org/que-es-la-sang/es_frequencies-dels-diferents-grups.html) podemos encontrar información sobre los porcentajes de tipos de sangre de los donantes de las Islas Baleares: 
-
-$$A: 46\%;\  B: 7.5\%;\  AB: 3.5\%;\  O: 43\%.$$
-
-¿Cuál es la probabilidad de que un balear donante de sangre  no  sea del  tipo O?
-</div>
-
-<div class="example-sol">
-**Experimento aleatorio:** tipo de sangre de un paciente humano
-
-$$\Omega=\{\mbox{A,B,AB,O}\}$$
-
-
-**Probabilidad** de un suceso: se asimila al porcentaje observado de individuos
-
-**Suceso:** $\{\mbox{O}\}^c=\{\mbox{A,B,AB}\}$
-
-$$P(\{\mbox{O}\}^c)\!=\!P(\{\mbox{A,B,AB}\})\!=\!
-P(\mbox{A})+P (\mbox{B})+P(\mbox{AB})\!=\!0.57$$
-</div>
 
 ## Propiedades
 
 <div class="prop"> Propiedades básicas de la probabilidad</div>
 * $P(\emptyset)=0$.
 
-* $P(A-B)=P(A)-P(A\cap B)$ porque $P(A)=P(A-B)+P(A\cap B)$.
+* $P(A-B)=P(A)-P(A\cap B)$.
 
 <div class="center">
 ![](Images/proba1dibujos/A-B.jpg){height="200px"}
@@ -262,6 +155,7 @@ $$
 ## Ejemplo: Frecuencia de vocales 
 
 <div class="example">
+
 **Ejemplo**
 
 Los porcentajes de vocales de un determinado idioma (de alfabeto latino) según la [Wikipedia](https://es.wikipedia.org/wiki/Frecuencia_de_aparici%C3%B3n_de_letras) son:
