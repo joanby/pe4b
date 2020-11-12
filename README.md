@@ -6,12 +6,10 @@
 3. Distribuciones de Probabilidad Discretas
    * Variables Aletorias Discretas
    * Distribuciones Notables Discretas
-   * Distribuciones Bidimensionalles
    * Distribuciones Multidimensionales
 4. Distribuciones de Probabilidad Continuas
    * Variables Aletorias Discretas
    * Distribuciones Notables Discretas
-   * Distribuciones Bidimensionalles
    * Distribuciones Multidimensionales
 5. Muestreo
    * Muestreo
