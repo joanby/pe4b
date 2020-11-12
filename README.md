@@ -11,22 +11,20 @@
    * Variables Aletorias Discretas
    * Distribuciones Notables Discretas
    * Distribuciones Multidimensionales
-5. Muestreo
+5. Muestreo y Estimación Puntual
    * Muestreo
    * Teorema Central del Límite
-   * Bootstrapping
-6. Estimación Puntual
-   * Que es un estimador
+   * Estimación Puntual
    * Estimadores para mu, sigma y p
    * Sesgo, Eficiencia y Consistencia
-7. Intervalos de Confianza 
+6. Intervalos de Confianza 
    * IC para mu
    * IC para p
    * IC para sigma
    * Determinar tamaño de la muestra
-8. Contrastes de Hipótesis
+7. Contrastes de Hipótesis
    * Una muestra
    * Dos muestras
    * Caso general (ANOVA)
-9. Tests no paramétricos
-10. Regresión lineal
+8. Tests no paramétricos
+9. Regresión lineal
