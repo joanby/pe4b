@@ -115,14 +115,7 @@ Si $a\in \Omega$ es un suceso elemental cometeremos el abuso de notación de pon
 
 ## Propiedades
 
-* $P(A\cup B)=P(A)+P(B)-P(A\cap B)$ porque
-
-$$\begin{eqnarray*}
-P(A)+P(B)-P(A\cap B) &=& P(A-B)+P(A\cap B)+\\
- & & P(B-A)+ P(A\cap  B)-P(A\cap  B)\\
-&=& P(A-B)+P(A\cap B)+ P(B-A) \\
-&=& P(A\cup B).
-\end{eqnarray*}$$
+* $P(A\cup B)=P(A)+P(B)-P(A\cap B)$ 
 
 <div class="center">
 ![](Images/proba1dibujos/A-B.jpg){height="200px"}
@@ -152,110 +145,7 @@ $$
 P(A)=\frac{|A|}{|\Omega|}\Big(=\frac{\mbox{casos favorables}}{\mbox{casos posibles}}\Big).
 $$
 
-## Ejemplo: Frecuencia de vocales 
 
-<div class="example">
-
-**Ejemplo**
-
-Los porcentajes de vocales de un determinado idioma (de alfabeto latino) según la [Wikipedia](https://es.wikipedia.org/wiki/Frecuencia_de_aparici%C3%B3n_de_letras) son:
-
-$$A: 18.7\%;\ E: 26.1\%;\ I: 25.7\%;\ O: 24.4\%;\ U: 5.1\%.$$
-
-¿Cuál es la probabilidad que  una vocal escogida al azar de este idioma sea una E o una O?
-</div>
-
-<div class="example-sol">
-El espacio muestral del experimento es $\Omega=\{A,E,I,O,U\}$.
-
-El suceso que deseamos analizar es $\{E,0\}$.
-
-Y su probabilidad es 
-
-$$P(\{E,O\})=P(E)+P(O)=0.261+0.244=0.505.$$
-
-</div>
-
-## Ejemplo: Consumo de drogas
-
-<div class="example">
-Segun un árticulo de [El País](https://elpais.com/politica/2019/01/02/actualidad/1546426491_623324.html), en un control especial de la policía el $0.1\%$ de todos los conductores analizados en un control de tráfico dan  positivo en un el test  en cocaína, y  el $1\%$ da positivo  en cannabis. Un $1.05\%$ da positivo en alguno de los dos test. 
-
-¿Cuál  es la probabilidad que un individuo analizado  en el control de drogas  escogido  al azar no de positivo  en ninguno de lo dos test?
-</div>
-
-<div class="example-sol">
-Los sucesos elementales del enunciado del problema son:
-
-* $A$: dar positivo  en cocaína; $P(A)=0.001.$
-* $B$: dar positivo en cannabis; $P(B)=0.01.$
-
-En este caso nos interesa estudiar los sucesos: 
-
-* $A\cup B$: dar positivo en alguno de los dos test; $P(A\cup B)=0.0105.$
-* $(A\cup B)^c$: no dar positivo en ninguno de los test,
-
-por tanto:
-$$P((A\cup B)^c)=1-P(A\cup B)=1-0.0105=0.9895.$$
-
-</div>
-
-## Ejemplos: Consumo de drogas
-
-<div class="example">
-
-**Ejemplo**
-
-En un control especial de la policía el $0.1\%$ de todos los conductores analizados en un control de tráfico dan  positivo en un el test  en cocaína, y  el $1\%$ da positivo  en cannabis. Un $1.05\%$ da positivo en alguno de los dos test. 
-
-¿Cuál  es la probabilidad que un analizado  al azar de positivo en los dos test en cocaína y cannabis?
-</div>
-
-<div class="example-sol">
-Los sucesos elementales son:
-
-* $A$: dar positivo en cocaína; $P(A)=0.001.$
-* $B$: dar positivo en cannabis; $P(B)=0.01.$
-
-
-En este caso nos interesa estudiar los sucesos: 
-
-* $A\cup B$: dar positivo en algún de los dos test; $P(A\cup B)=0.0105.$
-* $A\cap B$: dar positivo en los dos test
-
-de donde, por tanto:
-
-$$\begin{array}{rl}
-{P(A\cap B)} &{=P(A)+P(B)-P(A\cup B)}\\ &{=0.001+0.01-0.0105=0.0005}.
-\end{array}$$
-
-</div>
-
-## Ejemplo: Control de drogas
-
-<div class="example">
-**Ejemplo**
-
-En un control especial de la policía el $0.1\%$ de todos los conductores analizados en un control de tráfico dan  positivo en un el test  en cocaína, y  el $1\%$ da positivo  en cannabis. Un $1.05\%$ da positivo en alguno de los dos test. 
-
-¿Cuál es la probabilidad de  que un conductor analizado de  positivo en cocaína pero no en cannabis?
-</div>
-
-<div class="example-sol">
-Los sucesos elementales son:
-
-* $A$: dar positivo en cocaína; $P(A)=0.001.$
-* $B$: dar positivo en cannabis; $P(B)=0.01.$
-
-En este caso nos interesa estudiar los sucesos: 
-
-* $A\cap B$: dar positivo en los dos test; $P(A\cap B)=0.0005.$
-* $A-B$: dar positivo en  cocaína pero no en cannabis,
-
-de donde, por tanto:
-
-$$P(A-B) =P(A)-P(A\cap B) =0.001-0.0005=0.0005.$$
-</div>
 
 # Probabilidad condicionada
 
@@ -275,93 +165,7 @@ P(B|A)=\frac{P(A\cap B)}{P(A)}.
 $$
 
 
-## Ejemplo: frecuencia género y gafas
 
-<div class="example">
-**Ejemplo**
-
-En una clase de 20 hombres  y 30 mujeres, 15 hombres y 18 mujeres llevan gafas. Contestemos las siguientes preguntas:
-</div>
-
-<div class="example-sol">
-
-* ¿Cuál es la probabilidad de que un alumno lleve gafas?
-
-$$
-\frac{33}{50}
-$$
-
-* ¿Cuál es la probabilidad de que un alumno sea mujer y lleve gafas?
-
-$$
-\frac{18}{50}
-$$
-</div>
-
-## Ejemplo: sexo y gafas
-
-<div class="example">
-**Ejemplo**
-
-En una clase de 20 hombres  y 30 mujeres, 15 hombres y 18 mujeres llevan gafas. Contestemos las siguientes preguntas:
-</div>
-
-<div class="example-sol">
-
-* ¿Cuál es la probabilidad de que un chica lleve gafas?
-
-$$
-\frac{18}{30}=\frac{18/50}{30/50}=\frac{P(\mbox{mujer  y gafas})}{P(\mbox{mujer})}.
-$$
-
-
-* Si escogemos un estudiante al azar ¿Cuál es la probabilidad que si es mujer, entonces lleve gafas?
-
-$$
-\frac{18}{30}.
-$$
-
-</div>
-
-
-## Ejemplo
-
-<div class="example">
-**Ejemplo**
-
-En una clase de 20 hombres  y 30 mujeres, 15 hombres y 18 mujeres llevan gafas. Contestemos las siguientes preguntas:
-</div>
-
-<div class="example-sol">
-
-*  ¿Cuál es la probabilidad de que un alumno que lleve gafas sea mujer?
-
-$$
-\frac{18}{33}=\frac{18/50}{33/50}=\frac{P(\mbox{mujer y gafas})}{P(\mbox{gafas})}.
-$$
-
-
-* Si escogemos un estudiante al azar  ¿Cuál es la probabilidad de que si lleva gafas, entonces sea mujer?
-$$
-\frac{18}{33}
-$$
-
-</div>
-
-## ¡Atención!
-
-Hay que distinguir bien entre
-
-* $P(A\cap B)$: probabilidad de $A$ $\color{red}{\text{y}}$ $B$.
-
-*Probabilidad de que sea mujer y  lleve gafas.*
-
-* $P(A|B)$: probabilidad de que $\color{red}{\text{si}}$ pasa $B$, $\color{red}{\text{entonces}}$ pase $A$.
-
-*Probabilidad de que, si es mujer, lleve gafas.*
-
-
-Cuando utilizamos probabilidad condicional  $P(A|B)$ estamos restringiendo el espacio muestral a $B$.
 
 ## Probabilidad condicionada. Propiedades
 
@@ -387,62 +191,10 @@ P(B_1\cup B_2|A)=P(B_1|A)+P(B_2|A)-P(B_1\cap B_2|A).
 $$
 
 <div class="exercise">
-**Ejercicio**
 
-Escribid el resto de propiedades que cumpliría una probabilidad condicionada al evento $A$.
-</div>
 
-## Ejemplos
 
-<div class="example">
-**Ejemplo**
 
-Un 15\% de los adultos son hipertensos, un 25\% de los adultos creen que son hipertensos, y un 9\% de los adultos son hipertensos y creen que lo son.
-
-Si un adulto cree que es hipertenso, ¿cuál es la probabilidad que lo sea?
-</div>
-
-<div class="example-sol">
-Sean los sucesos
-
-* $A$: ser hipertenso, $P(A)=0.15$ ,
-* $B$: creer ser hipertenso, $P(B)=0.25$,
-
-entonces podemos definir el suceso:
-
-* $A\cap B$: ser hipertenso y creerlo, $P(A\cap B)=0.09$.
-
-de donde, la probabilidad condicionada de ser hipertenso creyéndonos que lo somos es: 
-
-$$P(A|B)=\dfrac{P(A\cap B)}{P(B)}=\dfrac{0.09}{0.25}=0.36.$$
-</div>
-
-## Ejemplo
-
-<div class="example">
-**Ejemplo**
-
-Un 15\% de los adultos son hipertensos, un 25\% de los adultos creen que son hipertensos, y un 9\% de los adultos son hipertensos y creen que lo son.
-
-Si un adulto es hipertenso, ¿cuál es la probabilidad que crea que lo es?
-</div>
-
-<div class="example-sol">
-Si tenemos los sucesos:
-
-* $A$: ser hipertenso,
-* $B$: creer ser hipertenso
-
-entonces buscamos la probabilidad $P(B|A)$:
-
-$$
-\begin{array}{rl}
-P(B|A) & =\dfrac{P(A\cap B)}{P(A)}=\dfrac{0.09}{0.15}=
-0.6
-\end{array}
-$$
-
-</div>
 
 ## Ejemplos: dígitos de control
 
@@ -462,76 +214,6 @@ entonces:
 $$P(A\cap B)=P(B)\cdot P(A|B)=0.005\cdot 0.99=0.00495.$$
 </div>
 
-## Ejemplos
-
-<div class="example">
-**Ejemplo: SPAM**
-
-Un 50\% de  correos recibidos en un servidor llevan adjuntos  y un 65\% son  publicidad no deseada (SPAM). Sólo un 15\% de estos correos no llevan adjuntos y no son SPAM. 
-
-* ¿Cuál  es la probabilidad que un correo  lleve adjunto si es SPAM?
-* ¿Cuál es la probabilidad que un correo **no** tenga adjuntos si **no**  es SPAM?
-</div>
-
-## Ejemplos
-
-<div class="example">
-**Ejemplo**
-
-Un 50\% de  correos recibidos en un servidor llevan adjuntos  y un 65\% son  publicidad no deseada (SPAM). Sólo un 15\% de estos correos no llevan adjuntos y no son SPAM. 
-
-* ¿Cuál  es la probabilidad que un correo  lleve adjunto si es SPAM?
-
-</div>
-
-<div class="example-sol">
-
-* $A$: llevar adjuntos; $P(A)=0.5$,
-* $S$: SPAM; $P(S)=0.65$,
-* $A^c\cap S^c=(A\cup S)^c$: no llevar adjunto y no ser SPAM; $P((A\cup S)^c)=0.15$,
-
-$$P(A|S)=\dfrac{P(A\cap S)}{P(S)}=?$$
-</div>
-
-## Ejemplos
-
-<div class="example">
-**Ejemplo**
-
-Un 50\% de  correos recibidos en un servidor llevan adjuntos  y un 65\% son  publicidad no deseada (SPAM). Sólo un 15\% de estos correos no llevan adjuntos y no son SPAM. 
-
-* ¿Cuál  es la probabilidad que un correo  lleve adjunto si es SPAM?
-
-</div>
-
-<div class="example-sol">
-
-* $P(A)=0.5, P(S)=0.65, P(A^c\cap S^c)=P((A\cup S)^c)=0.15$,
-
-* $P(A\cup S)=1-P((A\cup S)^c)=0.85$,
- 
-* $P(A\cap S)=P(A)+P(S)-P(A\cup S)=0.3$,
-
-$$P(A|S)=\dfrac{P(A\cap S)}{P(S)}=\dfrac{0.3}{0.65}\approx 0.46.$$
-</div>
-
-## Ejemplos SPAM continuación
-
-<div class="example">
-**Ejemplo**
-
-Un 50\% de  correos recibidos en un servidor llevan adjuntos  y un 65\% son  publicidad no deseada (SPAM). Sólo un 15\% de estos correos no llevan adjuntos y no son SPAM. 
-
-* ¿Cuál  es la probabilidad de que un correo no lleve adjuntos si  no es SPAM?
-
-</div>
-
-<div class="example-sol">
-
-* $P(A)=0.5, P(S)=0.65, P(A^c\cap S^c)=P((A\cup S)^c)=0.15.$
-
-$$P(A^c|S^c)=\dfrac{P(A^c\cap S^c)}{P(S^c)}=\dfrac{P(A^c\cap S^c)}{1-P(S)}=\dfrac{0.15}{0.35}\approx 0.43.$$
-</div>
 
 ## Teorema de la probabilidad total
 
@@ -567,40 +249,6 @@ P(B)&= P(B\cap A_1)+\cdots +P(B\cap A_n)\\
 $$
 
 
-
-## Ejemplos
-
-<div class="example">
-
-**Ejemplo**
-
-Un dígito de control de error toma  el valor 0  en un $99\%$ de los casos en que hay un error y en un $5\%$  de los mensajes sin error.
-La probabilidad de error en un mensaje es  del $0.5\%$.
-
-¿Cuál es la probabilidad de  que un mensaje escogido al azar tenga el dígito de control a 0?
-</div>
-
-<div class="example-sol">
-Sean los sucesos del enunciado:
-
-* $B$: mensaje con error; $P(B)=0.005$,
-* $A$: código de error vale 0,
-
-entonces obtenemos las probabilidades a partir del enunciado:
-
-* $P(A|B)=0.99,$
-* $P(A|B^c)= 0.0,5$
-
-y por tanto, 
-
-$$
-\begin{array}{rl}
-P(A) & =P(B)\cdot P(A|B)+P(B^c)\cdot P(A|B^c)\\ &
-=0.005\cdot 0.99+0.995\cdot 0.05=0.0547.
-\end{array}
-$$
-
-</div>
 
 ## Clasificación o Diagnósticos
 
