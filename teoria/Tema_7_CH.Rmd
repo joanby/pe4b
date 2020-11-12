@@ -1,0 +1,668 @@
+---
+title: "Tema 7 - Contrastes de hipótesis paramétricos"
+author: "Ricardo Alberich, Juan Gabriel Gomila y Arnau Mir"
+date: 
+output: 
+  ioslides_presentation:
+    widescreen: true
+    css: Mery_style.css
+    logo: Images/matriz_mov.gif
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Nociones básicas
+
+## Decisiones
+<l class="prop">Definición.</l>
+Un *contraste de hipótesis* 
+$$
+\left\{\begin{array}{ll}
+H_{0}:\mbox{hipótesis nula}\\ H_{1}:\mbox{hipótesis alternativa}
+\end{array}
+\right.
+$$
+consiste en plantear dos hipótesis:
+
+* *Hipótesis nula $H_{0}$*: es la hipótesis que "por defecto" aceptamos como verdadera, y que rechazamos si hay pruebas en contra,
+
+* *Hipótesis alternativa $H_{1}$*: es la hipótesis contra la que
+contrastamos la hipótesis nula y que aceptamos cuando rechazamos la nula,
+
+y generar una **regla de decisión** para **rechazar** o no la hipótesis nula a partir de la información contenida en una muestra.
+
+
+## La similitud entre un juicio y un **contraste de hipótesis**
+
+En un juicio, tenemos que declarar a un acusado inocente o culpable.
+
+$$
+\left\{\begin{array}{ll} 
+H_{0}:\mbox{El acusado es inocente.}\\ 
+H_{1}:\mbox{El acusado es culpable.}
+\end{array}
+\right.
+$$
+
+Las pruebas serían los elementos de la muestra.
+
+
+Si el jurado encuentra pruebas suficientemente incriminatorias, declara **culpable** al acusado (rechaza $H_0$ en favor de $H_1$).
+En caso contrario, si no las encuentra suficientemente incriminatorias, le declara **no culpable** (no rechaza $H_0$)
+
+Considerar no culpable $\neq$ declarar inocente.
+
+## ¿Cómo escoger $H_0$ y $H_1$?
+
+Las pruebas tienen que aportar evidencia de $H_1$, que nos permitirá rechazar $H_0$.
+
+Es imposible encontrar evidencias de que $\mu$ sea igual a un cierto valor $\mu_0$. 
+En cambio, sí que es puede hallar evidencias de que $\mu > \mu_0$ , o de que $\mu<\mu_0$, o que $\mu\neq\mu_0$.
+
+En este contexto:
+
+* $H_1$ se define con $>$, $<$, o $\neq$.
+
+* $H_0$ se define con $=$, $\leq$, o $\geq$.
+
+* $H_1$ es la hipótesis de la que podemos hallar pruebas incriminatorias, $H_0$ la que estamos dispuestos a aceptar si no hay pruebas en contra.
+
+
+## Tipos de hipótesis alternativas
+
+* **Hipótesis unilateral** (*one-sided*, también *de una cola*, *one-tailed*): $H: \theta>\theta_{0}$, $H: \theta<\theta_0$.
+
+* **Hipótesis bilateral** (*two-sided*, también *de dos colas*, *two-tailed*): $H: \theta\neq\theta_0$
+
+
+Los tests suelen tomar el nombre de la hipótesis alternativa: **test unilateral**, **test de dos colas**, etc.
+
+
+## Tipos de errores
+La tabla siguiente resume los 4 casos que se pueden dar dependiendo de la decisión tomada:
+
+<div class="center">
+| Decisión/Realidad | $H_{0}$ cierta    | $H_{0}$ falsa     |
+|-------------------|-------------------|-------------------|
+| Aceptar $H_{0}$   | Decisión correcta | Error Tipo II     |
+|                   | Probabilidad=$1-\alpha$   | Probabilidad=$\beta$      |
+| Rechazar $H_{0}$  | Error Tipo I      | Decisión correcta |
+|                   | Probabilidad=$\alpha$     | Probabilidad=$1-\beta$    |
+</div>
+
+
+## Tipos de errores
+
+* **Error de Tipo I**: rechazar $H_0$ cuando es cierta. La probabilidad de cometerlo es:
+$$P(\mbox{Error Tipo I})=P(\mbox{Rechazar } H_{0}\mid H_{0} \mbox{ cierta})=\alpha,$$ donde $\alpha$ es el **nivel de significación del contraste**.
+
+* **Error de Tipo II**: aceptar $H_0$ cuando es falsa. La probabilidad de cometerlo es:
+$$P(\mbox{Error Tipo II})=P(\mbox{Aceptar } H_{0}| H_{0} \mbox{ falsa})=\beta,$$ donde $1-\beta=P(\mbox{Rechazar } H_{0}|H_{0} \mbox{ falsa})$ es la **potencia del contraste**.
+
+
+## Tipos de errores
+
+Lo más conveniente es encontrar una regla de rechazo de $H_{0}$ que tenga poca
+probabilidad de error de tipo I, $\alpha$.
+
+Pero también querríamos minimizar la probabilidad de error de tipo II, $\beta$.
+
+<l class="prop">Observación:</l>
+cuando hacemos disminuir $\alpha$, suele aumentar $\beta$.
+
+**¿Qué se suele hacer?** 
+
+* Encontrar una regla de decisión para a un $\alpha$ máximo fijado.
+* Después, si es posible, controlar la tamaño $n$ de la muestra para minimizar $\beta$.
+
+## Terminología
+En un contraste de hipótesis, tenemos los siguientes conceptos:
+
+* **Estadístico de contraste**: es una variable aleatoria función de la muestra que
+nos permite definir una regla de rechazo de $H_{0}$.
+
+* **Nivel de significación $\alpha$**: la probabilidad de error de tipo I.
+
+* **Región crítica o de rechazo**: zona o región de números reales donde se verifica que
+si el **estadístico de contraste** pertenece a la **región crítica**, entonces rechazamos $H_{0}$.
+
+* **Región de aceptación**: zona o región complementaria de la **región
+crítica**.
+
+## Terminología
+
+* **Intervalo de confianza del $(1-\alpha)\cdot 100\%$**:  intervalo de confianza para el parámetro poblacional del contraste. Es equivalente afirmar que el estadístico de contraste pertenece a la **región de aceptación** que afirmar que el parámetro del contraste pertenece al **intervalo de confianza del contraste**.
+
+
+# Contrastes de hipótesis para el parámetro $\mu$ de una variable normal con $\sigma$ conocida
+
+## Contrastes de hipótesis para el parámetro $\mu$ de una variable normal con $\sigma$ conocida
+
+Sea $X$ una variable aleatoria $N(\mu,\sigma)$ con $\mu$ desconocida y $\sigma$ conocida.
+
+Sea $X_{1},\ldots,X_{n}$ una m.a.s. de $X$ de tamaño $n$.
+
+Nos planteamos el contraste siguiente:
+$$
+\left\{\begin{array}{l}
+H_{0}:\mu=\mu_{0}\\ H_{1}:\mu >\mu_0
+\end{array}
+\right.
+$$
+De cara a hallar la región de rechazo, pensemos que tenemos que rechazar $H_0$ en favor de $H_1$ si $\overline{X}$ es "bastante más grande" que $\mu_0$.
+
+## Contrastes de hipótesis para el parámetro $\mu$ de una variable normal con $\sigma$ conocida
+Si $H_0$ es verdadera,
+
+$$
+Z=\frac{\overline{X}-\mu_{0}}{\frac{\sigma}{\sqrt{n}}}\sim N(0,1)
+$$
+
+Entonces, la regla consistirá en rechazar $H_{0}$ si el **estadístico de contraste** $Z$ es mayor que un cierto umbral, que determinaremos con $\alpha$, el **nivell de significación del contraste** o **el error tipo I**.
+
+
+## Contrastes de hipótesis para el parámetro $\mu$ de una variable normal con $\sigma$ conocida
+
+De cara a hallar la región de rechazo, queremos que se cumpla lo siguiente:
+$$
+\begin{array}{l}
+\alpha =P(\mbox{rechazar } H_{0}| H_{0} \mbox{ cierta })=P(Z>\mbox{umbral })\\
+\quad \Longrightarrow 1-\alpha= P(Z\leq \mbox{umbral })\Longrightarrow \mbox{umbral }=z_{1-\alpha}.
+\end{array}
+$$
+Por tanto, para que el **nivel de significación del contraste** sea $\alpha$, la regla de rechazo tiene que ser: $Z>z_{1-\alpha}$
+
+En resumen, **rechazamos $H_0$** si $\dfrac{\overline{X}-\mu_{0}}{\sigma/\sqrt{n}}>z_{1-\alpha}$.
+
+## Contrastes de hipótesis para el parámetro $\mu$ de una variable normal con $\sigma$ conocida
+
+Gráfico de la región de rechazo. Las abscisas o coordenadas $x$ de la zona en azul serían los valores $z$ para los que rechazaríamos la hipótesis nula $H_0$:
+```{r,echo=FALSE,fig=TRUE,fig.align="center"}
+x=seq(from=-3,to=3,by=0.01)
+plot(x,dnorm(x),type="l",xlab="z",ylab=expression(f[Z](z)))
+alpha=0.05
+abline(v=qnorm(1-alpha),lty=2,col="red")
+text(qnorm(1-alpha),0.02,expression(z[1-alpha]),pos=2, col="red")
+text(2.8,0.1,"Región de\n Rechazo",pos=2, col = "blue")
+
+nc=100
+for (i in 1:nc){
+  y=qnorm(1-alpha)+(3-qnorm(1-alpha))*i/nc
+  lines(c(y,y),c(0,dnorm(y)),col="blue")
+}
+```
+
+
+
+## Contrastes de hipótesis para el parámetro $\mu$ de una variable normal con $\sigma$ conocida
+
+El contraste anterior tiene como:
+
+* **Estadístico de contraste**: $Z=\dfrac{\overline{X}-\mu_0}{\frac{\sigma}{\sqrt{n}}}$.
+
+
+* **Región crítica**: $(z_{1-\alpha},\infty)$.
+
+
+* **Región de aceptación**: $(-\infty,z_{1-\alpha}]$.
+
+
+* **Regla de decisión**:
+rechazar $H_0$ si $Z>z_{1-\alpha}$.
+
+
+## Contrastes de hipótesis para el parámetro $\mu$ de una variable normal con $\sigma$ conocida
+
+* **Intervalo de confianza**: 
+$$
+\begin{array}{l}
+Z< z_{1-\alpha}\Longleftrightarrow \dfrac{\overline{X}-\mu_0}{\frac{\sigma}{\sqrt{n}}}< z_{1-\alpha} 
+\Longleftrightarrow \mu_0> \overline{X}-z_{1-\alpha}\cdot\frac{\sigma}{\sqrt{n}}\\
+\qquad\quad\Longleftrightarrow \mu_0\in {\Big(\overline{X}-z_{1-\alpha}\cdot\frac{\sigma}{\sqrt{n}},\infty\Big)}
+\end{array}
+$$
+
+* **Regla de decisión II**:
+rechazar $H_0$ si el $\mu_0$ contrastado no pertenece al intervalo de confianza.
+
+
+## Contraste de hipótesis para a $\mu$ de normal con $\sigma$ conocida
+
+Sea $X$ una v.a. $N(\mu,\sigma)$ con $\mu$ desconocida y $\sigma$ conocida
+
+
+Sea $X_1,\ldots,X_{n}$ una m.a.s. de $X$ de tamaño $n$
+
+
+Nos planteamos el contraste
+$$
+\left\{\begin{array}{l}
+H_0:\mu=\mu_0\\ H_1:\mu\ <\ \mu_0
+\end{array}
+\right.
+$$
+donde vamos a rechazar $H_0$ si $Z=\dfrac{\overline{X}-\mu_0}{{\sigma}/{\sqrt{n}}}$ es *inferior a* un cierto umbral, que determinaremos con $\alpha$.
+
+
+
+## Contraste de hipótesis para una media poblacional $\mu$ de una distribución normal con $\sigma$ conocida
+
+Queremos que el **Error Tipo I** sea $\alpha$:
+$$
+\alpha  =P(\mbox{rechazar } H_0| H_0 \mbox{ cierta})
+ =P(Z<\mbox{umbral })\Longrightarrow \mbox{umbral }=z_{\alpha},
+$$
+por lo tanto, para que el nivel  de significación  del contraste  Sea $\alpha$, la
+regla de rechazo tiene que ser $Z<z_{\alpha}$.
+
+La Región crítica es $(-\infty,z_{\alpha})$.
+
+
+En resumen, **rechazamos $H_0$** si $\dfrac{\overline{X}-\mu_{0}}{\sigma/\sqrt{n}} < z_{\alpha}=-z_{1-\alpha}$.
+
+## Contrastes de hipótesis para el parámetro $\mu$ de una variable normal con $\sigma$ conocida
+
+Gráfico de la región de rechazo. Las abscisas o coordenadas $x$ de la zona en azul serían los valores $z$ para los que rechazaríamos la hipótesis nula $H_0$:
+```{r,echo=FALSE,fig=TRUE,fig.align="center"}
+x=seq(from=-3,to=3,by=0.01)
+plot(x,dnorm(x),type="l",xlab="z",ylab=expression(f[Z](z)))
+alpha=0.05
+abline(v=-qnorm(1-alpha),lty=2,col="red")
+text(-qnorm(1-alpha),0.02,expression(z[1-alpha]),pos=4, col="red")
+text(-2.8,0.1,"Región de\n Rechazo",col="blue",pos=4)
+
+nc=100
+for (i in 1:nc){
+  y=-3+(3-qnorm(1-alpha))*i/nc
+  lines(c(y,y),c(0,dnorm(y)),col="blue")
+}
+```
+
+
+
+## Contrastes de hipótesis para el parámetro $\mu$ de una variable normal con $\sigma$ conocida
+
+El contraste anterior tiene como:
+
+* **Estadístico de contraste**: $Z=\dfrac{\overline{X}-\mu_0}{\frac{\sigma}{\sqrt{n}}}$.
+
+
+* **Región crítica**: $(-\infty,-z_{1-\alpha})$.
+
+
+* **Región de aceptación**: $[-z_{1-\alpha},\infty)$.
+
+
+* **Regla de decisión**:
+rechazar $H_0$ si $Z < -z_{1-\alpha}$.
+
+
+## Contrastes de hipótesis para el parámetro $\mu$ de una variable normal con $\sigma$ conocida
+
+* **Intervalo de confianza**: 
+$$
+\begin{array}{l}
+Z> -z_{1-\alpha}\Longleftrightarrow \dfrac{\overline{X}-\mu_0}{\frac{\sigma}{\sqrt{n}}}> -z_{1-\alpha} 
+\Longleftrightarrow \mu_0< \overline{X}+z_{1-\alpha}\cdot\frac{\sigma}{\sqrt{n}}\\
+\qquad\quad\Longleftrightarrow \mu_0\in {\Big(-\infty,\overline{X}+z_{1-\alpha}\cdot\frac{\sigma}{\sqrt{n}}\Big)}
+\end{array}
+$$
+
+* **Regla de decisión II**:
+rechazar $H_0$ si el $\mu_0$ contrastado no pertenece al intervalo de confianza.
+
+
+
+
+## Contraste de hipótesis para la media  $\mu$ de una población  normal con $\sigma$ conocida
+
+Sea $X$ una v.a. $N(\mu,\sigma)$ con $\mu$ desconocida y $\sigma$ conocida
+
+
+Sea $X_1,\ldots,X_{n}$ una m.a.s. de $X$ de tamaño $n$
+
+
+Consideremos ahora el contraste
+$$
+\left\{\begin{array}{l}
+H_0:\mu=\mu_0\\ H_1:\mu\ \neq\ \mu_0
+\end{array}
+\right.
+$$
+
+
+Rechazar $H_0$ si $Z=\dfrac{\overline{X}-\mu_0}{{\sigma}/{\sqrt{n}}}$ está a *bastante lejos de* de 0, y la determinaremos con el valor de $\alpha$
+
+
+
+## Contraste de hipótesis para la media  $\mu$ de una población  normal con $\sigma$ conocida
+
+Queremos como antes que el **Error Tipo I** sea $\alpha$:
+$$
+\begin{array}{rl}
+\alpha & =P(\mbox{rechazar } H_0| H_0 \mbox{ cierta })
+ =P(Z<-\mbox{umbral }\mbox{ o }Z>\mbox{umbral })\\
+& =P(Z<-\mbox{umbral })\!+\!P(Z>\mbox{umbral })
+ = 2P(Z>\mbox{umbral }) \\ &= 2(1-P(Z<\mbox{umbral }))
+ \Longrightarrow P(Z<\mbox{umbral })=1-\dfrac{\alpha}2,\\
+& \qquad \Longrightarrow \mbox{umbral }=z_{1-\frac{\alpha}2}.
+\end{array}
+$$
+
+## Contraste de hipótesis para la media  $\mu$ de una población  normal con $\sigma$ conocida
+
+Ahora para que el nivel de significación del contraste sea $\alpha$, la
+**regla de rechazo** tiene que ser
+$$
+Z<-z_{1-\frac{\alpha}2}=z_{\frac{\alpha}2}\mbox{ o }Z>z_{1-\frac{\alpha}2}.
+$$
+La región crítica es $(-\infty,z_{\frac\alpha2})\cup (z_{1-\frac{\alpha}2},\infty).$
+
+
+
+
+## Contraste de hipótesis para la media $\mu$ de una población normal con $\sigma$ conocida
+Gráfico de la región de rechazo. Las abscisas o coordenadas $x$ de la zona en azul serían los valores $z$ para los que rechazaríamos la hipótesis nula $H_0$:
+```{r,echo=FALSE,fig=TRUE,fig.align="center"}
+x=seq(from=-3,to=3,by=0.01)
+plot(x,dnorm(x),type="l",xlab="z",ylab=expression(f[Z](z)))
+alpha=0.05
+abline(v=qnorm(1-alpha/2),lty=2,col="red")
+abline(v=-qnorm(1-alpha/2),lty=2,col="red")
+text(qnorm(1-alpha/2),0.02,expression(z[1-alpha/2]),pos=2, col="red")
+text(-qnorm(1-alpha/2),0.02,expression(-z[1-alpha/2]),pos=4, col="red")
+text(-3,0.1,"Región de\n Rechazo",col="blue",pos=4)
+text(2,0.1,"Región de\n Rechazo",col="blue",pos=4)
+
+nc=100
+for (i in 1:nc){
+  y=qnorm(1-alpha/2)+(3-qnorm(1-alpha/2))*i/nc
+  lines(c(y,y),c(0,dnorm(y)),col="blue")
+  y2=-3+(3-qnorm(1-alpha/2))*i/nc
+  lines(c(y2,y2),c(0,dnorm(y2)),col="blue")
+  }
+```
+
+
+
+## Contraste de hipótesis para la media   $\mu$ de una población   normal con $\sigma$ conocida
+
+Seguidamente, calculemos el **Intervalo de confianza** para el contraste anterior:
+$$
+\begin{array}{l}
+-z_{1-\frac{\alpha}2} < Z < z_{1-\frac{\alpha}2}\Longleftrightarrow -z_{1-\frac{\alpha}2} < \dfrac{\overline{X}-\mu_0}{\frac{\sigma}{\sqrt{n}}}< z_{1-\frac{\alpha}2}\\
+\qquad\Longleftrightarrow -z_{1-\frac{\alpha}2}\frac{\sigma}{\sqrt{n}}< \overline{X}-\mu_0< z_{1-\frac{\alpha}2}\frac{\sigma}{\sqrt{n}}\\\qquad \Longleftrightarrow \overline{X}-z_{1-\frac\alpha2}\frac{\sigma}{\sqrt{n}}< \mu_0< \overline{X}+z_{1-\frac{\alpha}2}\frac{\sigma}{\sqrt{n}} \\
+\qquad\Longleftrightarrow\mu_0\in \Big(\overline{X}-z_{1-\frac\alpha2}\frac{\sigma}{\sqrt{n}},\overline{X}+z_{1-\frac{\alpha}2}\frac{\sigma}{\sqrt{n}}\Big)
+   \end{array}
+$$
+
+
+## El $p$-valor
+
+El *$p$-valor* o *valor crítico* ($p$-*value*) de un contraste es la probabilidad que, si $H_0$ es verdadera, el estadístico de contraste tome un valor tan extremo o más que el que se ha observado.
+
+
+Consideremos por ejemplo un contraste del tipo:
+$$
+\left\{\begin{array}{l}
+H_0:\mu=\mu_0\\ H_1:\mu\ >\ \mu_0.
+\end{array}
+\right.
+$$
+Si el estadístico $Z$ tiene el valor $z_0$, el $p$-valor será:
+$$
+\mbox{$p$-valor}=P(Z\ \geq\ z_0).
+$$ 
+
+
+
+
+
+## El $p$-valor
+
+```{r,echo=FALSE,fig=TRUE,fig.align="center"}
+x=seq(from=-3,to=3,by=0.01)
+plot(x,dnorm(x),type="l",xlab="z",ylab=expression(f[Z](z)))
+alpha=0.05
+z0=1.5
+abline(v=z0,lty=2,col="red")
+text(z0,0.02,expression(z[0]),pos=2, col="red")
+nc=100
+for (i in 1:nc){
+  y=z0+(3-z0)*i/nc
+  lines(c(y,y),c(0,dnorm(y)),col="blue")
+}
+text(2.5,0.2,"p-valor", col="blue")
+arrows(2.5,0.175,2,0.025,col="blue")
+```
+
+## El $p$-valor
+Para el contraste:
+
+$$
+\left\{\begin{array}{l}
+H_0:\mu=\mu_0\\ H_1:\mu\ <\ \mu_0.
+\end{array}
+\right.
+$$
+Si el estadístico $Z$ tiene el valor $z_0$, el $p$-valor será:
+$$
+\mbox{$p$-valor}=P(Z\ \leq\ z_0).
+$$ 
+
+## El $p$-valor
+
+```{r,echo=FALSE,fig=TRUE,fig.align="center"}
+x=seq(from=-3,to=3,by=0.01)
+plot(x,dnorm(x),type="l",xlab="z",ylab=expression(f[Z](z)))
+alpha=0.05
+z0=-1.5
+abline(v=z0,lty=2,col="red")
+text(z0,0.02,expression(z[0]),pos=4,col="red")
+nc=100
+for (i in 1:nc){
+  y=-3+(3+z0)*i/nc
+  lines(c(y,y),c(0,dnorm(y)),col="blue")
+}
+text(-2.5,0.2,"p-valor", col="blue")
+arrows(-2.5,0.175,-2,0.025,col="blue")
+```
+
+
+## El $p$-valor
+
+Si ahora consideramos el contraste
+$$
+\left\{\begin{array}{l}
+H_0:\mu=\mu_0\\ H_1:\mu\ \neq\ \mu_0
+\end{array}
+\right.
+$$
+y si el estadístico $Z$ ha dado $z_0$, el $p$-valor será:
+$$
+\mbox{$p$-valor}  =2 \cdot \min\{P(Z \leq -|z_0|),P(Z \geq |z_0|)
+  =2\cdot P(Z \geq |z_0|)
+$$
+
+## El $p$-valor
+
+```{r,echo=FALSE,fig=TRUE,fig.align="center"}
+x=seq(from=-3,to=3,by=0.01)
+plot(x,dnorm(x),type="l",xlab="z",ylab=expression(f[Z](z)))
+alpha=0.05
+z0=1.5
+abline(v=z0,lty=2,col="red")
+abline(v=-z0,lty=2,col="red")
+text(z0,0.02,expression(group("|",z[0],"|")),pos=2,  col="red")
+text(-z0,0.02,expression(-group("|",z[0],"|")),pos=4,  col="red")
+
+nc=100
+for (i in 1:nc){
+  y=z0+(3-z0)*i/nc
+  lines(c(y,y),c(0,dnorm(y)),col="blue")
+  y2=-3+(3-z0)*i/nc
+  lines(c(y2,y2),c(0,dnorm(y2)),col="blue")
+}
+text(2.5,0.2,expression(frac(p-valor,2)),  col="blue")
+arrows(2.5,0.155,2,0.025,col="blue")
+text(-2.5,0.2,expression(frac(p-valor,2)),  col="blue")
+arrows(-2.5,0.155,-2,0.025,col="blue")
+```
+
+
+## El $p$-valor
+
+El *$p$-valor* o *valor crítico* ($p$-*value*) de un contraste es la probabilidad que, si $H_0$ es verdadera, el estadístico de contraste tome un valor tan extremo o más que el que se ha observado.
+
+Es una *medida inversa de la fuerza de las pruebas o evidencias que hay en contra de $H_1$*: si $H_0$ es verdadera, cuanto más pequeño sea el $p$-valor, más improbable es observar lo que hemos observado. 
+
+En consecuencia, cuanto más pequeño sea el $p$-valor, con más fuerza podemos rechazar $H_0$.
+
+## El $p$-valor
+
+Supongamos, por ejemplo, que hemos obtenido un $p$-valor de $0.03$:
+
+* *Significa* que la probabilidad de que, si $H_0$ es verdadera, el estadístico de contraste tome un valor tan extremo o más que el que ha tomado, es 0.03 (**pequeño: evidencia de que $H_0$ es falsa.**)
+
+* *No significa*:
+  * La probabilidad que $H_0$ Sea verdadera es $0.03$
+
+  * $H_0$ es verdadera un 3\% de les veces
+
+## El $p$-valor
+
+<l class="important">Importante:</l>
+
+En un contraste con nivel de significación $\alpha$, 
+
+* rechazamos $H_0$ si $p$-valor $<\alpha$.
+
+* aceptamos $H_0$ si $\alpha\leq p$-valor.
+
+## El $p$-valor
+
+Si consideramos por ejemplo un contraste del tipo:
+$$
+\left\{\begin{array}{l}
+H_0:\mu=\mu_0\\ H_1:\mu> \mu_0
+\end{array}
+\right.
+$$
+
+y suponemos que el estadístico $Z$ vale $z_0$. El $p$-valor es $P(Z \geq z_0)$. Entonces:
+
+* Rechazamos $H_0$ $\Longleftrightarrow z_0>z_{1-\alpha},$,
+
+* O, dicho de otra forma, $$\mbox{$p$-valor}=P(Z \geq z_0)<P(Z\geq z_{1-\alpha})=1-(1-\alpha)=\alpha.$$
+
+
+## El $p$-valor
+
+Si ahora consideramos un contraste del tipo:
+$$
+\left\{\begin{array}{l}
+H_0:\mu=\mu_0\\ H_1:\mu < \mu_0
+\end{array}
+\right.
+$$
+
+y suponemos que el estadístico $Z$ vale $z_0$. El $p$-valor es $P(Z \leq z_0)$. Entonces:
+
+* Rechazamos $H_0$ $\Longleftrightarrow z_0 < z_{\alpha},$
+
+* O, dicho de otra forma, $$\mbox{$p$-valor}=P(Z \leq z_0) < P(Z\leq z_{\alpha})=\alpha.$$
+
+
+
+## El $p$-valor
+
+Por último, supongamos que el contraste es del tipo:
+$$
+\left\{\begin{array}{l}
+H_0:\mu=\mu_0\\ H_1:\mu \neq \mu_0
+\end{array}
+\right.
+$$
+y que el estadístico $Z$ vale $z_0>0$. El $p$-valor es $2P(Z \geq |z_0|)$. Entonces:
+
+* Rechazamos $H_0 \Longleftrightarrow |z_0|>z_{1-\frac{\alpha}{2}}$,
+
+* O, dicho de otra forma, 
+$$
+\mbox{$p$-valor}=2P(Z \geq |z_0|)<2P(Z\geq z_{1-\frac{\alpha}2})=2\left(1-\left(1-\frac{\alpha}2\right)\right)=\alpha.
+$$
+
+## El $p$-valor
+
+El *$p$-valor* de un contraste es:
+
+* El nivel de significación $\alpha$ más pequeño para el que rechazamos la hipótesis nula.
+
+* El nivel de significación $\alpha$ más grande para el que aceptaríamos la hipótesis nula.
+
+* La probabilidad mínima de error de Tipo I que permitimos si rechazamos la hipótesis nula con el valor del estadístico de contraste obtenido.
+
+* La probabilidad máxima de error de Tipo I que permitimos si aceptamos la hipótesis nula con el valor del estadístico de contraste
+obtenido.
+
+## El $p$-valor
+
+<l class="important">Importante:</l>
+
+Si no establecemos un nivel de significación $\alpha$, entonces
+
+* Aceptamos $H_0$ si el $p$-valor es "grande" ($\geq 0.1$).
+
+* Rechazamos $H_0$ si el $p$-valor es "pequeño" ($<0.05$). En este caso, el $p$-valor es: 
+
+  * *Significativo* si es $< 0.05$ (En `R`, se simboliza con un asterisco, `*`).
+  * *Fuertemente significativo* si es $<0.01$ (En `R`, se simboliza con dos asteriscos, `**`).
+  * *Muy significativo* si es $<0.001$ (En `R`, se simboliza con tres asteriscos, `***`).
+
+
+## El $p$-valor
+
+Si el $p$-valor está entre $0.05$ y $0.1$ y no tenemos nivel de significación, se requieren estudios posteriores para tomar una decisión. 
+
+Es la denominada **zona crepuscular**, o *twilight zone*.
+
+
+
+
+## El método de los *seis* pasos (caso de conocer $\alpha$)
+
+1) Establecer la hipótesis nula $H_0$ y la hipótesis alternativa $H_1$.
+
+2) Fijar un nivel de significación $\alpha$.
+
+3) Seleccionar el estadístico de contraste apropiado.
+
+4) Calcular el valor del estadístico de contraste a partir de les
+datos muestrales.
+
+5) Calcular el $p$-valor del contraste.
+
+6) **Decisión:** rechazar $H_0$ en favor de $H_1$ si el $p$-valor es 
+más pequeño que $\alpha$; en caso contrario, aceptar $H_0$.
+
+## El método de los *cinco* pasos (caso de no conocer $\alpha$)
+
+1) Establecer la hipótesis nula $H_0$ y la hipótesis alternativa $H_1$.
+
+2) Seleccionar el estadístico de contraste apropiado.
+
+3) Calcular el valor del estadístico de contraste a partir de los valores de la muestra.
+
+4) Calcular el $p$-valor del contraste.
+
+5) **Decisión:** rechazar $H_0$ en favor de $H_1$ si el $p$-valor es pequeño ($<0.05$), aceptar $H_0$ si el $p$-valor es grande ($\geq 0.1$), y ampliar el estudio si el $p$-valor está entre 0.05 y 0.1.
+
+
+
+## EL RESTO...
+
+
+
+SHINY DE LOS CONTRASTES....
