@@ -75,8 +75,6 @@ $$(A^c)^c=A$$
 $$(A\cup B)^c=A^c\cap B^c$$
 
 
-<l class="definition">Leyes de De Morgan</l>
-
 $$(A\cap B)^c=A^c\cup B^c$$
 
 
@@ -309,7 +307,6 @@ $$
 
 
 
-#
 # Independencia de sucesos
 
 ## Sucesos independientes
