@@ -19,7 +19,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Definiciones básicas
 
-<l class="definition">Experimento aleatorio</l>: experimento que  repetido  en las mismas condiciones puede dar resultados diferentes, pero que a largo plazo son predecibles 
+<l class="definition">Experimento aleatorio</l>: experimento que  repetido  en las mismas condiciones puede dar resultados diferentes, pero que a largo plazo son predecibles \l>
+
+
 <div class="example"> 
 
 
@@ -33,6 +35,7 @@ knitr::opts_chunk$set(echo = TRUE)
 * <l class="definition">Suceso seguro o cierto</l>: $\Omega$
 * <l class="definition">Suceso imposible o vacio</l>: $\emptyset$
 * <l class="definition">Partes de un conjunto</l>: $\mathcal{P}(\Omega)$: conjunto de todos los sucesos del experimento aleatorio (es decir, el conjunto de todos los subconjuntos de $\Omega$)
+
 ## Operaciones con sucesos
 
 Si tenemos dos sucesos $A,B\subseteq \Omega$, podemos definir:
