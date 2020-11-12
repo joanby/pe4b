@@ -1,7 +1,7 @@
 # Probabilidad y Estadística aplicada a Negocios
 
 0. Introducción y Recursos Adicionales - JB
-1. Entender numéricamente y gráficamente los datos - 
+1. Entender numéricamente y gráficamente los datos - JB
 2. Cálculo de Probabilidades
 3. Distribuciones de Probabilidad Discretas
    * Variables Aletorias Discretas
