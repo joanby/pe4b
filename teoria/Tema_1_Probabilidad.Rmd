@@ -20,12 +20,9 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Definiciones básicas
 
 <l class="definition">Experimento aleatorio</l>: experimento que  repetido  en las mismas condiciones puede dar resultados diferentes, pero que a largo plazo son predecibles 
-
-
 <div class="example"> 
 
 
-## Definiciones básicas
 
 <l class="definition"> Espacio muestral</l>: el conjunto  $\Omega$ formado por todos los sucesos elementales del experimento aleatorio
 
