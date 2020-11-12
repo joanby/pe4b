@@ -196,24 +196,6 @@ $$
 
 
 
-## Ejemplos: dígitos de control
-
-<div class="example">
-**Ejemplo**
-
-Un dígito de control de error toma  el valor 0  en el 99\% de los casos en que hay un error. Si la probabilidad de error en un mensaje es  del $0.5\%$. ¿cuál  es la probabilidad de que el mensaje sea erróneo y el código de error tenga valor 0?
-</div>
-
-<div class="example-sol">
-
-* $B$: mensaje con error; $P(B)=0.005$,
-* $A$: código de error vale 0,
-* $P(A|B)=0.99$,
-
-entonces: 
-$$P(A\cap B)=P(B)\cdot P(A|B)=0.005\cdot 0.99=0.00495.$$
-</div>
-
 
 ## Teorema de la probabilidad total
 
