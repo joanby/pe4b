@@ -77,9 +77,10 @@ La tabla siguiente muestra los cuantiles más usados:
 <div class="center">
 | Confianza $1-\alpha$ | Significación $\alpha$  | Cuantil $z_{1-\frac{\alpha}{2}}$|
 |-----------|----------------|---------|
-| 0.90      | 0.1            | 1.645   |
-| 0.95      | 0.05           | 1.96    |
-| 0.975     | 0.025          | 2.241   |
+| 0.90      | 0.1            | `r round(qnorm(0.9),3)`   |
+| 0.95      | 0.05           | `r round(qnorm(0.95),3)`   |
+| 0.975     | 0.025          | `r round(qnorm(0.975),3)`   |
+| 0.99      | 0.01           | `r round(qnorm(0.99),3)`   |
 </div>
 
 
