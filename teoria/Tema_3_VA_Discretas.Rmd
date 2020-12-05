@@ -15,6 +15,129 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
+# Introducción a las variables aleatorias
+
+
+## Introducción
+
+* Hasta ahora nuestros sucesos han sido de varios tipos: $\{C,+\}$ en
+la moneda, nombres de periódicos, ángulos en una ruleta, número de
+veces que sale cara en el lanzamiento de una moneda etc\ldots.
+* Necesitamos estandarizar de alguna manera todos estos sucesos. Una
+solución es asignar a cada suceso un cierto conjunto de
+números reales, es decir, convertir todos los sucesos en
+*sucesos de números reales* para trabajar con ellos de forma
+unificada.
+* Para conseguirlo utilizaremos  unas funciones que
+transformen los elementos del espacio muestral en números; esta funciones son las
+variables aleatorias.
+
+
+## Definición de variable aleatoria
+ Comenzaremos dando una definición poco rigurosa, pero suficiente, de  variable aleatoria.
+
+<l class="definition"> Variable Aleatoria (definición práctica) </l>
+
+
+Una variable aleatoria (v.a.) es una aplicación que toma valores numéricos determinados por el resultado de un experimento aleatorio
+
+<div class="observ">
+**Notación**:
+</div>
+* Normalmente representaremos las v.a. por letras mayúsculas $X,Y,Z\ldots$
+* Los valores que "*toman*" las v.a. los representaremos por letras minúsculas (las mismas en principio) $x,y,z\ldots$
+
+
+## Ejemplo
+
+<div class="example">
+**Ejemplo**
+
+Lanzamos un dado convencional de parchís el espacio muestral del experimento es
+
+$$\Omega=\{1,2, 3, 4,  5, 6\}.$$
+
+
+</div>
+
+<div class="example-sol">
+Una v.a $X:\Omega\to\mathbb{R}$
+sobre este espacio queda definida por 
+
+\begin{equation*}
+\begin{split}
+X(1)&=1,X(2)=2,X(3)=3,\\
+X(4)&=4,X(5)=5,X(6)=6.
+\end{split}
+\end{equation*}
+
+* Ahora el suceso $A=\{2, 4, 6\}$, es decir "salir
+número par", es equivalente a $\{X=2,X=4,X=6\}$.
+* El suceso $B=\{1,2,3\}$, es decir "salir un número
+inferior o igual a $3$" es  en términos de la v.a. $\{X=1,X=2,X=3\}$ o también $\{X\leq
+3\}$.
+
+</div>
+
+## Ejemplo
+
+<div class="example">
+**Ejemplo**
+
+Consideremos el experimento lanzar una anilla al cuello de una botella. Si acertamos a
+ensartar la anilla en la botella el resultado del experimento es **éxito** y
+**fracaso** en caso contrario. 
+</div>
+
+<div class="example-sol">
+El espacio muestral asociado a este experimento será
+$\Omega=\{\mbox{éxito, fracaso}\}$. Construyamos la siguiente variable aleatoria:
+
+$$X:\{\mbox{éxito, fracaso}\}\to\mathbb{R}$$
+
+definida por 
+
+$$X(\mbox{éxito})=1 \mbox{ y } X(\mbox{fracaso})=0.$$
+
+</div>
+
+
+## Tipos de variables aleatorias
+
+Hay dos tipos fundamentales de variables aleatorias, las discretas y las continuas.
+
+Damos a continuación una definición informal.
+
+<l class="definition">Variables Aleatorias Discretas y Continuas </l>
+
+* Una variable aleatoria es **discreta** si sólo puede tomar una cantidad numerable de valores con probabilidad positiva.
+* Las variables aleatorias **continuas**  toman  valores en intervalos.
+* También existen las variables aleatorias **mixtas**; con una parte discreta y otra continua.
+
+
+
+## Ejemplo
+
+<div class="example">
+**Ejemplo**
+
+Son variables *aleatorias discretas*:
+      
+*  Número de artículos defectuosos en un cargamento.
+*  Número de clientes que llegan a una ventanilla de un banco en una hora.
+*  Número de errores detectados en las cuentas de una compañía.
+*  Número de reclamaciones de una póliza de un seguro médico.
+      
+Son variables *aleatorias continuas*:
+      
+* Renta anual de una familia.
+* Cantidad de petróleo importado por un país.
+* Variación del precio de las acciones de una compañía de telecomunicaciones.
+* Porcentaje de impurezas en un lote de productos químicos.
+      
+</div>
+
+
 # Variables aleatorias discretas
 
 
