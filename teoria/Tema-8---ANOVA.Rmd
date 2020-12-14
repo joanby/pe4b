@@ -141,45 +141,30 @@ Supongamos que estamos en los casos siguientes:
 <div class="example">
 **Ejemplo**
 
-Se realizó un estudio para investigar el efecto del
-CO${}_2$ sobre la tasa de crecimiento de *Pseudomonas fragi* (un corruptor de alimentos). 
-Se cree que el crecimiento se ve afectado por la cantidad de CO${}_2$ en el aire.
+Queremos saber si el consumo de combustible de tres marcas de coches $A$, $B$ y $C$ es el mismo.
 
-Para contrastarlo, en un experimento se administró CO${}_2$ a 5 presiones atmosféricas
-diferentes a 10 cultivos diferentes por cada nivel, y se anotó el cambio (en \%) de la masa celular
-al cabo de una hora:
+Para ello, se seleccionaron 20 conductores, de los cuales, 7 fueron asignados aleatoriamente a los coches marca A, 7 a los coches marca B y los 6 restantes, a los coches marca C. 
+
+El número de kilómetros por litro de combustible que hicieron los conductores se muestran en la tabla siguiente:
 </div>
 
 ## Ejemplo
 <div class="example">
 <div class="center">
-**Presión de $CO{}_2$ (en atmósferas)**
+**Consumo en km/l**
 
-|0.0|0.083|0.29|0.50|0.86|
-|--:|--:|--:|--:|--:|
-|62.6|50.9|45.5|29.5|24.9|
-|59.6|44.3|41.1|22.8|17.2|
-|64.5|47.5|29.8|19.2|7.8|
-|59.3|49.5|38.3|20.6|10.5|
-|58.6|48.5|40.2|29.2|17.8|
+|A|B|C|
+|:--:|:--:|:--:|
+|9.44|10.46|9.65|
+|8.46|9.82|9.31|
+|8.63|9.35|9.86|
+|9.10|9.99|10.25|
+|9.01|10.03|9.40|
+|8.93|9.40|9.95|
+|8.63|9.99||
 </div>
 </div>
 
-
-## Ejemplo (continuación)
-<div class="example">
-<div class="center">
-**Presión de $CO{}_2$ (en atmósferas)**
-
-|0.0|0.083|0.29|0.50|0.86|
-|--:|--:|--:|--:|--:|
-|64.6|50.4|38.5|24.1|22.1|
-|50.9|35.2|30.2|22.6|22.6|
-|56.2|49.9|27.0|32.7|16.8|
-|52.3|42.6|40.0|24.4|15.9|
-|62.8|41.6|33.9|29.6|8.8|
-</div>
-</div>
 
 
 ## Almacenamiento de datos en ANOVA
@@ -213,9 +198,9 @@ donde
 <div class="example">
 En el ejemplo anterior, 
 
-* $k=5$,
-* $F_1=0.0$, $F_2=0.083$, $F_3=0.29$, $F_4=0.50$ y $F_5=0.86$,
-* $n_1=n_2=n_3=n_4=n_5=10$.
+* $k=3$,
+* $F_1=\mathrm{A}$, $F_2=\mathrm{B}$, $F_3=\mathrm{C}$.
+* $n_1=n_2=7,\ n_3=6$.
 
 </div>
 
@@ -235,31 +220,27 @@ De esta manera **transformaremos** la tabla anterior en una tabla de $N=n_1+\cdo
 
 Realicemos la transformación anterior con los datos del ejemplo.
 
-Llamaremos a la variable $X$ `Incremento.celular` y a la variable $F$, `nivel.Presión`. 
+Llamaremos a la variable $X$ `Consumo` y a la variable $F$, `Marca coche`. 
 
-Los valores de las variables anteriores serán:
-```{r}
-Incremento.celular=c(
-  62.6,50.9,45.5,29.5,24.9,59.6,44.3,41.1,22.8,17.2,
-  64.5,47.5,29.8,19.2,7.8,59.3, 49.5,38.3,20.6,10.5,
-  58.6,48.5,40.2,29.2,17.8,64.6,50.4,38.5,24.1,22.1,
-  50.9,35.2,30.2,22.6,22.6,56.2,49.9,27.0,32.7,16.8,
-  52.3,42.6,40.0, 24.4,15.9,62.8,41.6,33.9,29.6,8.8)
-nivel.Presión=rep(c("0.0","0.083","0.29","0.50","0.86"),times=10)
+<!-- Los valores de las variables anteriores serán: -->
+```{r,echo=FALSE}
+conv=2.35215
+Consumo=round(c(22.2,24.6,22.7,19.9,23.1,21.9,20.3,22.0,23.2,21.4,23.5,24.1,21.2,23.6,22.1,21.0,22.1,23.4,20.3,23.5)/conv,2)
+Marca=c(rep(c("A","B","C"),6),"A","B")
 ```
 
-</div>
+<!-- </div> -->
 
-## Almacenamiento de datos en ANOVA
-<div class="example">
+<!-- ## Almacenamiento de datos en ANOVA -->
+<!-- <div class="example"> -->
 
-Los primeros elementos de nuestra **tabla transformada** son:
-```{r}
-tabla.datos.ANOVA = data.frame(Incremento.celular,nivel.Presión)
+<!-- Los primeros elementos de nuestra **tabla transformada** son: -->
+```{r,echo=FALSE}
+tabla.datos.ANOVA = data.frame(Consumo,Marca)
 head(tabla.datos.ANOVA)
 ```
 
-Fijémonos que hemos transformado la tabla original de 10 filas y 5 columnas en otra tabla de `r dim(tabla.datos.ANOVA)[1]` filas y `r dim(tabla.datos.ANOVA)[2]` columnas.
+Fijémonos que hemos transformado la tabla original de 7 filas y 3 columnas en otra tabla de `r dim(tabla.datos.ANOVA)[1]` filas y `r dim(tabla.datos.ANOVA)[2]` columnas.
 
 </div>
 
@@ -274,108 +255,43 @@ En general, si los datos vienen dados en una tabla donde las **columnas** repres
 <div class="example">
 **Ejemplo (continuación)**
 
-Si realizamos un gráfico del porcentaje de aumento de masa celular según la variable presión del nivel de $CO{}_2$, obtenemos lo siguiente:
+Si realizamos un gráfico del consumo según la variable marca del coche, obtenemos el gráfico siguiente:
 
-```{r,eval=FALSE}
-presión = as.numeric(as.character(tabla.datos.ANOVA$nivel.Presión))
-plot(presión,tabla.datos.ANOVA$Incremento.celular,type="p",
-     pch=18,cex=2,xlab="Nivel de CO2",ylab="% de masa celular")
-```
-Observamos gráficamente que las medias del porcentaje del aumento de masa celular de las muestras correspondientes a los 5 niveles de presión parecen diferentes.
-</div>
-
-## Ejemplo
-<div class="example">
-
-```{r,fig.align='center',echo=FALSE,fig.height=5.75}
-presión = as.numeric(as.character(tabla.datos.ANOVA$nivel.Presión))
-plot(presión,tabla.datos.ANOVA$Incremento.celular,type="p",
-     pch=18,cex=2,xlab="Nivel de CO2",ylab="% de incremento de masa celular")
+```{r,echo=FALSE}
+marca = as.factor(tabla.datos.ANOVA$Marca)
+plot(marca,tabla.datos.ANOVA$Consumo,type="p",
+     pch=18,cex=2,xlab="Consumo",ylab="Marca")
 ```
 </div>
 
+
 ## Ejemplo
 <div class="example">
-En el gráfico siguiente, dibujamos los 50 porcentajes de aumentos de masa celular correspondientes a los 50 microorganismos separándolos en 5 grupos correspondientes a los niveles de presión del nivel de $CO{}_2$.
+Observamos gráficamente que las medias del consumo de las muestras correspondientes a las 3 marcas de coche parecen diferentes.
+
+En el gráfico siguiente, dibujamos los 20 consumos correspondientes a los 20 automóviles separándolos en 3 grupos correspondientes a las tres marcas consideradas.
 
 También aparecen las medias de cada grupo junto con la media global.
 
-Este gráfico corrobora lo que hemos dicho anteriormente: parecen que hay diferencias entre las medias de los porcentajes de aumentos de masa celular entre los 5 grupos.
 </div>
 
-## Ejemplo
 <div class="example">
-```{r,eval=FALSE}
-plot(1:50,tabla.datos.ANOVA$Incremento.celular,type="p",pch=17,
-     xlab="Número de microorganismo (por nivel)",ylab="% de incremento de masa celular",cex=0)
-points(1:10,tabla.datos.ANOVA$Incremento.celular[seq(from=1,to=46,by=5)],pch=18,cex=1.5)
-points(11:20,tabla.datos.ANOVA$Incremento.celular[seq(from=2,to=47,by=5)],pch=15,cex=1.5)
-points(21:30,tabla.datos.ANOVA$Incremento.celular[seq(from=3,to=48,by=5)],pch=17,cex=1.5)
-points(31:40,tabla.datos.ANOVA$Incremento.celular[seq(from=4,to=49,by=5)],pch=19,cex=1.5)
-points(41:50,tabla.datos.ANOVA$Incremento.celular[seq(from=5,to=50,by=5)],pch=8,cex=1.5)
+```{r,eval=FALSE,echo=FALSE}
+plot(1:20,tabla.datos.ANOVA$Consumo,type="p",pch=17,
+     xlab="Consumo",ylab="Marca de coche",cex=0)
+points(1:7,tabla.datos.ANOVA$Consumo[seq(from=1,to=20,by=3)],pch=18,cex=1.5)
+points(8:14,tabla.datos.ANOVA$Consumo[seq(from=2,to=20,by=3)],pch=15,cex=1.5)
+points(15:20,tabla.datos.ANOVA$Consumo[seq(from=3,to=20,by=3)],pch=17,cex=1.5)
 
-lines(c(0,50),c(mean(tabla.datos.ANOVA$Incremento.celular),
-                mean(mean(c(tabla.datos.ANOVA$Incremento.celular)))),lwd=3,col="red")
-text(5,mean(mean(tabla.datos.ANOVA$Incremento.celular)-2),"Media global",col="red")
-
-for (i in 1:5){lines(c(0+10*(i-1),10*i),
-          c(mean(tabla.datos.ANOVA$Incremento.celular[seq(from=i,to=46+i,by=5)]),
-          mean(tabla.datos.ANOVA$Incremento.celular[seq(from=i,to=46+i,by=5)])),lwd=3)}
+lines(c(0,20),c(mean(tabla.datos.ANOVA$Consumo),
+                mean(mean(c(tabla.datos.ANOVA$Consumo)))),lwd=3,col="red")
+text(5,mean(mean(tabla.datos.ANOVA$Consumo)-0.25),"Media global",col="red")
 
 ```
 </div>
 
-## Ejemplo
-<div class="example">
-```{r,eval=FALSE}
-text(20,mean(tabla.datos.ANOVA$Incremento.celular[seq(from=1,to=46,by=5)]),
-     "Media del Nivel 0.0")
-text(30,mean(tabla.datos.ANOVA$Incremento.celular[seq(from=2,to=47,by=5)]),
-     "Media del Nivel 0.083")
-text(40,mean(tabla.datos.ANOVA$Incremento.celular[seq(from=3,to=48,by=5)]-1),
-     "Media del Nivel 0.29")
-text(20,mean(tabla.datos.ANOVA$Incremento.celular[seq(from=4,to=49,by=5)]),
-     "Media del Nivel 0.50")
-text(30,mean(tabla.datos.ANOVA$Incremento.celular[seq(from=5,to=50,by=5)]),
-     "Media del Nivel 0.86")
-
-```
 
 
-</div>
-
-## Ejemplo
-<div class="example">
-```{r,fig.align='center',echo=FALSE,fig.height=5.75}
-plot(1:50,tabla.datos.ANOVA$Incremento.celular,type="p",pch=17,
-     xlab="Número de microorganismo (por nivel)",ylab="% de incremento de masa celular",cex=0)
-points(1:10,tabla.datos.ANOVA$Incremento.celular[seq(from=1,to=46,by=5)],pch=18,cex=1.5)
-points(11:20,tabla.datos.ANOVA$Incremento.celular[seq(from=2,to=47,by=5)],pch=15,cex=1.5)
-points(21:30,tabla.datos.ANOVA$Incremento.celular[seq(from=3,to=48,by=5)],pch=17,cex=1.5)
-points(31:40,tabla.datos.ANOVA$Incremento.celular[seq(from=4,to=49,by=5)],pch=19,cex=1.5)
-points(41:50,tabla.datos.ANOVA$Incremento.celular[seq(from=5,to=50,by=5)],pch=8,cex=1.5)
-
-lines(c(0,50),c(mean(tabla.datos.ANOVA$Incremento.celular),
-                mean(mean(c(tabla.datos.ANOVA$Incremento.celular)))),lwd=3,col="red")
-text(5,mean(mean(tabla.datos.ANOVA$Incremento.celular)-2),"Media global",col="red")
-
-for (i in 1:5){lines(c(0+10*(i-1),10*i),
-                     c(mean(tabla.datos.ANOVA$Incremento.celular[seq(from=i,to=46+i,by=5)]),
-                    mean(tabla.datos.ANOVA$Incremento.celular[seq(from=i,to=46+i,by=5)])),lwd=3)}
-text(20,mean(tabla.datos.ANOVA$Incremento.celular[seq(from=1,to=46,by=5)]),
-     "Media del Nivel 0.0")
-text(30,mean(tabla.datos.ANOVA$Incremento.celular[seq(from=2,to=47,by=5)]),
-     "Media del Nivel 0.083")
-text(40,mean(tabla.datos.ANOVA$Incremento.celular[seq(from=3,to=48,by=5)]-1),
-     "Media del Nivel 0.29")
-text(20,mean(tabla.datos.ANOVA$Incremento.celular[seq(from=4,to=49,by=5)]),
-     "Media del Nivel 0.50")
-text(30,mean(tabla.datos.ANOVA$Incremento.celular[seq(from=5,to=50,by=5)]),
-     "Media del Nivel 0.86")
-
-```
-
-</div>
 
 ## El contraste ANOVA
 Recordemos que los datos vienen dados según la estructura siguiente:
@@ -411,19 +327,16 @@ A partir de los datos de las muestras, definimos los **estadísticos** siguiente
 <div class="example">
 Calculemos los **estadísticos** anteriores para los datos de nuestro ejemplo.
 
-* Para calcular la suma total de los datos del $i$-ésimo nivel, usaremos la función `aggregate` de `R`:
-```{r}
-sumas.niveles = aggregate(Incremento.celular ~ nivel.Presión,
+* La suma total de los datos del $i$-ésimo nivel vale:
+```{r,echo=FALSE}
+sumas.niveles = aggregate(Consumo ~ Marca,
                           data = tabla.datos.ANOVA, FUN="sum")
 sumas.niveles
 ```
-</div>
 
-## Ejemplo
-<div class="example">
-* Para calcular la media total de los datos del $i$-ésimo nivel, podemos usar otra vez la función `aggregate` de `R`:
-```{r}
-medias.niveles = aggregate(Incremento.celular ~  nivel.Presión,
+* La media total de los datos del $i$-ésimo nivel vale:
+```{r,echo=FALSE}
+medias.niveles = aggregate(Consumo ~  Marca,
                            data=tabla.datos.ANOVA, FUN="mean")
 medias.niveles
 ```
@@ -432,13 +345,13 @@ medias.niveles
 ## Ejemplo
 <div class="example">
 * La suma total de los datos será:
-```{r}
-suma.total = sum(tabla.datos.ANOVA$Incremento.celular)
+```{r,echo=FALSE}
+suma.total = sum(tabla.datos.ANOVA$Consumo)
 suma.total
 ```
 * La media muestral de los datos será:
-```{r}
-media.muestral = mean(tabla.datos.ANOVA$Incremento.celular)
+```{r,,echo=FALSE}
+media.muestral = mean(tabla.datos.ANOVA$Consumo)
 media.muestral
 ```
 </div>
@@ -525,11 +438,11 @@ De cara a calcular las **variabilidades** o las **sumas** anteriores podemos usa
 
 ## Identidad de la suma de cuadrados
 
-<div class="exercise">
-**Ejercicio**
+<!-- <div class="exercise"> -->
+<!-- **Ejercicio** -->
 
-Demostrar las fórmulas anteriores. 
-</div>
+<!-- Demostrar las fórmulas anteriores.  -->
+<!-- </div> -->
 
 Usualmente escribiremos, para abreviar,
 $$
@@ -538,50 +451,36 @@ $$
 
 ## Ejemplo
 <div class="example">
-Calculemos las **variabilidades** o **sumas** anteriores para los datos de nuestro ejemplo de dos maneras distintas tal como queda indicado en las expresiones. Nos vamos a ayudar de las variables siguientes:
+Calculemos las **variabilidades** o **sumas** anteriores para los datos de nuestro ejemplo de dos maneras distintas tal como queda indicado en las expresiones.
 
-```{r}
-(ni=table(tabla.datos.ANOVA$nivel.Presión))
-(N=sum(ni))
+```{r,echo=FALSE}
+ni=table(tabla.datos.ANOVA$Marca)
+N=sum(ni)
 ```
-
-## Ejemplo
-<div class="example">
 
 * $SS_{Total}=\sum\limits_{i=1}^k\sum\limits_{j=1}^{n_i} (X_{ij}-\overline{X}_{\bullet\bullet})^2=\sum\limits_{i=1}^k\sum\limits_{j=1}^{n_i} X_{ij}^2 - \dfrac{T_{\bullet\bullet}^2}{N}$:
 
-```{r}
-(SSTotal1 =sum((tabla.datos.ANOVA$Incremento.celular-media.muestral)^2))
+```{r,echo=FALSE}
+(SSTotal1 =sum((tabla.datos.ANOVA$Consumo-media.muestral)^2))
 ```
 
-```{r}
-(SSTotal = sum(tabla.datos.ANOVA$Incremento.celular^2)-suma.total^2/N)
+```{r,echo=FALSE}
+SSTotal = sum(tabla.datos.ANOVA$Consumo^2)-suma.total^2/N
 ```
-</div>
-
-## Ejemplo
-<div class="example">
 
 * $SS_{Tr}=\sum\limits_{i=1}^k n_i
 (\overline{X}_{i\bullet}-\overline{X}_{\bullet\bullet})^2=\sum\limits_{i=1}^k \dfrac{T_{i\bullet}^2}{n_i} -\dfrac{T_{\bullet\bullet}^2}{N}$:
 
-```{r}
+```{r,echo=FALSE}
 (SSTr1=sum(ni*(medias.niveles[,2]-media.muestral)^2))
-(SSTr=sum(sumas.niveles[,2]^2/ni)-(suma.total^2)/N)
+SSTr=sum(sumas.niveles[,2]^2/ni)-(suma.total^2)/N
 ```
 
-
-
-
-</div>
-
-## Ejemplo
-<div class="example">
 * $SS_E=\sum\limits_{i=1}^k\sum\limits_{j=1}^{n_i} (X_{ij}-\overline{X}_{i\bullet})^2=SS_{Total}-SS_{Tr}$:
 
-```{r}
-(SSE1=sum((tabla.datos.ANOVA$Incremento.celular-medias.niveles[,2])^2))
-(SSE=SSTotal-SSTr)
+```{r,echo=FALSE}
+(SSE1=sum((tabla.datos.ANOVA$Consumo-c(rep(medias.niveles[,2],6),medias.niveles[1:2,2]))^2))
+SSE=SSTotal-SSTr
 ```
 
 
@@ -661,24 +560,24 @@ Sinteticemos cómo realizar el contraste ANOVA en 4 pasos:
 
 
 
-## Ejemplo
-<div class="example">
-Realicemos el contraste ANOVA para los datos de nuestro ejemplo.
+<!-- ## Ejemplo -->
+<!-- <div class="example"> -->
+<!-- Realicemos el contraste ANOVA para los datos de nuestro ejemplo. -->
 
-* Sumas de cuadrados:
+<!-- * Sumas de cuadrados: -->
 
-```{r}
-SSTotal
-SSTr
-SSE
-```
-</div>
+<!-- ```{r} -->
+<!-- SSTotal -->
+<!-- SSTr -->
+<!-- SSE -->
+<!-- ``` -->
+<!-- </div> -->
 
 ## Ejemplo
 <div class="example">
 * Cuadrados medios:
 ```{r}
-k=5
+k=3
 (MStr = SSTr/(k-1))
 (MSE = SSE/(N-k))
 ```
@@ -694,12 +593,10 @@ k=5
 ## Ejemplo
 <div class="example">
 * p-valor:
-```{r}
+```{r,echo=FALSE}
 (p = pf(F,k-1,N-k,lower.tail = FALSE))
 ```
-Comprobamos que el p-valor es muy pequeño. Concluimos, por tanto, que tenemos evidencias suficientes para concluir que las medias del aumento de masa celular no son iguales para los diferentes niveles de presión de $CO{}_2$.
-
-Y, consecuentemente, el nivel de presión de CO${}_2$ puede influir en el crecimiento del microorganismo *Pseudomonas fragi*.
+Comprobamos que el p-valor es muy pequeño. Concluimos, por tanto, que tenemos evidencias suficientes para concluir que las medias del consumo no son iguales para las diferentes marcas de coche.
 
 <l class="observ"> Observación: </l> sólo concluimos que no todas las medias son iguales, no que todas las medias son diferentes. No es lo mismo.
 </div>
@@ -732,39 +629,30 @@ options(scipen=999)
 </div>
 </div>
 
-## Contraste ANOVA con `R`
-Para realizar un contraste ANOVA en `R` hay que usar la función `aov`.
+<!-- ## Contraste ANOVA con `R` -->
+<!-- Para realizar un contraste ANOVA en `R` hay que usar la función `aov`. -->
 
-Dicha función se aplica a la tabla de datos modificada que hemos explicado:
+<!-- Dicha función se aplica a la tabla de datos modificada que hemos explicado: -->
 
-```{r,eval = FALSE}
-summary(aov(X ~ F))
-```
-donde recordemos que en la variable `X` se almacenan los valores $X_{ij}$ y en la variable factor `F`, los niveles del factor.
+<!-- ```{r,eval = FALSE} -->
+<!-- summary(aov(X ~ F)) -->
+<!-- ``` -->
+<!-- donde recordemos que en la variable `X` se almacenan los valores $X_{ij}$ y en la variable factor `F`, los niveles del factor. -->
 
 
-## Ejemplo
-<div class="example">
-Lo primero que podríamos hacer es visualizar los datos del ejemplo con un boxplot:
 
-```{r,fig.align='center'}
-boxplot(Incremento.celular ~ nivel.Presión, data = tabla.datos.ANOVA,
-        xlab="Presión",ylab="Incremento celular")
-```
-</div>
+<!-- ## Ejemplo -->
+<!-- <div class="example"> -->
+<!-- Vemos que gráficamente se observan diferencias para los distintos niveles de presión. -->
 
-## Ejemplo
-<div class="example">
-Vemos que gráficamente se observan diferencias para los distintos niveles de presión.
-
-El contraste ANOVA en `R` se realizaría de la forma siguiente:
-```{r}
-X=tabla.datos.ANOVA$Incremento.celular
-F=tabla.datos.ANOVA$nivel.Presión
+<!-- El contraste ANOVA en `R` se realizaría de la forma siguiente: -->
+```{r,echo=FALSE,results=FALSE}
+X=tabla.datos.ANOVA$Consumo
+F=tabla.datos.ANOVA$Marca
 summary(aov(X~F))
 ```
-Observamos que tenemos la misma tabla ANOVA obtenida haciendo los cálculos "a mano".
-</div>
+<!-- Observamos que tenemos la misma tabla ANOVA obtenida haciendo los cálculos "a mano". -->
+<!-- </div> -->
 
 
 ## Comparaciones por parejas
@@ -774,144 +662,138 @@ cuáles son los niveles diferentes.
 
 Es decir, hallar aquellas parejas $(\mu_i,\mu_j)$ para las que podamos decir que $\mu_i\neq \mu_j$.
 
-Aunque hay diferentes formas de hacerlo vamos a ver las más usuales.
+Aunque hay diferentes formas de hacerlo vamos a ver la más potente.
 
 
-## Test T de Bonferroni
-Hay que tener en cuenta que hay que realizar en total $\displaystyle\binom{k}2$ contrastes del tipo:
-$$
-\left.
-\begin{array}{ll}
-H_0 &: \mu_i=\mu_j, \\
-H_1 &: \mu_i\not=\mu_j.
-\end{array}
-\right\}
-$$
-El estadístico de cada contraste es el siguiente:
-$$
-T=\frac{\overline{X}_{i\bullet} - \overline{X}_{j\bullet}}{\sqrt{MS_E\cdot (\frac1{n_i}
-+\frac1{n_j})}},
-$$
-que, si la hipótesis nula $H_0$ es cierta, sigue una distribución $t$ de Student con $N-k$ grados de libertad, $t_{N-k}$.
+<!-- ## Test T de Bonferroni -->
+<!-- Hay que tener en cuenta que hay que realizar en total $\displaystyle\binom{k}2$ contrastes del tipo: -->
+<!-- $$ -->
+<!-- \left. -->
+<!-- \begin{array}{ll} -->
+<!-- H_0 &: \mu_i=\mu_j, \\ -->
+<!-- H_1 &: \mu_i\not=\mu_j. -->
+<!-- \end{array} -->
+<!-- \right\} -->
+<!-- $$ -->
+<!-- El estadístico de cada contraste es el siguiente: -->
+<!-- $$ -->
+<!-- T=\frac{\overline{X}_{i\bullet} - \overline{X}_{j\bullet}}{\sqrt{MS_E\cdot (\frac1{n_i} -->
+<!-- +\frac1{n_j})}}, -->
+<!-- $$ -->
+<!-- que, si la hipótesis nula $H_0$ es cierta, sigue una distribución $t$ de Student con $N-k$ grados de libertad, $t_{N-k}$. -->
 
-## Test T de Bonferroni
-El $p$-valor de cada contraste es $2P(t_{N-k}\geq |t_{i,j}|)$, donde $t_{i,j}$ es el valor que  toma el estadístico.
+<!-- ## Test T de Bonferroni -->
+<!-- El $p$-valor de cada contraste es $2P(t_{N-k}\geq |t_{i,j}|)$, donde $t_{i,j}$ es el valor que  toma el estadístico. -->
 
-<l class="observ">Observación:</l> si se realizan $c$ contrastes a un nivel de significación $\alpha$, la probabilidad de Error de Tipo I en al menos uno de ellos es mayor que $\alpha$. Si la calculamos, sería uno menos la probabilidad de no equivocarnos en ninguno de los contrastes, es decir $1-(1-\alpha)^c$.
+<!-- <l class="observ">Observación:</l> si se realizan $c$ contrastes a un nivel de significación $\alpha$, la probabilidad de Error de Tipo I en al menos uno de ellos es mayor que $\alpha$. Si la calculamos, sería uno menos la probabilidad de no equivocarnos en ninguno de los contrastes, es decir $1-(1-\alpha)^c$. -->
 
-En el ejemplo del aumento de la masa corporal del microorganismo, si realizamos $c=\binom52=10$ contrastes con nivel de significación $\alpha =0.05$, ¡la probabilidad de Error de Tipo I en al menos uno de ellos es $1-(1-0.05)^{10} \approx 0.4$!
+<!-- En el ejemplo del aumento de la masa corporal del microorganismo, si realizamos $c=\binom52=10$ contrastes con nivel de significación $\alpha =0.05$, ¡la probabilidad de Error de Tipo I en al menos uno de ellos es $1-(1-0.05)^{10} \approx 0.4$! -->
 
-Por tanto, tendremos que reducir el nivel de significación de cada contraste para que la probabilidad final de Error de Tipo I sea $\alpha$.
+<!-- Por tanto, tendremos que reducir el nivel de significación de cada contraste para que la probabilidad final de Error de Tipo I sea $\alpha$. -->
 
-## Test T de Bonferroni
-Usaremos la aproximación $1-(1-x)^c \approx cx$ y entonces, si queremos efectuar $c$ contrastes con nivel de significación (global) $\alpha$, los haremos con nivel de significación $\alpha/c$.
+<!-- ## Test T de Bonferroni -->
+<!-- Usaremos la aproximación $1-(1-x)^c \approx cx$ y entonces, si queremos efectuar $c$ contrastes con nivel de significación (global) $\alpha$, los haremos con nivel de significación $\alpha/c$. -->
 
-En el ejemplo del aumento de la masa corporal del microorganismo, si realizamos los  $10$ contrastes, para obtener un nivel de significación global  $\alpha =0.05$, realizamos cada contraste con nivel de significación $\frac{0.05}{10}=0.005$.
+<!-- En el ejemplo del aumento de la masa corporal del microorganismo, si realizamos los  $10$ contrastes, para obtener un nivel de significación global  $\alpha =0.05$, realizamos cada contraste con nivel de significación $\frac{0.05}{10}=0.005$. -->
 
-## Ejemplo
-<div class="example">
-Realicemos el test de Bonferroni para los datos de nuestro ejemplo.
+<!-- ## Ejemplo -->
+<!-- <div class="example"> -->
+<!-- Realicemos el test de Bonferroni para los datos de nuestro ejemplo. -->
 
-En primer lugar creamos una matriz cuyas filas son las parejas de niveles las medias de los cuales contrastaremos:
-```{r}
-(pares=rbind(c(1,2),c(1,3),c(1,4),c(1,5),c(2,3),c(2,4),c(2,5),c(3,4),c(3,5),c(4,5)))
+<!-- En primer lugar creamos una matriz cuyas filas son las parejas de niveles las medias de los cuales contrastaremos: -->
+```{r,echo=FALSE}
+pares=rbind(c(1,2),c(1,3),c(2,3))
 ```
-</div>
+<!-- </div> -->
 
-## Ejemplo
-<div class="example">
-A continuación calculamos los valores  de todos los estadísticos de contraste:
+<!-- ## Ejemplo -->
+<!-- <div class="example"> -->
+<!-- A continuación calculamos los valores  de todos los estadísticos de contraste: -->
 
-$$
-T=\frac{\overline{X}_{i\bullet} - \overline{X}_{j\bullet}}{\sqrt{MS_E\cdot (\frac1{n_i}
-+\frac1{n_j})}},
-$$
+<!-- $$ -->
+<!-- T=\frac{\overline{X}_{i\bullet} - \overline{X}_{j\bullet}}{\sqrt{MS_E\cdot (\frac1{n_i} -->
+<!-- +\frac1{n_j})}}, -->
+<!-- $$ -->
 
-```{r}
-(est.contraste.pares = (medias.niveles[pares[,1],2]-medias.niveles[pares[,2],2])/
-  (sqrt(MSE*(1/10+1/10))))
+```{r,echo=FALSE}
+est.contraste.pares = (medias.niveles[pares[,1],2]-medias.niveles[pares[,2],2])/
+  (sqrt(MSE*(1/7+1/7)))
 ```
-</div>
+<!-- </div> -->
 
-## Ejemplo
-<div class="example">
-Los añadimos como columna a la matriz de parejas de niveles:
+<!-- ## Ejemplo -->
+<!-- <div class="example"> -->
+<!-- Los añadimos como columna a la matriz de parejas de niveles: -->
 
-```{r}
-(pares=cbind(pares,est.contraste.pares))
+```{r,echo=FALSE}
+pares=cbind(pares,est.contraste.pares)
 ```
 
 
-</div>
+<!-- </div> -->
 
-## Ejemplo
-<div class="example">
-Calculamos los p-valores:
-```{r}
+<!-- ## Ejemplo -->
+<!-- <div class="example"> -->
+<!-- Calculamos los p-valores: -->
+```{r,echo=FALSE}
 calculo.p.valor=function(x){2*(1-pt(abs(x),N-k))}
-(p.valores=sapply(est.contraste.pares,calculo.p.valor))
+p.valores=sapply(est.contraste.pares,calculo.p.valor)
 ```
 
 
-</div>
+<!-- </div> -->
 
 
-## Ejemplo
-<div class="example">
-Lo añadimos como columna a la matriz de parejas de niveles y estadísticos:
+<!-- ## Ejemplo -->
+<!-- <div class="example"> -->
+<!-- Lo añadimos como columna a la matriz de parejas de niveles y estadísticos: -->
 
-```{r}
-(pares=cbind(pares,p.valores))
+```{r,echo=FALSE}
+pares=cbind(pares,p.valores)
 ```
 
 
 
-</div>
+<!-- </div> -->
 
-## Ejemplo
-<div class="example">
-A continuación nos preguntamos qué p-valores son menores que 0.05/10 para saber entre qué pares podemos aceptar que hay diferencias:
-```{r}
-pares[which(p.valores<0.005),]
-```
+<!-- ## Ejemplo -->
+<!-- <div class="example"> -->
+<!-- A continuación nos preguntamos qué p-valores son menores que 0.05/10 para saber entre qué pares podemos aceptar que hay diferencias: -->
 
 
-</div>
 
-## Ejemplo
-<div class="example">
-Vemos que en todos los pares se verifica que el p-valor es menor que 0.005.
+<!-- </div> -->
 
-Concluimos que hay evidencias suficientes para rechazar la igualdad de  medias de aumento de masa celular del microorganismo entre dos niveles cualquiera de presión de $CO{}_2$. Por tanto, $\mu_i\neq \mu_j$ para todo $i\neq j$.
-</div>
+<!-- ## Ejemplo -->
+<!-- <div class="example"> -->
+<!-- Vemos que en todos los pares se verifica que el p-valor es menor que 0.005. -->
 
-
-## Ejemplo con `R`
-<div class="example">
-Para realizar la comparación por parejas con `R`, usamos la función `pairwise.t.test`. El parámetro `p.adjust.method` puede tomar el valor "none" (que no hace ajuste alguno):
-```{r}
-pairwise.t.test(X,F,p.adjust.method = "none")
-```
-
-</div>
-
-## Ejemplo con `R`
-<div class="example">
-O bien el parámetro `p.adjust.method` puede tomar el valor "bonferroni" (que multiplicará el p-valor del contraste por el número de comparaciones llevadas a cabo, $\binom{k}{2}$):
-```{r}
-pairwise.t.test(X,F,p.adjust.method = "bonferroni")
-```
-
-</div>
+<!-- Concluimos que hay evidencias suficientes para rechazar la igualdad de  medias de aumento de masa celular del microorganismo entre dos niveles cualquiera de presión de $CO{}_2$. Por tanto, $\mu_i\neq \mu_j$ para todo $i\neq j$. -->
+<!-- </div> -->
 
 
-## Ejemplo con `R`
-<div class="example">
-`R` nos muestra una tabla donde las filas y las columnas son los niveles del factor y cuyos valores son los p-valores de los contrastes por parejas.
+<!-- ## Ejemplo con `R` -->
+<!-- <div class="example"> -->
+<!-- Para realizar la comparación por parejas con `R`, usamos la función `pairwise.t.test`. El parámetro `p.adjust.method` puede tomar el valor "none" (que no hace ajuste alguno): -->
 
-Observamos que, en el primer caso todos los p-valores son menores que $\alpha/c=0.05/10$ (sin hacer ningún ajuste en el método) o bien que en el segundo caso, todos los p-valores son menores que $\alpha=0.05$, llegando en ambos casos a la misma conclusión que antes.
 
-</div>
+<!-- </div> -->
+
+<!-- ## Ejemplo con `R` -->
+<!-- <div class="example"> -->
+<!-- O bien el parámetro `p.adjust.method` puede tomar el valor "bonferroni" (que multiplicará el p-valor del contraste por el número de comparaciones llevadas a cabo, $\binom{k}{2}$): -->
+
+
+<!-- </div> -->
+
+
+<!-- ## Ejemplo con `R` -->
+<!-- <div class="example"> -->
+<!-- `R` nos muestra una tabla donde las filas y las columnas son los niveles del factor y cuyos valores son los p-valores de los contrastes por parejas. -->
+
+<!-- Observamos que, en el primer caso todos los p-valores son menores que $\alpha/c=0.05/10$ (sin hacer ningún ajuste en el método) o bien que en el segundo caso, todos los p-valores son menores que $\alpha=0.05$, llegando en ambos casos a la misma conclusión que antes. -->
+
+<!-- </div> -->
 
 
 ## Test T de Holm (más potente)
@@ -925,6 +807,7 @@ Consta de los pasos siguientes:
 
 * Ordenamos estos $p$-valores en orden creciente $P_{(1)}\leq \cdots\leq P_{(c)}$ y reenumeramos consistentemente los contrastes $C_{(1)},\ldots, C_{(c)}$.
 
+## Test T de Holm (más potente)
 * Para cada $j=1,\ldots,c$, calculamos el p-valor ajustado $\widetilde{P} _{(j)}=(c+1-j)P_{(j)}$.
 
 * Entonces rechazamos la hipótesis nula del contraste $C_{(j)}$ si $\widetilde{P}_{(j)}<\alpha$.
@@ -932,229 +815,75 @@ Consta de los pasos siguientes:
 ## Ejemplo
 <div class="example">
 Vamos a aplicar el método de Holm al ejemplo que hemos estado desarrollando.
-
-En primer lugar, ordenamos las filas de la tabla de datos `pares` ordenando los p-valores de menor a mayor:
-```{r}
-(pares.ord=pares[order(pares[,4]),])
-```
-
-
-</div>
-
-## Ejemplo
-<div class="example">
-Calculamos los p-valores ajustados y los añadimos como columna a `pares.ord`:
-```{r}
-p.valores.ajust=pares.ord[,4]*(10+1-1:10)
-pares.ord=cbind(pares.ord,p.valores.ajust)
-round(pares.ord,12)
-```
-
-
-</div>
-
-## Ejemplo
-<div class="example">
-A continuación, averiguamos qué contrastes verifican $\widetilde{P}_{j}\leq 0.05$:
-
-```{r}
-round(pares.ord[which(pares.ord[,5]<=0.05),],6)
-```
-
-
-</div>
-
-## Ejemplo
-<div class="example">
-En este caso, también vemos que en todos los pares se verifica que el p-valor ajustado es menor que 0.05.
-
-Concluimos lo mismo que en los contrastes realizados usando el método de Bonferroni: tenemos indicios suficientes para rechazar la igualdad de medias de aumento de masa celular del microorganismo para dos niveles cualquiera de presión de $CO{}_2$.
-</div>
-
-
-## Ejemplo con `R`
-
-<div class="example">
-Para realizar la comparación de parejas con `R`, tenemos que usar la misma función `pairwise.t.test` que usábamos en los contrastes por parejas usando el método de Bonferroni pero cambiando el parámetro `p.adjust.method="holm"`:
-```{r}
+```{r,echo=FALSE}
 pairwise.t.test(X,F,p.adjust.method = "holm")
 ```
 
-
-</div>
-
-## Ejemplo con `R`
-<div class="example">
-`R` nos vuelve a mostrar una tabla donde las filas y las columnas son los niveles del factor y cuyos valores son los p-valores de los contrastes por parejas pero ajustados usando el método de Holm.
-
-Observamos que todos los p-valores ajustados son menores que 0.05 llegando a la misma conclusión que antes.
-
-</div>
-
-## Contraste de Duncan
-El **contraste de Duncan** es otro método para ver en qué niveles hay diferencias.
-
-Los pasos a realizar para llevarlo a cabo son los siguientes:
-
-* Se ordenan en forma ascendente las $k$ medias muestrales.
-
-* Se considera cada par $Y$ de medias muestrales y se calcula el valor absoluto $D_Y$ de la  diferencia entre las dos medias y el número $p$ de medias que hay entre las dos (incluyendo las dos medias que comparamos).
-
-## Contraste de Duncan
-* Decidimos que existe diferencia entre estos dos niveles cuándo 
-$D_Y> SSR_p=r_p \sqrt{\frac{MS_E (n_i +n_j)}{2 n_i n_j}}$, dónde $n_i$ y $n_j$ son los tamaños de las subpoblaciones correspondientes a los dos niveles que comparamos y  $r_p$ es el **menor rango significativo** con $N-k$ grados de libertad, que encontraréis en la tabla del test de Duncan. Si vais a http://images.google.com y escribís "tabla del test de Duncan" en la casilla de búsqueda, encontraréis un montón de tablas del test de Duncan. 
-
-La primera columna de la tabla del test de Duncan corresponde a los grados de libertad del error $N-k$, y la primera fila, al valor $p$. Para calcular el valor $r_p$, tenéis que buscar el valor $N-k$ en la primera columna y el valor $p$ en la primera fila y ver dónde se intersecan.
-
-## Contraste de Duncan
-
-
-<div class="example">
-Vamos a aplicar el test de Duncan a los datos del ejemplo que hemos desarrollado.
-
-Las medias de los cinco niveles eran:
-```{r}
-medias.niveles
+```{r,echo=FALSE}
+pares.ord=pares[order(pares[,4]),]
 ```
 
+
 </div>
 
-## Ejemplo
-<div class="example">
-Si los ordenamos de menor a mayor, obtenemos:
-$$
-\overline{X}_{5\bullet} < \overline{X}_{4\bullet} <
-\overline{X}_{3\bullet} < \overline{X}_{2\bullet} < \overline{X}_{1\bullet}.
-$$
-A continuación, calculamos las medias siguientes:
+<!-- ## Ejemplo -->
+<!-- <div class="example"> -->
+<!-- Calculamos los p-valores ajustados y los añadimos como columna a `pares.ord`: -->
+<!-- ```{r} -->
+<!-- p.valores.ajust=pares.ord[,4]*(10+1-1:10) -->
+<!-- pares.ord=cbind(pares.ord,p.valores.ajust) -->
+<!-- round(pares.ord,12) -->
+<!-- ``` -->
 
-* $\overline{X}_{1\bullet}-\overline{X}_{5\bullet}$ ($p=5$)
-* $\overline{X}_{1\bullet}-\overline{X}_{4\bullet}$ ($p=4$)
-* $\overline{X}_{1\bullet}-\overline{X}_{3\bullet}$ ($p=3$)
-* $\overline{X}_{1\bullet}-\overline{X}_{2\bullet}$ ($p=2$)
-* $\overline{X}_{2\bullet}-\overline{X}_{5\bullet}$ ($p=4$)
-* $\overline{X}_{2\bullet}-\overline{X}_{4\bullet}$ ($p=3$)
-* $\overline{X}_{2\bullet}-\overline{X}_{3\bullet}$ ($p=2$)
-* $\overline{X}_{3\bullet}-\overline{X}_{5\bullet}$ ($p=3$)
-* $\overline{X}_{3\bullet}-\overline{X}_{4\bullet}$ ($p=2$)
-* $\overline{X}_{4\bullet}-\overline{X}_{5\bullet}$ ($p=2$)
+
+<!-- </div> -->
+
+<!-- ## Ejemplo -->
+<!-- <div class="example"> -->
+<!-- A continuación, averiguamos qué contrastes verifican $\widetilde{P}_{j}\leq 0.05$: -->
+
+<!-- ```{r} -->
+<!-- round(pares.ord[which(pares.ord[,5]<=0.05),],6) -->
+<!-- ``` -->
+
+
+<!-- </div> -->
+
+## Ejemplo 
+<div class="example">
+En este caso, también vemos que las pares de marcas A-B y A-C el consumo no es el mismo pero no tenemos evidencias mara rechazar que el consumo no sea el mismo en el par de marcas B-C.
+
+
 </div>
 
 
+<!-- ## Ejemplo con `R` -->
 
-## Ejemplo
-<div class="example">
-Tenemos que $n_i =10$ para cada $i=1,2,3,4,5$. El valor $SSR_p$ será, por tanto:
-$$
-SSR_p=r_p \sqrt{\frac{MS_E}{10}}
-$$
-Calculamos los valores de $r_p$ cada $p=2,3,4,5$
-y con el nivel de significación $\alpha =0.05$: (usamos 40 como grados de libertad del error para consultar en la tabla, puesto que es el valor más
-próximo a $N-k=45$)
+<!-- <div class="example"> -->
+<!-- Para realizar la comparación de parejas con `R`, tenemos que usar la misma función `pairwise.t.test` que usábamos en los contrastes por parejas usando el método de Bonferroni pero cambiando el parámetro `p.adjust.method="holm"`: -->
+<!-- ```{r} -->
+<!-- pairwise.t.test(X,F,p.adjust.method = "holm") -->
+<!-- ``` -->
+
+
+<!-- </div> -->
+
+<!-- ## Ejemplo con `R` -->
+<!-- <div class="example"> -->
+<!-- `R` nos vuelve a mostrar una tabla donde las filas y las columnas son los niveles del factor y cuyos valores son los p-valores de los contrastes por parejas pero ajustados usando el método de Holm. -->
+
+<!-- Observamos que todos los p-valores ajustados son menores que 0.05 llegando a la misma conclusión que antes. -->
+
+<!-- </div> -->
+
+
 
 ```{r,echo=FALSE}
 rp=c(2.858,3,3.102,3.171)
 ```
 
 
-<div class="center">
-|$p$|2|3|4|5|
-|:--|--:|--:|--:|--:|
-|$r_p (con\ N-k=40)$|2.858|3|3.102|3.171|
-|$SSR_p$|`r round(rp[1]*sqrt(MSE/10),3)`|`r round(rp[2]*sqrt(MSE/10),3)`|`r round(rp[3]*sqrt(MSE/10),3)`|`r round(rp[4]*sqrt(MSE/10),3)`|
-</div>
 
-</div>
-
-## Ejemplo
-<div class="example">
-Resumimos todo el cálculo realizado:
-
-<div class="center">
-|Diferencias|$d$|$p$|$SSR_p$|$d > SSR_p$?|Conclusión|
-|:---:|--:|:--:|--:|:--:|:--:|
-|$\overline{X} _{1\bullet}-\overline{X}_{5\bullet}$|$42.7$|$5$|$5.281$|Sí|$\mu_1\not=\mu_5$|
-|$\overline{X}_{1\bullet}-\overline{X}_{4\bullet}$|$33.67$|$4$|$5.166$|Sí|$\mu_1\not=\mu_4$|
-|$\overline{X}_{1\bullet}-\overline{X}_{3\bullet}$|$22.69$|$3$|$4.996$|Sí|$\mu_1\not=\mu_3$|
-|$\overline{X}_{1\bullet}-\overline{X}_{2\bullet}$|$13.1$|$2$|$4.760$|Sí|$\mu_1\not=\mu_2$|
-|$\overline{X}_{2\bullet}-\overline{X}_{5\bullet}$|$29.6$|$4$|$5.166$|Sí|$\mu_2\not=\mu_5$|
-</div>
-</div>
-
-
-## Ejemplo
-<div class="example">
-<div class="center">
-|Diferencias|$d$|$p$|$SSR_p$|$d > SSR_p$?|Conclusión|
-|:---:|--:|:--:|--:|:--:|:--:|
-|$\overline{X}_{2\bullet}-\overline{X}_{4\bullet}$|$20.57$|$3$|$4.996$|Sí|$\mu_2\not=\mu_4$|
-|$\overline{X}_{2\bullet}-\overline{X}_{3\bullet}$|$9.59$|$2$|$4.760$|Sí|$\mu_2\not=\mu_3$|
-|$\overline{X}_{3\bullet}-\overline{X}_{5\bullet}$|$20.01$|$3$|$4.996$|Sí|$\mu_3\not=\mu_5$|
-|$\overline{X}_{3\bullet}-\overline{X}_{4\bullet}$|$10.98$|$2$|$4.760$|Sí|$\mu_3\not=\mu_4$|
-|$\overline{X}_{4\bullet}-\overline{X}_{5\bullet}$|$9.03$|$2$|$4.760$|Sí|$\mu_4\not=\mu_5$|
-</div>
-
-Concluimos que, a un nivel de significación de $\alpha=0.05$, todos los niveles tienen medias diferentes.
-</div>
-
-
-## Contraste de Duncan en `R`
-
-En `R`, el contraste de Duncan se realiza con la función `duncan.test` del paquete `agricolae`. La sintaxis es:
-```{r,eval=FALSE}
-duncan.test(aov,"factor",group=...)$sufijo
-```
-donde
-
-* `aov` es el resultado del ANOVA de partida,
-* el `factor` es el factor del ANOVA,
-* `group` puede ser `TRUE` o `FALSE` dependiendo de cómo queremos ver el resultado,
-* el `sufix` es `group` si `group=TRUE` y `comparison` si `group=FALSE`.
-
-## Ejemplo
-<div class="example">
-Vamos a aplicar el test de Duncan a los datos de nuestro ejemplo:
-
-```{r}
-library(agricolae)
-resultado.anova=aov(X~F)
-duncan.test(resultado.anova,"F",group=FALSE)$comparison
-```
-
-
-</div>
-
-## Ejemplo
-<div class="example">
-Nos da una tabla donde las filas son las comparaciones entre los distintos pares del niveles del factor.
-
-La tabla contiene 5 columnas:
-
-* la primera nos da la diferencia entre las dos medias de los dos niveles que se comparan,
-* la segunda nos da el p-valor que indica si hay o no diferencias entre las dos medias,
-* la tercera indica si la diferencia es significativa o no. Cuantos más asteriscos (`*`) aparezcan, más significativa es la diferencia y
-* las dos últimas representan un intervalo de confianza para la diferencia de medias.
-
-## Ejemplo
-<div class="example">
-Si en lugar de asignar el valor `FALSE` al parámetro `group`, le asignamos el valor `TRUE`, obtenemos lo siguiente:
-
-```{r}
-library(agricolae)
-resultado.anova=aov(X~F)
-duncan.test(resultado.anova,"F",group=TRUE)$group
-```
-</div>
-
-## Ejemplo
-<div class="example">
-Si hubiese dos niveles donde las medias no fuesen significativamente diferentes aparecerían en la columna `groups` de la tabla anterior.
-
-Por ejemplo, si las medias en los niveles `0.0` y `0.50` no fuesen significativamente diferentes, observaríamos el valor `ad` en la columna `groups`.
-
-Como no vemos ningún caso en que aparezcan dos letras, podemos concluir que las medias de cualquier par de niveles son significativamente diferentes.
-
-</div>
 
 ## Contraste de Tukey
 Si la tabla de datos es balanceada, es decir, todas las submuestras correspondientes a cada uno de los niveles del factor tienen el mismo tamaño, el método más preciso de comparación de medias es el llamado **método de Tukey**.
@@ -1162,22 +891,6 @@ Si la tabla de datos es balanceada, es decir, todas las submuestras correspondie
 Es un test similar al **t-test** pero el **estadístico de contraste** tiene una distribución diferente. Podéis consultar el test en el link
 de la [Wikipedia](https://en.wikipedia.org/wiki/Tukey%27s_range_test).
 
-Par aplicar el **contraste de Tukey** en `R` hay que usar la función `TukeyHSD` (*Honestly Significative Difference*) y aplicarla al resultado de haber aplicado la función `aov`:
-```{r,eval=FALSE}
-TukeyHSD(aov(X~F))
-```
-
-## Ejemplo
-<div class="example">
-Apliquemos el **test de Tukey** a los datos de nuestro ejemplo al ser la tabla de datos balanceada:
-
-```{r,eval=FALSE}
-TukeyHSD(aov(X~F))
-```
-
-
-Observando los p-valores, concluimos que hay diferencias entre todas las submuestras correspondientes a los 5 niveles de la presión.
-</div>
 
 ## Ejemplo
 <div class="example">
@@ -1185,6 +898,11 @@ Observando los p-valores, concluimos que hay diferencias entre todas las submues
 TukeyHSD(aov(X~F))
 ```
 
+</div>
+
+## Ejemplo
+<div class="example">
+Observando los p-valores, concluimos que hay diferencias entre todas las submuestras correspondientes a los 5 niveles de la presión.
 </div>
 
 
@@ -1253,41 +971,6 @@ Para verificar la normalidad de cada submuestra podemos usar todos los contraste
 * Test de Shapiro-Wilks.
 * Test omnibus de D'Agostino-Pearson.
 
-## Ejemplo
-<div class="example">
-Veamos si los datos de las submuestras para cada nivel de presión son normales usando el test de Kolmogorov-Smirnov-Lilliefors:
-```{r}
-library(nortest)
-lillie.test(X[F=="0.0"])
-```
-</div>
-
-## Ejemplo
-<div class="example">
-```{r}
-lillie.test(X[F=="0.083"])
-lillie.test(X[F=="0.29"])
-```
-</div>
-
-## Ejemplo
-<div class="example">
-```{r}
-lillie.test(X[F=="0.50"])
-lillie.test(X[F=="0.86"])
-```
-</div>
-
-## Ejemplo
-<div class="example">
-Vemos que según el test de Kolmogorov-Smirnov-Lilliefors, no podemos rechazar que las 5 submuestras correspondientes a cada nivel de presión sigan la distribución normal.
-</div>
-
-<div class="exercise">
-**Ejercicio**
-
-Comprueba la normalidad de cada una de las poblaciones anteriores usando los otros tests vistos en el tema de Bondad de Ajuste.
-</div>
 
 
 ## Igualdad de varianzas u homocedasticidad
@@ -1350,7 +1033,7 @@ Apliquemos el test de Bartlett para los datos de nuestro ejemplo:
 bartlett.test(X ~ F)
 ```
 
-Como el p-valor es muy grande, concluimos que no tenemos evidencias para rechazar la igualdad de varianzas para las 5 submuestras consideradas.
+Como el p-valor es muy grande, concluimos que no tenemos evidencias para rechazar la igualdad de varianzas para las 3 submuestras consideradas.
 </div>
 
 # Bloques completos aleatorios
@@ -2136,10 +1819,10 @@ Vamos a transformar la tabla anterior de los datos en una tabla de datos con $N=
 
 La primera columna serán los valores de la variable $X$, la segunda los valores o niveles de la variable factor $A$ y la tercera, los valores o niveles de la variable factor $B$.
 
-## Ejemplo
-<div class="example">
-La transformación de la tabla de datos para el ejemplo anterior se realizaría de la forma siguiente:
-```{r}
+<!-- ## Ejemplo -->
+<!-- <div class="example"> -->
+<!-- La transformación de la tabla de datos para el ejemplo anterior se realizaría de la forma siguiente: -->
+```{r,echo=FALSE}
 GSI = c(0.90,0.83,1.06,0.67,0.98,0.57,1.29,0.47,1.12,0.66,
         1.30,1.01,2.88,1.52,2.42,1.02,2.66,1.32,2.94,1.63)
 temperatura = factor(rep(c(27,16),each=10))
@@ -2149,7 +1832,7 @@ head(tabla.datos.GSI)
 ```
 
 
-</div>
+<!-- </div> -->
 
 
 ## El modelo
