@@ -607,9 +607,22 @@ Podemos representar  $P_{XY}$ como una tabla bidimensional donde en la primera f
 
 ## Esperanzas y varianza de las distribuciones  marginales
 
+
+$$E(X)=\sum_{x\in D_X} x\cdot P(X=x)$$
+$$E(Y)=\sum_{x\in D_Y} y\cdot P(Y=y)$$
+$$Var(X)=E(X-E(X))=E(X)-E(X)^2;\quad Var(Y)=E(Y-E(Y))=E(Y)-E(Y)^2$$
 ## Distibuciones condicionales
 
+
+$$P(X=x|Y=y)=\frac{P_{XY}(x,y)}{P_Y(y)}=\frac{P(X=x,Y=y)}{P(Y=y)}$$
+$$P(Y=y|X=x)=\frac{P_{XY}(x,y)}{P_X(x)}=\frac{P(X=x,Y=y)}{P(X=x)}$$
+
 ## Esperanzas condicionales
+
+$$E(X/Y=y)=\sum_{x\in D_X} x\cdot P(X=x/Y=y)$$
+
+$$E(Y/X=x)=\sum_{y\in D_Y} y\cdot P(Y=y|X=x))$$
+
 
 
 ## Covarianza y correlación pe4b
