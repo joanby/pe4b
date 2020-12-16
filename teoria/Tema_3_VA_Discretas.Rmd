@@ -180,8 +180,7 @@ Sea $X$ una v.a. discreta $X:\Omega:\to\mathbb{R}$ con dominio $D_X$. Su funció
 
 <l class="definition">Distribución de Probabilidad</l>
 
-La función de *distribución de probabilidad* (acumulada) de la v.a. $X$ (de cualquier tipo;
-discreta o continua) $F_{X}(x)$ representa la probabilidad de que $X$  tome un menor o igual que  $x$, es decir,
+La función de *distribución de probabilidad* (acumulada) de la v.a. $X$ (de cualquier tipo; discreta o continua) $F_{X}(x)$ representa la probabilidad de que $X$  tome un menor o igual que  $x$, es decir,
 
 $$F_{X}(x)=P(X\leq x).$$
 
@@ -200,7 +199,7 @@ Sea $X$ una v.a. y $F_{X}$ su función
 de distribución:
 
 * $0\leq F_X(x)\leq 1$.
-* $F_X(x)=P(X\leq x)= \displaystyle \sum_{x'\in D_X | x'\leq x} P_X(x).$
+* Si $X$ es discreta  entonces $F_X(x)=P(X\leq x)= \displaystyle \sum_{x'\in D_X | x'\leq x} P_X(x).$
 * $P(X>x)=1-P(X\leq x)=1-F_{X}(x).$
 * Sea a y b tales que $a<b$, $P(a<X\leq b)=P(X\leq b)-P(X\leq a)=F_{X}(b)-F_{X}(a).$
  
