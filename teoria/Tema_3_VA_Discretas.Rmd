@@ -323,7 +323,7 @@ Entonces si $Y=a+b\cdot  X$:
 
 
 
-# Distribuciones notables
+# Distribuciones discretas notables
 
 ## Variable aleatoria Bernoulli
 

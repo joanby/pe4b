@@ -99,7 +99,7 @@ cada intervalo acotado de $\mathbb{R}$.
 
 Sea $X$ una v.a. con función de distribución $F_X$. Sea $f:\mathbb{R}\to\mathbb{R}$ una función de densidad tal que
 
-$$F_X(x)=\displaystyle\int_{-\infty}^{x} f_X(t) dt.\mbox{ para todo } x\in\mathbb{R},$$
+$$F_X(x)=P(X\leq x)\displaystyle\int_{-\infty}^{x} f_X(t)\ dt.\mbox{ para todo } x\in\mathbb{R},$$
 
 Entonces $X$ es una variable aleatoria continua y $f_X$ es la densidad de la v.a. $X$.
 
@@ -164,7 +164,7 @@ curve(dunif(x,0,1),xlim=c(-0.5,1.5),col="blue",
 ```
 </div>
 
-## Utilidad de la función de densidad
+## Propiedades  de la función de densidad
 
 La función de densidad nos permite calcular diversas probabilidades.
 
@@ -242,6 +242,8 @@ Se verifican las mismas propiedades que en el caso discreto:
 * $\sigma_{Y}=|b|\cdot  \sigma_{X}$.
 * $Z=\frac{X-\mu_{X}}{\sigma_{X}}$ es una transformación
 lineal de $X$ de forma que $$E(Z)=0 \mbox{ y } Var(Z)=1$$
+
+# Distribuciones continuas notables
 
 
 ## V.a con distribución uniforme, $U(a,b)$
@@ -362,10 +364,3 @@ En particular si  $X$ sigue una $N(\mu,\sigma)$, tomando $a=\frac1{\sigma}$ y $b
 
 $$Z={{X-\mu}\over {\sigma}}$$
 se distribuye $N(0,1)$, es decir $E(X)=0$ y $Var(X)=1$.
-
-
-## Variables aleatorias bidimensionales continuas
-
-## Dos variables continuas
-
-RESUMIR 228, 229 y 230 CON EJEMPLO INCLUIDO EN EL IPAD. 
