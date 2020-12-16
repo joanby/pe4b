@@ -1,0 +1,140 @@
+---
+title: "Tema 3 - Variables Aleatorias discretas multidimensionales"
+author: "Ricardo Alberich, Juan Gabriel Gomila y  Arnau Mir"
+date: 
+output: 
+  ioslides_presentation: 
+    css: Mery_style.css
+    keep_md: no
+    logo: Images/matriz_mov.gif
+    widescreen: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+# Variables aleatorias bidimensionales discretas
+
+
+
+
+## Dos variables aleatorias pe4b
+
+RESUMIR 176-180 CON EJEMPLO INCLUIDO HASTA MEDIA Y VARIANZA CONDICIONAL
+
+
+## Variables aleatorias bidimensionales discretas. Introducción
+
+<l class="definition">Definición de variable aleatoria bidimensional discreta:</l>
+Sea $(X,Y)$ una **variable aleatoria bidimensional**. Diremos que es discreta cuando su conjunto de valores en $\mathbb{R}^2$, $(X,Y)(\Omega)$ es un conjunto finito o numerable. 
+
+En la mayoría de los casos, dicho conjunto será un subconjunto de los enteros naturales.
+
+## Función de probabilidad conjunta
+<l class="definition">Definición de función de probabilidad conjunta:</l>
+Dada una **variable aleatoria bidimensional discreta** $(X,Y)$ con $(X,Y)(\Omega)=\{(x_i,y_j),\ i=1,2,\ldots,\ j=1,2,\ldots,\}$, definimos la función de probabilidad discreta $P_{XY}$ para un valor $(x,y)\in\mathbb{R}^2$ de la siguiente forma:
+$$
+\begin{array}{rl}
+P_{XY}: \mathbb{R}^2 & \longrightarrow [0,1]\\
+(x,y) & \longrightarrow P_{XY}(x,y)=P(X= x,\ Y= y).
+\end{array}
+$$
+
+
+Llamaremnos dominio de la variable conjunta a $D_{XY}=\{(x,y)\in \mathbb{R}^2 | P_{XY}(x,y)=P(X= x,\ Y= y)>0}$.
+
+Es¡decir es el conjunto de valores posibles que toma la v.a. $(X,Y)$.
+
+## Función de probabilidad conjunta
+
+Por tanto, de cara a calcular $P_{XY}$ basta calcular $P_{XY}(x_i,y_j)$ para $(x_i,y_j)\in D_{XY}$:
+
+<div class="center">
+| $X/Y$| $y_1$    | $y_2$  | $\ldots$ | $y_N$ |
+|----|----|----|----|----|
+| $x_1$| $P_{XY}(x_1,y_1)$ | $P_{XY}(x_1,y_2)$ | $\ldots$ | $P_{XY}(x_1,y_N)$|
+| $x_2$| $P_{XY}(x_2,y_1)$ | $P_{XY}(x_2,y_2)$ | $\ldots$ | $P_{XY}(x_2,y_N)$|
+| $\vdots$ |$\vdots$ |$\vdots$ |$\vdots$ |$\vdots$ |
+| $x_M$| $P_{XY}(x_M,y_1)$ | $P_{XY}(x_M,y_2)$ | $\ldots$ | $P_{XY}(x_M,y_N)$|
+</div>
+
+
+
+
+
+## Propiedades de la función de probabilidad conjunta
+
+Sea $(X,Y)$ una **variable aleatoria bidimensional discreta** con dominio $D_{XY}=\{(x_i,y_j)\, i=1,2,\ldots,\ j=1,2,\ldots\}$. Entonces su **función de probabilidad conjunta** verifica las propiedades siguientes:
+
+La suma de todos los valores de la **función de probabilidad conjunta** sobre el conjunto de valores siempre vale 1: $$\sum_{i}\sum_j P_{XY}(x_i,y_j)=1.$$
+
+
+## Propiedades de la función de probabilidad conjunta
+
+Sea $B$ un subconjunto cualquiera del dominio $D_{XY}$. El valor de la probabilidad $P((X,Y)\in B)$ se puede calcular de la forma siguiente:
+$$
+P((X,Y)\in B) =\sum_{(x_i,y_j)\in B} P_{XY}(x_i,y_j).
+$$
+O sea, la probabilidad de que la variable bidimensional tome valores en $B$ es igual a la suma de todos aquellos valores de la función de probabilidad conjunta que están en $B$.
+
+## Propiedades de la función de probabilidad conjunta
+
+En particular, tenemos la relación siguiente que relaciona la **función de distribución conjunta** con la **función de probabilidad conjunta**:
+$$
+F_{XY}(x,y)=\sum_{x_i\leq x, y_j\leq y} P_{XY}(x_i,y_j).
+$$
+Dicha expresión se deduce de la expresión anterior considerando $B=(-\infty,x]\times (-\infty,y]$.
+
+
+
+## Variables aleatorias marginales
+Consideremos una variable aleatoria **bidimensional discreta $(X,Y)$** con **función de probabilidad conjunta** $P_{XY}(x_i,y_j)$, con $(x_i,y_j)\in D_{XY}$, $i=1,2,\ldots$, $j=1,2,\ldots$.
+
+La tabla de la **función de probabilidad conjunta** contiene suficiente información para obtener las **funciones de probabilidad** de las variables $X$ e $Y$. 
+
+Dichas variables $X$ e $Y$ se denominan **distribuciones marginales** y sus correspondientes **funciones de probabilidad**, **funciones de probabilidad marginales** $P_X$ de la variable $X$ y $P_Y$ de la variable $Y$.
+
+Veamos cómo obtener $P_X$ y $P_Y$ a partir de la tabla $P_{XY}$.
+
+## Variables aleatorias marginales
+<l class="prop">Proposición. Expresión de las funciones de probabilidad marginales. </l>
+Sea $(X,Y)$ una variable aleatoria **bidimensional discreta** con **función de probabilidad conjunta** $P_{XY}(x_i,y_j)$, con $(x_i,y_j)\in (X,Y)(\Omega)$, $i=1,2,\ldots$, $j=1,2,\ldots$.
+
+Las **funciones de probabilidad marginales** $P_X(x_i)$ y $P_Y(y_j)$ se calculan usando las expresiones siguientes:
+$$
+\begin{array}{rl}
+P_X(x_i)  & = \sum_{j=1} P_{XY}(x_i,y_j),\  i=1,2,\ldots,\\ P_Y(y_j) &  = \sum_{i=1} P_{XY}(x_i,y_j),\ \ j=1,2,\ldots
+\end{array}
+$$
+
+## Variables aleatorias marginales
+
+
+Podemos representar  $P_{XY}$ como una tabla bidimensional donde en la primera fila están los valores de la variable $Y$ ($y_1,y_2,\ldots$) y en la primera columna están los valores de la variable $X$ ($x_1,x_2,\ldots$), para obtener la **función de probabilidad marginal** de la variable $X$ en el valor $x_i$, $P_X(x_i)$, hay que sumar todos los valores de $P_{XY}(x_i,y_j)$ correspondientes a la fila $i$-ésima y para obtener la **función de probabilidad marginal** de la variable $Y$ en el valor $y_j$, $P_Y(y_j)$, hay que sumar todos los valores de $P_{XY}(x_i,y_j)$ correspondientes a la columna $j$-ésima.
+
+## Esperanzas y varianza de las distribuciones  marginales
+
+
+$$E(X)=\sum_{x\in D_X} x\cdot P(X=x)$$
+$$E(Y)=\sum_{x\in D_Y} y\cdot P(Y=y)$$
+$$Var(X)=E(X-E(X))=E(X)-E(X)^2;\quad Var(Y)=E(Y-E(Y))=E(Y)-E(Y)^2$$
+## Distibuciones condicionales
+
+
+$$P(X=x|Y=y)=\frac{P_{XY}(x,y)}{P_Y(y)}=\frac{P(X=x,Y=y)}{P(Y=y)}$$
+$$P(Y=y|X=x)=\frac{P_{XY}(x,y)}{P_X(x)}=\frac{P(X=x,Y=y)}{P(X=x)}$$
+
+## Esperanzas condicionales
+
+$$E(X/Y=y)=\sum_{x\in D_X} x\cdot P(X=x/Y=y)$$
+
+$$E(Y/X=x)=\sum_{y\in D_Y} y\cdot P(Y=y|X=x))$$
+
+
+
+## Covarianza y correlación pe4b
+
+RESUMIR FUSILAR PÁGINA 182. EJEMPLO DE LA PÁGINA 183 + RESUMEN 184 Y 185
