@@ -797,20 +797,22 @@ pares=cbind(pares,p.valores)
 
 
 ## Test T de Holm (más potente)
-El test de Holm es otro método que nos permite realizar las comparaciones entre las parejas de los distintos niveles del factor.
 
-Dicho método es más usado ya que tiene más potencia que el método de Bonferroni.
 
-Consta de los pasos siguientes:
+El test de Holm es un método que nos permite realizar las comparaciones entre las parejas de los distintos niveles del factor.
 
-* Sean $C_1,\ldots ,C_{c}$ los contrastes y los $P_1,\ldots ,P_{c}$ p-valores correspondientes
+<!-- Dicho método es más usado ya que tiene más potencia que el método de Bonferroni. -->
 
-* Ordenamos estos $p$-valores en orden creciente $P_{(1)}\leq \cdots\leq P_{(c)}$ y reenumeramos consistentemente los contrastes $C_{(1)},\ldots, C_{(c)}$.
+<!-- Consta de los pasos siguientes: -->
 
-## Test T de Holm (más potente)
-* Para cada $j=1,\ldots,c$, calculamos el p-valor ajustado $\widetilde{P} _{(j)}=(c+1-j)P_{(j)}$.
+<!-- * Sean $C_1,\ldots ,C_{c}$ los contrastes y los $P_1,\ldots ,P_{c}$ p-valores correspondientes -->
 
-* Entonces rechazamos la hipótesis nula del contraste $C_{(j)}$ si $\widetilde{P}_{(j)}<\alpha$.
+<!-- * Ordenamos estos $p$-valores en orden creciente $P_{(1)}\leq \cdots\leq P_{(c)}$ y reenumeramos consistentemente los contrastes $C_{(1)},\ldots, C_{(c)}$. -->
+
+<!-- ## Test T de Holm (más potente) -->
+<!-- * Para cada $j=1,\ldots,c$, calculamos el p-valor ajustado $\widetilde{P} _{(j)}=(c+1-j)P_{(j)}$. -->
+
+<!-- * Entonces rechazamos la hipótesis nula del contraste $C_{(j)}$ si $\widetilde{P}_{(j)}<\alpha$. -->
 
 ## Ejemplo
 <div class="example">
@@ -902,7 +904,7 @@ TukeyHSD(aov(X~F))
 
 ## Ejemplo
 <div class="example">
-Observando los p-valores, concluimos que hay diferencias entre todas las submuestras correspondientes a los 5 niveles de la presión.
+Observando los p-valores, concluimos que hay diferencias entre los coches de las marcas A-B y los coches de las marcas A-C tal como concluimos con el test de Holm.
 </div>
 
 
