@@ -24,13 +24,14 @@ Tema 3: Probabilidad. JB
 Tema 4: Distribuciones discretas. Ricardo
   - Ejemplos: 
     - Lectura 45: ejemplos de v.a. discretas: página 149-150, ejemplos 4.1-4.2.
-    - Lectura 47: ejemplos de esperanza y varianza: página 153, ejemplo 4.3, página 154, ejemplo                   4.4.
+    - Lectura 47: ejemplos de esperanza y varianza: página 153, ejemplo 4.3, página 154,                         ejemplo 4.4.
     - Lectura 48: ejemplo de transformaciones lineales de v.a.: página 156, ejemplo 4.5, tabla                    tipificación página 157.
     - Lectura 50: ejemplo de combinaciones y la distribución binomial: página 160-162, ejemplo 
                   4.7 más explicar forma de contar (combinaciones...),     
     - Lectura 51: ejemplo de distribución binomial: página 163-164, ejemplo 4.8, ejemplo 4.9.
     - Lectura 52: ejemplo de distribución geométrica: ejemplo inventado (número de veces que te                   mandan el anuncio hasta que haces clic)
-    - Lectura 54: ejemplo de distribución de Poison: página 169, ejemplo 4.10, 4.11, 4.12 y 4.13
+    - Lectura 54: ejemplo de distribución de Poison: página 169, ejemplo 4.10, 4.11, 4.12 y
+                  4.13
     - Lectura 55: ejemplo de distribución hipergeométrica: página 175, ejemplo 4.14.
     - Lectura 56: teoría v.a. discretas de la trans 1 a la 9 incluída.
     - Lectura 57: teoría v.a. discretas de la trans 10 a la 16 incluída.
@@ -55,18 +56,20 @@ Tema 5: Distribuciones continuas. Ricardo
     - Lectura 67: ejemplo de v.a. exponencial: página 226, ejemplos 5.10, 5.11 y 5.12.
     - Lectura 68: Los gráficos cuantil-cuantil Qqplots, explicación con R, generar dos                            distribuciones y compararlas con qqplot, basarte en páginas 215-217.
     - Lectura 69: Distribuciones continuas multidimensionales, hacer normal multivariada,                         basarte en ejemplo páginas 230-236. (elegir uno o dos)
+    - Lectura 70: Cuantiles de variables aleatorias
+    - Lectura 71: ¿Cómo calcular los cuantiles de las distribuciones usuales?
   
   - Tareas:
     - tarea 1: basarse en páginas 217-219 o página 238-242.
 
 Tema 6: Muestreo. Arnau
   - Ejemplos:
-    - Lectura 73: ejemplos de estimación de la media: página 250, ejemplo 6.1.
-    - Lectura 74: ejemplos de estandarización y cálculo de probabilidades:  página 252,                           ejemplo 6.2 y página 253, ejemplo 6.3, hacerlo como preámbulo al TCL.
-    - Lectura 76: simulación de Montecarlo, usar el shiny del curso nuestro de probabilidad,                      hacerlo en Camtasia comentando la simulación, ver enlace 
+    - Lectura 75: ejemplos de estimación de la media: página 250, ejemplo 6.1.
+    - Lectura 76: ejemplos de estandarización y cálculo de probabilidades:  página 252,                           ejemplo 6.2 y página 253, ejemplo 6.3, hacerlo como preámbulo al TCL.
+    - Lectura 78: simulación de Montecarlo, usar el shiny del curso nuestro de probabilidad,                      hacerlo en Camtasia comentando la simulación, ver enlace 
                   https://ricuib.github.io/Enlaces/
-    - Lectura 78: ejemplos de estimación de proporciones: páginas 267-268, ejemplo 6-7 y 6-8.
-    - Lectura 80: ejemplos de estimación de varianzas y desviaciones típicas: páginas 274-275,                    ejemplos 6.9 y 6.10.
+    - Lectura 80: ejemplos de estimación de proporciones: páginas 267-268, ejemplo 6-7 y 6-8.
+    - Lectura 82: ejemplos de estimación de varianzas y desviaciones típicas: páginas 274-275,                    ejemplos 6.9 y 6.10.
     
   - Tareas:
     - tarea 1: páginas 262-265, 3-4 ejercicios de medias, páginas 268-270, 2-3 ejercicios,                     páginas 275-279, 2-3 ejercicios. 
@@ -75,11 +78,12 @@ Tema 6: Muestreo. Arnau
     
 Tema 7: Estimación por intervalos. Arnau.
   - Ejemplos:
-    - Lectura 85: ejemplo de cálculo de intervalos para la media poblacional con sigma conocida:                   páginas 294, ejemplo 7.3.
-    - Lectura 87: ejemplo de cálculo de intervalos para la media poblacional con sigma                            desconocida: página 300, ejemplo 7.4 y 7.5.
-    - Lectura 90: ejemplo de cálculo de intervalo para la proporción: página 304, ejemplo 7.6.
-    - Lectura 92: ejemplo de cálculo de intervalo para la varianza: página 308, ejemplo 7.7
-    - Lectura 94: intervalos de confianza para dos poblaciones. Se verá más adelante en                           contrastes de hipótesis. JB. 
+    - Lectura 87: ejemplo de cálculo de intervalos para la media poblacional con sigma 
+                  conocida: páginas 294, ejemplo 7.3.
+    - Lectura 89: ejemplo de cálculo de intervalos para la media poblacional con sigma                           desconocida: página 300, ejemplo 7.4 y 7.5.
+    - Lectura 92: ejemplo de cálculo de intervalo para la proporción: página 304, ejemplo 7.6.
+    - Lectura 94: ejemplo de cálculo de intervalo para la varianza: página 308, ejemplo 7.7
+    - Lectura 96: intervalos de confianza para dos poblaciones. Se verá más adelante en                          contrastes de hipótesis. JB. 
     
     
   - Tareas:
@@ -91,12 +95,12 @@ Tema 7: Estimación por intervalos. Arnau.
     
 Tema 8: Contrastes paramétricos. Ricardo
   - Ejemplos
-    - Lectura 102: ejemplo de contraste de hipótesis Z-test: página 356, ejemplo 9.1, 9.2 y 9.3.
-    - Lectura 103: ejemplo de contraste de hipótesis: t.test: página 363, ejemplo 9.4
-    - Lectura 104: ejemplo de contraste de proporciones: prop.test: página 372, ejemplo 9.6.
+    - Lectura 104: ejemplo de contraste de hipótesis Z-test: página 356, ejemplo 9.1, 9.2 y 9.3
+    - Lectura 105: ejemplo de contraste de hipótesis: t.test: página 363, ejemplo 9.4
+    - Lectura 106: ejemplo de contraste de proporciones: prop.test: página 372, ejemplo 9.6.
     
-    - Lectura 106: La distribución F de Fisher-Snédecor.
-    - Lectura 107: ejemplo de contraste de hipótesis de dos varianzas (ejemplo del marketing,                     Ricardo busca uno)
+    - Lectura 108: La distribución F de Fisher-Snédecor.
+    - Lectura 109: ejemplo de contraste de hipótesis de dos varianzas (ejemplo del marketing,                     Ricardo busca uno)
   
   - Tareas
     - tarea: páginas 378-382, 5-6 ejercicios.
@@ -104,4 +108,4 @@ Tema 8: Contrastes paramétricos. Ricardo
 Tema 9: ANOVA. JB.
   - Tareas
     - tarea: subir ejercicio 7.1-sol curso estadística inferencial.
-Tema 10: Extras: bondad de ajustes/regresión/clustering/recomendar otros cursos
+Tema 10: Extras: bondad de ajustes/regresión/clustering/recomendar otros cursos. JB
