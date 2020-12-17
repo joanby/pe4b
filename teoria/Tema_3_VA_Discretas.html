@@ -3287,7 +3287,7 @@ Si \(X\) no asume ese valor \(x\), entonces \(P_{X}(x)=0\).
 
 <p><l class="prop">Propiedades básicas de la función de probabilidad </l></p>
 
-<p>Sea \(X\) una v.a. discreta \(X:\Omega:\to\mathbb{R}\) con dominio \(D_X\). Su función de probabilidad \(P_{X}\) verifica las siguientes propiedades:</p>
+<p>Sea \(X\) una v.a. discreta \(X:\Omega \to\mathbb{R}\) con dominio \(D_X\). Su función de probabilidad \(P_{X}\) verifica las siguientes propiedades:</p>
 
 <ul>
 <li>\(0\leq P_{X}(x)\leq 1\) para todo \(x\in\mathbb{R},\)</li>
@@ -3313,7 +3313,7 @@ Si \(X\) no asume ese valor \(x\), entonces \(P_{X}(x)=0\).
 
 <ul>
 <li>\(0\leq F_X(x)\leq 1\).</li>
-<li>Si \(X\) es discreta entonces \(F_X(x)=P(X\leq x)= \displaystyle \sum_{x&#39;\in D_X | x&#39;\leq x} P_X(x).\)</li>
+<li>Si \(X\) es discreta entonces \(F_X(x)=P(X\leq x)= \displaystyle \sum_{x&#39;\in D_X | x&#39;\leq x} P_X(x&#39;).\)</li>
 <li>\(P(X&gt;x)=1-P(X\leq x)=1-F_{X}(x).\)</li>
 <li>Sea a y b tales que \(a&lt;b\), \(P(a&lt;X\leq b)=P(X\leq b)-P(X\leq a)=F_{X}(b)-F_{X}(a).\)</li>
 </ul>
@@ -3384,7 +3384,7 @@ E(X)=\sum_{x\in D_X} x\cdot P_{X}(x).
 <p><l class="prop">Propiedad </l></p>
 
 <ul>
-<li>Si \(X\) es una v.a. discreta con función de probabilidad \(P_X\) su varianza es \[\sigma_{X}^2=Var(X)=E((X-E(X))^2)=\sum_{x}(x-E(X))^2\dot  P_{X}(x).\]</li>
+<li>Si \(X\) es una v.a. discreta con función de probabilidad \(P_X\) su varianza es \[\sigma_{X}^2=Var(X)=E((X-E(X))^2)=\sum_{x}(x-E(X))^2 \cdot  P_{X}(x).\]</li>
 <li>Sea \(X\) una v.a. \[Var(X)=E(X^2)-(E(X))^2=\sum_{x} x^2\cdot  P_{X}(X)-(E(X))^2\]</li>
 </ul>
 
