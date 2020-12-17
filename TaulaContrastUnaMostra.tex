@@ -32,23 +32,23 @@
 \newcommand{\posacas}{\addtocounter{cas}{1}{\bf \thecas}}
 
 \begin{center}
-\textsc{Matemàtiques II dels graus de Biologia i Bioquímica.\\[0.5ex]  Taules de contrastos d'hip\`otesi m\'es usuals I: Una mostra}
+\textsc{Matemàtiques II dels graus de Biologia i Bioquímica.\\[0.5ex]  Taules de contrastos d'hipòtesi més usuals I: Una mostra}
 \end{center}
 \vspace*{2cm}
 
-\noindent En aquest document recollim els contrastos d'hip\`otesis param\`etrics m\'es usuals per a una mostra  que es poden portar a terme ``a mà.'' Per a cada contrast donam: les condicions, l'estad\'{\i}stic
-de contrast, la regi\'o cr\'{\i}tica, 
+\noindent En aquest document recollim els contrastos d'hipòtesis paramètrics més usuals per a una mostra  que es poden portar a terme ``a mà.'' Per a cada contrast donam: les condicions, l'estadístic
+de contrast, la regió crítica, 
 l'interval de confian\c ca i el p-valor.
 
-En la definició dels l'estad\'{\i}stics hem emprat la notacions seg\"uents:
+En la definició dels l'estadístics hem emprat la notacions següents:
 \begin{itemize}
-\item  $Z$: {Distribuci\'o normal estàndard $N(0,1)$.} 
-\item $t_n$: {Distribuci\'o
+\item  $Z$: {Distribució normal estàndard $N(0,1)$.} 
+\item $t_n$: {Distribució
 $t$ de Student amb $n$ graus de llibertat.} 
-\item $\chi_n^2$: {Distribuci\'o
+\item $\chi_n^2$: {Distribució
 khi-quadrat amb $n$ graus de llibertat.} 
-\item $X_\alpha$: Indica l'$\alpha$-quantil de la variable aleat\`oria $X$, és a dir (si $X$ és contínua, que és sempre el cas en aquest document), el valor on la
-funci\'o de distribuci\'o de $X$ val $\alpha$: $P(X\leq X_\alpha
+\item $X_\alpha$: Indica l'$\alpha$-quantil de la variable aleatòria $X$, és a dir (si $X$ és contínua, que és sempre el cas en aquest document), el valor on la
+funció de distribució de $X$ val $\alpha$: $P(X\leq X_\alpha
 )=\alpha$. 
 
 Recordau la traducció als quantils de les propietats de simetria de $Z$ i $t$:
@@ -66,13 +66,13 @@ Els contrastos paramètrics amb R els estudiam a la lliçó 23 del manual.
 \multicolumn{5}{|c|} {\bf Tipus de contrast i condicions}\\ 
 \hline
 Hipòtesi nu\l.la &Condicions&Mostra&\multicolumn{1}{m{2 cm}}{
-Hip\`otesi alternativa}&\multicolumn{1}{|c|}{Cas}\\
+Hipòtesi alternativa}&\multicolumn{1}{|c|}{Cas}\\
 \hline\hline
-\multirow{9}{2.5 cm}{$H_0:\mu =\mu_0$} &\multirow{3}{3 cm}{Poblaci\'o normal o $n$ gran.\\ $\sigma$ coneguda. } &  
+\multirow{9}{2.5 cm}{$H_0:\mu =\mu_0$} &\multirow{3}{3 cm}{Població normal o $n$ gran.\\ $\sigma$ coneguda. } &  
 \multirow{3}{3cm}{$n$ observacions independents.} & 
 $H_1:\mu\not =\mu_0$&
 \posacas \\\cline{4-5} & & &$H_1:\mu <\mu_0$&\posacas \\\cline{4-5}
- & & &$H_1:\mu>\mu_0$&\posacas\\\cline{2-5} & \multirow{3}{3 cm}{Poblaci\'o normal.\\ $\sigma$ desconeguda.
+ & & &$H_1:\mu>\mu_0$&\posacas\\\cline{2-5} & \multirow{3}{3 cm}{Població normal.\\ $\sigma$ desconeguda.
 } & \multirow{3}{3cm}{$n$ observacions independents.}&
 $H_1:\mu\not =\mu_0$&\posacas \\\cline{4-5} & & &$H_1:\mu <\mu_0$&\posacas\\
 \cline{4-5} & & & $H_1:\mu>\mu_0$&\posacas
@@ -82,14 +82,14 @@ $H_1:\mu\not =\mu_0$&\posacas \\\cline{4-5} & & &$H_1:\mu <\mu_0$&\posacas\\
 \cline{4-5} & & & $H_1:\mu>\mu_0$&\posacas
 \\\hline
 \multirow{3}{2.5cm}{$H_0:p=p_0$}&\multirow{3}{3cm}{%
-Poblaci\'o Bernoulli.
+Població Bernoulli.
 $n\geq 100$, $n\widehat{p}\geq 10$, $n(1-\widehat{p})\geq 10$
 }&\multirow{3}{3cm}{$n$ observacions independents.}
 &$H_1:p\not =p_0$&\posacas\\\cline{4-5} & & &
 $H_1:p <p_0$&\posacas\\\cline{4-5}& & &
 $H_1:p >p_0$&\posacas\\\hline
 \multirow{3}{2.5cm}{$H_0:\sigma^2 =\sigma_0^2$}&
-\multirow{3}{3cm}{Poblaci\'o Normal.\\ $\mu$ desconeguda}&
+\multirow{3}{3cm}{Població Normal.\\ $\mu$ desconeguda}&
 \multirow{3}{3cm}{$n$ observacions independents.}&
 $H_1:\sigma^2\not =\sigma_0^2$&\posacas\\\cline{4-5} & & &
 $H_1:\sigma^2 <\sigma_0^2$&\posacas\\\cline{4-5} & & &
@@ -106,8 +106,8 @@ $H_1:\sigma^2 >\sigma_0^2$&\posacas\\\hline
 \hline
 \multicolumn{5}{|c|} {\bf Detalls del test}\\ 
 \hline
-Cas&Estad\'{\i}stic&\multicolumn{1}{c|}{Regi\'o
-cr\'{\i}tica}&\multicolumn{1}{c|}{Interval confian\c ca}&\multicolumn{1}{c|}{$p$-valor}\\\hline\hline
+Cas&Estadístic&\multicolumn{1}{c|}{Regió
+crítica}&\multicolumn{1}{c|}{Interval confian\c ca}&\multicolumn{1}{c|}{$p$-valor}\\\hline\hline
 \posacas&\multirow{3}{2cm}{$Z=
 \frac{\overline{X}-\mu_0}{\frac{\sigma}{\sqrt{n}}}$\\  és $N(0,1)$}&\{Z\leq
 -z_{1-\frac{\alpha}{2}}\}\cup \{Z \geq z_{1-\frac{\alpha}{2}}\}&
@@ -181,8 +181,8 @@ P(\chi_{n-1}^2\geq \chi^2\}
 \end{tabular}
 \end{center}
 
-\footnotetext{En aquest cas (\textbf{XIII}),  si $\mu$ és coneguda, es pot emprar l'estad\'{\i}stic
+\footnotetext{En aquest cas (\textbf{XIII}),  si $\mu$ és coneguda, es pot emprar l'estadístic
 $\chi^2 =\frac{\sum\limits_{i=1}^n {(X_i -\mu)}^2}{\sigma_0^2}$, 
-que tendrà distribuci\'o $\chi_n^2$.}
+que tendrà distribució $\chi_n^2$.}
 
 \end{document}
