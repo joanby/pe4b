@@ -1,0 +1,30 @@
+Tema 2: Estadística Descriptiva.
+  Faltan una o dos tareas de descriptiva:
+    - Ejemplos: están hechos.
+    - Tareas:
+      - tarea 1: página 56-57, repaso de gráficos en estadística, 4-5 problemas
+      - tarea 2: página 89-91, repaso de estadística descriptiva, 4-5 problemas
+      
+Tema 3: Probabilidad
+    - Ejemplos:
+      - Lectura 31: ejemplos de experimentos aleatorios: página 94 libro hay 7 ejemplos,                            citarlos más ejemplo 3.1 y ejemplo 3.2 de la página 95.
+      - Lectura 34: ejemplos de probabilidad: página 102, ejemplo 3.5 y página 105, ejemplo 3.8                     (continuación del 3.5) y página 106, ejemplo 3.9.
+      - Lectura 34: más ejemplos de probabilidad: página 109, ejemplo 3.10, 3.11 y 3.12.
+      - Lectura 36: ejemplos de probabilidad condicionada: página 114, ejemplos 3.15, 3.16 y 
+                    3.17.
+      - Lectura 39: ejemplo de aplicación de la fórmula de Bayes: página 132, ejemplos 3.23,
+                    3.24 y 3.25.
+      - Lectura 41: ejemplos de independencia: página 117, ejemplos 3.18, 3.19, 3.21 y 3.21.
+      - Lectura 42: teoria y ejemplos de odds-ratio: páginas 126-129 a elegir.
+    
+    - Tareas:
+      - tarea 1: páginas 119-122, páginas 140-143, 10-12 problemas. (si queda pobre, poner dos                   tareas)
+      (tener en cuenta tabla de probabilidades bidimensionales)
+      
+Tema 4: Distribuciones discretas
+Tema 5: Distribuciones continuas
+Tema 6: Muestreo
+Tema 7: Estimación por intervalos
+Tema 8: Contrastes paramétricos
+Tema 9: ANOVA
+Tema 10: Extras: bondad de ajustes/regresión/clustering/recomendar otros cursos
