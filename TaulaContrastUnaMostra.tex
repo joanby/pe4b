@@ -1,0 +1,188 @@
+\documentclass{article}
+\usepackage[catalan]{babel}
+\usepackage{array,multirow}
+\usepackage{hyperref}
+\usepackage{amsfonts,amssymb,amsmath,amsthm, wasysym}
+\usepackage{listings}
+\usepackage[T1]{fontenc}        
+\usepackage[utf8]{inputenc}
+
+
+%Definitions of numbers
+\newcommand\RR{\Bbb{R}}
+\newcommand\QQ{\Bbb{Q}}
+\newcommand\CC{\Bbb{C}}
+\newcommand\ZZ{\Bbb{Z}}
+\newcommand\NN{\Bbb{N}}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+
+\usepackage{threeparttable}
+\usepackage[text={16cm,19.5cm},centering]{geometry}
+
+
+\begin{document}
+
+
+%\renewcommand{\thefootnote}{\Alph{footnote}}
+
+\newcounter{cas}
+\newcounter{aux}
+\renewcommand{\thecas}{\Roman{cas}}
+\newcommand{\posacas}{\addtocounter{cas}{1}{\bf \thecas}}
+
+\begin{center}
+\textsc{Matemàtiques II dels graus de Biologia i Bioquímica.\\[0.5ex]  Taules de contrastos d'hip\`otesi m\'es usuals I: Una mostra}
+\end{center}
+\vspace*{2cm}
+
+\noindent En aquest document recollim els contrastos d'hip\`otesis param\`etrics m\'es usuals per a una mostra  que es poden portar a terme ``a mà.'' Per a cada contrast donam: les condicions, l'estad\'{\i}stic
+de contrast, la regi\'o cr\'{\i}tica, 
+l'interval de confian\c ca i el p-valor.
+
+En la definició dels l'estad\'{\i}stics hem emprat la notacions seg\"uents:
+\begin{itemize}
+\item  $Z$: {Distribuci\'o normal estàndard $N(0,1)$.} 
+\item $t_n$: {Distribuci\'o
+$t$ de Student amb $n$ graus de llibertat.} 
+\item $\chi_n^2$: {Distribuci\'o
+khi-quadrat amb $n$ graus de llibertat.} 
+\item $X_\alpha$: Indica l'$\alpha$-quantil de la variable aleat\`oria $X$, és a dir (si $X$ és contínua, que és sempre el cas en aquest document), el valor on la
+funci\'o de distribuci\'o de $X$ val $\alpha$: $P(X\leq X_\alpha
+)=\alpha$. 
+
+Recordau la traducció als quantils de les propietats de simetria de $Z$ i $t$:
+\begin{itemize}
+\item Simetria de la normal: $z_\alpha = -z_{1-\alpha}.$
+\item Simetria de la $t$ de Student: $t_{n,\alpha} = -t_{n,1-\alpha}.$
+\end{itemize}
+\end{itemize}
+Els contrastos paramètrics amb R els estudiam a la lliçó 23 del manual. 
+
+\begin{center}
+\renewcommand{\arraystretch}{1.7}
+\begin{tabular}{|c@{\hspace{1mm}}|c|c|c|c@{\hspace{1mm}}|}
+\hline
+\multicolumn{5}{|c|} {\bf Tipus de contrast i condicions}\\ 
+\hline
+Hipòtesi nu\l.la &Condicions&Mostra&\multicolumn{1}{m{2 cm}}{
+Hip\`otesi alternativa}&\multicolumn{1}{|c|}{Cas}\\
+\hline\hline
+\multirow{9}{2.5 cm}{$H_0:\mu =\mu_0$} &\multirow{3}{3 cm}{Poblaci\'o normal o $n$ gran.\\ $\sigma$ coneguda. } &  
+\multirow{3}{3cm}{$n$ observacions independents.} & 
+$H_1:\mu\not =\mu_0$&
+\posacas \\\cline{4-5} & & &$H_1:\mu <\mu_0$&\posacas \\\cline{4-5}
+ & & &$H_1:\mu>\mu_0$&\posacas\\\cline{2-5} & \multirow{3}{3 cm}{Poblaci\'o normal.\\ $\sigma$ desconeguda.
+} & \multirow{3}{3cm}{$n$ observacions independents.}&
+$H_1:\mu\not =\mu_0$&\posacas \\\cline{4-5} & & &$H_1:\mu <\mu_0$&\posacas\\
+\cline{4-5} & & & $H_1:\mu>\mu_0$&\posacas
+\\\cline{2-5} & \multirow{3}{3 cm}{Població qualsevol.\\ $\sigma$ desconeguda.\\
+ $n$ gran. } & \multirow{3}{3cm}{$n$ observacions independents.}&
+$H_1:\mu\not =\mu_0$&\posacas \\\cline{4-5} & & &$H_1:\mu <\mu_0$&\posacas\\
+\cline{4-5} & & & $H_1:\mu>\mu_0$&\posacas
+\\\hline
+\multirow{3}{2.5cm}{$H_0:p=p_0$}&\multirow{3}{3cm}{%
+Poblaci\'o Bernoulli.
+$n\geq 100$, $n\widehat{p}\geq 10$, $n(1-\widehat{p})\geq 10$
+}&\multirow{3}{3cm}{$n$ observacions independents.}
+&$H_1:p\not =p_0$&\posacas\\\cline{4-5} & & &
+$H_1:p <p_0$&\posacas\\\cline{4-5}& & &
+$H_1:p >p_0$&\posacas\\\hline
+\multirow{3}{2.5cm}{$H_0:\sigma^2 =\sigma_0^2$}&
+\multirow{3}{3cm}{Poblaci\'o Normal.\\ $\mu$ desconeguda}&
+\multirow{3}{3cm}{$n$ observacions independents.}&
+$H_1:\sigma^2\not =\sigma_0^2$&\posacas\\\cline{4-5} & & &
+$H_1:\sigma^2 <\sigma_0^2$&\posacas\\\cline{4-5} & & &
+$H_1:\sigma^2 >\sigma_0^2$&\posacas\\\hline
+\end{tabular}
+\end{center}
+
+\setcounter{cas}{0}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{|>{\small}c@{}|c@{}|>{$\scriptstyle}c<{$}@{}|
+@{}>{$\scriptstyle}c<{$}|@{}>{$\scriptstyle}c<{$}|}
+\hline
+\multicolumn{5}{|c|} {\bf Detalls del test}\\ 
+\hline
+Cas&Estad\'{\i}stic&\multicolumn{1}{c|}{Regi\'o
+cr\'{\i}tica}&\multicolumn{1}{c|}{Interval confian\c ca}&\multicolumn{1}{c|}{$p$-valor}\\\hline\hline
+\posacas&\multirow{3}{2cm}{$Z=
+\frac{\overline{X}-\mu_0}{\frac{\sigma}{\sqrt{n}}}$\\  és $N(0,1)$}&\{Z\leq
+-z_{1-\frac{\alpha}{2}}\}\cup \{Z \geq z_{1-\frac{\alpha}{2}}\}&
+\left]\overline{X}-z_{1-\frac{\alpha}{2}}\cdot \frac{\sigma}{\sqrt{n}},
+\overline{X}+z_{1-\frac{\alpha}{2}}\cdot \frac{\sigma}{\sqrt{n}}\right[ & 2 P(Z\geq |z|) \\
+\cline{1-1}\cline{3-5}\posacas & &\{Z\leq z_{\alpha}\}&
+\left]-\infty,
+\overline{X}-z_{\alpha}\cdot \frac{\sigma}{\sqrt{n}}\right[ & P(Z \leq z)\\
+\cline{1-1}\cline{3-5}
+\posacas & &\{Z\geq z_{1-\alpha}\}&\left]
+\overline{X}-z_{1-\alpha}\cdot \frac{\sigma}{\sqrt{n}},\infty\right[& P(Z \geq z)\\\hline
+\posacas&\multirow{3}{2cm}{$T=
+\frac{\overline{X}-\mu_0}{\frac{\tilde{S}}{\sqrt{n}}}$\\
+és $t_{n-1}$}&\{T\leq
+-t_{n-1,1-\frac{\alpha}{2}}\}\cup \{T \geq t_{n-1,1-\frac{\alpha}{2}}\}&
+\left]\overline{X}-t_{n-1,1-\frac{\alpha}{2}}\cdot \frac{\tilde{S}}{\sqrt{n}},
+\overline{X}+t_{n-1,1-\frac{\alpha}{2}}\cdot 
+\frac{\tilde{S}}{\sqrt{n}}\right[ & 2P(t_{n-1} \geq |T|) \\\cline{1-1}\cline{3-5}\posacas & &
+\{T\leq t_{n-1,\alpha}\}&
+\left]-\infty,
+\overline{X}-t_{n-1,\alpha}\cdot \frac{\tilde{S}}{\sqrt{n}}\right[ & P(t_{n-1} \leq T)\\
+\cline{1-1}\cline{3-5}
+\posacas & &\{T\geq t_{n-1,1-\alpha}\}&\left]
+\overline{X}-t_{n-1,1-\alpha}\cdot
+\frac{\tilde{S}}{\sqrt{n}},\infty\right[& P(t_{n-1}\geq T)
+\\\hline
+\posacas&\multirow{3}{2cm}{$Z =
+\frac{\overline{X}-\mu_0}{\frac{\tilde{S}}{\sqrt{n}}}$\\
+és aprox.\ $N(0,1)$}&\{Z\leq
+-z_{1-\frac{\alpha}{2}}\}\cup \{Z \geq z_{1-\frac{\alpha}{2}}\}&
+\left]\overline{X}-z_{1-\frac{\alpha}{2}}\cdot \frac{\tilde{S}}{\sqrt{n}},
+\overline{X}+z_{1-\frac{\alpha}{2}}\cdot
+\frac{\tilde{S}}{\sqrt{n}}\right[  & 2 P(Z \geq |z|)\\\cline{1-1}\cline{3-5}\posacas & &
+\{Z\leq z_{\alpha}\}&
+\left]-\infty,
+\overline{X}-z_{\alpha}\cdot \frac{\tilde{S}}{\sqrt{n}}\right[ & P(Z \leq z)\\
+\cline{1-1}\cline{3-5}
+\posacas & &\{Z\geq z_{1-\alpha}\}&\left]
+\overline{X}-z_{1-\alpha}\cdot
+\frac{\tilde{S}}{\sqrt{n}},\infty\right[ & P(Z \geq z)
+\\\hline
+\posacas
+&\multirow{3}{2.5cm}{
+$Z=\frac{\widehat{p}-p_0}{\sqrt{\frac{p_0 (1-p_0)}{n}}}$\\ és $N(0,1)$} &\{Z\leq z_{\frac{\alpha}{2}}\}\cup 
+\{Z\geq z_{1-\frac{\alpha}{2}}\} &\left]\widehat{p}+z_{\frac{\alpha}{2}}\sqrt{
+\frac{\widehat{p}(1-\widehat{p})}{n}},\widehat{p}+z_{1-\frac{\alpha}{2}}\sqrt{
+\frac{\widehat{p}(1-\widehat{p})}{n}}\right[
+& 2P(Z \geq |z|)
+\\\cline{1-1}\cline{3-5}
+\posacas&
+&\{Z\leq z_{\alpha}\}&\left]-\infty,\widehat{p}-z_{\alpha}\sqrt{
+\frac{\widehat{p}(1-\widehat{p})}{n}}\right[ & P(Z\leq z)\\\cline{1-1}\cline{3-5}
+\posacas&
+&\{Z\geq z_{1-\alpha}\}&\left]\widehat{p}-z_{1-\alpha}\sqrt{
+\frac{\widehat{p}(1-\widehat{p})}{n}},\infty\right[ & P(Z \geq z) \\
+\hline
+\posacas\footnotemark
+ &\multirow{3}{2.5cm}{${\chi^2} =\frac{(n-1)\tilde{S}^2}{\sigma_0^2}$\\ és $\chi^2_{n-1}$}&\{\chi^2\leq
+\chi_{n-1,\frac{\alpha}{2}}^2\}\cup
+\{\chi^2\geq \chi_{n-1,1-\frac{\alpha}{2}}^2\}&
+\left]\frac{(n-1)\tilde{S}^2}{\chi_{n-1,1-\frac{\alpha}{2}}^2},
+\frac{(n-1)\tilde{S}^2}{\chi_{n-1,\frac{\alpha}{2}}^2}\right[ & 
+\begin{tabular}[c]{>{$\scriptstyle}c<{$}}
+2\min\{P(\chi_{n-1}^2 \leq \chi^2), \\
+P(\chi_{n-1}^2\geq \chi^2\}
+\end{tabular}\\
+\cline{1-1}\cline{3-5}\posacas & & \{\chi^2\leq \chi_{n-1,\alpha}^2\} &
+\left]0,\frac{(n-1)\tilde{S}^2}{\chi_{n-1,\alpha}^2}\right[ & P(\chi_{n-1}^2 \leq \chi^2)\\
+\cline{1-1}\cline{3-5}\posacas & & \{\chi^2\geq \chi_{n-1,1-\alpha}^2\} &
+\left]\frac{(n-1)\tilde{S}^2}{\chi_{n-1,1-\alpha}^2},\infty\right[ & P(\chi_{n-1}^2\geq \chi^2)\\\hline
+\end{tabular}
+\end{center}
+
+\footnotetext{En aquest cas (\textbf{XIII}),  si $\mu$ és coneguda, es pot emprar l'estad\'{\i}stic
+$\chi^2 =\frac{\sum\limits_{i=1}^n {(X_i -\mu)}^2}{\sigma_0^2}$, 
+que tendrà distribuci\'o $\chi_n^2$.}
+
+\end{document}
