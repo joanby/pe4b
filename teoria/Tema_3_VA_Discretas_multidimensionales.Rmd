@@ -140,3 +140,8 @@ $$E(Y/X=x)=\sum_{y\in D_Y} y\cdot P(Y=y|X=x)$$
 ## Covarianza y correlación pe4b
 
 RESUMIR FUSILAR PÁGINA 182. EJEMPLO DE LA PÁGINA 183 + RESUMEN 184 Y 185
+
+# Distribuciones multidimensionales
+
+## Conceptos básicos
+
