@@ -1,0 +1,165 @@
+\documentclass{article}
+\usepackage[catalan]{babel}
+\usepackage{array,multirow}
+\usepackage{hyperref}
+\usepackage{amsfonts,amssymb,amsmath,amsthm, wasysym}
+\usepackage{listings}
+\usepackage[T1]{fontenc}        
+\usepackage[utf8]{inputenc}
+
+
+%Definitions of numbers
+\newcommand\RR{\Bbb{R}}
+\newcommand\QQ{\Bbb{Q}}
+\newcommand\CC{\Bbb{C}}
+\newcommand\ZZ{\Bbb{Z}}
+\newcommand\NN{\Bbb{N}}
+
+
+\usepackage{threeparttable}
+\usepackage[text={15cm,18.5cm},centering]{geometry}
+
+
+\begin{document}
+
+
+%\renewcommand{\thefootnote}{\Alph{footnote}}
+
+\newcommand{\pp}[1]{P(\#1\right)}
+\newcommand{\vegeu}[1]{{(\footnotesize vegeu (\#1))}}
+\newcounter{cas}
+\newcounter{aux}
+\renewcommand{\thecas}{\Roman{cas}}
+\newcommand{\posacas}{\addtocounter{cas}{1}{\bf \thecas}}
+
+
+\begin{center}
+\textsc{Matemàtiques II dels graus de Biologia i Bioquímica.\\[0.5ex]  Taules de contrastos d'hipòtesi més usuals II: Dues mostres}
+\end{center}
+\vspace*{2cm}
+
+\noindent En este documento recogemos los contrastes de hipótesis paramétricos más usuales para dos muestras  que se pueden llevar a cabo ``a mano.'' Para cada contraste donam: las condiciones, el estadístico
+de contraste, la región crítica, 
+el intervalo de confianza y el p-valor.
+
+En la definición de los el estadísticos hemos empleado la notaciones siguientes:
+\begin{itemize}
+\item  $Z$: {Distribució normal estàndard $N(0,1)$.} 
+\item $t_n$: {Distribució
+$t$ de Student amb $n$ graus de llibertat.} 
+\item $\chi_n^2$: {Distribució
+khi-quadrat amb $n$ graus de llibertat.} 
+\item $F_{n_1,n_2}$: {Distribució $F$ de
+Fisher  amb $n_1$ i $n_2$ graus de llibertat.}
+\item $X_\alpha$: Indica el $\alpha$-cuantil de la variable aleatoria $X$, es decir (si $X$ es continua, que es siempre el caso en este documento), el valor donde la función
+de distribución de vale $X$  $\alpha$: $P(X\leq X_\alpha
+)=\alpha$. 
+
+Recordáis la traducción a los cuantiles de las propiedades de simetría de , $Z$ $t$ y :. $F$
+\begin{itemize}
+\item Simetría de la normal: $z_\alpha = -z_{1-\alpha}.$
+\item Simetría de la $t$ de Student: $t_{n,\alpha} = -t_{n,1-\alpha}.$
+\item Permutación de los grados de libertad de la $F$ de Fisher: $F_{n_1,n_2,\alpha}=\frac{1}{F_{n_2,n_1,1-\alpha}}.$
+\end{itemize}
+\end{itemize}
+Los contrastes paramétricos con R los estudiam a la lección 23 del manual. 
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\multicolumn{5}{|c|} {\bf Tipo de contraste y condiciones}\\ 
+\hline
+Hip.\ nuł.la Condiciones &&Muestra&
+Hip.\ alto.&Caso\\
+\hline\hline
+\multirow{9}{2.5 cm}{$H_0:\mu_1 =\mu_2$\\ Cas independent}&\multirow{3}{3 cm}{$\sigma_1$ i $\sigma_2$ conegudes. Poblacions normals o $n_1$ i $n_2$ grans.} &
+\multirow{3}{3 cm}{Dues m.a.s.\ independents de mides $n_1$ i $n_2$}&
+$H_1:\mu_1\not =\mu_2$&  
+\posacas\\\cline{4-5} & & & $H_1:\mu_1<\mu_2$&\posacas\\\cline{4-5}
+ & & &$H_1:\mu_1>\mu_2$&\posacas\\\cline{2-5} & \multirow{3}{3cm}{$\sigma_1$ i $\sigma_2$ desconegudes i $\sigma_1 =\sigma_2$.\\ 
+ Poblacions normals o $n_1$ i $n_2$ grans.}&
+ \multirow{3}{3cm}{Dues m.a.s.\ independents de mides $n_1$ i $n_2$}&
+ $H_1:\mu_1\not =\mu_2$&\posacas\\\cline{4-5}
+ & & & $H_1:\mu_1<\mu_2$&\posacas\\\cline{4-5}
+ & & & $H_1:\mu_1>\mu_2$&\posacas\\\cline{2-5} & \multirow{3}{3 cm}{$\sigma_1$ i $\sigma_2$ desconegudes i $\sigma_1 \neq\sigma_2$.\\ 
+ Poblacions normals o $n_1$ i $n_2$ grans.}&\multirow{3}{3cm}{Dues m.a.s.\ independents de mides $n_1$ i $n_2$}&
+$H_1:\mu\not =\mu_2$&\posacas\\\cline{4-5} & & &$H_1:\mu_1<\mu_2$&\posacas\\
+\cline{4-5} & & &$H_1:\mu_1>\mu_2$&\posacas\\\hline
+\multirow{9}{2.5 cm}{$H_0:\mu_1 =\mu_2$\\ Cas dependent}&
+\multirow{3}{3 cm}{Dues poblacions normals dependents o $n$ gran.
+$\sigma_d$
+coneguda.${}^{\mathrm{(1)}}$}
+&\hspace*{-3.2ex}\multirow{3}{2.5cm}{Dues m.a.s.\ dependents de mida $n$}&
+$H_1:\mu_1\not =\mu_2$&\posacas\\\cline{4-5} & & & $H_1:\mu_1 <\mu_2$&\posacas\\
+\cline{4-5} & & & $H_1:\mu_1 >\mu_2$&\posacas\\\cline{2-5} & 
+\multirow{3}{3cm}{Dues poblacions normals dependents. $\sigma_d$
+desconeguda.${}^{\mathrm{(1)}}$}&
+\hspace*{-3.2ex}\multirow{3}{2.5cm}{Dues m.a.s.\ dependents de~mida $n$}&$H_1:\mu_1\not
+=\mu_2$& 
+\posacas\\\cline{4-5} & & &$H_1:\mu_1< \mu_2$&\posacas
+\\\cline{4-5} & & &$H_1:\mu_1>\mu_2$&\posacas
+\\\cline{2-5} & 
+\multirow{3}{3cm}{Dues poblacions dependents, $n$ gran. $\sigma_d$
+desconeguda.${}^{\mathrm{(1)}}$}&
+\hspace*{-3.2ex}\multirow{3}{2.5cm}{Dues m.a.s.\ dependents de mida $n$}&$H_1:\mu_1\not
+=\mu_2$& 
+\posacas\\\cline{4-5} & & &$H_1:\mu_1< \mu_2$&\posacas
+\\\cline{4-5} & & &$H_1:\mu_1>\mu_2$&\posacas\\
+\hline
+\multirow{3}{2.5cm}{$H_0:p_1 =p_2$\\ Cas independent}&
+\multirow{3}{3cm}{Poblacions Bernoulli, $n_1$ i $n_2$ grans, molts èxits i fracasos.}&
+\multirow{3}{3cm}{Dues m.a.s.\ independents de mides $n_1$ i $n_2$}&
+$H_1 :p_1\not =p_2$&\posacas\\\cline{4-5} & & &
+$H_1 :p_1 <p_2$&\posacas\\\cline{4-5}& & &
+$H_1 :p_1 >p_2$&\posacas\\\hline
+\multirow{3}{2.5cm}{$H_0:p_a=p_d$\\ Cas dependent}&
+\multirow{3}{3cm}{Poblacions Bernoulli, $n_1$ i $n_2$ grans, molts casos discordants.}&
+\multirow{3}{3cm}{Dues m.a.s.\ dependents de mida $n$}&
+$H_1:p_a\not = p_b$&\posacas\\\cline{4-5} & & &
+$H_1:p_a < p_b$&\posacas\\\cline{4-5}& & &
+$H_1:p_a > p_b$&\posacas\\\hline
+\multirow{3}{2.5cm}{$H_0:\sigma_1^2=\sigma_2^2$\\ Cas independent}&
+\multirow{3}{3cm}{Poblacions normals.}&\multirow{3}{3cm}{Dues m.a.s.\ independents de mides $n_1$ i $n_2$}
+&$H_1:\sigma_1^2\not =\sigma_2^2$&\posacas\\\cline{4-5} & & & 
+$H_1:\sigma_1^2 <\sigma_2^2$&\posacas\\\cline{4-5} & & &
+$H_1:\sigma_1^2 >\sigma_2^2$&\posacas\\\hline
+%\multirow{3}{2.5cm}{/$H_0:\sigma_1^2=\sigma_2^2/$\\ Cas dependent}& 
+%\multirow{3}{3cm}{Poblacions normals.}&\multirow{3}{3cm}{Dues m.a.s.\ dependents de mida $n$}&
+%$H_1:\sigma_1^2\not =\sigma_2^2/$&\posacas\\\cline{4-5} & & &
+%$H_1:\sigma_1^2 <\sigma_2^2$&\posacas\\\cline{4-5} & & &
+%/$H_1:\sigma_1^2 >\sigma_2^2/$&\posacas\\\hline
+\end{tabular}
+\begin{itemize}
+\item[(1)] $\sigma_d$ es la desviación típica de la variable 
+$D=X_1 -X_2$.
+\end{itemize}
+\end{center}
+
+
+\setcounter{cas}{0}
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\hspace*{-1.5cm}\begin{tabular}{|>{\small}c@{}|c@{\hspace*{-4ex}}|>{$\scriptstyle}c<{$}@{}|
+@{}>{$\scriptstyle}c<{$}|@{}>{$\scriptstyle}c<{$}@{\hspace*{-1ex}}|}
+\hline
+\multicolumn{5}{|c|} {\bf Detalles de la maceta}\\ 
+\hline
+Caso&Estadístico&\mbox{Regió
+crítica}&\mbox{Interval confiança}&\mbox{$p$-valor}\\\hline\hline
+\posacas&\multirow{3}{2.5cm}{$Z=
+\frac{\overline{X}_1-\overline{X}_2}{\widetilde{S}}$\\ és  $N(0,1)$\\  \vegeu{a}}& \{Z\leq
+-z_{1-\frac{\alpha}{2}}\}\cup \{Z \geq z_{1-\frac{\alpha}{2}}\}&
+\left]\overline{X}_1 -\overline{X}_2
+-z_{1-\frac{\alpha}{2}}\widetilde{S},
+\overline{X}_1 -\overline{X}_2
++z_{1-\frac{\alpha}{2}}\widetilde{S}\right[ & 2P(Z \geq |z|)\\
+\cline{1-1}\cline{3-5}\posacas & &\{Z\leq z_{\alpha}\}&
+\left]-\infty,
+\overline{X}_1 -\overline{X}_2
+-z_{\alpha}\widetilde{S}\right[ & P(Z \leq z)\\
+\cline{1-1}\cline{3-5}
+\posacas & &\{Z\geq z_{1-\alpha}\}&\left]
+\overline{X}_1 -\overline{X}_2
+-z_{1-\alpha}\widetilde{S},+\infty\right[ & P(Z\geq z)\\\hline

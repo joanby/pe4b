@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.5)  17 DEC 2020 21:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.5)  17 DEC 2020 21:05
 entering extended mode
-**./TaulaContrastDuesMostres.tex
-(TaulaContrastDuesMostres.tex
+**./TablaContrasteUnaMuestra.tex
+(TablaContrasteUnaMuestra.tex
 LaTeX2e <2020-10-01> patch level 2
 L3 programming layer <2020-10-27> xparse <2020-03-03>
 ("C:\Program Files\MiKTeX\tex/latex/base\article.cls"
@@ -348,28 +348,28 @@ File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
 \l__kernel_color_stack_int=\count285
 \l__pdf_internal_box=\box54
 )
-(TaulaContrastDuesMostres.aux)
-\openout1 = `TaulaContrastDuesMostres.aux'.
+(TablaContrasteUnaMuestra.aux)
+\openout1 = `TablaContrasteUnaMuestra.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Info: Redefining \l on input line 23.
-LaTeX Info: Redefining \L on input line 23.
-Package hyperref Info: Link coloring OFF on input line 23.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Info: Redefining \l on input line 24.
+LaTeX Info: Redefining \L on input line 24.
+Package hyperref Info: Link coloring OFF on input line 24.
 
 ("C:\Program Files\MiKTeX\tex/latex/hyperref\nameref.sty"
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
@@ -383,12 +383,12 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count286
 )
-LaTeX Info: Redefining \ref on input line 23.
-LaTeX Info: Redefining \pageref on input line 23.
-LaTeX Info: Redefining \nameref on input line 23.
- (TaulaContrastDuesMostres.out) (TaulaContrastDuesMostres.out)
+LaTeX Info: Redefining \ref on input line 24.
+LaTeX Info: Redefining \pageref on input line 24.
+LaTeX Info: Redefining \nameref on input line 24.
+ (TablaContrasteUnaMuestra.out) (TablaContrasteUnaMuestra.out)
 \@outlinefile=\write3
-\openout3 = `TaulaContrastDuesMostres.out'.
+\openout3 = `TablaContrasteUnaMuestra.out'.
 
 \c@lstlisting=\count287
 
@@ -402,15 +402,15 @@ LaTeX Info: Redefining \nameref on input line 23.
 * hratio: 1:1
 * vratio: 1:1
 * modes: 
-* h-part:(L,W,R)=(93.75183pt, 426.79134pt, 93.75183pt)
-* v-part:(T,H,B)=(134.297pt, 526.37598pt, 134.29701pt)
+* h-part:(L,W,R)=(79.52545pt, 455.24408pt, 79.52547pt)
+* v-part:(T,H,B)=(120.07062pt, 554.82874pt, 120.07063pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
-* \textwidth=426.79134pt
-* \textheight=526.37598pt
-* \oddsidemargin=21.48184pt
-* \evensidemargin=21.48184pt
-* \topmargin=25.02701pt
+* \textwidth=455.24408pt
+* \textheight=554.82874pt
+* \oddsidemargin=7.25546pt
+* \evensidemargin=7.25546pt
+* \topmargin=10.80063pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=10.0pt
@@ -430,82 +430,70 @@ LaTeX Info: Redefining \nameref on input line 23.
 
 \c@cas=\count288
 \c@aux=\count289
-LaTeX Font Info:    Trying to load font information for U+msa on input line 47.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 45.
 
 ("C:\Program Files\MiKTeX\tex/latex/amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 47.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 45.
 
 
 ("C:\Program Files\MiKTeX\tex/latex/amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+wasy on input line 47
+LaTeX Font Info:    Trying to load font information for U+wasy on input line 45
 .
 
 (C:\Users\uib\AppData\Roaming\MiKTeX\tex/latex/wasysym\uwasy.fd
 File: uwasy.fd 2020/01/19 v2.4 Wasy-2 symbol font definitions
-)
-Overfull \vbox (1.09995pt too high) detected at line 82
- []
-
-
-Overfull \vbox (1.09995pt too high) detected at line 87
- []
-
-
-Overfull \vbox (1.09995pt too high) detected at line 93
- []
-
-[1
+) [1
 
 {C:/Users/uib/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
-Overfull \vbox (2.0567pt too high) detected at line 217
+Overfull \hbox (13.96623pt too wide) in paragraph at lines 103--181
+ [] 
  []
 
-
-Overfull \hbox (67.74452pt too wide) in paragraph at lines 144--277
- | [] 
- []
-
-[2] [3] [4] (TaulaContrastDuesMostres.aux)
-Package rerunfilecheck Info: File `TaulaContrastDuesMostres.out' has not change
+[2] [3] (TablaContrasteUnaMuestra.aux)
+Package rerunfilecheck Info: File `TablaContrasteUnaMuestra.out' has not change
 d.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 8715 strings out of 479799
- 126151 string characters out of 2879571
- 499178 words of memory out of 3000000
- 25556 multiletter control sequences out of 15000+200000
- 545838 words of font info for 61 fonts, out of 3000000 for 9000
+ 8725 strings out of 479799
+ 126251 string characters out of 2879571
+ 469184 words of memory out of 3000000
+ 25559 multiletter control sequences out of 15000+200000
+ 549141 words of font info for 70 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 66i,18n,72p,267b,491s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\uib\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm08
+ 66i,15n,72p,267b,405s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\uib\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx08
 00.pk> <C:\Users\uib\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ec
-rm0900.pk> <C:\Users\uib\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
-0\ecbx0900.pk> <C:\Users\uib\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/d
-pi600\ecbx1000.pk> <C:\Users\uib\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/
-ec/dpi600\tcrm1000.pk> <C:\Users\uib\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
-pen/ec/dpi600\ecrm1000.pk> <C:\Users\uib\AppData\Local\MiKTeX\fonts/pk/ljfour/j
-knappen/ec/dpi600\eccc1000.pk><C:/Program Files/MiKTeX/fonts/type1/public/amsfo
-nts/cm/cmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cmextra/
-cmex7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C
-:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Program Fil
-es/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX/fon
-ts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX/fonts/type1/publ
-ic/amsfonts/cm/cmmi9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/c
-m/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C
-:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program File
-s/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/
-amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmsy5.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:
-/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
-Output written on TaulaContrastDuesMostres.pdf (4 pages, 221022 bytes).
+rm0800.pk> <C:\Users\uib\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
+0\ecrm0600.pk> <C:\Users\uib\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/d
+pi600\ecbx0900.pk> <C:\Users\uib\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/
+ec/dpi600\ecrm0900.pk> <C:\Users\uib\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
+pen/ec/dpi600\ecbx1000.pk> <C:\Users\uib\AppData\Local\MiKTeX\fonts/pk/ljfour/j
+knappen/ec/dpi600\tcrm1000.pk> <C:\Users\uib\AppData\Local\MiKTeX\fonts/pk/ljfo
+ur/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\uib\AppData\Local\MiKTeX\fonts/pk/
+ljfour/jknappen/ec/dpi600\eccc1000.pk><C:/Program Files/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/
+cmextra/cmex7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi1
+0.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Pro
+gram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/Mi
+KTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX/fonts/ty
+pe1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr
+5.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Prog
+ram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKT
+eX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1
+/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsf
+onts/cm/cmsy5.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6
+.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Prog
+ram Files/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Fil
+es/MiKTeX/fonts/type1/public/amsfonts/symbols/msam7.pfb>
+Output written on TablaContrasteUnaMuestra.pdf (3 pages, 213911 bytes).
 PDF statistics:
- 272 PDF objects out of 1000 (max. 8388607)
+ 254 PDF objects out of 1000 (max. 8388607)
  5 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

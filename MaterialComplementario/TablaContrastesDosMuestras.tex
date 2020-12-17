@@ -34,105 +34,103 @@
 
 
 \begin{center}
-\textsc{Matemàtiques II dels graus de Biologia i Bioquímica.\\[0.5ex]  Taules de contrastos d'hipòtesi més usuals II: Dues mostres}
+\textsc{Tablas de contrastes de hipótesis más usuales II: dos muestras.}
 \end{center}
 \vspace*{2cm}
 
-\noindent En aquest document recollim els contrastos d'hipòtesis paramètrics més usuals per a dues mostres  que es poden portar a terme ``a mà.'' Per a cada contrast donam: les condicions, l'estadístic
-de contrast, la regió crítica, 
-l'interval de confian\c ca i el p-valor.
+\noindent En este documento recogemos los contrastes de hipótesis paramétricos más usuales para dos muestras  que se pueden llevar a cabo ``a mano.'' Para cada contraste damos: las condiciones, el estadístico
+de contraste, la región crítica, el intervalo de confianza y el p-valor.
 
-En la definició dels l'estadístics hem emprat la notacions següents:
+En la definición de los el estadísticos hemos usado las notaciones siguientes:
 \begin{itemize}
-\item  $Z$: {Distribució normal estàndard $N(0,1)$.} 
-\item $t_n$: {Distribució
-$t$ de Student amb $n$ graus de llibertat.} 
-\item $\chi_n^2$: {Distribució
-khi-quadrat amb $n$ graus de llibertat.} 
-\item $F_{n_1,n_2}$: {Distribució $F$ de
-Fisher  amb $n_1$ i $n_2$ graus de llibertat.}
-\item $X_\alpha$: Indica l'$\alpha$-quantil de la variable aleatòria $X$, és a dir (si $X$ és contínua, que és sempre el cas en aquest document), el valor on la
-funció de distribució de $X$ val $\alpha$: $P(X\leq X_\alpha
+\item  $Z$: {Distribución normal estándard $N(0,1)$.} 
+\item $t_n$: {Distribución
+$t$ de Student con $n$ grados de libertad.} 
+\item $\chi_n^2$: {Distribución
+khi-cuadrado con $n$ grados de libertad.} 
+\item $F_{n_1,n_2}$: {Distribución $F$ de
+Fisher  con $n_1$ y $n_2$ grados de libertad.}
+\item $X_\alpha$: Indica el $\alpha$-cuantil de la variable aleatoria $X$, es decir (si $X$ es continua, que es siempre el caso en este documento), el valor donde la
+función de distribución de $X$ vale $\alpha$: $P(X\leq X_\alpha
 )=\alpha$. 
 
-Recordau la traducció als quantils de les propietats de simetria de $Z$, $t$ i $F$:
+Recordemos las propiedades de simetría de $Z$, $t$ y $F$:
 \begin{itemize}
-\item Simetria de la normal: $z_\alpha = -z_{1-\alpha}.$
-\item Simetria de la $t$ de Student: $t_{n,\alpha} = -t_{n,1-\alpha}.$
-\item Permutació dels graus de llibertat de la $F$ de Fisher: $F_{n_1,n_2,\alpha}=\frac{1}{F_{n_2,n_1,1-\alpha}}.$
+\item Simetría de la normal: $z_\alpha = -z_{1-\alpha}.$
+\item Simetría de la $t$ de Student: $t_{n,\alpha} = -t_{n,1-\alpha}.$
+\item Permutación de los grados de libertad de la $F$ de Fisher: $F_{n_1,n_2,\alpha}=\frac{1}{F_{n_2,n_1,1-\alpha}}.$
 \end{itemize}
 \end{itemize}
-Els contrastos paramètrics amb R els estudiam a la lliçó 23 del manual. 
 
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.3}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
-\multicolumn{5}{|c|} {\bf Tipus de contrast i condicions}\\ 
+\multicolumn{5}{|c|} {\bf Tipo de contraste y condiciones}\\ 
 \hline
-Hip.\ nu\l.la &Condicions&Mostra&
-Hip.\ alt.&Cas\\
+Hip.\ nula &condiciones&Muestra&
+Hip.\ alt.&Caso\\
 \hline\hline
-\multirow{9}{2.5 cm}{$H_0:\mu_1 =\mu_2$\\ Cas independent}&\multirow{3}{3 cm}{$\sigma_1$ i $\sigma_2$ conegudes. Poblacions normals o $n_1$ i $n_2$ grans.} &
-\multirow{3}{3 cm}{Dues m.a.s.\ independents de mides $n_1$ i $n_2$}&
+\multirow{9}{2.5 cm}{$H_0:\mu_1 =\mu_2$\\ Caso independiente}&\multirow{3}{3.5 cm}{$\sigma_1$ y $\sigma_2$ conocidas. Poblaciones normales o $n_1$ y $n_2$ grandes.} &
+\multirow{3}{3 cm}{Dos m.a.s.\ independientes de tamaños $n_1$ y $n_2$}&
 $H_1:\mu_1\not =\mu_2$&  
 \posacas\\\cline{4-5} & & & $H_1:\mu_1<\mu_2$&\posacas\\\cline{4-5}
- & & &$H_1:\mu_1>\mu_2$&\posacas\\\cline{2-5} & \multirow{3}{3cm}{$\sigma_1$ i $\sigma_2$ desconegudes i $\sigma_1 =\sigma_2$.\\ 
- Poblacions normals o $n_1$ i $n_2$ grans.}&
- \multirow{3}{3cm}{Dues m.a.s.\ independents de mides $n_1$ i $n_2$}&
+ & & &$H_1:\mu_1>\mu_2$&\posacas\\\cline{2-5} & \multirow{3}{3.5cm}{$\sigma_1$ y $\sigma_2$ desconocidas y $\sigma_1 =\sigma_2$.\\ 
+ Poblaciones normales o $n_1$ y $n_2$ grandes}&
+ \multirow{3}{3cm}{Dos m.a.s.\ independientes de tamaños $n_1$ y $n_2$}&
  $H_1:\mu_1\not =\mu_2$&\posacas\\\cline{4-5}
  & & & $H_1:\mu_1<\mu_2$&\posacas\\\cline{4-5}
- & & & $H_1:\mu_1>\mu_2$&\posacas\\\cline{2-5} & \multirow{3}{3 cm}{$\sigma_1$ i $\sigma_2$ desconegudes i $\sigma_1 \neq\sigma_2$.\\ 
- Poblacions normals o $n_1$ i $n_2$ grans.}&\multirow{3}{3cm}{Dues m.a.s.\ independents de mides $n_1$ i $n_2$}&
+ & & & $H_1:\mu_1>\mu_2$&\posacas\\\cline{2-5} & \multirow{3}{3.5cm}{$\sigma_1$ y $\sigma_2$ desconocidas y $\sigma_1 \neq\sigma_2$.\\ 
+ Poblaciones normales o $n_1$ y $n_2$ grandes.}&\multirow{3}{3.5cm}{Dos m.a.s.\ independientes de tamaños $n_1$ y $n_2$}&
 $H_1:\mu\not =\mu_2$&\posacas\\\cline{4-5} & & &$H_1:\mu_1<\mu_2$&\posacas\\
 \cline{4-5} & & &$H_1:\mu_1>\mu_2$&\posacas\\\hline
-\multirow{9}{2.5 cm}{$H_0:\mu_1 =\mu_2$\\ Cas dependent}&
-\multirow{3}{3 cm}{Dues poblacions normals dependents o $n$ gran.
+\multirow{9}{2.5 cm}{$H_0:\mu_1 =\mu_2$\\ Caso dependiente}&
+\multirow{3}{3.5 cm}{Dos Poblaciones normales dependientes o $n$ grande.
 $\sigma_d$
-coneguda.${}^{\mathrm{(1)}}$}
-&\hspace*{-3.2ex}\multirow{3}{2.5cm}{Dues m.a.s.\ dependents de mida $n$}&
+conocida.${}^{\mathrm{(1)}}$}
+&\hspace*{-3.2ex}\multirow{3}{2.5cm}{Dos m.a.s.\ dependientes de tamaño $n$}&
 $H_1:\mu_1\not =\mu_2$&\posacas\\\cline{4-5} & & & $H_1:\mu_1 <\mu_2$&\posacas\\
 \cline{4-5} & & & $H_1:\mu_1 >\mu_2$&\posacas\\\cline{2-5} & 
-\multirow{3}{3cm}{Dues poblacions normals dependents. $\sigma_d$
-desconeguda.${}^{\mathrm{(1)}}$}&
-\hspace*{-3.2ex}\multirow{3}{2.5cm}{Dues m.a.s.\ dependents de~mida $n$}&$H_1:\mu_1\not
+\multirow{3}{3.5cm}{Dos Poblaciones normales dependientes. $\sigma_d$
+desconocida.${}^{\mathrm{(1)}}$}&
+\hspace*{-3.2ex}\multirow{3}{2.5cm}{Dos m.a.s.\ dependientes de~tamaño $n$}&$H_1:\mu_1\not
 =\mu_2$& 
 \posacas\\\cline{4-5} & & &$H_1:\mu_1< \mu_2$&\posacas
 \\\cline{4-5} & & &$H_1:\mu_1>\mu_2$&\posacas
 \\\cline{2-5} & 
-\multirow{3}{3cm}{Dues poblacions dependents, $n$ gran. $\sigma_d$
-desconeguda.${}^{\mathrm{(1)}}$}&
-\hspace*{-3.2ex}\multirow{3}{2.5cm}{Dues m.a.s.\ dependents de mida $n$}&$H_1:\mu_1\not
+\multirow{3}{3.5cm}{Dos Poblaciones dependientes, $n$ grande. $\sigma_d$
+desconocida.${}^{\mathrm{(1)}}$}&
+\hspace*{-3.2ex}\multirow{3}{2.5cm}{Dos m.a.s.\ dependientes de tamaño $n$}&$H_1:\mu_1\not
 =\mu_2$& 
 \posacas\\\cline{4-5} & & &$H_1:\mu_1< \mu_2$&\posacas
 \\\cline{4-5} & & &$H_1:\mu_1>\mu_2$&\posacas\\
 \hline
-\multirow{3}{2.5cm}{$H_0:p_1 =p_2$\\ Cas independent}&
-\multirow{3}{3cm}{Poblacions Bernoulli, $n_1$ i $n_2$ grans, molts èxits i fracasos.}&
-\multirow{3}{3cm}{Dues m.a.s.\ independents de mides $n_1$ i $n_2$}&
+\multirow{3}{2.5cm}{$H_0:p_1 =p_2$\\ Caso independiente}&
+\multirow{3}{3.5cm}{Poblaciones Bernoulli, $n_1$ y $n_2$ grandes, muchos éxitos y fracasos.}&
+\multirow{3}{3cm}{Dos m.a.s.\ independientes de tamaños $n_1$ y $n_2$}&
 $H_1 :p_1\not =p_2$&\posacas\\\cline{4-5} & & &
 $H_1 :p_1 <p_2$&\posacas\\\cline{4-5}& & &
 $H_1 :p_1 >p_2$&\posacas\\\hline
-\multirow{3}{2.5cm}{$H_0:p_a=p_d$\\ Cas dependent}&
-\multirow{3}{3cm}{Poblacions Bernoulli, $n_1$ i $n_2$ grans, molts casos discordants.}&
-\multirow{3}{3cm}{Dues m.a.s.\ dependents de mida $n$}&
+\multirow{3}{2.5cm}{$H_0:p_a=p_d$\\ Casodependiente}&
+\multirow{3}{3.5cm}{Poblaciones Bernoulli, $n_1$ y $n_2$ grandes, muchos casos discordants.}&
+\multirow{3}{3cm}{Dos m.a.s.\ dependientes de tamaño $n$}&
 $H_1:p_a\not = p_b$&\posacas\\\cline{4-5} & & &
 $H_1:p_a < p_b$&\posacas\\\cline{4-5}& & &
 $H_1:p_a > p_b$&\posacas\\\hline
-\multirow{3}{2.5cm}{$H_0:\sigma_1^2=\sigma_2^2$\\ Cas independent}&
-\multirow{3}{3cm}{Poblacions normals.}&\multirow{3}{3cm}{Dues m.a.s.\ independents de mides $n_1$ i $n_2$}
+\multirow{3}{2.5cm}{$H_0:\sigma_1^2=\sigma_2^2$\\ Caso independiente}&
+\multirow{3}{3.5cm}{Poblaciones normales.}&\multirow{3}{3cm}{Dos m.a.s.\ independientes de tamaños $n_1$ y $n_2$}
 &$H_1:\sigma_1^2\not =\sigma_2^2$&\posacas\\\cline{4-5} & & & 
 $H_1:\sigma_1^2 <\sigma_2^2$&\posacas\\\cline{4-5} & & &
 $H_1:\sigma_1^2 >\sigma_2^2$&\posacas\\\hline
-%\multirow{3}{2.5cm}{$H_0:\sigma_1^2=\sigma_2^2$\\ Cas dependent}& 
-%\multirow{3}{3cm}{Poblacions normals.}&\multirow{3}{3cm}{Dues m.a.s.\ dependents de mida $n$}&
+%\multirow{3}{2.5cm}{$H_0:\sigma_1^2=\sigma_2^2$\\ Casodependiente}& 
+%\multirow{3}{3cm}{Poblaciones normales.}&\multirow{3}{3cm}{Dos m.a.s.\ dependientes de tamaño $n$}&
 %$H_1:\sigma_1^2\not =\sigma_2^2$&\posacas\\\cline{4-5} & & &
 %$H_1:\sigma_1^2 <\sigma_2^2$&\posacas\\\cline{4-5} & & &
 %$H_1:\sigma_1^2 >\sigma_2^2$&\posacas\\\hline
 \end{tabular}
 \begin{itemize}
-\item[(1)] $\sigma_d$ és la desviació típica de la variable 
+\item[(1)] $\sigma_d$ es la desviación típica de la variable 
 $D=X_1 -X_2$.
 \end{itemize}
 \end{center}
@@ -144,12 +142,12 @@ $D=X_1 -X_2$.
 \hspace*{-1.5cm}\begin{tabular}{|>{\small}c@{}|c@{\hspace*{-4ex}}|>{$\scriptstyle}c<{$}@{}|
 @{}>{$\scriptstyle}c<{$}|@{}>{$\scriptstyle}c<{$}@{\hspace*{-1ex}}|}
 \hline
-\multicolumn{5}{|c|} {\bf Detalls del test}\\ 
+\multicolumn{5}{|c|} {\bf Detalles del test}\\ 
 \hline
-Cas&Estadístic&\mbox{Regió
-crítica}&\mbox{Interval confian\c ca}&\mbox{$p$-valor}\\\hline\hline
+Caso&Estadístico&\mbox{Región
+crítica}&\mbox{Intervalo confianza}&\mbox{$p$-valor}\\\hline\hline
 \posacas&\multirow{3}{2.5cm}{$Z=
-\frac{\overline{X}_1-\overline{X}_2}{\widetilde{S}}$\\ és  $N(0,1)$\\  \vegeu{a}}& \{Z\leq
+\frac{\overline{X}_1-\overline{X}_2}{\widetilde{S}}$\\ es  $N(0,1)$\\  \vegeu{a}}& \{Z\leq
 -z_{1-\frac{\alpha}{2}}\}\cup \{Z \geq z_{1-\frac{\alpha}{2}}\}&
 \left]\overline{X}_1 -\overline{X}_2
 -z_{1-\frac{\alpha}{2}}\widetilde{S},
@@ -164,7 +162,7 @@ crítica}&\mbox{Interval confian\c ca}&\mbox{$p$-valor}\\\hline\hline
 \overline{X}_1 -\overline{X}_2
 -z_{1-\alpha}\widetilde{S},+\infty\right[ & P(Z\geq z)\\\hline
 \posacas&\multirow{3}{2.5cm}{$T=\frac{\overline{X}_1 -\overline{X}_2}{
-\widetilde{S}_{1,2}}$\\ és $t_{m}$\\ \vegeu{b,c}}&\{T\leq -t_{m,1-\frac{\alpha}{2}}\}\cup \{T\geq
+\widetilde{S}_{1,2}}$\\ es $t_{m}$\\ \vegeu{b,c}}&\{T\leq -t_{m,1-\frac{\alpha}{2}}\}\cup \{T\geq
 t_{m,1-\frac{\alpha}{2}}\}&\left]\overline{X}_1 -\overline{X}_2
 -t_{m,1-\frac{\alpha}{2}} \widetilde{S}_{1,2},\overline{X}_1 -\overline{X}_2
 +t_{m,1-\frac{\alpha}{2}}
@@ -174,7 +172,7 @@ t_{m,\alpha}\}&\left]-\infty,\overline{X}_1 -\overline{X}_2 -t_{m,\alpha}
 t_{m,1-\alpha}\}&\left]\overline{X}_1 -\overline{X}_2
 -t_{m,1-\alpha}\widetilde{S}_{1,2},+\infty\right[ & P(t_m \geq T)\\\hline\posacas&
 \multirow{3}{2cm}{$
-T=\frac{\overline{X}_1-\overline{X}_2}{\widetilde{S}_{1,2}}$\\ és
+T=\frac{\overline{X}_1-\overline{X}_2}{\widetilde{S}_{1,2}}$\\ es
 $t_f$\\ \vegeu{d,e}}&\{T\leq
 -t_{f,1-\frac{\alpha}{2}}\} \cup \{T\geq t_{f,1-\frac{\alpha}{2}}\}&\left]\overline{X}_1
 -\overline{X}_2 -t_{f,1-\frac{\alpha}{2}}\widetilde{S}_{1,2},\overline{X}_1
@@ -184,7 +182,7 @@ $t_f$\\ \vegeu{d,e}}&\{T\leq
 -t_{f,\alpha}\widetilde{S}_{1,2}\right[ & P(t_f \leq T)\\
 \cline{1-1}\cline{3-5}\posacas & & \{T\geq t_{f,1-\alpha}\} & \left]\overline{X}_1
 -\overline{X}_2 -t_{f,1-\alpha}\widetilde{S}_{1,2},+\infty\right[ & P(t_f \geq T)\\\hline
-\posacas&\multirow{3}{2.5cm}{$Z=\frac{\overline{D}}{\frac{\sigma_{D}}{\sqrt{n}}}$\\ és $N(0,1)$ \\\vegeu{f}}&
+\posacas&\multirow{3}{2.5cm}{$Z=\frac{\overline{D}}{\frac{\sigma_{D}}{\sqrt{n}}}$\\ es $N(0,1)$ \\\vegeu{f}}&
 \{Z\leq -z_{1-\frac{\alpha}{2}}\} \cup \{Z\geq z_{1-\frac{\alpha}{2}}\}&
 \left]\overline{D} -z_{1-\frac{\alpha}{2}}\frac{\sigma_D}{\sqrt{n}},
 \overline{D}+z_{1-\frac{\alpha}{2}}\frac{\sigma_D}{\sqrt{n}}\right[ & 2P(Z \geq |z|)\\\cline{1-1}
@@ -193,7 +191,7 @@ $t_f$\\ \vegeu{d,e}}&\{T\leq
 \cline{3-5}\posacas & &\{Z\geq z_{1-\alpha}\} &\left]\overline{D} -z_{1-\alpha}
 \frac{\sigma_D}{\sqrt{n}},+\infty\right[ & P(Z\geq z)\\\hline
 \posacas&\multirow{3}{2.5cm}{$T=\frac{\overline{D}}{\frac{\widetilde{S}_D}{\sqrt{n}}}$\\
-és $t_{n-1}$\\ \vegeu{f}}&\{T\leq -t_{n-1,1-\frac{\alpha}{2}}\}\cup
+es $t_{n-1}$\\ \vegeu{f}}&\{T\leq -t_{n-1,1-\frac{\alpha}{2}}\}\cup
 \{T\geq t_{n-1,1-\frac{\alpha}{2}}\}&\left]\overline{D} -
 t_{n-1,1-\frac{\alpha}{2}}\frac{\widetilde{S}_D}{\sqrt{n}},
 \overline{D}+t_{n-1,1-\frac{\alpha}{2}}\frac{\widetilde{S}_D}{\sqrt{n}}\right[  & 2P(t_{n-1}>|T|)
@@ -203,7 +201,7 @@ t_{n-1,1-\frac{\alpha}{2}}\frac{\widetilde{S}_D}{\sqrt{n}},
 \cline{3-5}\posacas & &\{T\geq t_{n-1,1-\alpha}\}&\left]\overline{D} -t_{n-1,1-\alpha}
 \frac{\sigma_D}{\sqrt{n}},+\infty\right[ & P(t_{n-1} \geq T)\\\hline
 \posacas&\multirow{3}{2.5cm}{$Z=\frac{\overline{D}}{\frac{\widetilde{S}_D}{\sqrt{n}}}$\\
-és $N(0,1)$\\ \vegeu{f}}&\{Z\leq -z_{1-\frac{\alpha}{2}}\}\cup
+es $N(0,1)$\\ \vegeu{f}}&\{Z\leq -z_{1-\frac{\alpha}{2}}\}\cup
 \{Z\geq z_{1-\frac{\alpha}{2}}\}&\left]\overline{D} -
 z_{1-\frac{\alpha}{2}}\frac{\widetilde{S}_D}{\sqrt{n}},
 \overline{D}+z_{1-\frac{\alpha}{2}}\frac{\widetilde{S}_D}{\sqrt{n}}\right[ & 2 P(Z\geq |z|)
@@ -214,7 +212,7 @@ z_{1-\frac{\alpha}{2}}\frac{\widetilde{S}_D}{\sqrt{n}},
 \frac{\sigma_D}{\sqrt{n}},+\infty\right[ & P(Z\geq z)\\\hline
 \posacas&\multirow{3}{3.5cm}{$Z=\frac{\widehat{p}_1 -\widehat{p}_2}{
 \sqrt{\widehat{p}\widehat{q} 
-\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}$\\ és $N(0,1)$\\ \vegeu{g,h}}
+\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}$\\ es $N(0,1)$\\ \vegeu{g,h}}
 &\{Z\leq -z_{1-\frac{\alpha}{2}}\}\cup
 \{Z\geq z_{1-\frac{\alpha}{2}}\}&
 \begin{tabular}[c]{>{$\scriptstyle}c<{$}}
@@ -233,7 +231,7 @@ z_{1-\frac{\alpha}{2}}\frac{\widetilde{S}_D}{\sqrt{n}},
 \widehat{q}\left(\frac{1}{n_1}+\frac{1}{n_2}\right)},+\infty\right[ & P(Z\geq z)
 \\\hline
 \posacas&\multirow{3}{3cm}{$Z=\frac{\widehat{p}_{1\bullet}-
-\widehat{p}_{\bullet 1}}{\sqrt{\frac{b+d}{n^2}}} $\\ és $N(0,1)$ \\ \vegeu{i}}&
+\widehat{p}_{\bullet 1}}{\sqrt{\frac{b+d}{n^2}}} $\\ es $N(0,1)$ \\ \vegeu{i}}&
 \{Z\leq -z_{1-\frac{\alpha}{2}}\}\cup
 \{Z\geq z_{1-\frac{\alpha}{2}}\}&
 \begin{tabular}[c]{>{$\scriptstyle}c<{$}}
@@ -250,7 +248,7 @@ z_{1-\frac{\alpha}{2}}\frac{\widetilde{S}_D}{\sqrt{n}},
 \sqrt{\frac{b+d}{n^2}},+\infty\right[ & P(Z\geq z)\\\hline
 \posacas&\multirow{3}{3cm}{$
 F =\frac{\widetilde{S}_1^2}{\widetilde{S}_2^2}$\\
-és $F_{n_1-1,n_2-1}$}&\begin{tabular}{>{$\scriptstyle}l<{$}}
+es $F_{n_1-1,n_2-1}$}&\begin{tabular}{>{$\scriptstyle}l<{$}}
 \{F\leq F_{n_1 -1,n_2 -1,\frac{\alpha}{2}}\}\cup\\ \qquad\qquad
 \{F\geq F_{n_1 -1,n_2 -1,1-\frac{\alpha}{2}}\}
 \end{tabular}&
@@ -296,39 +294,36 @@ P(F_{n_1-1,n_2-1}\geq F)\}
 \item[(e)] $f=\displaystyle\left\lfloor\frac{ \left( \frac{\widetilde{S}_1^2}{n_1}+\frac{\widetilde{S}_2^2}{n_2}\right)^2}%
 { \frac{1}{n_1-1}\left(\frac{\widetilde{S}_1^2}{n_1}\right)^2+\frac{1}{n_2-1}\left(\frac{\widetilde{S}_2^2}{n_2}\right)^2}\right\rfloor -2$
 
-\item[(f)] $\overline{D}$ i $\widetilde{S}_D$ són la mitjana i la desvació típica mostrals de $D=X_1-X_2$
+\item[(f)] $\overline{D}$ y $\widetilde{S}_D$ son la media y la desviación típica muestrales de $D=X_1-X_2$
 
 \item[(g)] $\widehat{p}=\dfrac{n_1 \widehat{p}_1 +n_2\widehat{p}_2}{n_1 +n_2}$
 
 \item[(h)] $\widehat{q}=1-\widehat{p}$
 
-\item[(i)] Per fer el contrast, hem de construir la taula següent:
+\item[(i)] Para hacer el contraste, hemos de construir la tabla siguiente:
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|}
 \cline{3-6}
-\multicolumn{1}{c}{} & \multicolumn{1}{c|}{} &\multicolumn{4}{c|}{Mostra després}\\
+\multicolumn{1}{c}{} & \multicolumn{1}{c|}{} &\multicolumn{4}{c|}{Muestra después}\\
 \cline{3-6} 
-\multicolumn{1}{c}{}& \multicolumn{1}{c|}{} & Èxit & Fracàs & Freqüència & Proporció 
+\multicolumn{1}{c}{}& \multicolumn{1}{c|}{} & éxito & Fracaso & Frecuencia & Proporción 
 \\\cline{1-6}\cline{2-6}
-\multirow{4}{2cm}{Mostra abans}&
- Èxit & $a$ & $b$ & $a+b$ & $\widehat{p}_{1\bullet}=
+\multirow{4}{2cm}{Muestra antes}&
+ éxito & $a$ & $b$ & $a+b$ & $\widehat{p}_{1\bullet}=
 \frac{a+b}{n}$\\\cline{2-6}
-& Fracàs & $d$ & $c$ & $c+d$ & $\widehat{p}_{2\bullet}=
+& Fracaso & $d$ & $c$ & $c+d$ & $\widehat{p}_{2\bullet}=
 \frac{c+d}{n}$\\
 \cline{2-6}\cline{2-6}
-& Freqüència & $a+d$ & $b+c$ & $n$ & \\\cline{2-6}
-& Proporció & $\widehat{p}_{\bullet 1}=\frac{a+d}{n}$ & 
+& Frecuencia & $a+d$ & $b+c$ & $n$ & \\\cline{2-6}
+& Proporción & $\widehat{p}_{\bullet 1}=\frac{a+d}{n}$ & 
 $\widehat{p}_{\bullet 2}=\frac{b+c}{n}$ & & $1$ \\\cline{1-6}
 \end{tabular}
 \end{center}
-Aleshores, l'estadístic de contrast també es pot escriure 
+Entonces, el estadístico de contraste se puede escribir como:
 $$Z=\frac{\frac{b}{n}-\frac{d}{n}}{\sqrt{\frac{b+d}{n^2}}}$$
 %\item\right[(a)\left] $S_1 =\sum\limits_{i=1}^n x_{1,i}^2$, on $x_{1,i}=X_{1,i}-\overline{X}_1$
 %\item\right[(b)\left] $S_2 =\sum\limits_{i=1}^n x_{2,i}^2$, on $x_{2,i}=X_{2,i}-\overline{X}_2$
 %\item\right[(c)\left] $S_3 =\sum\limits_{i=1}^n x_{1,i} x_{2,i}$
 \end{itemize}
-
-
-
 
 \end{document}

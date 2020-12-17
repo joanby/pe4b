@@ -32,65 +32,64 @@
 \newcommand{\posacas}{\addtocounter{cas}{1}{\bf \thecas}}
 
 \begin{center}
-\textsc{Matemàtiques II dels graus de Biologia i Bioquímica.\\[0.5ex]  Taules de contrastos d'hipòtesi més usuals I: Una mostra}
+\textsc{Tablas de contrastes de hipótesis más usuales I: una muestra}
 \end{center}
 \vspace*{2cm}
 
-\noindent En aquest document recollim els contrastos d'hipòtesis paramètrics més usuals per a una mostra  que es poden portar a terme ``a mà.'' Per a cada contrast donam: les condicions, l'estadístic
-de contrast, la regió crítica, 
-l'interval de confian\c ca i el p-valor.
+\noindent En este documento recogemos los contrastes de hipótesis paramétricos más usuales para una muestra  que se pueden llevar a cabo ``a mano.'' Para cada contraste damos: las condiciones, el estadístico
+de contraste, la región crítica, 
+el intervalo de confianza y el p-valor.
 
-En la definició dels l'estadístics hem emprat la notacions següents:
+En la definición de los estadísticos hemos usado las notaciones siguientes:
 \begin{itemize}
-\item  $Z$: {Distribució normal estàndard $N(0,1)$.} 
-\item $t_n$: {Distribució
-$t$ de Student amb $n$ graus de llibertat.} 
-\item $\chi_n^2$: {Distribució
-khi-quadrat amb $n$ graus de llibertat.} 
-\item $X_\alpha$: Indica l'$\alpha$-quantil de la variable aleatòria $X$, és a dir (si $X$ és contínua, que és sempre el cas en aquest document), el valor on la
-funció de distribució de $X$ val $\alpha$: $P(X\leq X_\alpha
+\item  $Z$: {Distribución normal estándard $N(0,1)$.} 
+\item $t_n$: {Distribución
+$t$ de Student con $n$ grados de libertad.} 
+\item $\chi_n^2$: {Distribución
+khi-cuadrado con $n$ grados de libertad.} 
+\item $X_\alpha$: Indica el $\alpha$-cuantil de la variable aleatoria $X$, es decir (si $X$ es continua, que es siempre el caso en este documento), el valor donde la función
+de distribución de $X_\alpha$ vale $\alpha$: $P(X\leq X_\alpha
 )=\alpha$. 
 
-Recordau la traducció als quantils de les propietats de simetria de $Z$ i $t$:
+Recordemos las propiedades de simetría de $Z$ y   $t$:
 \begin{itemize}
-\item Simetria de la normal: $z_\alpha = -z_{1-\alpha}.$
-\item Simetria de la $t$ de Student: $t_{n,\alpha} = -t_{n,1-\alpha}.$
+\item Simetría de la normal: $z_\alpha = -z_{1-\alpha}.$
+\item Simetría de la $t$ de Student: $t_{n,\alpha} = -t_{n,1-\alpha}.$
 \end{itemize}
 \end{itemize}
-Els contrastos paramètrics amb R els estudiam a la lliçó 23 del manual. 
 
 \begin{center}
 \renewcommand{\arraystretch}{1.7}
 \begin{tabular}{|c@{\hspace{1mm}}|c|c|c|c@{\hspace{1mm}}|}
 \hline
-\multicolumn{5}{|c|} {\bf Tipus de contrast i condicions}\\ 
+\multicolumn{5}{|c|} {\bf Tipo de contraste y condiciones}\\ 
 \hline
-Hipòtesi nu\l.la &Condicions&Mostra&\multicolumn{1}{m{2 cm}}{
-Hipòtesi alternativa}&\multicolumn{1}{|c|}{Cas}\\
+Hipótesis nula & Condiciones &Muestra&\multicolumn{1}{m{2 cm}}{
+Hipótesis alternativa}&\multicolumn{1}{|c|}{Caso}\\
 \hline\hline
-\multirow{9}{2.5 cm}{$H_0:\mu =\mu_0$} &\multirow{3}{3 cm}{Població normal o $n$ gran.\\ $\sigma$ coneguda. } &  
-\multirow{3}{3cm}{$n$ observacions independents.} & 
+\multirow{9}{2.5 cm}{$H_0:\mu =\mu_0$} &\multirow{3}{3 cm}{Población normal o $n$ grande.\\ $\sigma$ conocida. } &  
+\multirow{3}{3cm}{$n$ observaciones independientes.} & 
 $H_1:\mu\not =\mu_0$&
 \posacas \\\cline{4-5} & & &$H_1:\mu <\mu_0$&\posacas \\\cline{4-5}
- & & &$H_1:\mu>\mu_0$&\posacas\\\cline{2-5} & \multirow{3}{3 cm}{Població normal.\\ $\sigma$ desconeguda.
-} & \multirow{3}{3cm}{$n$ observacions independents.}&
+ & & &$H_1:\mu>\mu_0$&\posacas\\\cline{2-5} & \multirow{3}{3 cm}{Población normal.\\ $\sigma$ desconocida.
+} & \multirow{3}{3cm}{$n$ observaciones independientes.}&
 $H_1:\mu\not =\mu_0$&\posacas \\\cline{4-5} & & &$H_1:\mu <\mu_0$&\posacas\\
 \cline{4-5} & & & $H_1:\mu>\mu_0$&\posacas
-\\\cline{2-5} & \multirow{3}{3 cm}{Població qualsevol.\\ $\sigma$ desconeguda.\\
- $n$ gran. } & \multirow{3}{3cm}{$n$ observacions independents.}&
+\\\cline{2-5} & \multirow{3}{3 cm}{Población cualquiera.\\ $\sigma$ desconocida.\\
+ $n$ grande. } & \multirow{3}{3cm}{$n$ observaciones independientes.}&
 $H_1:\mu\not =\mu_0$&\posacas \\\cline{4-5} & & &$H_1:\mu <\mu_0$&\posacas\\
 \cline{4-5} & & & $H_1:\mu>\mu_0$&\posacas
 \\\hline
 \multirow{3}{2.5cm}{$H_0:p=p_0$}&\multirow{3}{3cm}{%
-Població Bernoulli.
+Población Bernoulli.
 $n\geq 100$, $n\widehat{p}\geq 10$, $n(1-\widehat{p})\geq 10$
-}&\multirow{3}{3cm}{$n$ observacions independents.}
+}&\multirow{3}{3cm}{$n$ observaciones independientes.}
 &$H_1:p\not =p_0$&\posacas\\\cline{4-5} & & &
 $H_1:p <p_0$&\posacas\\\cline{4-5}& & &
 $H_1:p >p_0$&\posacas\\\hline
 \multirow{3}{2.5cm}{$H_0:\sigma^2 =\sigma_0^2$}&
-\multirow{3}{3cm}{Població Normal.\\ $\mu$ desconeguda}&
-\multirow{3}{3cm}{$n$ observacions independents.}&
+\multirow{3}{3cm}{Población Normal.\\ $\mu$ desconocida}&
+\multirow{3}{3cm}{$n$ observaciones independientes.}&
 $H_1:\sigma^2\not =\sigma_0^2$&\posacas\\\cline{4-5} & & &
 $H_1:\sigma^2 <\sigma_0^2$&\posacas\\\cline{4-5} & & &
 $H_1:\sigma^2 >\sigma_0^2$&\posacas\\\hline
@@ -104,12 +103,12 @@ $H_1:\sigma^2 >\sigma_0^2$&\posacas\\\hline
 \begin{tabular}{|>{\small}c@{}|c@{}|>{$\scriptstyle}c<{$}@{}|
 @{}>{$\scriptstyle}c<{$}|@{}>{$\scriptstyle}c<{$}|}
 \hline
-\multicolumn{5}{|c|} {\bf Detalls del test}\\ 
+\multicolumn{5}{|c|} {\bf Detalles del contraste}\\ 
 \hline
-Cas&Estadístic&\multicolumn{1}{c|}{Regió
-crítica}&\multicolumn{1}{c|}{Interval confian\c ca}&\multicolumn{1}{c|}{$p$-valor}\\\hline\hline
+Caso&Estadístico&\multicolumn{1}{c|}{Región
+crítica}&\multicolumn{1}{c|}{Intervalo confianza}&\multicolumn{1}{c|}{$p$-valor}\\\hline\hline
 \posacas&\multirow{3}{2cm}{$Z=
-\frac{\overline{X}-\mu_0}{\frac{\sigma}{\sqrt{n}}}$\\  és $N(0,1)$}&\{Z\leq
+\frac{\overline{X}-\mu_0}{\frac{\sigma}{\sqrt{n}}}$\\  es $N(0,1)$}&\{Z\leq
 -z_{1-\frac{\alpha}{2}}\}\cup \{Z \geq z_{1-\frac{\alpha}{2}}\}&
 \left]\overline{X}-z_{1-\frac{\alpha}{2}}\cdot \frac{\sigma}{\sqrt{n}},
 \overline{X}+z_{1-\frac{\alpha}{2}}\cdot \frac{\sigma}{\sqrt{n}}\right[ & 2 P(Z\geq |z|) \\
@@ -121,7 +120,7 @@ crítica}&\multicolumn{1}{c|}{Interval confian\c ca}&\multicolumn{1}{c|}{$p$-val
 \overline{X}-z_{1-\alpha}\cdot \frac{\sigma}{\sqrt{n}},\infty\right[& P(Z \geq z)\\\hline
 \posacas&\multirow{3}{2cm}{$T=
 \frac{\overline{X}-\mu_0}{\frac{\tilde{S}}{\sqrt{n}}}$\\
-és $t_{n-1}$}&\{T\leq
+es $t_{n-1}$}&\{T\leq
 -t_{n-1,1-\frac{\alpha}{2}}\}\cup \{T \geq t_{n-1,1-\frac{\alpha}{2}}\}&
 \left]\overline{X}-t_{n-1,1-\frac{\alpha}{2}}\cdot \frac{\tilde{S}}{\sqrt{n}},
 \overline{X}+t_{n-1,1-\frac{\alpha}{2}}\cdot 
@@ -136,7 +135,7 @@ crítica}&\multicolumn{1}{c|}{Interval confian\c ca}&\multicolumn{1}{c|}{$p$-val
 \\\hline
 \posacas&\multirow{3}{2cm}{$Z =
 \frac{\overline{X}-\mu_0}{\frac{\tilde{S}}{\sqrt{n}}}$\\
-és aprox.\ $N(0,1)$}&\{Z\leq
+es aprox.\ $N(0,1)$}&\{Z\leq
 -z_{1-\frac{\alpha}{2}}\}\cup \{Z \geq z_{1-\frac{\alpha}{2}}\}&
 \left]\overline{X}-z_{1-\frac{\alpha}{2}}\cdot \frac{\tilde{S}}{\sqrt{n}},
 \overline{X}+z_{1-\frac{\alpha}{2}}\cdot
@@ -151,7 +150,7 @@ crítica}&\multicolumn{1}{c|}{Interval confian\c ca}&\multicolumn{1}{c|}{$p$-val
 \\\hline
 \posacas
 &\multirow{3}{2.5cm}{
-$Z=\frac{\widehat{p}-p_0}{\sqrt{\frac{p_0 (1-p_0)}{n}}}$\\ és $N(0,1)$} &\{Z\leq z_{\frac{\alpha}{2}}\}\cup 
+$Z=\frac{\widehat{p}-p_0}{\sqrt{\frac{p_0 (1-p_0)}{n}}}$\\ es $N(0,1)$} &\{Z\leq z_{\frac{\alpha}{2}}\}\cup 
 \{Z\geq z_{1-\frac{\alpha}{2}}\} &\left]\widehat{p}+z_{\frac{\alpha}{2}}\sqrt{
 \frac{\widehat{p}(1-\widehat{p})}{n}},\widehat{p}+z_{1-\frac{\alpha}{2}}\sqrt{
 \frac{\widehat{p}(1-\widehat{p})}{n}}\right[
@@ -165,10 +164,10 @@ $Z=\frac{\widehat{p}-p_0}{\sqrt{\frac{p_0 (1-p_0)}{n}}}$\\ és $N(0,1)$} &\{Z\le
 \frac{\widehat{p}(1-\widehat{p})}{n}},\infty\right[ & P(Z \geq z) \\
 \hline
 \posacas\footnotemark
- &\multirow{3}{2.5cm}{${\chi^2} =\frac{(n-1)\tilde{S}^2}{\sigma_0^2}$\\ és $\chi^2_{n-1}$}&\{\chi^2\leq
+ &\multirow{3}{2.5cm}{${\chi^2} =\frac{(n-1)\tilde{S}^2}{\sigma_0^2}/$\\ es $\chi^2_{n-1}/$}&\{\chi^2\leq
 \chi_{n-1,\frac{\alpha}{2}}^2\}\cup
 \{\chi^2\geq \chi_{n-1,1-\frac{\alpha}{2}}^2\}&
-\left]\frac{(n-1)\tilde{S}^2}{\chi_{n-1,1-\frac{\alpha}{2}}^2},
+\left]\frac{(n-1)\tilde{S}2}{\chi_{n-1,1-\frac{\alpha}{2}}^2},
 \frac{(n-1)\tilde{S}^2}{\chi_{n-1,\frac{\alpha}{2}}^2}\right[ & 
 \begin{tabular}[c]{>{$\scriptstyle}c<{$}}
 2\min\{P(\chi_{n-1}^2 \leq \chi^2), \\
@@ -177,12 +176,12 @@ P(\chi_{n-1}^2\geq \chi^2\}
 \cline{1-1}\cline{3-5}\posacas & & \{\chi^2\leq \chi_{n-1,\alpha}^2\} &
 \left]0,\frac{(n-1)\tilde{S}^2}{\chi_{n-1,\alpha}^2}\right[ & P(\chi_{n-1}^2 \leq \chi^2)\\
 \cline{1-1}\cline{3-5}\posacas & & \{\chi^2\geq \chi_{n-1,1-\alpha}^2\} &
-\left]\frac{(n-1)\tilde{S}^2}{\chi_{n-1,1-\alpha}^2},\infty\right[ & P(\chi_{n-1}^2\geq \chi^2)\\\hline
+\left]\frac{(n-1)\tilde{S}2}{\chi_{n-1,1-\alpha}^2},\infty\right[ & P(\chi_{n-1}^2\geq \chi^2)\\\hline
 \end{tabular}
 \end{center}
 
-\footnotetext{En aquest cas (\textbf{XIII}),  si $\mu$ és coneguda, es pot emprar l'estadístic
+\footnotetext{En este caso (\textbf{XIII}),  si $\mu$ es conocida, se puede usar el estadístico
 $\chi^2 =\frac{\sum\limits_{i=1}^n {(X_i -\mu)}^2}{\sigma_0^2}$, 
-que tendrà distribució $\chi_n^2$.}
+que tendrá distribución $\chi_n^2$.}
 
 \end{document}
