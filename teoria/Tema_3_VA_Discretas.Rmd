@@ -169,7 +169,7 @@ En el caso discreto lo más habitual es que $X(\Omega)=D_X$.
 
 <l class="prop">Propiedades básicas de la función de probabilidad </l>
 
-Sea $X$ una v.a. discreta $X:\Omega:\to\mathbb{R}$ con dominio $D_X$. Su función de probabilidad $P_{X}$ verifica las siguientes propiedades:
+Sea $X$ una v.a. discreta $X:\Omega \to\mathbb{R}$ con dominio $D_X$. Su función de probabilidad $P_{X}$ verifica las siguientes propiedades:
 
 * $0\leq P_{X}(x)\leq 1$ para todo $x\in\mathbb{R},$
 * $\sum\limits_{x\in D_X} P_{X}(x)=1.$
@@ -199,7 +199,7 @@ Sea $X$ una v.a. y $F_{X}$ su función
 de distribución:
 
 * $0\leq F_X(x)\leq 1$.
-* Si $X$ es discreta  entonces $F_X(x)=P(X\leq x)= \displaystyle \sum_{x'\in D_X | x'\leq x} P_X(x).$
+* Si $X$ es discreta  entonces $F_X(x)=P(X\leq x)= \displaystyle \sum_{x'\in D_X | x'\leq x} P_X(x').$
 * $P(X>x)=1-P(X\leq x)=1-F_{X}(x).$
 * Sea a y b tales que $a<b$, $P(a<X\leq b)=P(X\leq b)-P(X\leq a)=F_{X}(b)-F_{X}(a).$
  
@@ -286,7 +286,7 @@ se la denomina desviación típica  o estándar de $X$.
 <l class="prop">Propiedad </l>
 
 * Si $X$ es una v.a. discreta con función de probabilidad $P_X$ su varianza es 
- $$\sigma_{X}^2=Var(X)=E((X-E(X))^2)=\sum_{x}(x-E(X))^2\dot  P_{X}(x).$$
+ $$\sigma_{X}^2=Var(X)=E((X-E(X))^2)=\sum_{x}(x-E(X))^2 \cdot  P_{X}(x).$$
 * Sea $X$ una v.a.
  $$Var(X)=E(X^2)-(E(X))^2=\sum_{x} x^2\cdot  P_{X}(X)-(E(X))^2$$
   
