@@ -44,9 +44,10 @@ P_{XY}: \mathbb{R}^2 & \longrightarrow [0,1]\\
 $$
 
 
-Llamaremnos dominio de la variable conjunta a $D_{XY}=\{(x,y)\in \mathbb{R}^2 | P_{XY}(x,y)=P(X= x,\ Y= y)>0}$.
+Llamaremos dominio de la variable conjunta a 
+$$D_{XY}=\{(x,y)\in \mathbb{R}^2 | P_{XY}(x,y)=P(X= x,\ Y= y)>0\}.$$
 
-Es¡decir es el conjunto de valores posibles que toma la v.a. $(X,Y)$.
+Es decir es el conjunto de valores posibles que toma la v.a. $(X,Y)$.
 
 ## Función de probabilidad conjunta
 
@@ -121,6 +122,7 @@ Podemos representar  $P_{XY}$ como una tabla bidimensional donde en la primera f
 $$E(X)=\sum_{x\in D_X} x\cdot P(X=x)$$
 $$E(Y)=\sum_{x\in D_Y} y\cdot P(Y=y)$$
 $$Var(X)=E(X-E(X))=E(X)-E(X)^2;\quad Var(Y)=E(Y-E(Y))=E(Y)-E(Y)^2$$
+
 ## Distibuciones condicionales
 
 
@@ -131,7 +133,7 @@ $$P(Y=y|X=x)=\frac{P_{XY}(x,y)}{P_X(x)}=\frac{P(X=x,Y=y)}{P(X=x)}$$
 
 $$E(X/Y=y)=\sum_{x\in D_X} x\cdot P(X=x/Y=y)$$
 
-$$E(Y/X=x)=\sum_{y\in D_Y} y\cdot P(Y=y|X=x))$$
+$$E(Y/X=x)=\sum_{y\in D_Y} y\cdot P(Y=y|X=x)$$
 
 
 
