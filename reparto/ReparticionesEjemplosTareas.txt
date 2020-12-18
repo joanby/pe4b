@@ -65,7 +65,7 @@ Tema 5: Distribuciones continuas. Ricardo
 Tema 6: Muestreo. Arnau
   - Ejemplos:
     - Lectura 75: ejemplos de estimación de la media: página 250, ejemplo 6.1.
-    - Lectura 76: ejemplos de estandarización y cálculo de probabilidades:  página 252,                           ejemplo 6.2 y página 253, ejemplo 6.3, hacerlo como preámbulo al TCL.
+    - Lectura 76: ejemplos de estandarización y cálculo de probabilidades:  página 252,                   ejemplo 6.2 y página 253, ejemplo 6.3, hacerlo como preámbulo                           al TCL.
     - Lectura 78: simulación de Montecarlo, usar el shiny del curso nuestro de probabilidad,                      hacerlo en Camtasia comentando la simulación, ver enlace 
                   https://ricuib.github.io/Enlaces/
     - Lectura 80: ejemplos de estimación de proporciones: páginas 267-268, ejemplo 6-7 y 6-8.

@@ -1,0 +1,67 @@
+---
+title: "Ejemplo de estimación de la media"
+author: "Ricardo Alberich, Juan Gabriel Gomila y Arnau Mir"
+date: ""
+output:
+  beamer_presentation:
+#    colortheme: rose
+    incremental: yes
+    theme: Warsaw
+    toc: no
+  slidy_presentation:
+    incremental: yes
+header-includes: \usepackage{amsmath,color,array,booktabs,algorithm2e}
+                 \newcommand\blue[1]{\textcolor{blue}{#1}}
+                 \newcommand\red[1]{\textcolor{red}{#1}}
+
+                 
+              
+---
+
+
+# Ejemplo estandarización y cálculo de probabilidades
+
+## Planteamiento del problema
+Supongamos que, con base en datos históricos, creemos que el porcentaje del aumento del salario anual para los directores ejecutivos de todas las corporaciones de tamaño medio se distribuyen normalmente con una media del $12.2\%$ y una desviación estándar del $3.6\%.$
+\pause
+\medskip
+
+Se elige una muestra aleatoria simple de $10$ directores ejecutivos y nos piden cuál es la probabilidad que el porcentaje medio del aumento de los directores de dicha muestra sea mayor del $14.4\%$.
+
+## Solución
+Sean $X_1,X_2,X_3,X_4,X_5,X_6,X_7,X_8,X_9,X_{10}$ la m.a.s. que nos da los $10$ aumentos de los $10$ directores ejecutivos elegidos.
+\pause
+
+Sea 
+$$
+\overline{X}=\frac{X_1+X_2+X_3+X_4+X_5+X_6+X_7+X_8+X_9+X_{10}}{10},
+$$ 
+la variable aleatoria que nos da el aumento medio de los $10$ directores de la muestra.
+
+\pause
+Como la distribución de cada variable aleatoria $X_i$, $i=1,2,\ldots,10$ es $X_i=N(\mu=12.2,\sigma=3.6)$, la distribución de $\overline{X}$ será:
+\pause
+$$
+\overline{X}=N\left(\mu_{\overline{X}}=\mu_X=12.2,\sigma_{\overline{X}}=\frac{\sigma_X}{\sqrt{10}}=\frac{3.6}{\sqrt{10}}=`r round(3.6/sqrt(10),4)`\right)
+$$
+
+## Solución
+
+Nos piden $P(\overline{X}>14.4)$:
+\pause
+$$
+P(\overline{X}>14.4)=P\left(Z >\frac{14.4-12.2}{`r round(3.6/sqrt(10),4)`}\right)=P(Z > `r round((14.4-12)/(3.6/sqrt(10)),4)`)=
+`r pnorm(14.4,12,3.6/sqrt(10),lower.tail = FALSE)`.
+$$
+
+
+## Solución
+```{r,echo=FALSE}
+x=seq(from=8,to=16,by=0.01)
+plot(x,dnorm(x,12,3.6/sqrt(10)),type="l",xlab="incremento medio",ylab="densidad")
+x2=seq(from=14.4,to=16,by=0.01)
+y2=dnorm(x2,12,3.6/sqrt(10))
+lines(x2,y2,type="h",col="red")
+text(14.4,-0.005,"14.4")
+```
+

@@ -1,0 +1,120 @@
+---
+title: "Ejemplo de estimación de la media"
+author: "Ricardo Alberich, Juan Gabriel Gomila y Arnau Mir"
+date: ""
+output:
+  beamer_presentation:
+#    colortheme: rose
+    incremental: yes
+    theme: Warsaw
+    toc: no
+  slidy_presentation:
+    incremental: yes
+header-includes: \usepackage{amsmath,color,array,booktabs,algorithm2e}
+                 \newcommand\blue[1]{\textcolor{blue}{#1}}
+                 \newcommand\red[1]{\textcolor{red}{#1}}
+
+                 
+              
+---
+
+
+# Ejemplo de estimación de la media
+
+## Construcción de la muestra
+
+Consideramos un supervisor de una empresa que tiene seis empleados bajo su responsabilidad, cuyos años de experiencia son
+$$2,\  4,\  6,\  6,\  7,\  8.$$
+\pause
+Consideremos una muestra aleatoria simple de tamaño 2, es decir, supongamos que elegimos 2 empleados aleatoriamente. Como se pueden repetir, tenemos en total $6\cdot 6=36$ casos:
+
+
+## Construcción de la muestra
+```{r,echo=FALSE}
+muestras=expand.grid(rep(list(c(2,4,6,6,7,8)), 2))
+names(muestras)=c("Empleado 1","Empleado 2")
+data.frame(muestras[1:15,],row.names = paste("muestra",1:15))
+```
+## Construcción de la muestra
+```{r,echo=FALSE}
+data.frame(muestras[16:30,],row.names = paste("muestra",16:30))
+```
+
+## Construcción de la muestra
+```{r,echo=FALSE}
+data.frame(muestras[31:36,],row.names = paste("muestra",31:36))
+```
+
+## La variable aleatoria media
+Para calcular la distribución de la variable aleatoria media $\overline{X}=\frac{X_1+X_2}{2}$, hemos de calcular la media de las muestras anteriores:
+\pause
+```{r,echo=FALSE}
+medias=apply(muestras,1,mean)
+muestras.con.medias=cbind(muestras,medias)
+data.frame(muestras.con.medias[1:12,],row.names = paste("muestra",1:12))
+```
+
+## La variable aleatoria media
+```{r,echo=FALSE}
+data.frame(muestras.con.medias[13:27,],row.names = paste("muestra",13:27))
+```
+
+## La variable aleatoria media
+```{r,echo=FALSE}
+data.frame(muestras.con.medias[28:36,],row.names = paste("muestra",28:36))
+```
+
+## Función de masa de la variable aleatoria media
+La función de masa de la variable aleatoria media es la siguiente:
+\pause
+```{r,echo=FALSE}
+f.masa=prop.table(table(medias))
+round(f.masa[1:7],3)
+round(f.masa[8:length(f.masa)],3)
+```
+## La variable aleatoria media
+```{r,echo=FALSE}
+plot(unique(medias),f.masa,type="h",xlab="medias",ylab="Función de masa")
+```
+
+## La variable aleatoria media
+```{r,echo=FALSE}
+plot(unique(medias),cumsum(f.masa),type="s",xlab="medias",ylab="Función de distribución")
+```
+
+## Esperanza de la variable aleatoria media
+El valor medio de la variable aleatoria media será:
+\pause
+```{r,echo=FALSE}
+valores.media=unique(medias)
+mu.medias=sum(valores.media*f.masa)
+varianza.medias = sum(valores.media^2*f.masa)-mu.medias^2
+años.experiencia=c(2,4,6,6,7,8)
+```
+
+\begin{align*}
+\mu_{\overline{X}}= & \frac{1}{`r length(valores.media)`}(`r valores.media[1]`\cdot `r round(f.masa[1],3)`+`r valores.media[2]`\cdot `r round(f.masa[2],3)`+`r valores.media[3]`\cdot `r round(f.masa[3],3)`+`r valores.media[4]`\cdot `r round(f.masa[4],3)`+`r valores.media[5]`\cdot `r round(f.masa[5],3)`\\ & +`r valores.media[6]`\cdot `r round(f.masa[6],3)`+`r valores.media[7]`\cdot `r round(f.masa[7],3)`+`r valores.media[8]`\cdot `r round(f.masa[8],3)`+`r valores.media[9]`\cdot `r round(f.masa[9],3)`\\ & +`r valores.media[10]`\cdot `r round(f.masa[10],3)`+`r valores.media[11]`\cdot `r round(f.masa[11],3)`)=`r mu.medias`.
+\end{align*}
+\pause
+Dicho valor coincide con el valor medio de los años de experiencias de los empleados tal como vimos en teoría:
+$$
+\mu_X = \frac{2+4+6+6+7+8}{6}=`r mean(c(2,4,6,6,7,8))`.
+$$
+
+## Varianza de la variable aleatoria media
+La varianza de la variable aleatoria media será:
+\pause
+\begin{align*}
+\sigma^2_{\overline{X}}= & \frac{1}{`r length(valores.media)`}(`r valores.media[1]`^2\cdot `r round(f.masa[1],3)`+`r valores.media[2]`^2\cdot `r round(f.masa[2],3)`+`r valores.media[3]`^2\cdot `r round(f.masa[3],3)`+`r valores.media[4]`^2\cdot `r round(f.masa[4],3)`\\ & +`r valores.media[5]`^2\cdot `r round(f.masa[5],3)` +`r valores.media[6]`^2\cdot `r round(f.masa[6],3)`+`r valores.media[7]`^2\cdot `r round(f.masa[7],3)`+`r valores.media[8]`^2\cdot `r round(f.masa[8],3)`\\ & +`r valores.media[9]`^2\cdot `r round(f.masa[9],3)` +`r valores.media[10]`^2\cdot `r round(f.masa[10],3)`+`r valores.media[11]`^2\cdot `r round(f.masa[11],3)`)-`r mu.medias`^2=`r varianza.medias`.
+\end{align*}
+\pause
+La varianza de la variable $X$ que nos da los años de experiencia de un empleado vale:
+$$
+\sigma^2_X = \frac{2^2+4^2+6^2+6^2+7^2+8^2}{6}-`r mean(años.experiencia)`^2=`r var(años.experiencia)*5/6`.
+$$
+\pause
+Se verifica tal como vimos en teoría que:
+$$
+\sigma^2_{\overline{X}}=`r varianza.medias`=\frac{\sigma^2_X}{2}=\frac{`r var(años.experiencia)*5/6`}{2}.
+$$
+
