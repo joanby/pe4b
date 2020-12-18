@@ -294,7 +294,6 @@ se la denomina desviación típica  o estándar de $X$.
 
 ## Propiedades de la varianza
  
- 
 <l class="prop"> **Propiedades de la varianza**</l>
 
 * $Var(X)\geq 0$.
