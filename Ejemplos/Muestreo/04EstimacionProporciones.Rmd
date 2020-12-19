@@ -1,0 +1,102 @@
+---
+title: "Ejemplos estimación de proporciones"
+author: "Ricardo Alberich, Juan Gabriel Gomila y Arnau Mir"
+date: ""
+output:
+  beamer_presentation:
+#    colortheme: rose
+    incremental: yes
+    theme: Warsaw
+    toc: no
+  slidy_presentation:
+    incremental: yes
+header-includes: \usepackage{amsmath,color,array,booktabs,algorithm2e}
+                 \newcommand\blue[1]{\textcolor{blue}{#1}}
+                 \newcommand\red[1]{\textcolor{red}{#1}}
+
+                 
+              
+---
+
+
+# Ejemplos estimación de proporciones
+
+## Planteamiento del problema
+
+Se tomó una \blue{muestra aleatoria} de 270 hogares de una gran población de hogares más antiguos para \red{estimar la proporción de hogares con cableado inseguro}. 
+\pause
+
+Si, de hecho, el $20\%$ de las viviendas tiene cableado inseguro, ¿cuál es la probabilidad de que la \red{proporción de la muestra} esté entre el $16\%$ y $24\%$?
+
+## Solución
+Consideremos la variable aleatoria \red{proporción muestral} $\hat{P}_X$ que nos da la \red{proporción de hogares con cableado inseguro.}
+\pause
+
+Nos dicen que el \blue{tamaño de la muestra} vale $n=270$ y la proporción $p$ de hograres inseguros es $p=0.2$.
+
+Sabemos que la \red{esperanza} y la \red{desviación típica} de $\hat{P}_X$ vale 
+$$
+\mu =p=0.2,\ \sigma =\sqrt{\frac{p\cdot (1-p)}{n}}=\sqrt{\frac{0.2\cdot 0.8}{270}}=`r sqrt(0.2*0.8/270)`. 
+$$
+
+
+## Solución
+Usando el \red{Teorema Central del Límite}, como el tamaño $n$ de la muestra es grande, podemos aproximar la variable \red{proporción muestral}  $\hat{P}_X$ es aproximadamente una normal de parámetros $N(\mu =0.2,\sigma =`r sqrt(0.2*0.8/270)`)$.
+\pause
+
+Nos piden:
+\begin{align*}
+P(0.16\leq \hat{P}_X\leq 0.24)\approx  & P\left(\frac{0.16-0.2}{`r sqrt(0.2*0.8/270)`}\leq Z\leq \frac{0.24-0.2}{`r sqrt(0.2*0.8/270)`}\right)\\ = & P(`r (0.16-0.2)/sqrt(0.2*0.8/270)`\leq Z\leq `r (0.24-0.2)/sqrt(0.2*0.8/270)`)\\ = & P(Z\leq `r (0.24-0.2)/sqrt(0.2*0.8/270)`)-P(Z\leq `r (0.16-0.2)/sqrt(0.2*0.8/270)`)\\ = & `r pnorm(0.24,0.2,sqrt(0.2*0.8/270))`-`r pnorm(0.16,0.2,sqrt(0.2*0.8/270))`=`r pnorm(0.24,0.2,sqrt(0.2*0.8/270))-pnorm(0.16,0.2,sqrt(0.2*0.8/270))`.
+\end{align*}
+
+## Solución
+```{r,echo=FALSE}
+x=seq(from=0,to=0.4,by=0.0001)
+plot(x,dnorm(x,0.2,sqrt(0.2*0.8/270)),type="l",xlab="proporción",ylab="densidad")
+x2=seq(from=0.16,to=0.24,by=0.0001)
+y2=dnorm(x2,0.2,sqrt(0.2*0.8/270))
+lines(x2,y2,type="h",col="red")
+points(0.16,0,col="red",cex=0.25,pch=19)
+points(0.24,0,col="red",cex=0.25,pch=19)
+text(0.16,-0.15,"0.16")
+text(0.24,-0.15,"0.24")
+```
+
+## Planteamiento del problema
+Se ha estimado que el $43\%$ de los \blue{graduados en administración de empresas} creen que un curso de ética empresarial es muy importante para impartir valores éticos a los estudiantes (David, Anderson y Lawrimore 1990). 
+\pause
+
+Encuentre la \red{probabilidad de que más de la mitad de una muestra aleatoria de 80 graduados en negocios} tenga esta creencia.
+
+
+## Solución
+Consideremos la variable aleatoria \red{proporción muestral} $\hat{P}_X$ que nos da la \red{proporción de graduados en empresariales} que creen que un curso de ética empresarial es muy importante para impartir valores éticos a los estudiantes.
+\pause
+
+Nos dicen que el \blue{tamaño de la muestra} vale $n=80$ y la proporción $p$ de estudiantes con la creencia anterior es $p=0.43$.
+
+Sabemos que la \red{esperanza} y la \red{desviación típica} de $\hat{P}_X$ vale 
+$$
+\mu =p=0.43,\ \sigma =\sqrt{\frac{p\cdot (1-p)}{n}}=\sqrt{\frac{0.43\cdot `r (1-0.43)`}{80}}=`r sqrt(0.43*(1-0.43)/80)`. 
+$$
+
+
+## Solución
+Usando el \red{Teorema Central del Límite}, como el tamaño $n$ de la muestra es grande, podemos aproximar la variable \red{proporción muestral}  $\hat{P}_X$ es aproximadamente una normal de parámetros $N(\mu =0.43,\sigma =`r sqrt(0.43*(1-0.43)/80)`)$.
+\pause
+
+Nos piden:
+\begin{align*}
+P(\hat{P}_X\geq 0.5)\approx  & P\left( Z\geq \frac{0.5-0.43}{`r sqrt(0.43*(1-0.43)/80)`}\right)= P(Z\geq `r (0.5-0.43)/sqrt(0.43*(1-0.43)/80)`)\\  = & `r pnorm(0.5,0.43,sqrt(0.43*(1-0.43)/80),lower.tail=FALSE)`
+\end{align*}
+
+## Solución
+```{r,echo=FALSE}
+x=seq(from=0,to=0.86,by=0.001)
+plot(x,dnorm(x,0.43,sqrt(0.43*(1-0.43)/80)),type="l",xlab="proporción",ylab="densidad")
+x2=seq(from=0.5,to=0.86,by=0.001)
+y2=dnorm(x2,0.43,sqrt(0.43*(1-0.43)/80))
+lines(x2,y2,type="h",col="red")
+points(0.5,0,col="red",cex=0.25,pch=19)
+text(0.5,-0.15,"0.5")
+```

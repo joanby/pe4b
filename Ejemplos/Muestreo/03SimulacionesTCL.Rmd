@@ -1,0 +1,76 @@
+---
+title: "Simulaciones Teorema Central del Límite"
+author: "Ricardo Alberich, Juan Gabriel Gomila y Arnau Mir"
+date: ""
+output:
+  beamer_presentation:
+#    colortheme: rose
+    incremental: yes
+    theme: Warsaw
+    toc: no
+  slidy_presentation:
+    incremental: yes
+header-includes: \usepackage{amsmath,color,array,booktabs,algorithm2e}
+                 \newcommand\blue[1]{\textcolor{blue}{#1}}
+                 \newcommand\red[1]{\textcolor{red}{#1}}
+
+                 
+              
+---
+
+
+# Simulaciones Teorema Central del Límite
+
+## Introducción
+Vamos a realizar unas simulaciones para comprobar el \red{Teorema Central del Límite}.
+
+\pause
+En general, vamos a hacer lo siguiente:
+
+## Introducción
+\begin{itemize}
+\item Consideraremos una variable $X$ de \blue{distribución conocida} de \red{media $\mu$} y \red{desviación estándar $\sigma$.}
+\pause
+
+\item Consideraremos una \red{muestra aleatoria simple} de $X$ de \red{tamaño $N$}:
+$$
+X_1,\ldots, X_N.
+$$
+\pause
+\item Consideramos la \red{variable aleatoria media} $\overline{X}=\frac{X_1+\cdots +X_N}{N}$ y calcularemos la media de los valores de cada muestra.
+\pause
+
+\item Repetiremos los dos pasos anteriores \red{$R$ veces.}
+\pause
+
+\item Mostraremos el \red{histograma} resultante junto con la \red{densidad de la distribución normal correspondiente $N\left(\mu,\frac{\sigma}{\sqrt{N}}\right)$}
+\end{itemize}
+
+## Distribución binomial $B(n,p)$
+En el caso en que \red{$X=B(n,p)$, $\mu =n\cdot p$ y $\sigma = \sqrt{n\cdot p\cdot (1-p)}$.}
+\pause
+
+Mostramos el gráfico para $p=0.5$, $n=25$, $N=100$ y $R=1000$ en adelante.
+\pause
+
+La \red{distribución normal} correspondiente será $N\left(\mu=n\cdot p=25\cdot 0.5=12.5,\sigma_{\overline{X}}=\frac{\sqrt{n\cdot p\cdot (1-p)}}{\sqrt{N}}=\frac{\sqrt{25\cdot 0.5\cdot 0.5}}{\sqrt{100}}=`r 5*0.5/10`\right)$
+
+## Distribución de Poison $Pois(\lambda)$
+En el caso en que \red{$X=Pois(\lambda)$, $\mu =\lambda$ y $\sigma = \sqrt{\lambda}$.}
+\pause
+
+Mostramos el gráfico para $\lambda =25$, $N=100$ y $R=1000$ en adelante.
+\pause
+
+La \red{distribución normal} correspondiente será $N\left(\mu=\lambda =25,\sigma_{\overline{X}}=\frac{\sqrt{\lambda}}{\sqrt{100}}=\frac{\sqrt{25}}{\sqrt{100}}= `r 5/10`\right)$
+
+
+## Distribución Uniforme $U(a,b)$
+En el caso en que \red{$X=U(a,b)$, $\mu =\frac{a+b}{2}$ y $\sigma = \frac{b-a}{\sqrt{12}}$.}
+\pause
+
+Mostramos el gráfico para $a=0$, $b=10$, $N=100$ y $R=1000$ en adelante.
+\pause
+
+La \red{distribución normal} correspondiente será $N\left(\mu=\frac{a+b}{2}=\frac{0+10}{2} =5,\sigma_{\overline{X}}=\frac{\frac{b-a}{\sqrt{12}}}{\sqrt{N}}=\frac{10-0}{\sqrt{1200}}= `r 10/sqrt(1200)`\right)$
+

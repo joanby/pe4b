@@ -1,5 +1,5 @@
 ---
-title: "Ejemplo de estimación de la media"
+title: "Ejemplo estandarización y cálculo de probabilidades"
 author: "Ricardo Alberich, Juan Gabriel Gomila y Arnau Mir"
 date: ""
 output:
@@ -22,11 +22,11 @@ header-includes: \usepackage{amsmath,color,array,booktabs,algorithm2e}
 # Ejemplo estandarización y cálculo de probabilidades
 
 ## Planteamiento del problema
-Supongamos que, con base en datos históricos, creemos que el porcentaje del aumento del salario anual para los directores ejecutivos de todas las corporaciones de tamaño medio se distribuyen normalmente con una media del $12.2\%$ y una desviación estándar del $3.6\%.$
+Supongamos que, con base en datos históricos, creemos que el \red{porcentaje del aumento del salario anual} para los directores ejecutivos de todas las corporaciones de tamaño medio se distribuyen \red{normalmente} con una \red{media del $12.2\%$} y una \red{desviación estándar del $3.6\%.$}
 \pause
 \medskip
 
-Se elige una muestra aleatoria simple de $10$ directores ejecutivos y nos piden cuál es la probabilidad que el porcentaje medio del aumento de los directores de dicha muestra sea mayor del $14.4\%$.
+Se elige una muestra \blue{aleatoria simple} de \red{$10$ directores ejecutivos} y nos piden cuál es la probabilidad que el porcentaje medio del aumento de los directores de dicha muestra sea \red{mayor del $14.4\%$.}
 
 ## Solución
 Sean $X_1,X_2,X_3,X_4,X_5,X_6,X_7,X_8,X_9,X_{10}$ la m.a.s. que nos da los $10$ aumentos de los $10$ directores ejecutivos elegidos.
@@ -36,10 +36,10 @@ Sea
 $$
 \overline{X}=\frac{X_1+X_2+X_3+X_4+X_5+X_6+X_7+X_8+X_9+X_{10}}{10},
 $$ 
-la variable aleatoria que nos da el aumento medio de los $10$ directores de la muestra.
+la variable aleatoria que nos da el \red{aumento medio de los $10$ directores de la muestra.}
 
 \pause
-Como la distribución de cada variable aleatoria $X_i$, $i=1,2,\ldots,10$ es $X_i=N(\mu=12.2,\sigma=3.6)$, la distribución de $\overline{X}$ será:
+Como la distribución de cada variable aleatoria $X_i$, $i=1,2,\ldots,10$ es $X_i=N(\mu=12.2,\sigma=3.6)$, la \red{distribución de $\overline{X}$} será:
 \pause
 $$
 \overline{X}=N\left(\mu_{\overline{X}}=\mu_X=12.2,\sigma_{\overline{X}}=\frac{\sigma_X}{\sqrt{10}}=\frac{3.6}{\sqrt{10}}=`r round(3.6/sqrt(10),4)`\right)
@@ -65,3 +65,52 @@ lines(x2,y2,type="h",col="red")
 text(14.4,-0.005,"14.4")
 ```
 
+## Planteamiento del problema
+Un fabricante de bujías dice que la \red{duración} de las mismas se distribuye según una \red{distribución normal} con una \red{media de 100000 km.} y una \red{desviación estándar de 6500 km.}
+\pause
+
+Se ha elegido una \blue{muestra de 16 bujías} y se ha verificado que tienen una \red{duración media de 94150 km.} Si la afirmación del fabricante fuese cierta, ¿cuál es la probabilidad de encontrar una muestra con una \red{duración media de 94150 km. o menos}?
+
+## Solución
+Sean $T_1,\ldots, T_{16}$ la \red{duración de las 16 bujías de la muestra.}
+\pause
+
+Sea $\overline{T}=\frac{T_1+\cdots +T_{16}}{16}$ la variable aleatoria que nos da la \red{duración media de una muestra de $16$ bujías.}
+\pause
+
+Como cada $T_i$ se distribuye como una distribución normal $N(\mu=100000,\sigma=6500)$, la distribución de la variable $\overline{T}$ será:
+\pause
+$$
+\overline{T}=N\left(\mu_{\overline{T}}=\mu =100000,\sigma_{\overline{T}}=\frac{\sigma}{\sqrt{16}}=\frac{6500}{4}=`r 6500/4`\right).
+$$
+
+## Solución
+```{r,echo=FALSE}
+options(scipen=999)
+```
+
+Nos piden:
+\pause
+\begin{align*}
+P(\overline{T}\leq 94150)= & P\left(Z\leq \frac{94150-100000}{`r 6500/4`}\right)=P(Z\leq `r (94150-100000)/(6500/4)`)\\ = & `r pnorm(94150,100000,6500/4)`.
+\end{align*}
+
+\pause
+
+Si la afirmación del fabricante fuese \red{cierta}, la probabilidad 
+de encontrar una muestra con una \red{duración media de $94150$ km. o menos} sería muy \red{improbable.}
+\pause
+
+Por tanto, tendríamos que ser bastante \red{escépticos} acerca de la afirmación del fabricante.
+
+
+## Solución
+```{r,echo=FALSE}
+x=seq(from=90000,to=110000,by=100)
+plot(x,dnorm(x,100000,6500/4),type="l",xlab="duración",ylab="densidad")
+x2=seq(from=90000,to=94000,by=100)
+y2=dnorm(x2,100000,6500/4)
+lines(x2,y2,type="h",col="red")
+points(94000,0,col="red",cex=1,pch=19)
+text(94000,-0.000005,"94000")
+```
