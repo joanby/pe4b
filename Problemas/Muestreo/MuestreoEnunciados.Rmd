@@ -1,0 +1,60 @@
+---
+title: "Problemas de Muestreo"
+author: ""
+date: ""
+output:
+  pdf_document: default
+              
+  html_document: default
+---
+
+# Estimación de la media muestral
+
+1. La vida útil de las bombillas producidas por un fabricante en particular tiene una media de 1200 horas y una desviación estándar de 400 horas. La distribución de la población es normal. Suponga que compra nueve bombillas, que pueden considerarse como una muestra aleatoria de la producción del fabricante.
+    a. ¿Cuál es la media de la vida media muestral?
+    a. ¿Cuál es la varianza de la media muestral?
+    a. ¿Cuál es el error estándar de la media muestral?
+    a. ¿Cuál es la probabilidad de que, en promedio, esas nueve bombillas tengan una vida útil de menos de 1050 horas?
+```{r,echo=FALSE}
+options(scipen=999)
+```
+    
+1. El precio medio de venta de los condominios para personas mayores en Green Valley durante un año fue de `r 215000*0.8` euros. La desviación estándar de la población fue de `r 25000*0.8` euros. Se obtuvo una muestra aleatoria de 100 nuevas unidades vendidas.
+    a. ¿Cuál es la probabilidad de que el precio medio de la muestra supere los `r 210000*0.8` euros?
+    a. ¿Cuál es la probabilidad  de que el precio medio de la muestra esté entre los `r 213000*0.8` euros y los `r 217000*0.8` euros?
+    a. ¿Cuál es la probabilidad  de que el precio medio de la muestra esté entre los `r 214000*0.8` euros y los `r 214000*0.8` euros?
+    a. Sin hacer los cálculos, indique en cuál de los siguientes rangos el precio de venta medio de la muestra es más probable que mienta:
+        * `r 213000*0.8` a `r 215000*0.8` euros; 
+        * `r 214000*0.8` a `r 216000*0.8` euros;
+        * `r 215000*0.8` a `r 217000*0.8` euros;
+        * `r 216000*0.8` a `r 218000*0.8` euros.
+1. El tiempo dedicado al estudio de los estudiantes en la semana anterior a los exámenes finales sigue una distribución normal con una desviación estándar de 8 horas. Se tomó una muestra aleatoria de cuatro estudiantes con el fin de estimar el tiempo medio de estudio de la población de todos los estudiantes.
+    a. ¿Cuál es la probabilidad de que la media de la muestra supere la media de la población en más de 2 horas?
+    a. ¿Cuál es la probabilidad de que la media de la muestra esté más de 3 horas por debajo de la media de la población?
+    a. ¿Cuál es la probabilidad de que la media muestral difiera de la media poblacional en más de 4 horas?
+    a. Suponga que se tomó una segunda muestra aleatoria (independiente) de 10 estudiantes. Sin hacer los cálculos, indique si las probabilidades en los incisos (a), (b) y (c) serían mayores, menores o iguales para la segunda muestra.
+
+# Estimación de la proporción
+
+4. En 1992, los canadienses votaron en un referéndum sobre una nueva constitución. En la provincia de Quebec, el 42,4% de los que votaron estaban a favor de la nueva constitución. Se tomó una muestra aleatoria de 100 votantes de la provincia.
+    a. ¿Cuál es la media de la distribución de la proporción muestral a favor de una nueva constitución?
+    a. ¿Cuál es la varianza de la proporción muestral?
+    a. ¿Cuál es el error estándar de la proporción muestral?
+    a. ¿Cuál es la probabilidad de que la proporción muestral sea superior a $0.5$?
+
+5. Una corporación recibe $120$ solicitudes para puestos de recién graduados universitarios en negocios. Suponiendo que estos solicitantes puedan verse como una muestra aleatoria de todos esos graduados, ¿cuál es la probabilidad de que entre el $35\%$ y el $45\%$ de ellos sean mujeres si el $40\%$ de todos los recién graduados universitarios en negocios son mujeres?
+
+6. Supongamos que el $50\%$ de los australianos adultos creen que Australia debería postularse para albergar la próxima Copa del Mundo de rugby. Calcule la probabilidad de que más del $56\%$ de una muestra aleatoria de $150$ australianos adultos lo crea.
+
+# Estimación de la varianza
+
+7. Todos los estudiantes de primer año que ingresan a una gran universidad deben recibir una prueba de matemáticas de 100 preguntas de opción múltiple.
+Inicialmente, en un estudio piloto, la prueba se aplicó a una muestra aleatoria de $20$ estudiantes de primer año. Suponga que, para la población de todos los estudiantes de primer año que ingresan, la distribución del número de respuestas correctas sería normal
+con una varianza de $250$.
+    a. ¿Cuál es la probabilidad de que la varianza de la muestra sea menor que 100?
+    a. ¿Cuál es la probabilidad de que la varianza muestral sea superior a 500?
+
+8. Un proceso de producción fabrica componentes electrónicos con señales de temporización cuya duración sigue una distribución normal. Se tomó una muestra aleatoria de seis componentes y se midieron las duraciones de sus señales de tiempo.
+Calcular el porcentaje de la varianza de la población tal que la probabilidad de que la varianza de la muestra sea mayor que dicho porcentaje sea $0.05.$
+
+9. Una compañía farmacéutica produce pastillas que contienen un ingrediente activo. A la empresa le preocupa el peso medio de este ingrediente por pastilla, pero también exige que la variación (en miligramos cuadrados) no sea superior a $1.5$. Se selecciona una muestra aleatoria de $20$ píldoras y la varianza de la muestra es $2.05$. ¿Qué probabilidad hay de que se encuentre una varianza muestral tan alta o superior si la varianza de la población es, de hecho, $1.5$? Suponga que la distribución de la población es normal.

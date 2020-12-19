@@ -93,7 +93,7 @@ años.experiencia=c(2,4,6,6,7,8)
 ```
 
 \begin{align*}
-\mu_{\overline{X}}= & \frac{1}{`r length(valores.media)`}(`r valores.media[1]`\cdot `r round(f.masa[1],3)`+`r valores.media[2]`\cdot `r round(f.masa[2],3)`+`r valores.media[3]`\cdot `r round(f.masa[3],3)`+`r valores.media[4]`\cdot `r round(f.masa[4],3)`+`r valores.media[5]`\cdot `r round(f.masa[5],3)`\\ & +`r valores.media[6]`\cdot `r round(f.masa[6],3)`+`r valores.media[7]`\cdot `r round(f.masa[7],3)`+`r valores.media[8]`\cdot `r round(f.masa[8],3)`+`r valores.media[9]`\cdot `r round(f.masa[9],3)`\\ & +`r valores.media[10]`\cdot `r round(f.masa[10],3)`+`r valores.media[11]`\cdot `r round(f.masa[11],3)`)=`r mu.medias`.
+\mu_{\overline{X}}= & `r valores.media[1]`\cdot `r round(f.masa[1],3)`+`r valores.media[2]`\cdot `r round(f.masa[2],3)`+`r valores.media[3]`\cdot `r round(f.masa[3],3)`+`r valores.media[4]`\cdot `r round(f.masa[4],3)`+`r valores.media[5]`\cdot `r round(f.masa[5],3)`\\ & +`r valores.media[6]`\cdot `r round(f.masa[6],3)`+`r valores.media[7]`\cdot `r round(f.masa[7],3)`+`r valores.media[8]`\cdot `r round(f.masa[8],3)`+`r valores.media[9]`\cdot `r round(f.masa[9],3)`\\ & +`r valores.media[10]`\cdot `r round(f.masa[10],3)`+`r valores.media[11]`\cdot `r round(f.masa[11],3)`=`r mu.medias`.
 \end{align*}
 \pause
 Dicho valor coincide con el valor medio de los años de experiencias de los empleados tal como vimos en teoría:
@@ -105,7 +105,7 @@ $$
 La varianza de la variable aleatoria media será:
 \pause
 \begin{align*}
-\sigma^2_{\overline{X}}= & \frac{1}{`r length(valores.media)`}(`r valores.media[1]`^2\cdot `r round(f.masa[1],3)`+`r valores.media[2]`^2\cdot `r round(f.masa[2],3)`+`r valores.media[3]`^2\cdot `r round(f.masa[3],3)`+`r valores.media[4]`^2\cdot `r round(f.masa[4],3)`\\ & +`r valores.media[5]`^2\cdot `r round(f.masa[5],3)` +`r valores.media[6]`^2\cdot `r round(f.masa[6],3)`+`r valores.media[7]`^2\cdot `r round(f.masa[7],3)`+`r valores.media[8]`^2\cdot `r round(f.masa[8],3)`\\ & +`r valores.media[9]`^2\cdot `r round(f.masa[9],3)` +`r valores.media[10]`^2\cdot `r round(f.masa[10],3)`+`r valores.media[11]`^2\cdot `r round(f.masa[11],3)`)-`r mu.medias`^2=`r varianza.medias`.
+\sigma^2_{\overline{X}}= & `r valores.media[1]`^2\cdot `r round(f.masa[1],3)`+`r valores.media[2]`^2\cdot `r round(f.masa[2],3)`+`r valores.media[3]`^2\cdot `r round(f.masa[3],3)`+`r valores.media[4]`^2\cdot `r round(f.masa[4],3)`\\ & +`r valores.media[5]`^2\cdot `r round(f.masa[5],3)` +`r valores.media[6]`^2\cdot `r round(f.masa[6],3)`+`r valores.media[7]`^2\cdot `r round(f.masa[7],3)`+`r valores.media[8]`^2\cdot `r round(f.masa[8],3)`\\ & +`r valores.media[9]`^2\cdot `r round(f.masa[9],3)` +`r valores.media[10]`^2\cdot `r round(f.masa[10],3)`+`r valores.media[11]`^2\cdot `r round(f.masa[11],3)`-`r mu.medias`^2=`r varianza.medias`.
 \end{align*}
 \pause
 La varianza de la variable $X$ que nos da los años de experiencia de un empleado vale:

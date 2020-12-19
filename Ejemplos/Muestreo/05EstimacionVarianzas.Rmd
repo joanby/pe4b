@@ -1,0 +1,154 @@
+---
+title: "Ejemplos estimación de varianzas"
+author: "Ricardo Alberich, Juan Gabriel Gomila y Arnau Mir"
+date: ""
+output:
+  beamer_presentation:
+#    colortheme: rose
+    incremental: yes
+    theme: Warsaw
+    toc: no
+  slidy_presentation:
+    incremental: yes
+header-includes: \usepackage{amsmath,color,array,booktabs,algorithm2e}
+                 \newcommand\blue[1]{\textcolor{blue}{#1}}
+                 \newcommand\red[1]{\textcolor{red}{#1}}
+
+                 
+              
+---
+
+
+# Ejemplos estimación de varianzas
+
+## Planteamiento del problema
+
+José Fernández es responsable de la garantía de calidad en Integrated Electronics. 
+\pause
+
+Integrated Electronics acaba de firmar un contrato con una empresa en China para fabricar un dispositivo de control que es un componente de sus productos robóticos de fabricación.
+
+\pause
+Integrated Electronics desea asegurarse de que estos nuevos componentes de menor costo cumplan con sus estándares de alta calidad. 
+
+
+
+
+## Planteamiento del problema
+
+
+Se le ha pedido a José que establezca un proceso de monitoreo de calidad para verificar los envíos del dispositivo de control A. 
+\pause
+
+La \red{variabilidad de la resistencia eléctrica,} medida en ohmios, es crítica para este dispositivo. Los estándares de fabricación especifican una \red{desviación estándar de $3.6$} y la \blue{distribución de la población de las mediciones de resistencia es normal} cuando los componentes cumplen con la especificación de calidad. 
+\pause
+
+El proceso de monitoreo requiere que se obtenga una muestra aleatoria de $n = 6$ observaciones de cada envío de dispositivos y se calcule la \red{varianza de la muestra.}
+\pause
+
+Determine un \red{límite superior para la varianza muestral} tal que la probabilidad de exceder este límite, dada una \red{desviación estándar de población de $3.6$, sea menor que $0.05.$}
+
+## Solución
+Sea $X_1,X_2,X_3,X_4,X_5,X_6$ las \red{$6$ mediciones de la muestra} y sea
+$$
+S^2 =\frac{1}{n-1}\sum_{i=1}^6 (X_i-\overline{X})^2=\frac{1}{5}\sum_{i=1}^6 (X_i-\overline{X})^2,
+$$
+la \red{varianza muestral de la muestra.}
+\pause
+
+Como las mediciones siguen la \blue{distribución normal}, la distribución de la variable $\frac{(n-1)S^2}{\sigma^2}=\frac{5\cdot S^2}{3.6^2}=\frac{5\cdot S^2}{`r 3.6^2`}$ será $\chi^2_{n-1}=\chi^2_5$.
+
+## Solución
+
+Nos piden hallar un \red{límite $a$} tal que:
+$$
+P(S^2 > a)\leq 0.05.
+$$
+\pause
+
+Podemos escribir la probabilidad anterior como
+$$
+P\left(\frac{5\cdot S^2}{`r 3.6^2`} >\frac{5\cdot a}{`r 3.6^2`}\right)=P(\chi_5^2 > `r 5/3.6^2`\cdot a)\leq 0.05.
+$$
+\pause
+
+El \red{percentil $95\%$} de la distribución $\chi_5^2$ vale $\chi_{5,0.95}^2=`r qchisq(0.95,5)`$. 
+\pause
+
+Por tanto, 
+$$
+`r 5/3.6^2`\cdot a > `r qchisq(0.95,5)`,\ \Rightarrow a> \frac{`r qchisq(0.95,5)`}{`r 5/3.6^2`}=`r qchisq(0.95,5)/(5/3.6^2)`.
+$$
+
+## Solución
+Si la \red{varianza de la muestra} supera $`r qchisq(0.95,5)/(5/3.6^2)`$, significa que "algo no funciona" y tenemos suficientes evidencias para dudar que la \red{varianza de la población} no es $\sigma^2 =3.6^2=`r 3.6^2`.$
+
+
+## Solución
+```{r,echo=FALSE}
+x=seq(from=0,to=30,by=0.1)
+plot(x,dchisq(x,5),type="l",xlab=expression(paste("5",s^2,"/",sigma^2)),ylab="densidad")
+x2=seq(from=11.071,to=30,by=0.01)
+y2=dchisq(x2,5)
+lines(x2,y2,type="h",col="red")
+points(11.071,0,cex=0.5,col="red",pch=19)
+text(11.071,-0.0025,"11.0.71",cex=0.75)
+```
+
+
+## Planteamiento del problema
+Mónica Gómez es la gerente de la empresa Green Valley Foods, Inc., un empacador de productos vegetales congelados. 
+\pause
+
+Mónica quiere asegurarse de que la variación del peso de los paquetes sea pequeña para que la empresa no produzca una gran proporción de paquetes que estén por debajo del peso de paquete indicado.
+\pause
+
+Le han encargado que obtenga el límite superior para la razón de la varianza de la muestra dividida por la varianza de la población para una muestra aleatoria de $n = 20$ observaciones \pause de tal forma que la probabilidad de que la relación esté por encima del límite superior sea de $0.025$. Así, el $97.5\%$ de los ratios estarán por debajo de este límite. Se puede suponer que la distribución de la población es normal.
+
+
+## Solución
+Sea $X_1,\ldots,X_{20}$ los \red{$20$ pesos de la muestra de paquetes} y sea
+$$
+S^2 =\frac{1}{n-1}\sum_{i=1}^{20} (X_i-\overline{X})^2=\frac{1}{19}\sum_{i=1}^{20} (X_i-\overline{X})^2,
+$$
+la \red{varianza muestral de la muestra.}
+\pause
+
+Como los pesos siguen la \blue{distribución normal}, la distribución de la variable $\frac{(n-1)S^2}{\sigma^2}=\frac{19\cdot S^2}{\sigma^2}$ será $\chi^2_{n-1}=\chi^2_{19}$, donde $\sigma^2$ representa la varianza de la población de los pesos de los paquetes.
+
+## Solución
+
+Nos piden hallar un \red{límite $k$} tal que:
+$$
+P\left(\frac{S^2}{\sigma^2} > k\right)= 0.025,\ \Rightarrow P\left(\frac{S^2}{\sigma^2} < k\right)= 1-0.025=0.975.
+$$
+\pause
+
+Podemos escribir la probabilidad anterior como
+$$
+P\left(\frac{19\cdot S^2}{\sigma^2} < 19\cdot k\right)=0.975.
+$$
+\pause
+
+El \red{percentil $97.5\%$} de la distribución $\chi_{19}^2$ vale $\chi_{19,0.975}^2=`r qchisq(0.975,19)`$. 
+\pause
+
+Por tanto, 
+$$
+19\cdot k = `r qchisq(0.975,19)`,\ \Rightarrow k=\frac{`r qchisq(0.975,19)`}{19}=`r qchisq(0.975,19)/19`.
+$$
+
+## Solución
+Si la \red{varianza de la muestra} supera $`r qchisq(0.95,5)/(5/3.6^2)`$, significa que "algo no funciona" y tenemos suficientes evidencias para dudar que la \red{varianza de la población} no es $\sigma^2 =3.6^2=`r 3.6^2`.$
+
+## Solución
+```{r,echo=FALSE}
+x=seq(from=0,to=40,by=0.1)
+plot(x,dchisq(x,19),type="l",xlab=expression(paste("19",s^2,"/",sigma^2)),ylab="densidad")
+x2=seq(from=0,to=32.85,by=0.01)
+y2=dchisq(x2,19)
+lines(x2,y2,type="h",col="red")
+points(32.85,0,cex=0.5,col="red",pch=19)
+text(32.85,-0.00075,"32.85",cex=0.75)
+```
+

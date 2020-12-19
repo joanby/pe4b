@@ -108,9 +108,9 @@ Por tanto, tendríamos que ser bastante \red{escépticos} acerca de la afirmaci�
 ```{r,echo=FALSE}
 x=seq(from=90000,to=110000,by=100)
 plot(x,dnorm(x,100000,6500/4),type="l",xlab="duración",ylab="densidad")
-x2=seq(from=90000,to=94000,by=100)
+x2=seq(from=90000,to=94150,by=100)
 y2=dnorm(x2,100000,6500/4)
 lines(x2,y2,type="h",col="red")
-points(94000,0,col="red",cex=1,pch=19)
-text(94000,-0.000005,"94000")
+points(94150,0,col="red",cex=1,pch=19)
+text(94150,-0.000005,"94150")
 ```
