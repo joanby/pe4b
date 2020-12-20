@@ -1,0 +1,69 @@
+---
+title: "Ejemplo de intervalo de confianza para la media poblacional para la varianza de la población desconocida"
+author: "Ricardo Alberich, Juan Gabriel Gomila y Arnau Mir"
+date: ""
+output:
+  beamer_presentation:
+#    colortheme: rose
+    incremental: yes
+    theme: Warsaw
+    toc: no
+  slidy_presentation:
+    incremental: yes
+header-includes: \usepackage{amsmath,color,array,booktabs,algorithm2e}
+                 \newcommand\blue[1]{\textcolor{blue}{#1}}
+                 \newcommand\red[1]{\textcolor{red}{#1}}
+
+                 
+              
+---
+
+
+# Ejemplo de intervalo de confianza para la media poblacional para la varianza de la población desconocida
+
+## Planteamiento del problema
+Recientemente, los precios de la gasolina aumentaron drásticamente. 
+\pause
+
+Suponga que se realizó un estudio con conductores de camiones con años equivalentes de experiencia para probar 24 camiones de un modelo particular en la misma carretera. 
+
+\pause
+Estime el \red{consumo medio} de combustible de la población para este modelo de camión con un \red{$90\%$ de confianza} si el consumo de combustible, en litros cada 100 km., para estos 24 camiones fue el siguiente:
+\begin{align*}
+& 15.18,\ 11.20,\ 12.71,\ 12.19,\ 11.94,\ 13.92,\ 11.64,\ 16.22,\ 14.26,\\ & 
+12.25,\ 12.58,\ 12.92,\ 13.07,\ 13.44,\ 12.71,\ 11.47,\ 12.65,\ 12.31,\\ &
+11.88,\ 13.07,\ 11.88,\ 12.92,\ 11.59,\ 10.79
+\end{align*}
+
+## Solución
+Como el \red{tamaño de la muestra} no es demasiado grande, tenemos que chequear la \red{normalidad de la muestra} usando un \red{qqplot} por ejemplo:
+```{r,echo=FALSE,fig.height=6}
+consumo=c(15.18, 11.20, 12.71, 12.19, 11.94, 13.92, 11.64, 16.22, 14.26, 12.25, 12.58, 12.92, 13.07, 13.44, 12.71, 11.47, 12.65, 12.31, 11.88, 13.07, 11.88, 12.92, 11.59, 10.79)
+qqnorm(consumo)
+qqline(consumo,col="red")
+```
+
+## Solución
+Para calcular el \red{intervalo de confianza} pedido necesitamos calcular:
+\pause
+
+* la \red{media} de la muestra: $\overline{x}=`r round(mean(consumo),3)`.$
+* la \red{desviación estándar} de la muestra: $s=`r round(sd(consumo),3)`.$
+* el \red{percentil} $1-\frac{\alpha}{2}$ de la distribución $t_{n-1}$. Como nos piden un $90\%$ de confianza $\alpha =0.1$ y $1-\frac{\alpha}{2}=1-\frac{0.1}{2}=0.95$. \pause En nuestro caso, será: $t_{0.95,23}=`r round(qt(0.95,23),3)`.$
+
+\pause
+El \red{intervalo de confianza} pedido será:
+\begin{align*}
+& \left(\overline{x}-t_{1-\frac{\alpha}{2},n-1}\frac{s}{\sqrt{n}},\overline{x}+t_{1-\frac{\alpha}{2},n-1}\frac{s}{\sqrt{n}}\right) \\ & =\left(`r round(mean(consumo),3)`-`r round(qt(0.95,23),3)`\cdot\frac{`r round(sd(consumo),3)`}{\sqrt{24}},`r round(mean(consumo),3)`+`r round(qt(0.95,23),3)`\cdot\frac{`r round(sd(consumo),3)`}{\sqrt{24}}\right) \\ & =(`r mean(consumo)-qt(0.95,23)*sd(consumo)/sqrt(24)`,`r mean(consumo)+qt(0.95,23)*sd(consumo)/sqrt(24)`).
+\end{align*}
+
+
+## Planteamiento del problema
+El IAS (índice de alimentación saludable) mide en una escala de 100 puntos, la adecuación del consumo de verduras, frutas, cereales, leche, carne y alubias y aceites líquidos. Esta escala se llama HEI2005 (HEI en inglés, "health eating index", Guenther et al. 2007).
+
+\pause
+
+Hay dos observaciones para cada persona en el estudio. La primera observación, identificada por daycode = 1, contiene datos de la primera entrevista y la segunda observación, daycode = 2, contiene datos de la segunda entrevista. 
+\pause
+
+Estos datos, para una muestra aleatoria de $n = 4460 participantes$, se almacenan en el archivo de datos HEI Cost Data Variable Subset. Encuentre un intervalo de confianza del 95% para la puntuación media de HEI-2005 para los participantes en el momento de su primera entrevista.
