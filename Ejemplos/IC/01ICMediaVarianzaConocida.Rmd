@@ -1,0 +1,58 @@
+---
+title: "Ejemplo de intervalo de confianza para la media poblacional para la varianza de la población conocida"
+author: "Ricardo Alberich, Juan Gabriel Gomila y Arnau Mir"
+date: ""
+output:
+  beamer_presentation:
+#    colortheme: rose
+    incremental: yes
+    theme: Warsaw
+    toc: no
+  slidy_presentation:
+    incremental: yes
+header-includes: \usepackage{amsmath,color,array,booktabs,algorithm2e}
+                 \newcommand\blue[1]{\textcolor{blue}{#1}}
+                 \newcommand\red[1]{\textcolor{red}{#1}}
+
+                 
+              
+---
+
+
+# Ejemplo de intervalo de confianza para la media poblacional para la varianza de la población conocida
+
+## Planteamiento del problema
+Suponga que los tiempos de compra de los clientes en un centro comercial local se distribuyen \red{normalmente} con una \red{desviación estándar de población conocida de 20 minutos.}
+\pause
+
+Una \blue{muestra aleatoria de 64} compradores en la tienda de comestibles local tuvo un \red{tiempo medio de 75 minutos}. 
+\pause
+
+Encuentre el \blue{error estándar, el margen de error y los límites de confianza superior e inferior de un intervalo de confianza del $95\%$ para la media poblacional}, \red{$\mu$}.
+
+## Solución
+
+El \red{error estándar} de estimador de la \red{media poblacional}, $\mu$, es la \red{desviación estándar} del estimador \red{media muestral $\overline{X}$}: $\sigma_{\overline{X}}=\frac{\sigma}{\sqrt{n}}$. 
+\pause
+
+En nuestro caso, el \red{error estándar} será: $\sigma_{\overline{X}}=\frac{20}{\sqrt{64}}=`r 20/8`$.
+\pause
+
+El \red{margen de error $ME$} será el percentil $z_{1-\frac{\alpha}{2}}$  multiplicado por el \red{error estándar}: $ME=z_{1-\frac{\alpha}{2}}\cdot \sigma_{\overline{X}}$.
+\pause
+
+En nuestro caso, el \red{margen de error} será: $ME=z_{0.975}\cdot `r 20/8`=`r qnorm(0.975)`\cdot `r 20/8`=`r round(qnorm(0.975)*20/8,1)`.$
+
+
+## Solución
+El \red{límite inferior del intervalo de confianza} será: $L=\overline{X}-ME$:
+$$
+L=75-`r round(qnorm(0.975)*20/8,1)`=`r round(75-qnorm(0.975)*20/8,1)`.
+$$
+
+\pause
+
+El \red{límite superior del intervalo de confianza} será: $U=\overline{X}+ME$:
+$$
+U=75+`r round(qnorm(0.975)*20/8,1)`=`r round(75+qnorm(0.975)*20/8,1)`.
+$$

@@ -1,0 +1,56 @@
+---
+title: "Ejemplo de intervalo de confianza para la proporción poblacional"
+author: "Ricardo Alberich, Juan Gabriel Gomila y Arnau Mir"
+date: ""
+output:
+  beamer_presentation:
+#    colortheme: rose
+    incremental: yes
+    theme: Warsaw
+    toc: no
+  slidy_presentation:
+    incremental: yes
+header-includes: \usepackage{amsmath,color,array,booktabs,algorithm2e}
+                 \newcommand\blue[1]{\textcolor{blue}{#1}}
+                 \newcommand\red[1]{\textcolor{red}{#1}}
+
+                 
+              
+---
+
+
+# Ejemplo de intervalo de confianza para la proporción poblacional
+
+## Planteamiento del problema
+La gerencia quiere una \red{estimación de la proporción de empleados} de la corporación que favorecen un plan de bonificación modificado. 
+\pause
+
+De una \blue{muestra aleatoria de $344$ empleados}, se encontró que \red{$261$} estaban a favor de este plan en particular. 
+\pause
+
+Encuentre una \red{estimación del intervalo de confianza del $90\%$} de la \red{proporción de población real} que favorece este plan de bonificación modificado.
+
+## Solución
+```{r,echo=FALSE}
+est.p=261/344
+n=344
+sd.p = sqrt(est.p*(1-est.p)/n)
+esquerra=est.p-qnorm(0.95)*sd.p
+dreta=est.p+qnorm(0.95)*sd.p
+```
+
+Para hallar el \red{intervalo de confianza} para la \red{proporción $p$} necesitamos:
+
+* la \red{estimación} de la proporción $p$ para los datos que nos dan: $$\hat{p}=\frac{261}{344}=`r round(est.p,3)`.$$
+* la estimación de la \red{estimación estándar} de la variable \red{proporción muestral}:
+$$
+\sigma_{\hat{P}_X}=\sqrt{\frac{`r round(est.p,3)`\cdot (1-`r round(est.p,3)`)}{`r n`}}=`r round(sd.p,3)`.
+$$
+* el \red{percentil $1-\frac{\alpha}{2}$} para la distribución $N(0,1)$. \pause En nuestro caso, como el \red{nivel de confianza} es el $90\%$, el valor de $\alpha$ es $\alpha =0.1$,\pause por tanto $1-\frac{\alpha}{2}=1-\frac{0.1}{2}=0.95$ y $z_{0.95}=`r round(qnorm(0.95),3)`.$
+
+## Solución
+El \red{intervalo de confianza} será:
+\begin{align*}
+& \left(\hat{p}-z_{1-\frac{\alpha}{2}}\sqrt{\frac{\hat{p}\cdot (1-\hat{p})}{n}},\hat{p}+z_{1-\frac{\alpha}{2}}\sqrt{\frac{\hat{p}\cdot (1-\hat{p})}{n}}\right) \\ &=
+\Biggl(`r round(est.p,3)`-`r round(qnorm(0.95),3)`\cdot \sqrt{\frac{`r round(est.p,3)`\cdot (1-`r round(est.p,3)`)}{`r n`}},\\ & \quad\quad `r round(est.p,3)`+`r round(qnorm(0.95),3)`\cdot \sqrt{\frac{`r round(est.p,3)`\cdot (1-`r round(est.p,3)`)}{`r n`}}\Biggr)\\ & = (`r round(esquerra,3)`,`r round(dreta,3)`).
+\end{align*}
