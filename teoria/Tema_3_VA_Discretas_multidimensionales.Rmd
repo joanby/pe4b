@@ -116,12 +116,36 @@ $$
 
 Podemos representar  $P_{XY}$ como una tabla bidimensional donde en la primera fila están los valores de la variable $Y$ ($y_1,y_2,\ldots$) y en la primera columna están los valores de la variable $X$ ($x_1,x_2,\ldots$), para obtener la **función de probabilidad marginal** de la variable $X$ en el valor $x_i$, $P_X(x_i)$, hay que sumar todos los valores de $P_{XY}(x_i,y_j)$ correspondientes a la fila $i$-ésima y para obtener la **función de probabilidad marginal** de la variable $Y$ en el valor $y_j$, $P_Y(y_j)$, hay que sumar todos los valores de $P_{XY}(x_i,y_j)$ correspondientes a la columna $j$-ésima.
 
-## Esperanzas y varianza de las distribuciones  marginales
+
+##  Independencia de variables aleatorias discretas
+
+Recordemos que dos sucesos $A$ y $B$ son independientes si $P(A\cap B)=P(A)\cdot P(B)$.
+
+¿Cómo trasladar dicho concepto al caso de variables aleatorias?
+
+En el caso de **variables aleatorias discretas bidimensionales** vimos que, dada una variable aleatoria bidimensional discreta $(X,Y)$ con $(X,Y)(\Omega)=\{(x_i,y_j),\ i=1,2,\ldots,j=1,2,\ldots\}$, los sucesos de la forma $\{X=x_i,\  Y=y_j\}$ determinaban cómo se distribuían los valores de la variable $(X,Y)$. De ahí la definición siguiente:
+
+## Independencia de variables aleatorias discretas
+<l class="definition">Definición de independencia para variables aleatorias bidimensionales discretas. </l>
+Sean $(X,Y)$ una **variable aleatoria bidimensional discreta** con $(X,Y)(\Omega)=\{(x_i,y_j),\ i=1,2,\ldots,j=1,2,\ldots\}$ y **función de probabilidad** $P_{XY}$ y **funciones de probabilidad marginales** $P_X$ y $P_Y$. Entonces $X$ e $Y$ son independientes si:
+$$
+P_{XY}(x_i,y_j)=P_X(x_i)\cdot P_Y(y_j),\ i=1,2,\ldots,j=1,2,\ldots
+$$
+o dicho de otra forma:
+$$
+P(X=x_i,\ Y=y_k)=P(X=x_i)\cdot P(Y=y_j),\ i=1,2,\ldots,j=1,2,\ldots
+$$
 
 
-$$E(X)=\sum_{x\in D_X} x\cdot P(X=x)$$
-$$E(Y)=\sum_{x\in D_Y} y\cdot P(Y=y)$$
-$$Var(X)=E(X-E(X))=E(X)-E(X)^2;\quad Var(Y)=E(Y-E(Y))=E(Y)-E(Y)^2$$
+
+
+## Esperanza y varianza de las distribuciones  marginales
+
+
+* $E(X)=\sum_{x\in D_X} x\cdot P(X=x).$
+* $E(Y)=\sum_{x\in D_Y} y\cdot P(Y=y).$
+* $Var(X)=E(X-E(X))=E(X)-E(X)^2.$
+* $Var(Y)=E(Y-E(Y))=E(Y)-E(Y)^2$$
 
 ## Distibuciones condicionales
 
@@ -129,17 +153,125 @@ $$Var(X)=E(X-E(X))=E(X)-E(X)^2;\quad Var(Y)=E(Y-E(Y))=E(Y)-E(Y)^2$$
 $$P(X=x|Y=y)=\frac{P_{XY}(x,y)}{P_Y(y)}=\frac{P(X=x,Y=y)}{P(Y=y)}$$
 $$P(Y=y|X=x)=\frac{P_{XY}(x,y)}{P_X(x)}=\frac{P(X=x,Y=y)}{P(X=x)}$$
 
+<l class="prop"> Propiedad <\l> Si las variables $X$ e $Y$ son independientes se cumple que $P(X=x|Y=y)=P(X=x)$ y que $P(Y=y|X=x)=P(Y=y)$.
+
+
 ## Esperanzas condicionales
 
 $$E(X/Y=y)=\sum_{x\in D_X} x\cdot P(X=x/Y=y)$$
 
 $$E(Y/X=x)=\sum_{y\in D_Y} y\cdot P(Y=y|X=x)$$
 
+<l class="prop"> Propiedad <\l> Si las variables $X$ e $Y$ son independientes se cumple que $E(X/Y=y)=E(X)$ y que $E(Y/X=x)=E(Y)$
+
+
+
+
+
+
+## Esperanzas de funciones de v.a. discretas bidimensionales
+
+
+<l class="definition"> Definición: </l>
+
+Sea $(X,Y)$ una variable aleatoria bidimensional  discreta y $g(X,Y)$ una función de esa variable bidimensional entonces $E(g(X,Y))=\sum_i\sum_j g(x_i,y_j) \cdot P(X=x_i,Y=y_j)$.
+
+En particular:
+ 
+ * $\scriptsize{\displaystyle E(X+Y)=\sum_i\sum_j (x_i+y_j) \cdot P(X=x_i,Y=y_j)}.$
+ * $\scriptsize{\displaystyle Var(X+Y)=E(X+Y-E(X+Y))^2)=\sum_i\sum_j (x_i+y_j-(\mu_X+\mu_Y))\cdot P(X=x_i,Y=y_j).}$
+ * $\scriptsize{\displaystyle Var(X+Y)=E(X+Y-E(X+Y))^2)=\sum_i\sum_j (x_i+y_j-(\mu_X+\mu_Y))\cdot P(X=x_i,Y=y_j).}$
+
+
+
+## Esperanzas de funciones de v.a. discretas bidimensionales
+
+<l class="prop"> Propiedad: </l>
+Sea $(X,Y)$ una variable aleatoria bidimensional  entonces se cumple que:
+
+ *  $E(X+Y)=E(X)+E(Y)=\mu_X\cdot \mu_y$
+ *  Si   $X$ e $Y$ son independientes entonces  $E(X\cdot Y)=E(X)\cdot E(Y)=\mu_X\cdot \mu_y$
+ *  Si   $X$ e $Y$ son independientes entonces  $Var(X+Y)=Var(X)\cdot Var(Y)=\mu_X\cdot \mu_y$
+  
+
+
 
 
 ## Covarianza y correlación pe4b
 
+
 RESUMIR FUSILAR PÁGINA 182. EJEMPLO DE LA PÁGINA 183 + RESUMEN 184 Y 185
+
+## Medida de la variación conjunta: covarianza
+
+El **momento conjunto centrado en las medias para $k=1$ y $l=1$** se denomina **covariancia** entre las variables $X$ e $Y$:
+$$
+\sigma_{XY}=Cov(X,Y)=E((X-\mu_X)(Y-\mu_Y)).
+$$
+La covarianza puede calcularse a partir de la **correlación** entre las variables:
+$$
+Cov(X,Y)=E((X-\mu_X)(Y-\mu_Y))=E(X\cdot Y)-\mu_X\cdot \mu_Y,
+$$
+
+<l class="prop">Propiedad. </l>
+Si las variables $X$ e $Y$ son **independientes**, entonces $Cov(X,Y)=0$. 
+
+
+Es una consecuencia de que si $X$ e $Y$ son independientes entonces que vimos que $E(X\cdot Y)=E(X)\cdot E(Y) =\mu_X\cdot \mu_y$.
+
+
+## Covarianza entre las variables
+
+La **covarianza** es una medida de lo relacionadas están las variables $X$ e $Y$:
+
+* Si cuando $X\geq \mu_X$, también ocurre que $Y\geq \mu_Y$ o viceversa, cuando $X\leq \mu_X$, también ocurre que $Y\leq \mu_Y$, el valor $(X-\mu_X)(Y-\mu_Y)$ será positivo y la **covarianza** será positiva.
+
+* Si por el contrario, cuando $X\geq \mu_X$, también ocurre que $Y\leq \mu_Y$ o viceversa, cuando $X\leq \mu_X$, también ocurre que $Y\geq \mu_Y$, el valor $(X-\mu_X)(Y-\mu_Y)$ será negativo y la **covarianza** será negativa.
+
+* En cambio, si a veces ocurre una cosa y a veces ocurre otra, la **covarianza** va cambiando de signo y puede tener un valor cercano a 0.
+
+## Propiedades de la covarianza
+* Sea $(X,Y)$ una variable aleatoria bidimensional. Entonces la **varianza de la suma/resta** se calcula usando la expresión siguiente:
+$$
+Var(X\pm Y)=Var(X)+Var(Y)\pm 2\cdot Cov(X,Y).
+$$
+
+* Sea $(X,Y)$ una variable aleatoria bidimensional donde las variables $X$ e $Y$ son **independientes**. 
+Entonces:
+$$
+Var(X+Y)=Var(X)+Var(Y).
+$$
+
+
+
+## Coeficiente de correlación
+
+La **covarianza** depende de las unidades en las que están las variables $X$ e $Y$ ya que si $a>0$ y $b>0$, entonces:
+$$
+Cov(a\cdot X,b\cdot Y)=a\cdot b\cdot Cov(X,Y).
+$$
+Por tanto, si queremos "medir" la relación que existe entre las variables $X$ e $Y$ tendremos que "normalizar" la **covarianza** definiendo el **coeficiente de correlación** entre las variables $X$ e $Y$:
+
+## Coeficiente de correlación entre las variables
+
+<l class="definition">Definición del coeficiente de correlación. </l>
+Sea $(X,Y)$ una variable aleatoria bidimensional. Se define el **coeficiente de correlación** entre las variables $X$ e $Y$ como: 
+$$
+\rho_{XY}=\frac{Cov(X,Y)}{\sqrt{Var(X)}\cdot\sqrt{Var(Y)}}=\frac{E(X\cdot Y)-\mu_X\cdot \mu_Y}{\sqrt{E\left(X^2\right)-\mu_X^2}\cdot \sqrt{E\left(Y^2\right)-\mu_Y^2}}.
+$$
+
+
+## Coeficiente de correlación entre las variables
+
+<l class="observ">Observación. </l>
+Si las variables $X$ e $Y$ son **independientes**, su **coeficiente de correlación** $\rho_{XY}=0$ es nulo ya que su **covarianza** lo es.
+
+Notemos también que la **correlación** no tiene unidades y es invariante a cambios de escala.
+
+Además, la **covarianza** de las **variables tipificadas** $\frac{X-\mu_X}{\sigma_X}$ y $\frac{Y-\mu_Y}{\sigma_Y}$ coincide con la **correlación** de $X$ e $Y$.
+
+El **coeficiente de correlación** es un valor normalizado ya que siempre está entre -1 y 1: $-1\leq\rho_{XY}\leq 1$.
+
 
 # Distribuciones multidimensionales
 
