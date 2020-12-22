@@ -41,14 +41,14 @@ Para hallar un \red{intervalo de confianza} para la \red{varianza poblacional $\
 
 * el tamaño de la muestra $n=25$,
 * la varianza muestral $s^2=100$,
-* los percentiles $\chi_{\frac{\alpha}{2},n-1}$ y $\chi_{\frac{1-\alpha}{2},n-1}$. 
+* los percentiles $\chi_{\frac{\alpha}{2},n-1}^2$ y $\chi_{1-\frac{\alpha}{2},n-1}^2$. 
 \pause
 En nuestro caso $\alpha=0.05$. Por tanto, los percentiles serán: $\chi^2_{0.025,24}=`r round(qchisq(0.025,24),3)`$ y $\chi^2_{0.975,24}=`r round(qchisq(0.975,24),3)`$.
 
 ## Solución
 El \red{intervalo de confianza} para la \red{varianza poblacional $\sigma^2$} es el siguiente:
 \begin{align*}
-\left(\frac{(n-1)\cdot s^2}{\chi_{\frac{1-\alpha}{2},n-1}},\frac{(n-1)\cdot s^2}{\chi_{\frac{\alpha}{2},n-1}}\right)= & \left(\frac{24\cdot 100}{`r round(qchisq(0.975,24),3)`},\frac{24\cdot 100}{`r round(qchisq(0.025,24),3)`}\right)\\ = & (`r round(2400/qchisq(0.975,24),3)`,`r round(2400/qchisq(0.025,24),3)`).
+\left(\frac{(n-1)\cdot s^2}{\chi_{1-\frac{\alpha}{2},n-1}^2},\frac{(n-1)\cdot s^2}{\chi_{\frac{\alpha}{2},n-1}^2}\right)= & \left(\frac{24\cdot 100}{`r round(qchisq(0.975,24),3)`},\frac{24\cdot 100}{`r round(qchisq(0.025,24),3)`}\right)\\ = & (`r round(2400/qchisq(0.975,24),3)`,`r round(2400/qchisq(0.025,24),3)`).
 \end{align*}
 
 ## Solución
