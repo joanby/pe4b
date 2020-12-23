@@ -10,7 +10,7 @@ output:
 
 # Intervalos de confianza de la media muestral
 
-1. ¿Cuánto pagan los estudiantes, en promedio, por los libros de texto durante el primer semestre de la universidad? De una muestra aleatoria de $400$ estudiantes, se encontró que el costo medio era de `r 357.75*0.8` euros y la desviación estándar de la muestra era de `r 37.89*0.8` euros. Suponiendo que la población se distribuye normalmente, calcule el margen de error de un intervalo de confianza del $95\%$ para la media de la población.
+1.  Queremos estimar cuánto pagan los estudiantes, en promedio, por los libros de texto durante el primer semestre de la universidad. De una muestra aleatoria de $400$ estudiantes, se encontró que el costo medio era de `r 357.75*0.8` euros y la desviación estándar de la muestra era de `r 37.89*0.8` euros. Suponiendo que la población se distribuye normalmente, calcule el margen de error de un intervalo de confianza del $95\%$ para la media de la población.
 ```{r,echo=FALSE}
 velocidades=c(59,63,68,57,56,71,59,69,53,58,60,66,51,59,54,64,58,57,66,61,65,70,63,65,57,56,61,59)
 conv=1.60934
@@ -33,6 +33,8 @@ pesos.bo=round(conv*pesos,2)
 & `r paste(pesos.bo[1:12],sep="  ")`\\
 & `r paste(pesos.bo[13:24],sep="  ")`
 \end{align*}
+Suponemos que la población de las pérdidas de peso es normal.
+
     a. Encuentre un intervalo de confianza del $99\%$ para la media poblacional.
     a. Sin hacer los cálculos, explique si un intervalo de confianza del $90\%$ para la media de la población sería más ancho, más estrecho o igual que el encontrado en el apartado anterior.
 
