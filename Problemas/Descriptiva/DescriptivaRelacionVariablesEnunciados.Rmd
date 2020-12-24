@@ -1,0 +1,20 @@
+---
+title: "Problemas de Estadística Descriptiva. Relación entre variables."
+author: ""
+date: ""
+output:
+  pdf_document: default
+              
+  html_document: default
+---
+
+1. El Hospital River Hills está interesado en determinar la efectividad de un nuevo medicamento para reducir el tiempo requerido para la recuperación completa de la cirugía de rodilla.
+La recuperación completa se mide mediante una serie de pruebas de fuerza que comparan la rodilla tratada con la rodilla no tratada. El fármaco se administró en cantidades variables a 18 pacientes durante un período de 6 meses. Para cada paciente, el número de unidades de fármaco, $X$, y los días para la recuperación completa, $Y$, vienen dados por los siguientes datos $(x, y)$:
+\begin{align*}
+& (5,53), (21, 65), (14, 48), (11, 66), (9, 46), (4, 56), \\
+& (7, 53), (21, 57),  (17, 49), (14, 66), (9, 54), (7, 56), \\
+& (9, 53), (21, 52), (13, 49), (14, 56), (9, 59), (4, 56).
+\end{align*}
+a. Calcule la covarianza.
+a. Calcule el coeficiente de correlación.
+a. Analice brevemente la relación entre el número de unidades de fármaco y el tiempo de recuperación. ¿Qué dosis podríamos recomendar en base a este análisis inicial?
