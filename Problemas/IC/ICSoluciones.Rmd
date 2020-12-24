@@ -183,4 +183,10 @@ b. Si en lugar de calcular un intervalo de confianza del $95\%$ calculamos un in
 $\chi_{0.005,14}^2<\chi_{0.025,14}^2$ y por tanto, 
 $\frac{(n-1)\cdot s^2}{\chi_{0.005,14}^2}>\frac{(n-1)\cdot s^2}{\chi_{0.025,14}^2}$,
 * el percentil $\chi_{0.995,14}^2$ será más grande que el percentil $\chi_{0.975,14}^2$:
-$\chi_{0.995,14}^2 > \chi_{0.975,14}^2$ y por tanto, $\frac{(n-1)\cdot s^2}{\chi_{0.995,14}^2}<\frac{(n-1)\cdot s^2}{\chi_{0.975,14}^2}$,
+$\chi_{0.995,14}^2 > \chi_{0.975,14}^2$ y por tanto, $\frac{(n-1)\cdot s^2}{\chi_{0.995,14}^2}<\frac{(n-1)\cdot s^2}{\chi_{0.975,14}^2}$.
+
+En resumen:
+$$
+\frac{(n-1)\cdot s^2}{\chi_{0.005,14}^2}-\frac{(n-1)\cdot s^2}{\chi_{0.995,14}^2} > \frac{(n-1)\cdot s^2}{\chi_{0.025,14}^2}-\frac{(n-1)\cdot s^2}{\chi_{0.975,14}^2},
+$$
+es decir, la amplitud del intervalo de confianza para la varianza poblacional $\sigma^2$ es más ancho al $99\%$ con respecto al $95\%$ de confianza.
