@@ -154,3 +154,24 @@ knitr::kable(tabla,col.names=c("$X$","$Y$","$X_i-\\overline{X}$","$(X_i-\\overli
 row_spec(9,bold="TRUE",color="red")
 nn=length(X)
 ```
+
+
+Las medias de las variables $X$ (experiencia minorista en años) e $Y$ (ventas semanales en cientos de euros) son:
+$$
+\overline{X}=\frac{`r sum(X)`}{`r nn`}=`r round(mean(X),3)`,\quad \overline{Y}=\frac{`r sum(Y)`}{`r nn`}=`r round(mean(Y),3)`.
+$$
+La covarianza entre las variables $X$ e $Y$ será:
+$$
+\mathrm{cov}(X,Y)=\frac{`r round(sum((X-mean(X))*(Y-mean(Y))),4)`}{`r nn-1`}=`r round(cov(X,Y),4)`.
+$$
+
+b. Para calcular el coeficiente de correlación $r$ entre $X$ e $Y$, necesitamos calcular primeramente las varianzas correspondientes:
+$$
+s_X^2=\frac{`r round(sum((X-mean(X))^2),4)`}{`r nn-1`}=`r round(var(X),4)`,\quad s_Y^2=\frac{`r round(sum((Y-mean(Y))^2),4)`}{`r nn-1`}=`r round(var(Y),4)`.
+$$
+El coeficiente de correlación será:
+$$
+r=\frac{\mathrm{cov}(X,Y)}{s_X\cdot s_Y}=\frac{`r round(cov(X,Y),4)`}{\sqrt{`r round(var(X),4)`}\cdot\sqrt{`r round(var(Y),4)`}}=`r round(cor(X,Y),4)`.
+$$
+
+Vemos que la relación entre las variables $X$ e $Y$ es muy fuerte.
