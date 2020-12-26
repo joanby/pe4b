@@ -1,5 +1,5 @@
 ---
-title: "Problemas de Estadística Descriptiva. Resumen."
+title: "Problemas de Estadística Descriptiva. Resumen. Soluciones"
 author: ""
 date: ""
 output:
@@ -67,7 +67,8 @@ donde:
 
 a. Dar la tabla de frecuencias de la variable Educación.
 a. Calcula la media y la varianza de la variable Educación como datos agrupados.
-a. Halla la media ponderada de la variable Fertilidad considerando como pesos los valores de la variable educación.
+a. Calcular los cuartiles de la variable Educación. Realizar un diagrama de caja de la variable Fertilidad según el cuartil dónde esté la provincia correspondiente. Es decir, dibujar 4 diagramas de caja para la variable Fertilidad, uno para las provincias que estén en el primer cuartil de la variable Educación, otro para las provincias que estén en el segundo cuartil de la variable Educación y lo mismo para los cuartiles tercero y cuarto.
+Comentar los resultados observados.
 
 5. Usando los datos de la tabla anterior, queremos estudiar la posible relación entre las variables Fertilidad y Examen.
 * Realiza un gráfico de puntos de las variables anteriores, indicando en el eje $X$ o abscisas la variable Examen y en el $Y$, la variable $Fertilidad$.

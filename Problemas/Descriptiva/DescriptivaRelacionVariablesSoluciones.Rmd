@@ -87,9 +87,6 @@ prodDifs=difX*difY
 tabla=data.frame(X,Y,difX,difX2,difY,difY2,prodDifs)
 sumes=apply(tabla,2,sum)
 tabla=rbind(tabla,sumes)
-knitr::kable(tabla,col.names=c("$X$","$Y$","$X_i-\\overline{X}$","$(X_i-\\overline{X})^2$","$Y_i-\\overline{Y}$","$(Y_i-\\overline{Y})^2$","$(X_i-\\overline{X})(Y_i-\\overline{Y})$"),escape=FALSE) %>% 
-row_spec(19,bold="TRUE",color="red")
-nn=length(X)
 ```
 
 El gráfico de los datos es el siguiente:

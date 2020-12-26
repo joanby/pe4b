@@ -229,8 +229,8 @@ donde:
 
 a. Dar la tabla de frecuencias de la variable Educación.
 a. Calcula la media y la varianza de la variable Educación como datos agrupados.
-a. Halla la media ponderada de la variable Fertilidad considerando como pesos los valores de la variable educación.
-
+a. Calcular los cuartiles de la variable Educación. Realizar un diagrama de caja de la variable Fertilidad según el cuartil dónde esté la provincia correspondiente. Es decir, dibujar 4 diagramas de caja para la variable Fertilidad, uno para las provincias que estén en el primer cuartil de la variable Educación, otro para las provincias que estén en el segundo cuartil de la variable Educación y lo mismo para los cuartiles tercero y cuarto.
+Comentar los resultados observados.
 
 
 ## Solución
@@ -264,7 +264,7 @@ $$
 \overline{x}=\frac{`r sum(xi*fi)`}{`r sum(fi)`}=`r round(mean(swiss$Education),6)`.
 $$
 
-c. Para calcular la varianza, hacemos la tabla siguiente:
+Para calcular la varianza, hacemos la tabla siguiente:
 ```{r,echo=FALSE}
 xi=sort(unique(valores.educacion))
 fi=tabla[,2]
@@ -284,9 +284,112 @@ $$
 s_x^2 = \frac{`r round(sum(fi*(xi-mitjana)^2),3)`}{`r sum(fi)`-1}=`r round(var(swiss$Education),6)`,\quad s_x=\sqrt{`r round(var(swiss$Education),6)`}=`r round(sd(swiss$Education),6)`.
 $$
 
+c. Para hallar los cuartiles de la variable Educación, primero los ordenamos:
+```{r,echo=FALSE}
+educacion.ordenados=sort(swiss$Education)
+fila1=educacion.ordenados[1:20]
+fila2=educacion.ordenados[21:40]
+fila3=c(educacion.ordenados[41:47],rep("",20-7))
+tabla8=rbind(fila1,fila2,fila3)
+tabla8=as.data.frame(tabla8)
+colnames(tabla8)=c()
+rownames(tabla8)=c()
+tabla8[,12]=cell_spec(tabla8[,12],color=ifelse(tabla8[,12] ==6,"red","black"))
+tabla8[,4]=cell_spec(tabla8[,4],color=ifelse(tabla8[,4] ==8,"green","black"))
+tabla8[,16]=cell_spec(tabla8[,16],color=ifelse(tabla8[,16] ==12,"magenta","black"))
+knitr::kable(tabla8,align='rrrrrrrrrrrrrrrrrrrrrrrr',escape=FALSE)  %>%
+  kable_styling(position = "center")
+```
+
+Los cuartiles de la variable Educación serían los siguientes:
+
+
+* el primer cuartil es el que deja a su izquierda el $25\%$ de los datos, es decir, es la mediana de los $`r floor(dim(swiss)[1]/2)`$ primeros datos que correspondería al valor que ocupa el lugar $`r (floor(dim(swiss)[1]/2)+1)/2`$. Dicho valor vale: 
+$Q_1 = `r educacion.ordenados[(floor(dim(swiss)[1]/2)+1)/2]`.$ (en rojo)
+* la mediana es el que deja a su izquierda el $50\%$ de los datos. Correspondería al valor que ocupa el lugar $`r (dim(swiss)[1]+1)/2`$. Dichos valor es $`r educacion.ordenados[(dim(swiss)[1]+1)/2]`$. (en verde)
+* el tercer cuartil es el que deja a su izquierda el $75\%$ de los datos, es decir, es la mediana de los $`r floor(dim(swiss)[1]/2)`$ últimos datos que correspondería al valor que ocupa el lugar $24+12=`r 24+12`$. Dicho valor vale: 
+$Q_3 = `r educacion.ordenados[24+12]`.$ (en magenta)
+
+A continuación mostramos la tabla con las variables Educación, Fertilidad y una variable nueva que nos indica en qué cuartil se encuentra la provincia dependiendo de su valor respecto de la variable Educación.
+```{r,echo=FALSE}
+cuartil1=quantile(swiss$Education,0.25)
+cuartil2=quantile(swiss$Education,0.5)
+cuartil3=quantile(swiss$Education,0.75)
+Educacion.agrupada=ifelse(swiss$Education <=cuartil1,"Q1",ifelse(swiss$Education <= cuartil2, "Q2",ifelse(swiss$Education <= cuartil3,"Q3","Q4")))
+Educacion.agrupada = as.factor(Educacion.agrupada)
+tabla9=data.frame(swiss$Education,swiss$Fertility,Educacion.agrupada)
+rownames(tabla9)=rownames(swiss)
+colnames(tabla9)=c("Educación","Fertilidad","Cuartil respecto educación")
+knitr::kable(tabla9,align='rrr',escape=FALSE)  %>%
+  kable_styling(position = "center")
+```
+
+Los diagramas de caja pedidos de la variable Fertilidad dependiendo del cuartil en dónde están las provincias respecto de la variable Educación son los siguientes:
+
+```{r,echo=FALSE}
+boxplot(tabla9$Fertilidad ~ tabla9$`Cuartil respecto educación`,xlab="Cuartiles de la variable Educación",ylab="Fertilidad")
+```
+Observamos un índice de fertilidad mayor en las provincias con un nivel de educación de los reclutas menor pero también hay más dispersión de índice de fertilidad en aquellas provincias con un porcentaje mayor de reclutas con educación superior a la primaria.
 
 \newpage
 5. Usando los datos de la tabla anterior, queremos estudiar la posible relación entre las variables Fertilidad y Examen.
 * Realiza un gráfico de puntos de las variables anteriores, indicando en el eje $X$ o abscisas la variable Examen y en el $Y$, la variable $Fertilidad$.
 * Calcula la covarianza y la correlación entre las variables anteriores. ¿A qué conclusión llegas? 
 
+
+## Solución
+
+* El gráfico pedido es el siguiente:
+
+```{r,echo=FALSE}
+plot(swiss$Examination,swiss$Fertility,xlab="% de reclutas con porcentaje más alto examen del ejército",ylab="Índice de fertilidad",pch=19)
+
+```
+
+* Para calcular la covarianza, primero hay que calcular las medias.
+
+La media de la variable Examen vale:
+$$
+\overline{X}=\frac{`r sum(swiss$Examination)`}{`r dim(swiss)[1]`}=`r round(mean(swiss$Examination),3)`.
+$$
+
+La media de la variable Fertilidad vale:
+$$
+\overline{Y}=\frac{`r sum(swiss$Fertility)`}{`r dim(swiss)[1]`}=`r round(mean(swiss$Fertility),3)`.
+$$
+
+Para calcular la Para ello, realizamos la tabla siguiente:
+
+```{r,echo=FALSE}
+X=swiss$Examination
+Y=swiss$Fertility
+difX=X-mean(X)
+difY=Y-mean(Y)
+difX2=(X-mean(X))^2
+difY2=(Y-mean(Y))^2
+prodDifs=difX*difY
+tabla11=data.frame(X,Y,difX,difX2,difY,difY2,prodDifs)
+tabla10=data.frame(X,Y,round(difX,3),round(difX2,3),round(difY,3),round(difY2,3),round(prodDifs,3))
+sumes=apply(tabla11,2,sum)
+tabla10=rbind(tabla10,round(sumes,3))
+knitr::kable(tabla10,col.names=c("$X$","$Y$","$X_i-\\overline{X}$","$(X_i-\\overline{X})^2$","$Y_i-\\overline{Y}$","$(Y_i-\\overline{Y})^2$","$(X_i-\\overline{X})(Y_i-\\overline{Y})$"),escape=FALSE) %>% 
+row_spec(48,bold="TRUE",color="red")
+nn=length(X)
+```
+
+La covarianza será, pues:
+$$
+\mathrm{cov}(X,Y)=\frac{`r round(sumes[7],3)`}{`r length(X)`-1}=`r round(cov(X,Y),3)`.
+$$
+
+Para calcular el coeficiente de correlación $r$ entre $X$ e $Y$, necesitamos calcular primeramente las varianzas correspondientes:
+$$
+s_X^2=\frac{`r round(sum((X-mean(X))^2),4)`}{`r nn-1`}=`r round(var(X),4)`,\quad s_Y^2=\frac{`r round(sum((Y-mean(Y))^2),4)`}{`r nn-1`}=`r round(var(Y),4)`.
+$$
+
+El coeficiente de correlación será:
+$$
+r=\frac{\mathrm{cov}(X,Y)}{s_X\cdot s_Y}=\frac{`r round(cov(X,Y),4)`}{\sqrt{`r round(var(X),4)`}\cdot\sqrt{`r round(var(Y),4)`}}=`r round(cor(X,Y),4)`.
+$$
+
+Vemos que hay una correlación negativa entre las variables. Esto significa que a medida que el porcentaje de reclutas que reciben la calificación más alta en el examen del ejército aumenta, se espera un índice de fertilidad menor aunque hay que decir también que dicha correlación indica que la relación lineal entre las variables anteriores no es muy acentuada.
