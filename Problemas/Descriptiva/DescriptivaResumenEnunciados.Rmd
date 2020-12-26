@@ -65,9 +65,9 @@ donde:
 * Católicos: indica el porcentaje de católicos,
 * Mortalidad infantil: indica el porcentaje de bebés que viven menos de un año.
 
-a. Da la tabla de frecuencias de la variable Educación
+a. Dar la tabla de frecuencias de la variable Educación.
 a. Calcula la media y la varianza de la variable Educación como datos agrupados.
-a. Halla la media ponderada de la variable Fertilidad ponderando por las frecuencias relativas de la variable Educación
+a. Halla la media ponderada de la variable Fertilidad considerando como pesos los valores de la variable educación.
 
 5. Usando los datos de la tabla anterior, queremos estudiar la posible relación entre las variables Fertilidad y Examen.
 * Realiza un gráfico de puntos de las variables anteriores, indicando en el eje $X$ o abscisas la variable Examen y en el $Y$, la variable $Fertilidad$.
