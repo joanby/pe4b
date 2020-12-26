@@ -1,5 +1,5 @@
 ---
-title: "Problemas de Estadística Descriptiva. Resumen. Soluciones"
+title: "Problemas de Estadística Descriptiva. Resumen"
 author: ""
 date: ""
 output:

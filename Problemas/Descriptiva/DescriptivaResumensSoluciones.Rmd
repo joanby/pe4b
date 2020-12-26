@@ -1,5 +1,5 @@
 ---
-title: "Problemas de Estadística Descriptiva. Resumen."
+title: "Problemas de Estadística Descriptiva. Resumen. Soluciones"
 author: ""
 date: ""
 output:
@@ -121,7 +121,7 @@ knitr::kable(tabla4,align='crr',escape=FALSE)  %>%
   kable_styling(position = "center") %>% 
 row_spec(9,bold="TRUE",color="red")
 ```
-La varianza de la primera población será: $s_{x,2}^2=\frac{`r sum((poblaciones[2,]-mean(poblaciones[2,]))^2)`}{`r length(poblaciones[2,])-1`}=`r var(poblaciones[2,])`.$
+La varianza de la segunda población será: $s_{x,2}^2=\frac{`r sum((poblaciones[2,]-mean(poblaciones[2,]))^2)`}{`r length(poblaciones[2,])-1`}=`r var(poblaciones[2,])`.$
 
 * Tercera población:
 ```{r,echo=FALSE}
@@ -136,7 +136,7 @@ knitr::kable(tabla4,align='crr',escape=FALSE)  %>%
   kable_styling(position = "center") %>% 
 row_spec(9,bold="TRUE",color="red")
 ```
-La varianza de la primera población será: $s_{x,3}^2=\frac{`r sum((poblaciones[3,]-mean(poblaciones[3,]))^2)`}{`r length(poblaciones[3,])-1`}=`r var(poblaciones[3,])`.$
+La varianza de la tercera población será: $s_{x,3}^2=\frac{`r sum((poblaciones[3,]-mean(poblaciones[3,]))^2)`}{`r length(poblaciones[3,])-1`}=`r var(poblaciones[3,])`.$
 
 * Cuarta población:
 ```{r,echo=FALSE}
@@ -151,7 +151,7 @@ knitr::kable(tabla4,align='crr',escape=FALSE)  %>%
   kable_styling(position = "center") %>% 
 row_spec(9,bold="TRUE",color="red")
 ```
-La varianza de la primera población será: $s_{x,4}^2=\frac{`r sum((poblaciones[4,]-mean(poblaciones[4,]))^2)`}{`r length(poblaciones[4,])-1`}=`r var(poblaciones[4,])`.$
+La varianza de la cuarta población será: $s_{x,4}^2=\frac{`r sum((poblaciones[4,]-mean(poblaciones[4,]))^2)`}{`r length(poblaciones[4,])-1`}=`r var(poblaciones[4,])`.$
 
 Por tanto, se cumple, tal como vaticinamos:
 $$
@@ -185,6 +185,11 @@ b. La varianza de los tiempos será:
 $$
 s_{x}^2 =\left(\frac{`r tiempos[1]`^2+\cdots +`r tiempos[length(tiempos)]`^2}{`r length(tiempos)`}-`r mean(tiempos)`^2\right)\cdot\frac{`r length(tiempos)`}{`r length(tiempos)-1`}=\left(\frac{`r sum(tiempos^2)`}{`r length(tiempos)`}-`r mean(tiempos)`^2\right)\cdot\frac{`r length(tiempos)`}{`r length(tiempos)-1`}=`r var(tiempos)`.
 $$
+La desviación típica será:
+$$
+s_x=\sqrt{s_x^2}=\sqrt{`r round(var(tiempos),4)`}=`r round(sd(tiempos),4)`.
+$$
+
 
 c. Para calcular el percentil 90, primero ordenamos los tiempos:
 ```{r,echo=FALSE}
@@ -193,10 +198,11 @@ tabla2=matrix(tiempos.ordenados,nrow=5,byrow=TRUE)
 tabla2=as.data.frame(tabla2)
 rownames(tabla2)=c()
 colnames(tabla2)=c()
+tabla2[,5]=cell_spec(tabla2[,5],color=ifelse(tabla2[,5] ==31.49,"red","black"))
 knitr::kable(tabla2,escape=FALSE)  %>%
   kable_styling(position = "center")
 ```
-El percentil 90 es el que deja a su "izquierda" el $90\%$ de los valores. Por tanto, deja a su izquierda $0.9\cdot `r length(tiempos)`=`r 0.9*length(tiempos)`$ valores. El percentil 90 será el valor que ocupa el lugar $`r 0.9*length(tiempos)`$ en los tiempos ordenados. Dicho valor vale $`r tiempos.ordenados[0.9*length(tiempos)]`.$
+El percentil 90 es el que deja a su "izquierda" el $90\%$ de los valores. Por tanto, deja a su izquierda $0.9\cdot `r length(tiempos)`=`r 0.9*length(tiempos)`$ valores. El percentil 90 será el valor que ocupa el lugar $`r 0.9*length(tiempos)`$ en los tiempos ordenados. Dicho valor vale $`r tiempos.ordenados[0.9*length(tiempos)]`.$ (en rojo)
 
 d. Los cinco números resumen son el mínimo, el primer cuartil, la mediana, el segundo cuartil y el máximo:
 
@@ -209,6 +215,11 @@ $Q_2 = \frac{`r tiempos.ordenados[length(tiempos)/2]`+`r tiempos.ordenados[lengt
 * el tercer cuartil es el que deja a su izquierda el $75\%$ de los datos, es decir, es la mediana de los $`r length(tiempos)/2`$ últimos datos que correspondería al valor que ocupa el lugar $`r length(tiempos)/2`+`r (length(tiempos)/2+1)/2`=`r length(tiempos)/2+(length(tiempos)/2+1)/2`$. Dicho valor vale: 
 $Q_3 = `r tiempos.ordenados[length(tiempos)/2+(length(tiempos)/2+1)/2]`.$
 * el máximo vale: $`r max(tiempos)`$.
+
+e. El coeficiente de variación será:
+$$
+\mathrm{CV}=\frac{s_x}{\overline{x}}=\frac{`r round(sd(tiempos),4)`}{`r mean(tiempos)`}=`r round(sd(tiempos)/mean(tiempos),4)`.
+$$
 
 \newpage
 4. La tabla siguiente nos da unos indicadores socio-económicos para cada una de las 47 provincias de habla francesa de Suiza en 1888:
