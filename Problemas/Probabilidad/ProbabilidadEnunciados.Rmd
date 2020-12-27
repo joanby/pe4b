@@ -1,0 +1,41 @@
+---
+title: "Problemas de Probabilidad."
+author: ""
+date: ""
+output:
+  pdf_document: default
+              
+  html_document: default
+---
+1. Una encuesta sobre los mejores destinos turísticos asiáticos mostró que, de 70 personas, 23 ubicaron a Singapur en primer lugar, mientras que 15 colocaron a Hong Kong en primer lugar, 11 colocaron a Shanghai en primer lugar, 7 colocaron a Beijing en primer lugar y el resto eligió Tokio. Sobre la base de estos datos, calcule lo siguiente.
+a. La probabilidad de que el destino preferido sea una ciudad de China. (En este caso específico, Hong Kong no se considera parte de China).
+a. La probabilidad de que el destino preferido no sea una ciudad china. (En este caso, Hong Kong se considera una ciudad china, incluso si está fuera de China).
+a. La probabilidad de que el destino preferido sea Tokio.
+a. La probabilidad de que el destino preferido no sea Singapur.
+
+2. Una compañía de seguros estimó que el $30\%$ de todos los accidentes automovilísticos fueron causados en parte por las condiciones climáticas y que el $20\%$ de todos los accidentes automovilísticos involucraron lesiones corporales. Además, de los accidentes que involucraron lesiones corporales, el $40\%$ fueron causados en parte por las condiciones climáticas.
+a. ¿Cuál es la probabilidad de que un accidente elegido al azar haya sido causado en parte por las condiciones climáticas y haya involucrado lesiones corporales?
+a. ¿Son los eventos "causados en parte por las condiciones climáticas" y las "lesiones corporales involucradas" independientes?
+a. Si un accidente elegido al azar fue causado en parte por las condiciones climáticas, ¿cuál es la probabilidad de que haya involucrado lesiones corporales?
+a. ¿Cuál es la probabilidad de que un accidente elegido al azar no haya sido causado en parte por las condiciones climáticas y no haya involucrado lesiones corporales?
+
+3. Staff, Inc., una empresa de consultoría de gestión, está encuestando al personal de Acme Ltd. Determina que el $35\%$ de los analistas tienen un MBA y que el $40\%$ de todos los analistas tienen más de 35 años. Además, de los que tienen un MBA, el $30\%$ tiene más de 35 años.
+a. ¿Cuál es la probabilidad de que un analista elegido al azar tenga un MBA y también sea mayor de 35 años?
+a. ¿Cuál es la probabilidad de que un analista mayor de 35 años elegido al azar tenga un MBA?
+a. ¿Cuál es la probabilidad de que un analista elegido al azar tenga un MBA o sea mayor de 35 años?
+a. ¿Cuál es la probabilidad de que un analista elegido al azar que tenga más de 35 años no tenga un MBA?
+a. ¿Son los eventos MBA y mayores de 35 años independientes?
+a. ¿Son los eventos MBA y mayores de 35 años mutuamente excluyentes?
+
+4. Se selecciona un jurado de 12 miembros de un panel compuesto por 8 hombres y 8 mujeres.
+a. ¿Cuántas selecciones de jurados diferentes son posibles?
+a. Si la elección se hace al azar, ¿cuál es la probabilidad de que la mayoría de los miembros del jurado sean hombres?
+
+5. Las suscripciones a una revista en particular se clasifican como regalo, renovación previa, correo directo y servicio de suscripción. En enero, el $8\%$ de las suscripciones que vencen fueron regalos; $41\%$, renovación previa; $6\%$, correo directo; y el $45\%$, servicio de suscripción. Los porcentajes de renovaciones en estas cuatro categorías fueron $81\%$, $79\%$, $60\%$ y $21\%$, respectivamente. En febrero del mismo año, el $10\%$ de las suscripciones vencidas fueron obsequios; $57\%$, renovación previa; $24\%$, correo directo; y $9\%$, servicio de suscripción.
+Los porcentajes de renovaciones fueron $80\%$, $76\%$, $51\%$ y $14\%$, respectivamente.
+a. Encuentre la probabilidad de que se renueve una suscripción elegida al azar que vence en enero.
+a. Encuentre la probabilidad de que se renueve una suscripción elegida al azar que vence en febrero.
+a. Verifique que la probabilidad del apartado b) sea mayor que la del apartado a). Si el editor de la revista tiene un presupuesto para invertir en publicidad de la revista, ¿dónde crees que es mejor que invierta, en enero o en febrero?
+
+6. Usted es responsable de detectar el origen del error cuando falla un sistema informático. A partir de su análisis, sabe que la fuente del error puede ser la unidad de disco, la memoria de la computadora o el sistema operativo. Sabe que el $50\%$ de los errores son errores de la unidad de disco, el $30\%$ son errores de memoria de la computadora y el resto son errores del sistema operativo. Según los estándares de rendimiento de los componentes, sabe que cuando ocurre un error en la unidad de disco, la probabilidad de falla es $0.60$, cuando ocurre un error de memoria de la computadora, la probabilidad de falla es $0.7$ y cuando ocurre un error del sistema operativo, la probabilidad de falla es $0.3$. Dada la información de los estándares de rendimiento de los componentes, ¿cuál es la probabilidad de que se produzca un error en la unidad de disco, dado que ocurrió una falla?
+
