@@ -2,6 +2,7 @@
 title: "Tema 4 - Variables Aleatorias continuas"
 author: "Ricardo Alberich, Juan Gabriel Gomila y  Arnau Mir"
 date: 
+runtime: shiny
 output: 
   ioslides_presentation: 
     css: Mery_style.css
@@ -99,21 +100,21 @@ cada intervalo acotado de $\mathbb{R}$.
 
 Sea $X$ una v.a. con función de distribución $F_X$. Sea $f:\mathbb{R}\to\mathbb{R}$ una función de densidad tal que
 
-$$F_X(x)=P(X\leq x)\displaystyle\int_{-\infty}^{x} f_X(t)\ dt.\mbox{ para todo } x\in\mathbb{R},$$
+$$F_X(x)=P(X\leq x)=\displaystyle\int_{-\infty}^{x} f_X(t)\ dt.\mbox{ para todo } x\in\mathbb{R},$$
 
 Entonces $X$ es una variable aleatoria continua y $f_X$ es la densidad de la v.a. $X$.
 
 
 ##  Dominio de una variable aleatoria continua
 
-El conjunto $D_X=\{x\in\mathbb{R}| f_x(x)>0\}$ recibe el nombre de <l class="definition"> soporte o dominio de la
+El conjunto $D_X=\{x\in\mathbb{R}| f_X(x)>0\}$ recibe el nombre de <l class="definition"> soporte o dominio de la
 variable aleatoria continua</l> y se interpreta como su conjunto de resultados posibles.
 
 
 <div class="example">
 **Ejemplo:**
 
-En nuestro  ejemplo, la función $f$ es una densidad
+En nuestro  ejemplo $X\equiv U(0,1)$ la función $f_X$ es una densidad
 
 $$
 f_{X}(x)=\left\{
@@ -124,7 +125,7 @@ f_{X}(x)=\left\{
 \end{array}\right.
 $$
 
-que es la densidad de $X$, en efecto:
+su dominio que es $D_X=(0,1)$ y es la densidad de $X$, en efecto:
 
 </div>
 
@@ -164,6 +165,52 @@ curve(dunif(x,0,1),xlim=c(-0.5,1.5),col="blue",
 ```
 </div>
 
+## Gráficas interactivas  $U(a,b)$
+
+```{r uniforme_plots1_interactivo, echo = FALSE}
+fluidPage(
+fluidRow(
+  column(4,
+         sliderInput("a1", label = "Parámetro a",
+              min = -5, max = 1, value =0 , step = 0.1)
+         ),
+  column(4,
+          sliderInput("b1", label = "Parámetro b",
+                     min = 1, max = 5, value = 1, step = 0.1)
+         ),
+  column(4,
+         sliderInput("x1", label="x", value=0.5, min = -5, max = 5, step = 0.1)
+         )
+  
+)
+)
+
+renderPlot({
+  a=input$a1
+  b=input$b1
+  x=input$x1
+  par(mfrow=c(1,2))
+  #a=0;b=1;x=0.25
+  xx=c(seq(min(a,x),min(b,x),by=0.001))
+  curve(dunif(x,a,b),xlim=c(a-0.25,b+0.25),ylim=c(0,max(1/(b-a)+0.05,0.1)),col="blue",main=paste0("Función densidad U(",a,",",b,")"),
+  ylab=expression(f[X](x)))
+  axis(side=1, at=c(a,x,b), labels = TRUE)
+  polygon(x=c(a,xx,min(x,b)),y=c(0,dunif(xx,a,b),0),
+          density=20,col="skyblue")
+  curve(punif(x,a,b),xlim=c(a-1,b+1),ylim=c(0,1.1),col="blue",main=paste0("Función de distribución U(",a,",",b,")"),
+  ylab=expression(F[X](x)))
+  segments(x0=x,y0=0,x1=x,y1=punif(x,a,b),col="red",lty=2)
+  segments(x0=a-1.01,y0=punif(x,a,b),x1=x,y1=punif(x,a,b),col="red",lty=2)
+  axis(side=2, at=c(0,round(punif(x,a,b),1),2), labels = TRUE)
+  axis(side=1, at=c(a,x,b), labels = TRUE)
+  par(mfrow=c(1,1))
+})
+
+```
+
+
+
+
 ## Propiedades  de la función de densidad
 
 La función de densidad nos permite calcular diversas probabilidades.
@@ -190,7 +237,7 @@ $$
 
 Sea $X$ una v.a. continua con función de distribución $F_X$ y de densidad $f_X$, entonces:
 
-* Si $f_x$ es continua en un punto $x$, $F_X$ es derivable en ese punto y
+* Si $f_X$ es continua en un punto $x$, $F_X$ es derivable en ese punto y
 $F_X'(x)=f_X(x).$
 * $P(X=x)=0$ para todo $x\in\mathbb{R}.$
 
@@ -225,7 +272,7 @@ $$
 
 * $\sigma_{X}^2\geq 0$.
 * $Var(cte)=E(cte^2)-(E(cte))^2= cte^2 - cte^2=0$.
-* $\displaystyle Var(x)=E(X^2)-\mu_{X}^2=\int_{-\infty}^{+\infty}x^2\cdot  f_{X}(x)dx - \mu_{X}^2.$
+* $\displaystyle Var(X)=E(X^2)-\mu_{X}^2=\int_{-\infty}^{+\infty}x^2\cdot  f_{X}(x)dx - \mu_{X}^2.$
 * El mínimo de $E((X-C)^2)$ se alcanza cuando $C=E(X)$ y es $Var(X)$.
 
 
