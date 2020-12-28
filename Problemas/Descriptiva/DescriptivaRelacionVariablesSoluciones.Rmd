@@ -1,0 +1,174 @@
+---
+title: "Problemas de Estadística Descriptiva. Relación entre variables. Soluciones"
+author: ""
+date: ""
+output:
+  pdf_document: default
+              
+  html_document: default
+---
+
+1. El Hospital River Hills está interesado en determinar la efectividad de un nuevo medicamento para reducir el tiempo requerido para la recuperación completa de la cirugía de rodilla.
+La recuperación completa se mide mediante una serie de pruebas de fuerza que comparan la rodilla tratada con la rodilla no tratada. El fármaco se administró en cantidades variables a 18 pacientes durante un período de 6 meses. Para cada paciente, el número de unidades de fármaco, $X$, y los días para la recuperación completa, $Y$, vienen dados por los siguientes datos $(x, y)$:
+\begin{align*}
+& (5,53), (21, 65), (14, 48), (11, 66), (9, 46), (4, 56), \\
+& (7, 53), (21, 57),  (17, 49), (14, 66), (9, 54), (7, 56), \\
+& (9, 53), (21, 52), (13, 49), (14, 56), (9, 59), (4, 56).
+\end{align*}
+    a. Calcule la covarianza.
+    a. Calcule el coeficiente de correlación.
+    a. Analice brevemente la relación entre el número de unidades de fármaco y el tiempo de recuperación.
+
+
+## Solución
+```{r,echo=FALSE}
+farmaco=matrix(c(5,53, 21, 65, 14, 48, 11, 66, 9, 46, 4, 56, 7, 53, 21, 57,  17, 49, 14, 66, 9, 54, 7, 56, 9, 53, 21, 52, 13, 49, 14, 56, 9, 59, 4, 56),ncol=2,byrow=TRUE)
+```
+
+a. En primer lugar, construimos la tabla siguiente donde la última fila es la suma de las filas anteriores:
+```{r,echo=FALSE}
+X=farmaco[,1]
+Y=farmaco[,2]
+difX=farmaco[,1]-mean(farmaco[,1])
+difY=farmaco[,2]-mean(farmaco[,2])
+difX2=difX^2
+difY2=difY^2
+prodDifs=difX*difY
+tabla=data.frame(X,Y,difX,difX2,difY,difY2,prodDifs)
+sumes=apply(tabla,2,sum)
+tabla=rbind(tabla,sumes)
+library(knitr)
+library(kableExtra)
+knitr::kable(tabla,col.names=c("$X$","$Y$","$X_i-\\overline{X}$","$(X_i-\\overline{X})^2$","$Y_i-\\overline{Y}$","$(Y_i-\\overline{Y})^2$","$(X_i-\\overline{X})(Y_i-\\overline{Y})$"),escape=FALSE) %>% 
+row_spec(19,bold="TRUE",color="red")
+nn=length(X)
+```
+Las medias de las variables $X$ e $Y$ son:
+$$
+\overline{X}=\frac{`r sum(X)`}{`r nn`}=`r round(mean(X),3)`,\quad \overline{Y}=\frac{`r sum(Y)`}{`r nn`}=`r round(mean(Y),3)`.
+$$
+La covarianza entre las variables $X$ e $Y$ será:
+$$
+\mathrm{cov}(X,Y)=\frac{`r round(sum((X-mean(X))*(Y-mean(Y))),4)`}{`r nn-1`}=`r round(cov(X,Y),4)`.
+$$
+
+b. Para calcular el coeficiente de correlación $r$ entre $X$ e $Y$, necesitamos calcular primeramente las varianzas correspondientes:
+$$
+s_X^2=\frac{`r round(sum((X-mean(X))^2),4)`}{`r nn-1`}=`r round(var(X),4)`,\quad s_Y^2=\frac{`r round(sum((Y-mean(Y))^2),4)`}{`r nn-1`}=`r round(var(Y),4)`.
+$$
+El coeficiente de correlación será:
+$$
+r=\frac{\mathrm{cov}(X,Y)}{s_X\cdot s_Y}=\frac{`r round(cov(X,Y),4)`}{\sqrt{`r round(var(X),4)`}\cdot\sqrt{`r round(var(Y),4)`}}=`r round(cor(X,Y),4)`.
+$$
+c. El coeficiente de correlación es bajo. Por tanto, la relación entre los días de recuperación y las unidades de fármaco no sería lineal.
+
+
+
+\newpage
+2. Una empresa de bienes de consumo ha estado estudiando el efecto de la publicidad en los beneficios totales. Como parte de este estudio, se recopilaron datos sobre gastos publicitarios (en miles de dólares) y ventas totales (en miles de dólares) durante un período de 5 meses y son los siguientes:
+$$(10, 100), (15, 200), (7, 80), (12, 120), (14, 150).$$
+El primer número son los gastos publicitarios y el segundo son las ventas totales. Haga un gráfico de los datos y calcule el coeficiente de correlación.
+
+
+## Solución
+
+```{r,echo=FALSE}
+publicidad=matrix(c(10, 100, 15, 200, 7, 80, 12, 120, 14, 150),ncol=2,byrow=TRUE)
+```
+
+```{r,echo=FALSE}
+X=publicidad[,1]
+Y=publicidad[,2]
+difX=publicidad[,1]-mean(publicidad[,1])
+difY=publicidad[,2]-mean(publicidad[,2])
+difX2=difX^2
+difY2=difY^2
+prodDifs=difX*difY
+tabla=data.frame(X,Y,difX,difX2,difY,difY2,prodDifs)
+sumes=apply(tabla,2,sum)
+tabla=rbind(tabla,sumes)
+```
+
+El gráfico de los datos es el siguiente:
+
+```{r,echo=FALSE}
+plot(X,Y,xlab="Gastos publicitarios",ylab="Ventas totales",pch=19)
+```
+
+Para hallar el coeficiente de correlación, hacemos la tabla siguiente:
+
+```{r,echo=FALSE}
+knitr::kable(tabla,col.names=c("$X$","$Y$","$X_i-\\overline{X}$","$(X_i-\\overline{X})^2$","$Y_i-\\overline{Y}$","$(Y_i-\\overline{Y})^2$","$(X_i-\\overline{X})(Y_i-\\overline{Y})$"),escape=FALSE) %>% 
+row_spec(6,bold="TRUE",color="red")
+nn=length(X)
+```
+
+Calculemos primero las medias y la covarianza entre los gastos publicitarios ($X$) y las ventas totales ($Y$):
+
+$$
+\overline{X}=\frac{`r sum(X)`}{`r nn`}=`r round(mean(X),3)`,\quad \overline{Y}=\frac{`r sum(Y)`}{`r nn`}=`r round(mean(Y),3)`,\quad 
+\mathrm{cov}(X,Y)=\frac{`r round(sum((X-mean(X))*(Y-mean(Y))),4)`}{`r nn-1`}=`r round(cov(X,Y),4)`.
+$$
+
+Para calcular el coeficiente de correlación $r$ entre $X$ e $Y$, necesitamos calcular primeramente las varianzas correspondientes:
+$$
+s_X^2=\frac{`r round(sum((X-mean(X))^2),4)`}{`r nn-1`}=`r round(var(X),4)`,\quad s_Y^2=\frac{`r round(sum((Y-mean(Y))^2),4)`}{`r nn-1`}=`r round(var(Y),4)`.
+$$
+
+El coeficiente de correlación será:
+$$
+r=\frac{\mathrm{cov}(X,Y)}{s_X\cdot s_Y}=\frac{`r round(cov(X,Y),4)`}{\sqrt{`r round(var(X),4)`}\cdot\sqrt{`r round(var(Y),4)`}}=`r round(cor(X,Y),4)`.
+$$
+
+Vemos que existe una relación lineal acentuada entre los gastos publicitarios y las ventas totales, tal como puede apreciarse en el gráfico anterior.
+
+
+
+\newpage
+3. El presidente de Floor Coverings Unlimited desea información sobre la relación entre la experiencia minorista (años) y las ventas semanales (en cientos de euros). Obtuvo la siguiente muestra aleatoria sobre experiencia y ventas semanales:
+$$(2, 5), (4, 10), (3, 8), (6, 18), (3, 6), (5, 15), (6, 20), (2, 4).$$
+El primer número para cada observación son los años de experiencia y el segundo número son las ventas semanales. Calcule la covarianza y el coeficiente de correlación.
+
+## Solución
+
+```{r,echo=FALSE}
+experiencia=matrix(c(2, 5, 4, 10, 3, 8, 6, 18, 3, 6, 5, 15, 6, 20, 2, 4),ncol=2,byrow=TRUE)
+```
+
+En primer lugar, construimos la tabla siguiente donde la última fila es la suma de las filas anteriores:
+```{r,echo=FALSE}
+X=experiencia[,1]
+Y=experiencia[,2]
+difX=experiencia[,1]-mean(experiencia[,1])
+difY=experiencia[,2]-mean(experiencia[,2])
+difX2=difX^2
+difY2=difY^2
+prodDifs=difX*difY
+tabla=data.frame(X,Y,difX,difX2,difY,difY2,prodDifs)
+sumes=apply(tabla,2,sum)
+tabla=rbind(tabla,sumes)
+knitr::kable(tabla,col.names=c("$X$","$Y$","$X_i-\\overline{X}$","$(X_i-\\overline{X})^2$","$Y_i-\\overline{Y}$","$(Y_i-\\overline{Y})^2$","$(X_i-\\overline{X})(Y_i-\\overline{Y})$"),escape=FALSE) %>% 
+row_spec(9,bold="TRUE",color="red")
+nn=length(X)
+```
+
+
+Las medias de las variables $X$ (experiencia minorista en años) e $Y$ (ventas semanales en cientos de euros) son:
+$$
+\overline{X}=\frac{`r sum(X)`}{`r nn`}=`r round(mean(X),3)`,\quad \overline{Y}=\frac{`r sum(Y)`}{`r nn`}=`r round(mean(Y),3)`.
+$$
+La covarianza entre las variables $X$ e $Y$ será:
+$$
+\mathrm{cov}(X,Y)=\frac{`r round(sum((X-mean(X))*(Y-mean(Y))),4)`}{`r nn-1`}=`r round(cov(X,Y),4)`.
+$$
+
+b. Para calcular el coeficiente de correlación $r$ entre $X$ e $Y$, necesitamos calcular primeramente las varianzas correspondientes:
+$$
+s_X^2=\frac{`r round(sum((X-mean(X))^2),4)`}{`r nn-1`}=`r round(var(X),4)`,\quad s_Y^2=\frac{`r round(sum((Y-mean(Y))^2),4)`}{`r nn-1`}=`r round(var(Y),4)`.
+$$
+El coeficiente de correlación será:
+$$
+r=\frac{\mathrm{cov}(X,Y)}{s_X\cdot s_Y}=\frac{`r round(cov(X,Y),4)`}{\sqrt{`r round(var(X),4)`}\cdot\sqrt{`r round(var(Y),4)`}}=`r round(cor(X,Y),4)`.
+$$
+
+Vemos que la relación entre las variables $X$ e $Y$ es muy fuerte.

@@ -1,0 +1,76 @@
+---
+title: "Problemas de Estadística Descriptiva. Resumen"
+author: ""
+date: ""
+output:
+  pdf_document: default
+              
+  html_document: default
+---
+
+1. Un aeropuerto importante contrató recientemente al consultor Manuel López para estudiar el problema de los retrasos en el tráfico aéreo. En la siguiente tabla se puede observar la cantidad de minutos que los aviones llegaron tarde en una muestra de vuelos:
+```{r,echo=FALSE}
+minutos=c("0<10","10<20","20<30","30<40","40<50","50<60")
+num.vuelos=c(30,25,13,6,5,4)
+tabla=rbind(minutos,num.vuelos)
+tabla=as.data.frame(tabla)
+colnames(tabla)=c()
+rownames(tabla)=c("Minutos de retraso","Número de vuelos")
+library(knitr)
+library(kableExtra)
+knitr::kable(tabla,escape=FALSE)  %>%
+  kable_styling(position = "center")
+```
+a. Estime el número medio de minutos de retraso.
+a. Estime la varianza y la desviación estándar de la muestra.
+
+2. Considere las siguientes cuatro poblaciones:
+* $1, 2, 3, 4, 5, 6, 7, 8$
+* $1, 1, 1, 1, 8, 8, 8, 8$
+* $1, 1, 4, 4, 5, 5, 8, 8$
+* $-6, -3, 0, 3, 6, 9, 12, 15$
+
+Todas estas poblaciones tienen la misma media. Sin hacer los cálculos, organice las poblaciones de acuerdo con las magnitudes de sus varianzas, de menor a mayor. Luego calcule cada una de las variaciones manualmente.
+
+3. Los tiempos en minutos que están $50$ clientes en un supermercado local para realizar la compra son los siguientes:
+```{r,echo=FALSE}
+set.seed(2020)
+tiempos=round(rnorm(50,25,5),2)
+tabla=matrix(tiempos,nrow=5)
+tabla=as.data.frame(tabla)
+rownames(tabla)=c()
+colnames(tabla)=c()
+knitr::kable(tabla,escape=FALSE)  %>%
+  kable_styling(position = "center")
+```
+a. Calcular el tiempo medio que tardan los $50$ clientes.
+a. Calcular la varianza y la desviación típica de los tiempos.
+a. Calcular el percentil 90.
+a. Calcular los $5$ números resumen.
+a. Calcular el coeficiente de variación.
+
+4. La tabla siguiente nos da unos indicadores socio-económicos para cada una de las 47 provincias de habla francesa de Suiza en 1888:
+```{r,echo=FALSE}
+tabla=swiss
+colnames(tabla)=c("Fertilidad","Agricultura","Examen","Educación","Católicos","Mortalidad infantil")
+knitr::kable(tabla,escape=FALSE)  %>%
+  kable_styling(position = "center")
+```
+donde:
+
+* Fertilidad: indica el índice de fertilidad de la provincia,
+* Agricultura: indica el porcentaje de hombres que se dedican a la agricultura,
+* Examen: indica el porcentaje de reclutas que reciben la calificación más alta en el examen del ejército,
+* Educación: indica el porcentaje de reclutas que tienen una educación superior a la primaria,
+* Católicos: indica el porcentaje de católicos,
+* Mortalidad infantil: indica el porcentaje de bebés que viven menos de un año.
+
+a. Dar la tabla de frecuencias de la variable Educación.
+a. Calcula la media y la varianza de la variable Educación como datos agrupados.
+a. Calcular los cuartiles de la variable Educación. Realizar un diagrama de caja de la variable Fertilidad según el cuartil dónde esté la provincia correspondiente. Es decir, dibujar 4 diagramas de caja para la variable Fertilidad, uno para las provincias que estén en el primer cuartil de la variable Educación, otro para las provincias que estén en el segundo cuartil de la variable Educación y lo mismo para los cuartiles tercero y cuarto.
+Comentar los resultados observados.
+
+5. Usando los datos de la tabla anterior, queremos estudiar la posible relación entre las variables Fertilidad y Examen.
+* Realiza un gráfico de puntos de las variables anteriores, indicando en el eje $X$ o abscisas la variable Examen y en el $Y$, la variable $Fertilidad$.
+* Calcula la covarianza y la correlación entre las variables anteriores. ¿A qué conclusión llegas? 
+

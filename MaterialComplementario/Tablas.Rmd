@@ -1,0 +1,340 @@
+---
+title: "Tablas estadísticas"
+author: ""
+date: ""
+output:
+  pdf_document: default
+              
+  html_document: default
+---
+
+
+## Tabla de la función de distribución para la distribución binomial
+
+La primera fila indica el valor del parámetro $p$ y la primera columna el valor del parámetro $n$. La tabla nos da para una distribución binomial $X=B(n,p)$, la función de distribución en un valor entero cualquiera $k$, donde $k$ es el primer número de la fila correspondiente: $F_X(k)=P(X\leq k)$.
+
+Por ejemplo, para $n=10$, $p=0.4$ y $k=4$, $F_X(4)$ valdría: $F_X(4)=0.633$.
+
+```{r,echo=FALSE}
+nmax=20
+ps=seq(from=0,to=0.99,by=0.05)
+ps=ps[-1]
+ps=c(0.01,ps,0.99)
+ns=list()
+for (i in 1:nmax){
+  ns[[i]]=0:i
+}
+
+taula=c()
+for (i in 1:length(ns)){
+  Fs=c()
+  for (j in 1:length(ns[[i]])){
+  Fs=rbind(Fs,round(pbinom(ns[[i]][j],max(ns[[i]]),ps),3))
+  }
+taula=rbind(taula,Fs)
+}
+
+colnames(taula)=ps
+
+aux=c()
+for (i in 1:length(ns)){
+  aux=c(aux,ns[[i]])
+}
+
+taula=cbind(aux,taula)
+colnames(taula)=c("",ps)
+
+aux=c()
+for (i in 1:length(ns)){
+  aux=c(aux,i)
+  for (i in 1:(length(ns[[i]])-1)){
+    aux=c(aux,"")
+  }
+}
+rownames(taula)=aux
+library(knitr)
+knitr::kable(taula[,1:11],escape=FALSE)
+knitr::kable(taula[,12:22],escape=FALSE)
+```
+
+\newpage
+
+## Tabla de la función de distribución para la distribución de Poisson
+
+La primera fila indica el valor del parámetro $\lambda$ y la primera columna el valor de un entero cualquiera $k$. La tabla nos da para una distribución de Poison $X=\mathrm{Pois}(\lambda)$, la función de distribución en un valor $k$ $F_X(k)=P(X\leq k)$.
+
+Por ejemplo, para $\lambda =8.5$ y $k=5$, $F_X(5)$ valdría: $F_X(5)=0.15$.
+
+```{r,echo=FALSE}
+lambdas=seq(from=0.1,to=0.9,by=0.1)
+lambdas=c(lambdas,seq(from=1,to=10,by=0.5))
+
+nmax=2*max(lambdas)
+taula=c()
+for (i in 0:nmax){
+  taula=rbind(taula,round(ppois(i,lambdas),3))
+}
+
+colnames(taula)=lambdas
+
+rownames(taula)=c(0:nmax)
+
+taula=taula[-(nmax+1),]
+
+library(knitr)
+
+knitr::kable(taula[,1:14],escape=FALSE)
+knitr::kable(taula[,15:28],escape=FALSE)
+```
+
+
+\newpage
+
+## Tabla de la funció de distribución para la distribución normal estándar $Z=N(0,1)$
+
+La tabla da la función de distribución de la distribución $Z=N(0,1)$ hasta las centésimas. Consideremos un valor real $z$, la primera fila indica el valor dicho valor hasta las décimas y la primera columna indica las centésimas y dentro de la tabla hallamos $F_Z(z)=p(Z\leq z)$.
+
+Por ejemplo, consideremos $z=1.45$, para calcular $F_Z(z)$, buscamos en la primera columna el valor $1.4$ y buscamos $5$ en la primera fila (centésimas), seguidamente miramos donde se intersecan los dos valores anteriores y vemos que lo hacen en el valor $`r round(pnorm(1.45),3)`$. Esto significa que $F_Z(1.45)=P(Z\leq 1.45)=`r round(pnorm(1.45),3)`.$
+
+En caso en que $z<0$, para calcular $F_Z(z)$ podemos usar la propiedad de simetría de la $Z=N(0,1)$:
+$$
+F_Z(z)=P(Z\leq z)=1-P(Z\leq -z)=1-F_Z(-z).
+$$
+Como $-z>0$, se puede encontrar $F_Z(-z)$ en la tabla.
+
+Por ejemplo, para hallar $F_Z(-0.89)$, hacemos
+$$
+F_Z(-0.89)=1-F_Z(0.89)=1-`r round(pnorm(0.89),3)`=`r round(pnorm(-0.89),3)`.
+$$
+
+```{r,echo=FALSE}
+centenes=0:9
+x=seq(from=0,to=3,by=0.1)
+taula=c()
+for (j in 1:length(centenes)){
+  valors=x+centenes[j]/100
+  taula=cbind(taula,round(pnorm(valors),3))
+}
+rownames(taula)=x
+rownames(taula)[1]="0.0"
+rownames(taula)[11]="1.0"
+rownames(taula)[21]="2.0"
+rownames(taula)[31]="3.0"
+colnames(taula)=centenes
+library(knitr)
+knitr::kable(taula,escape=FALSE)
+```
+
+
+
+\newpage
+
+## Tabla de la función de distribución para la distribución $t$ de Student $t_{n}$
+
+La tabla da los percentiles para la distribución $t_{n}$. La primera fila indica el percentil considerado $q$ y la primera columna, los grados de libertad $n$ de la distribución $t_n$.
+
+Por ejemplo, consideremos $q=0.65$, para calcular el valor $t_{0.65,19}$, buscamos en la primera fila el valor $0.65$ y buscamos $19$ en la primera columna, seguidamente miramos donde se intersecan los dos valores anteriores y vemos que lo hacen en el valor $`r round(qt(0.65,19),3)`$. Esto significa que $t_{0.65,19}=`r round(qt(0.65,19),3)`$, o, lo que es lo mismo, $p(t_{19}\leq `r round(qt(0.65,19),3)`)=0.65$.
+
+Si el valor de $q$ está entre $0$ y $0.5$, $0<q<0.5$, podemos usar la simetría de la distribución $t_n$ y escribir que $t_{\alpha,n}=-t_{1-\alpha,n}$. Por ejemplo,
+$t_{0.3,27}=-t_{1-0.3,27}=-t_{0.7,27}=-`r round(qt(0.7,27),3)`.$
+
+```{r,echo=FALSE}
+ps=c(seq(from=0.5,to=0.95,by=0.05),0.975,0.99)
+ps=ps[-1]
+ns=c(1:40,seq(from=45,to=75,by=5),seq(from=80,to=150,by=10),seq(from=200,to=500,by=100))
+
+taula=c()
+for (i in 1:length(ns)){
+  taula=rbind(taula,round(qt(ps,ns[i]),3))
+}
+
+colnames(taula)=ps
+
+rownames(taula)=ns
+library(knitr)
+knitr::kable(taula,escape=FALSE)
+```
+
+
+\newpage
+
+## Tabla de la función de distribución para la distribución $\chi_n^2$
+
+La tabla da los percentiles para la distribución $\chi_n^2$. La primera fila indica el percentil considerado $q$ y la primera columna, los grados de libertad $n$ de la distribución $\chi_n^2$.
+
+Por ejemplo, consideremos $q=0.65$, para calcular el valor $\chi_{0.65,19}^2$, buscamos en la primera fila el valor $0.65$ y buscamos $19$ en la primera columna, seguidamente miramos donde se intersecan los dos valores anteriores y vemos que lo hacen en el valor $`r round(qchisq(0.65,19),3)`$. Esto significa que $\chi_{0.65,19}^2=`r round(qchisq(0.65,19),3)`$, o, lo que es lo mismo, $p(\chi_{19}^2\leq `r round(qchisq(0.65,19),3)`)=0.65$.
+
+```{r,echo=FALSE}
+ps=c(seq(from=0.5,to=0.95,by=0.05),0.975,0.99)
+ps=ps[-1]
+ps=c(sort(1-ps),ps)
+ns=c(1:40,seq(from=45,to=75,by=5),seq(from=80,to=150,by=10),seq(from=200,to=500,by=100))
+
+taula=c()
+for (i in 1:length(ns)){
+  taula=rbind(taula,round(qchisq(ps,ns[i]),3))
+}
+
+colnames(taula)=ps
+
+rownames(taula)=ns
+library(knitr)
+knitr::kable(taula[,1:11],escape=FALSE)
+knitr::kable(taula[,12:22],escape=FALSE)
+```
+
+
+\newpage
+
+## Tabla de la función de distribución para la distribución $F_{n_1,n_2}$
+
+```{r,echo=FALSE}
+ns=c(1:35,seq(from=40,to=100,by=10))
+ps=c(seq(from=0.5,to=0.95,by=0.05),0.975,0.99)
+taules=list()
+for (i in 1:length(ps)){
+  taules[[i]]=matrix(0,length(ns),length(ns))
+  for (j in 1:length(ns)){
+    taules[[i]][j,]=round(qf(ps[i],ns[j],ns),3)
+  }
+  rownames(taules[[i]])=ns
+  colnames(taules[[i]])=ns
+}
+```
+
+La tabla da los percentiles para la distribución $F_{n_1,n_2}$. 
+
+Se muestra una tabla para cada percentil $q$ para una secuencia de $q$s entre $0.5$ y $1$.
+Fijado $q$, la primera fila indica el grado de libertad $n_1$ y la primera columna, el segundo grado de libertad $n_2$. 
+
+Por ejemplo, consideremos $q=`r ps[1]`$. El percentil $F_{`r ps[1]`,15,23}$ sería $F_{`r ps[1]`,15,23}=`r round(qf(ps[1],15,23),3)`.$ Es decir, $p(F_{15,23}\leq `r round(qf(ps[1],15,23),3)`)=`r ps[1]`.$
+
+Si el percentil $q$ está entre $0$ y $0.5$, podemos usar la propiedad siguiente de la distribución $F_{n_1,n_2}$:
+$$
+F_{q,n_1,n_2}=\frac{1}{F_{1-q,n_2,n_1}}.
+$$
+Por ejemplo, para hallar $F_{0.1,14,23}$, podemos hacer lo siguiente:
+$$
+F_{0.1,14,23}=\frac{1}{F_{1-0.1,23,14}}=\frac{1}{F_{0.9,23,14}}=\frac{1}{`r round(qf(0.9,23,14),3)`}=`r round(qf(0.1,14,23),3)`.
+$$
+
+
+### $x=`r ps[1]`$
+
+```{r,echo=FALSE}
+library(knitr)
+knitr::kable(taules[[1]][,1:14],escape=FALSE)
+knitr::kable(taules[[1]][,15:28],escape=FALSE)
+knitr::kable(taules[[1]][,29:42],escape=FALSE)
+```
+
+\newpage
+### $x=`r ps[2]`$
+
+```{r,echo=FALSE}
+library(knitr)
+knitr::kable(taules[[2]][,1:14],escape=FALSE)
+knitr::kable(taules[[2]][,15:28],escape=FALSE)
+knitr::kable(taules[[2]][,29:42],escape=FALSE)
+```
+
+\newpage
+### $x=`r ps[3]`$
+
+```{r,echo=FALSE}
+library(knitr)
+knitr::kable(taules[[3]][,1:14],escape=FALSE)
+knitr::kable(taules[[3]][,15:28],escape=FALSE)
+knitr::kable(taules[[3]][,29:42],escape=FALSE)
+```
+
+\newpage
+### $x=`r ps[4]`$
+
+```{r,echo=FALSE}
+library(knitr)
+knitr::kable(taules[[4]][,1:14],escape=FALSE)
+knitr::kable(taules[[4]][,15:28],escape=FALSE)
+knitr::kable(taules[[4]][,29:42],escape=FALSE)
+```
+
+\newpage
+### $x=`r ps[5]`$
+
+```{r,echo=FALSE}
+library(knitr)
+knitr::kable(taules[[5]][,1:14],escape=FALSE)
+knitr::kable(taules[[5]][,15:28],escape=FALSE)
+knitr::kable(taules[[5]][,29:42],escape=FALSE)
+```
+
+\newpage
+### $x=`r ps[6]`$
+
+```{r,echo=FALSE}
+library(knitr)
+knitr::kable(taules[[6]][,1:14],escape=FALSE)
+knitr::kable(taules[[6]][,15:28],escape=FALSE)
+knitr::kable(taules[[6]][,29:42],escape=FALSE)
+```
+
+\newpage
+### $x=`r ps[7]`$
+
+```{r,echo=FALSE}
+library(knitr)
+knitr::kable(taules[[7]][,1:14],escape=FALSE)
+knitr::kable(taules[[7]][,15:28],escape=FALSE)
+knitr::kable(taules[[7]][,29:42],escape=FALSE)
+```
+
+
+\newpage
+### $x=`r ps[8]`$
+
+```{r,echo=FALSE}
+library(knitr)
+knitr::kable(taules[[8]][,1:14],escape=FALSE)
+knitr::kable(taules[[8]][,15:28],escape=FALSE)
+knitr::kable(taules[[8]][,29:42],escape=FALSE)
+```
+
+\newpage
+### $x=`r ps[9]`$
+
+```{r,echo=FALSE}
+library(knitr)
+knitr::kable(taules[[9]][,1:14],escape=FALSE)
+knitr::kable(taules[[9]][,15:28],escape=FALSE)
+knitr::kable(taules[[9]][,29:42],escape=FALSE)
+```
+
+\newpage
+### $x=`r ps[10]`$
+
+```{r,echo=FALSE}
+library(knitr)
+knitr::kable(taules[[10]][,1:14],escape=FALSE)
+knitr::kable(taules[[10]][,15:28],escape=FALSE)
+knitr::kable(taules[[10]][,29:42],escape=FALSE)
+```
+
+\newpage
+### $x=`r ps[11]`$
+
+```{r,echo=FALSE}
+library(knitr)
+knitr::kable(taules[[11]][,1:14],escape=FALSE)
+knitr::kable(taules[[11]][,15:28],escape=FALSE)
+knitr::kable(taules[[11]][,29:42],escape=FALSE)
+```
+
+\newpage
+### $x=`r ps[12]`$
+
+```{r,echo=FALSE}
+library(knitr)
+knitr::kable(taules[[12]][,1:14],escape=FALSE)
+knitr::kable(taules[[12]][,15:28],escape=FALSE)
+knitr::kable(taules[[12]][,29:42],escape=FALSE)
+```

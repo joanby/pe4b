@@ -1,0 +1,26 @@
+---
+title: "Problemas de Estadística Descriptiva. Relación entre variables."
+author: ""
+date: ""
+output:
+  pdf_document: default
+              
+  html_document: default
+---
+
+1. El Hospital River Hills está interesado en determinar la efectividad de un nuevo medicamento para reducir el tiempo requerido para la recuperación completa de la cirugía de rodilla.
+La recuperación completa se mide mediante una serie de pruebas de fuerza que comparan la rodilla tratada con la rodilla no tratada. El fármaco se administró en cantidades variables a 18 pacientes durante un período de 6 meses. Para cada paciente, el número de unidades de fármaco, $X$, y los días para la recuperación completa, $Y$, vienen dados por los siguientes datos $(x, y)$:
+\begin{align*}
+& (5,53), (21, 65), (14, 48), (11, 66), (9, 46), (4, 56), \\
+& (7, 53), (21, 57),  (17, 49), (14, 66), (9, 54), (7, 56), \\
+& (9, 53), (21, 52), (13, 49), (14, 56), (9, 59), (4, 56).
+\end{align*}
+    a. Calcule la covarianza.
+    a. Calcule el coeficiente de correlación.
+    a. Analice brevemente la relación entre el número de unidades de fármaco y el tiempo de recuperación. ¿Qué dosis podríamos recomendar en base a este análisis inicial?
+1. Una empresa de bienes de consumo ha estado estudiando el efecto de la publicidad en los beneficios totales. Como parte de este estudio, se recopilaron datos sobre gastos publicitarios (en miles de dólares) y ventas totales (en miles de dólares) durante un período de 5 meses y son los siguientes:
+$$(10, 100), (15, 200), (7, 80), (12, 120), (14, 150).$$
+El primer número son los gastos publicitarios y el segundo son las ventas totales. Haga un gráfico de los datos y calcule el coeficiente de correlación.
+1. El presidente de Floor Coverings Unlimited desea información sobre la relación entre la experiencia minorista (años) y las ventas semanales (en cientos de euros). Obtuvo la siguiente muestra aleatoria sobre experiencia y ventas semanales:
+$$(2, 5), (4, 10), (3, 8), (6, 18), (3, 6), (5, 15), (6, 20), (2, 4).$$
+El primer número para cada observación son los años de experiencia y el segundo número son las ventas semanales. Calcule la covarianza y el coeficiente de correlación.

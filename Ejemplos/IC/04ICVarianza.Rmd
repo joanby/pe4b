@@ -1,0 +1,66 @@
+---
+title: "Ejemplo de intervalo de confianza para la varianza poblacional"
+author: "Ricardo Alberich, Juan Gabriel Gomila y Arnau Mir"
+date: ""
+output:
+  beamer_presentation:
+#    colortheme: rose
+    incremental: yes
+    theme: Warsaw
+    toc: no
+  slidy_presentation:
+    incremental: yes
+header-includes: \usepackage{amsmath,color,array,booktabs,algorithm2e}
+                 \newcommand\blue[1]{\textcolor{blue}{#1}}
+                 \newcommand\red[1]{\textcolor{red}{#1}}
+
+                 
+              
+---
+
+
+# Ejemplo de intervalo de confianza para la varianza poblacional
+
+## Planteamiento del problema
+El gerente de Northern Steel, Inc. desea evaluar la \red{variación de temperatura}
+en el nuevo horno eléctrico de la empresa. 
+\pause
+
+Se sabe que las temperaturas se distribuyen \blue{normalmente.} Se obtiene una \blue{muestra aleatoria de $n=25$} temperaturas durante un período de 1 semana y se encuentra que la \red{varianza de la muestra es $s^2 = 100.$}
+\pause
+
+Encuentre un \red{intervalo de confianza del $95\%$} para \red{varianza de la temperatura} de la población.
+
+## Solución
+Nos dicen que el \red{tamaño de la muestra} es $n=25$ y
+\pause la \red{varianza muestral vale $s^2=100$.}
+\pause
+
+Para hallar un \red{intervalo de confianza} para la \red{varianza poblacional $\sigma^2$} necesitamos:
+\pause
+
+* el tamaño de la muestra $n=25$,
+* la varianza muestral $s^2=100$,
+* los percentiles $\chi_{\frac{\alpha}{2},n-1}^2$ y $\chi_{1-\frac{\alpha}{2},n-1}^2$. 
+\pause
+En nuestro caso $\alpha=0.05$. Por tanto, los percentiles serán: $\chi^2_{0.025,24}=`r round(qchisq(0.025,24),3)`$ y $\chi^2_{0.975,24}=`r round(qchisq(0.975,24),3)`$.
+
+## Solución
+El \red{intervalo de confianza} para la \red{varianza poblacional $\sigma^2$} es el siguiente:
+\begin{align*}
+\left(\frac{(n-1)\cdot s^2}{\chi_{1-\frac{\alpha}{2},n-1}^2},\frac{(n-1)\cdot s^2}{\chi_{\frac{\alpha}{2},n-1}^2}\right)= & \left(\frac{24\cdot 100}{`r round(qchisq(0.975,24),3)`},\frac{24\cdot 100}{`r round(qchisq(0.025,24),3)`}\right)\\ = & (`r round(2400/qchisq(0.975,24),3)`,`r round(2400/qchisq(0.025,24),3)`).
+\end{align*}
+
+## Solución
+```{r,echo=FALSE}
+x=seq(from=0,to=45,by=0.1)
+plot(x,dchisq(x,24),type="l",xlab=expression(paste("24",s^2,"/",sigma^2)),ylab="densidad")
+x2=seq(from=0,to=12.401,by=0.01)
+x3=seq(from=39.364,to=45,by=0.01)
+y2=dchisq(x2,24)
+y3=dchisq(x3,24)
+lines(x2,y2,type="h",col="red")
+lines(x3,y3,type="h",col="red")
+text(12.401,-0.0005,"12.401")
+text(39.364,-0.0005,"39.364")
+```

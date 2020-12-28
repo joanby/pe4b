@@ -1,0 +1,242 @@
+---
+title: "Problemas de Probabilidad. Soluciones."
+author: ""
+date: ""
+output:
+  pdf_document: default
+              
+  html_document: default
+---
+
+1. Una encuesta sobre los mejores destinos turísticos asiáticos mostró que, de 70 personas, 23 ubicaron a Singapur en primer lugar, mientras que 15 colocaron a Hong Kong en primer lugar, 11 colocaron a Shanghai en primer lugar, 7 colocaron a Beijing en primer lugar y el resto eligió Tokio. Sobre la base de estos datos, calcule lo siguiente.
+a. La probabilidad de que el destino preferido sea una ciudad de China. (En este caso específico, Hong Kong no se considera parte de China).
+a. La probabilidad de que el destino preferido no sea una ciudad china. (En este caso, Hong Kong se considera una ciudad china, incluso si está fuera de China).
+a. La probabilidad de que el destino preferido sea Tokio.
+a. La probabilidad de que el destino preferido no sea Singapur.
+
+## Solución
+Consideremos los sucesos siguientes:
+
+* Singapur: "el destino preferido de la persona es Singapur",
+* Hong Kong: "el destino preferido de la persona es Hong Kong",
+* Shangai: "el destino preferido de la persona es Shangai",
+* Beijing: "el destino preferido de la persona es Beijing",
+* Tokio: "el destino preferido de la persona es Tokio".
+
+Nos dan las probabilidades siguientes:
+\begin{align*}
+P(\mathrm{Singapur})=&\frac{23}{70}=`r round(23/70,4)`,\ P(\mathrm{Hong\ Kong})=\frac{15}{70}=`r round(15/70,4)`,\ P(\mathrm{Shangai})=\frac{11}{70}=`r round(11/70,4)`,\\ 
+P(\mathrm{Beijing})=& \frac{7}{70}=`r 7/70`,\ P(\mathrm{Tokio})=\frac{`r 70-23-15-11-7`}{70}=`r round((70-23-15-11-7)/70,4)`.
+\end{align*}
+
+Nos piden:
+
+a. $$P(\mathrm{Shangai}\cup \mathrm{Beijing})=\frac{11+7}{70}=\frac{`r 11+7`}{70}=`r round((11+7)/70,4)`.$$
+b. $$P(\mathrm{Singapur}\cup \mathrm{Tokio})=\frac{23+14}{70}=\frac{`r 23+14`}{70}=`r round((23+14)/70,4)`.$$
+c.
+$$
+P(\mathrm{Tokio})=\frac{`r 70-23-15-11-7`}{70}=`r round((70-23-15-11-7)/70,4)`.
+$$
+d. 
+$$
+P(\overline{\mathrm{Singapur}})=1-P(\mathrm{Singapur})=1-\frac{23}{70}=\frac{`r 70-23`}{70}=`r round((70-23)/70,4)`.
+$$
+
+\newpage
+
+2. Una compañía de seguros estimó que el $30\%$ de todos los accidentes automovilísticos fueron causados en parte por las condiciones climáticas y que el $20\%$ de todos los accidentes automovilísticos involucraron lesiones corporales. Además, de los accidentes que involucraron lesiones corporales, el $40\%$ fueron causados en parte por las condiciones climáticas.
+a. ¿Cuál es la probabilidad de que un accidente elegido al azar haya sido causado en parte por las condiciones climáticas y haya involucrado lesiones corporales?
+a. ¿Son los eventos "causados en parte por las condiciones climáticas" y las "lesiones corporales involucradas" independientes?
+a. Si un accidente elegido al azar fue causado en parte por las condiciones climáticas, ¿cuál es la probabilidad de que haya involucrado lesiones corporales?
+a. ¿Cuál es la probabilidad de que un accidente elegido al azar no haya sido causado en parte por las condiciones climáticas y no haya involucrado lesiones corporales?
+
+
+## Solución
+```{r,echo=FALSE}
+cc=0.3
+lc=0.2
+cc.lc=0.4
+cc.int.lc=lc*cc.lc
+```
+
+Definimos los sucesos siguientes:
+
+* CC: "accidentes que en parte fueron causados por condiciones climáticas".
+* LC: "accidentes que involucraron lesiones corporales".
+
+Nos dan las probabilidades siguientes:
+$$
+P(\mathrm{CC})=0.3,\quad P(\mathrm{LC})=0.2,\quad P(\mathrm{CC}|\mathrm{LC})=0.4.
+$$
+Nos piden:
+
+a. $P(\mathrm{CC}\cap \mathrm{LC})$:
+$$
+P(\mathrm{CC}\cap \mathrm{LC})=P(\mathrm{LC})\cdot P(\mathrm{CC}|\mathrm{LC})=`r lc`\cdot `r cc.lc`=`r cc.int.lc`.
+$$
+b. Para ver si los sucesos CC y LC son independientes, hemos de verificar que se cumple que
+\begin{align*}
+P(\mathrm{CC}\cap \mathrm{LC})= & P(\mathrm{CC})\cdot P(\mathrm{LC}),\\
+`r cc.int.lc` = & `r cc`\cdot `r lc`=`r cc*lc`.
+\end{align*}
+Como no se cumple, no son independientes.
+
+c. $P(\mathrm{LC}|\mathrm{CC})$:
+$$
+P(\mathrm{LC}|\mathrm{CC})=\frac{P(\mathrm{CC}\cap \mathrm{LC})}{P(\mathrm{CC})}=\frac{`r cc.int.lc`}{`r cc`}=`r round(cc.int.lc/cc,4)`.
+$$
+d. $P(\overline{\mathrm{CC}}\cap \overline{\mathrm{LC}})$, donde $\overline{\mathrm{CC}}$ y $\overline{\mathrm{LC}}$ indica los sucesos complementarios de los $\mathrm{CC}$ y $\mathrm{LC}$, respectivamente:
+\begin{align*}
+P(\overline{\mathrm{CC}}\cap \overline{\mathrm{LC}})= & P(\overline{\mathrm{CC}\cup\mathrm{LC}})=1-P(\mathrm{CC}\cup\mathrm{LC})=1-(P(\mathrm{CC})+P(\mathrm{LC})-P(\mathrm{CC}\cap \mathrm{LC}))\\ = & 1-(`r cc`+`r lc`-`r cc.int.lc`)=1-`r cc+lc-cc.int.lc`= `r 1-(cc+lc-cc.int.lc)`.
+\end{align*}
+\newpage
+
+
+3. Staff, Inc., una empresa de consultoría de gestión, está encuestando al personal de Acme Ltd. Determina que el $35\%$ de los analistas tienen un MBA y que el $40\%$ de todos los analistas tienen más de 35 años. Además, de los que tienen un MBA, el $30\%$ tiene más de 35 años.
+a. ¿Cuál es la probabilidad de que un analista elegido al azar tenga un MBA y también sea mayor de 35 años?
+a. ¿Cuál es la probabilidad de que un analista mayor de 35 años elegido al azar tenga un MBA?
+a. ¿Cuál es la probabilidad de que un analista elegido al azar tenga un MBA o sea mayor de 35 años?
+a. ¿Cuál es la probabilidad de que un analista elegido al azar que tenga más de 35 años no tenga un MBA?
+a. ¿Son los eventos MBA y mayores de 35 años independientes?
+a. ¿Son los eventos MBA y mayores de 35 años mutuamente excluyentes?
+
+## Solución
+
+
+```{r,echo=FALSE}
+mba=0.35
+m.35 = 0.4
+m.35.mba=0.3
+mba.int.m.35=mba*m.35.mba
+```
+
+Definimos los sucesos siguientes:
+
+* MBA: "personal que tiene un MBA".
+* $>35$: "personal con más de 35 años".
+
+Nos dan las probabilidades siguientes:
+$$
+P(\mathrm{MBA})=0.35,\quad P(>35)=0.4,\quad P(>35|\mathrm{MBA})=0.3.
+$$
+Nos piden:
+
+a. $P(\mathrm{MBA}\cap >35)$:
+$$
+P(\mathrm{MBA}\cap >35)=P(\mathrm{MBA})\cdot P(>35|\mathrm{MBA})=`r mba`\cdot `r m.35.mba`=`r mba.int.m.35`.
+$$
+b. $P(\mathrm{MBA}|>35)$:
+$$
+P(\mathrm{MBA}|>35)=\frac{P(\mathrm{MBA}\cap >35)}{P(>35)}=\frac{`r mba.int.m.35`}{`r m.35`}=`r mba.int.m.35/m.35`.
+$$
+c. $P(\mathrm{MBA}\cup >35)$:
+$$
+P(\mathrm{MBA}\cup >35)=P(\mathrm{MBA})+P(>35)-P(\mathrm{MBA}\cap >35)=`r mba`+`r m.35`-`r mba.int.m.35`=`r mba+m.35-mba.int.m.35`.
+$$
+d. $P(\overline{\mathrm{MBA}}|>35)$:
+$$
+P(\overline{\mathrm{MBA}}|>35)=1-P(\mathrm{MBA}|>35)=1-`r mba.int.m.35/m.35`=`r 1-mba.int.m.35/m.35`.
+$$
+
+e. Para ver si los sucesos MBA y $>35$ son independientes, hemos de verificar que se cumple que
+\begin{align*}
+P(\mathrm{MBA}\cap >35)= & P(\mathrm{MBA})\cdot P(>35),\\
+`r mba.int.m.35` = & `r mba`\cdot `r m.35`=`r mba*m.35`.
+\end{align*}
+Como no se cumple, no son independientes.
+
+e. Hemos de verificar si se cumple que $\mathrm{MBA}\cap >35=\emptyset$. Esto es equivalente a verificar que $P(\mathrm{MBA}\cap >35)=0$ pero vimos que $P(\mathrm{MBA}\cap >35)=`r mba.int.m.35`$, por tanto, no son mutuamente excluyentes.
+\newpage
+
+4. Se selecciona un jurado de 12 miembros de un panel compuesto por 8 hombres y 8 mujeres.
+a. ¿Cuántas selecciones de jurados diferentes son posibles?
+a. Si la elección se hace al azar, ¿cuál es la probabilidad de que la mayoría de los miembros del jurado sean hombres?
+
+## Solución
+```{r,echo=FALSE}
+options(scipen=999)
+```
+
+a. El número de jurados posibles son combinaciones de 16 elementos cogidos de 8 en 8:
+$$
+C_{16,8} =\binom{16}{8}=\frac{16\cdot 15\cdot 14\cdot 13\cdot 12\cdot 11\cdot 10\cdot 9}{8!}=\frac{`r prod(seq(from=9,to=16))`}{`r factorial(8)`}=`r choose(16,8)`.
+$$
+
+b. La mayoría de los miembros del jurado serán hombres en los casos siguientes:
+
+* Si hay 5 hombres y 3 mujeres: en este caso hay en total $\binom{8}{5}\cdot\binom{8}{3}=`r choose(8,5)`\cdot`r choose(8,3)`=`r choose(8,3)^2`$ casos.
+* Si hay 6 hombres y 2 mujeres: en este caso hay en total $\binom{8}{6}\cdot\binom{8}{2}=`r choose(8,6)`\cdot`r choose(8,2)`=`r choose(8,2)^2`$ casos.
+* Si hay 7 hombres y una mujer: en este caso hay en total $\binom{8}{7}\cdot\binom{8}{1}=`r choose(8,7)`\cdot`r choose(8,1)`=`r choose(8,1)^2`$ casos.
+* Si hay 8 hombres: en este caso hay en total $\binom{8}{8}=1$ caso.
+
+La probabilidad pedida será pues:
+$$
+\frac{`r choose(8,3)^2`+`r choose(8,2)^2`+`r choose(8,1)^2`+1}{`r choose(16,8)`}=\frac{`r choose(8,3)^2+choose(8,2)^2+choose(8,1)^2+1`}{`r choose(16,8)`}=`r (choose(8,3)^2+choose(8,2)^2+choose(8,1)^2+1)/(choose(16,8))`.
+$$
+
+\newpage
+
+5. Las suscripciones a una revista en particular se clasifican como regalo, renovación previa, correo directo y servicio de suscripción. En enero, el $8\%$ de las suscripciones que vencen fueron regalos; $41\%$, renovación previa; $6\%$, correo directo; y el $45\%$, servicio de suscripción. Los porcentajes de renovaciones en estas cuatro categorías fueron $81\%$, $79\%$, $60\%$ y $21\%$, respectivamente. En febrero del mismo año, el $10\%$ de las suscripciones vencidas fueron obsequios; $57\%$, renovación previa; $24\%$, correo directo; y $9\%$, servicio de suscripción.
+Los porcentajes de renovaciones fueron $80\%$, $76\%$, $51\%$ y $14\%$, respectivamente.
+a. Encuentre la probabilidad de que se renueve una suscripción elegida al azar que vence en enero.
+a. Encuentre la probabilidad de que se renueve una suscripción elegida al azar que vence en febrero.
+a. Verifique que la probabilidad del apartado b) sea mayor que la del apartado a). Si el editor de la revista tiene un presupuesto para invertir en publicidad de la revista, ¿dónde crees que es mejor que invierta, en enero o en febrero?
+
+
+## Solución
+a. Fijado el mes de enero, definimos los siguientes sucesos:
+
+* RE: "suscripción por regalo",
+* RP: "suscripción por renovación previa",
+* CD: "suscripción por correo directo",
+* SS: "suscripción por servicio de suscripción",
+* R: "renovación de la suscripción".
+
+Nos dan las probabilidades siguientes:
+\begin{align*}
+P(\mathrm{RE})=& 0.08,\quad P(\mathrm{RP})=0.41,\quad P(\mathrm{CD})=0.06,\quad P(\mathrm{SS})=0.45,\\
+P(\mathrm{R}|\mathrm{RE})= & 0.81,\quad P(\mathrm{R}|\mathrm{RP})=0.79,\quad P(\mathrm{R}|\mathrm{CD})=  0.6,\quad P(\mathrm{R}|\mathrm{SS})=  0.21.
+\end{align*}
+Nos piden $P(\mathrm{R})$:
+\begin{align*}
+P(\mathrm{R})= & P(\mathrm{RE})\cdot P(\mathrm{R}|\mathrm{RE})+P(\mathrm{RP})\cdot  P(\mathrm{R}|\mathrm{RP})+P(\mathrm{CD})\cdot P(\mathrm{R}|\mathrm{CD})+P(\mathrm{SS})\cdot P(\mathrm{R}|\mathrm{SS})\\
+= & 0.08\cdot 0.81+0.41\cdot 0.79+0.06\cdot 0.6+0.45\cdot 0.21=`r 0.08*0.81+0.41*0.79+0.06*0.6+0.45*0.21`.
+\end{align*}
+
+b. Nos piden hacer lo mismo pero en febrero. Las probabilidades ahora son las siguientes:
+\begin{align*}
+P(\mathrm{RE})=& 0.1,\quad P(\mathrm{RP})=0.57,\quad P(\mathrm{CD})=0.24,\quad P(\mathrm{SS})=0.09,\\
+P(\mathrm{R}|\mathrm{RE})= & 0.8,\quad P(\mathrm{R}|\mathrm{RP})=0.76,\quad P(\mathrm{R}|\mathrm{CD})=  0.51,\quad P(\mathrm{R}|\mathrm{SS})=  0.14.
+\end{align*}
+Nos piden $P(\mathrm{R})$:
+\begin{align*}
+P(\mathrm{R})= & P(\mathrm{RE})\cdot P(\mathrm{R}|\mathrm{RE})+P(\mathrm{RP})\cdot  P(\mathrm{R}|\mathrm{RP})+P(\mathrm{CD})\cdot P(\mathrm{R}|\mathrm{CD})+P(\mathrm{SS})\cdot P(\mathrm{R}|\mathrm{SS})\\
+= & 0.1\cdot 0.8+0.57\cdot 0.76+0.24\cdot 0.51+0.09\cdot 0.14=`r 0.1*0.8+0.57*0.76+0.24*0.51+0.51*0.09`.
+\end{align*}
+
+c. Como la probabilidad de que un cliente renueva la suscripción en febrero es más alta que renueva en enero, parece que es mejor invertir en publicidad en febrero que en enero. Sin embargo, estos valores se pueden interpretar de otro modo: como en enero se renueva menos que en febrero, es conveniente invertir en enero ya que es la época dónde se necesita un empuje para que la revista aumente sus suscripciones.
+\newpage
+
+6. Usted es responsable de detectar el origen del error cuando falla un sistema informático. A partir de su análisis, sabe que la fuente del error puede ser la unidad de disco, la memoria de la computadora o el sistema operativo. Sabe que el $50\%$ de los errores son errores de la unidad de disco, el $30\%$ son errores de memoria de la computadora y el resto son errores del sistema operativo. Según los estándares de rendimiento de los componentes, sabe que cuando ocurre un error en la unidad de disco, la probabilidad de falla es $0.60$, cuando ocurre un error de memoria de la computadora, la probabilidad de falla es $0.7$ y cuando ocurre un error del sistema operativo, la probabilidad de falla es $0.3$. Dada la información de los estándares de rendimiento de los componentes, ¿cuál es la probabilidad de que se produzca un error en la unidad de disco, dado que ocurrió una falla?
+
+## Solución
+Consideramos los sucesos siguientes:
+
+* D: "se ha producido un error en la unidad de disco",
+* M: "se ha producido un error en la memoria",
+* S: "se ha producido un error debido a una falla del sistema operativo",
+* F: "el computador ha fallado".
+
+Nos dan las probabilidades siguientes:
+\begin{align*}
+P(\mathrm{D})=& 0.5,\quad P(\mathrm{M})=0.3,\quad P(\mathrm{S})=0.2,\\
+P(\mathrm{F}|\mathrm{D})= & 0.6,\quad P(\mathrm{F}|\mathrm{M})=0.7,\quad P(\mathrm{F}|\mathrm{S})=  0.3.
+\end{align*}
+
+Nos piden la probabilidad siguiente $P(\mathrm{D}|\mathrm{F})$:
+\begin{align*}
+P(\mathrm{D}|\mathrm{F})= & \frac{P(\mathrm{D}\cap \mathrm{F})}{P(\mathrm{F})}=\frac{P(\mathrm{D})\cdot P(\mathrm{F}|\mathrm{D})}{P(\mathrm{D})\cdot P(\mathrm{F}|\mathrm{D})+P(\mathrm{M})\cdot P(\mathrm{F}|\mathrm{M})+P(\mathrm{S})\cdot P(\mathrm{F}|\mathrm{S})}\\ 
+= & \frac{0.5\cdot 0.6}{0.5\cdot 0.6+0.3\cdot 0.7+0.2\cdot 0.3}=\frac{`r 0.5*0.6`}{`r 0.5*0.6+0.3*0.7+0.2*0.3`}=`r 0.5*0.6/(0.5*0.6+0.3*0.7+0.2*0.3)`.
+\end{align*}
+
+

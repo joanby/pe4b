@@ -1,0 +1,55 @@
+---
+title: "Problemas de Intervalos de Confianza"
+author: ""
+date: ""
+output:
+  pdf_document: default
+              
+  html_document: default
+---
+
+# Intervalos de confianza de la media muestral
+
+1.  Queremos estimar cuánto pagan los estudiantes, en promedio, por los libros de texto durante el primer semestre de la universidad. De una muestra aleatoria de $400$ estudiantes, se encontró que el costo medio era de `r 357.75*0.8` euros y la desviación estándar de la muestra era de `r 37.89*0.8` euros. Suponiendo que la población se distribuye normalmente, calcule el margen de error de un intervalo de confianza del $95\%$ para la media de la población.
+```{r,echo=FALSE}
+velocidades=c(59,63,68,57,56,71,59,69,53,58,60,66,51,59,54,64,58,57,66,61,65,70,63,65,57,56,61,59)
+conv=1.60934
+velocidades.bo = round(velocidades*conv,2)
+```
+
+1. Existe preocupación por la velocidad de los automóviles que viajan por un tramo particular de la carretera. Para una muestra aleatoria de 28 automóviles, el radar indicó las siguientes velocidades, en km. por hora: 
+\begin{align*}
+& `r paste(velocidades.bo[1:14],sep="  ")`\\
+& `r paste(velocidades.bo[15:28],sep="  ")`
+\end{align*}
+Suponiendo una distribución de población normal, calcule el margen de error de un intervalo de confianza del $95\%$ para la velocidad media de todos los automóviles que viajan por este tramo de carretera.
+```{r,echo=FALSE}
+conv=0.453592
+pesos=c(18,25,16,11,15,20,16,19,28,25,26,31,45,40,36,19,28,25,36,16,35,20,16,19)
+pesos.bo=round(conv*pesos,2)
+```
+1. Una clínica ofrece un programa de adelgazamiento. Una revisión de sus registros encontró las siguientes cantidades de pérdida de peso, en kg., para una muestra aleatoria de $24$ de sus clientes al final de un programa de 4 meses:
+\begin{align*}
+& `r paste(pesos.bo[1:12],sep="  ")`\\
+& `r paste(pesos.bo[13:24],sep="  ")`
+\end{align*}
+Suponemos que la población de las pérdidas de peso es normal.
+
+    a. Encuentre un intervalo de confianza del $99\%$ para la media poblacional.
+    a. Sin hacer los cálculos, explique si un intervalo de confianza del $90\%$ para la media de la población sería más ancho, más estrecho o igual que el encontrado en el apartado anterior.
+
+
+## Intervalos de confianza para la propoción
+
+4. Una aerolínea de Malasia quería determinar si los clientes estarían interesados en pagar una tarifa fija de $10$ euros por acceso ilimitado a Internet durante vuelos de larga distancia. De una muestra aleatoria de $200$ clientes, $125$ indicaron que estarían dispuestos a pagar esta tarifa. Con los datos de esta encuesta, determine el intervalo de confianza del $99\%$ estimado para la proporción de la población de los clientes de la aerolínea que estarían dispuestos a pagar esta tarifa por el uso de Internet.
+
+5. En una muestra aleatoria de $95$ empresas manufactureras, $67$ indicaron que su empresa obtuvo la certificación ISO en los últimos dos años. Encuentre un intervalo de confianza del $99\%$ para la proporción de la población de empresas que han sido certificadas en los últimos 2 años.
+
+## Intervalos de confianza para la varianza
+
+6. Un psicólogo quiere estimar la varianza de las puntuaciones de las pruebas de los empleados. Una muestra aleatoria de $18$ puntuaciones tuvo una desviación estándar muestral de $10.4$. Encuentre un intervalo de confianza del $90\%$ para la varianza de la población. ¿Cuáles son las suposiciones, si las hay, para calcular este intervalo?
+
+7. Un fabricante está preocupado por la variabilidad de los niveles de impurezas contenidas en los envíos de materia prima de un proveedor. Una muestra aleatoria de $15$ envíos mostró una desviación estándar de $2.36$ en la concentración de niveles de impurezas. Asume normalidad.
+    
+    a. Encuentre un intervalo de confianza del $95\%$ para la varianza de la población.
+    a. ¿Un intervalo de confianza del 99% para esta varianza, sería más ancho o más estrecho que el encontrado en el apartado anterior?

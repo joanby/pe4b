@@ -1,0 +1,192 @@
+---
+title: "Problemas de Intervalos de Confianza. Soluciones"
+author: ""
+date: ""
+output:
+  pdf_document: default
+              
+  html_document: default
+---
+
+# Intervalos de confianza de la media muestral
+
+1. Queremos estimar cuánto pagan los estudiantes, en promedio, por los libros de texto durante el primer semestre de la universidad. De una muestra aleatoria de $400$ estudiantes, se encontró que el costo medio era de `r 357.75*0.8` euros y la desviación estándar de la muestra era de $`r 37.89*0.8`$ euros. Suponiendo que la población se distribuye normalmente, calcule el margen de error de un intervalo de confianza del $95\%$ para la media de la población.
+
+
+## Solución
+Nos dicen que el tamaño de la muestra es $n=400$, el costo medio de los estudiantes de la muestra anterior vale $\overline{x}=`r 37.89*0.8`$ euros con una desviación estándar de $s=`r 37.89*0.8`$ euros.
+
+El margen de error es la mitad de la amplitud del intervalo de confianza para la media poblacional $\mu$:
+$$
+ME=t_{1-\frac{\alpha}{2},n-1}\cdot\frac{s}{\sqrt{n}},
+$$
+donde $t_{1-\frac{\alpha}{2},n-1}$ es el percentil $1-\frac{\alpha}{2}$ para la distribución $t_{n-1}$. 
+
+En nuestro caso, $\alpha =0.05$, y por tanto, $t_{1-\frac{\alpha}{2},n-1}=t_{0.975,399}=`r round(qt(0.975,399),3)`.$ El margen de error será:
+$$
+ME=`r round(qt(0.975,399),3)`\cdot\frac{`r 37.89*0.8`}{\sqrt{400}}=`r round(qt(0.975,399)*37.89*0.8/sqrt(400),3)`.
+$$
+
+\newpage
+```{r,echo=FALSE}
+velocidades=c(59,63,68,57,56,71,59,69,53,58,60,66,51,59,54,64,58,57,66,61,65,70,63,65,57,56,61,59)
+conv=1.60934
+velocidades.bo = round(velocidades*conv,2)
+```
+2. Existe preocupación por la velocidad de los automóviles que viajan por un tramo particular de la carretera. Para una muestra aleatoria de 28 automóviles, el radar indicó las siguientes velocidades, en km. por hora: 
+\begin{align*}
+& `r paste(velocidades.bo[1:14],sep="  ")`\\
+& `r paste(velocidades.bo[15:28],sep="  ")`
+\end{align*}
+Suponiendo una distribución de población normal, calcule el margen de error de un intervalo de confianza del $95\%$ para la velocidad media de todos los automóviles que viajan por este tramo de carretera.
+
+
+
+## Solución
+Nos dicen que el tamaño de la muestra es $n=28$, la media de las velocidades de los automóviles vale $\overline{x}=`r round(mean(velocidades.bo),3)`$ km./h. con una desviación estándar de $s=`r round(sd(velocidades.bo),3)`$ km./h.
+
+El margen de error es la mitad de la amplitud del intervalo de confianza para la media poblacional $\mu$:
+$$
+ME=t_{1-\frac{\alpha}{2},n-1}\cdot\frac{s}{\sqrt{n}},
+$$
+donde $t_{1-\frac{\alpha}{2},n-1}$ es el percentil $1-\frac{\alpha}{2}$ para la distribución $t_{n-1}$. 
+
+En nuestro caso, $\alpha =0.05$, y por tanto, $t_{1-\frac{\alpha}{2},n-1}=t_{0.975,27}=`r round(qt(0.975,27),3)`.$ El margen de error será:
+$$
+ME=`r round(qt(0.975,27),3)`\cdot\frac{`r round(sd(velocidades.bo),3)`}{\sqrt{28}}=`r round(qt(0.975,27)*sd(velocidades.bo)/sqrt(28),3)`.
+$$
+
+\newpage
+```{r,echo=FALSE}
+conv=0.453592
+pesos=c(18,25,16,11,15,20,16,19,28,25,26,31,45,40,36,19,28,25,36,16,35,20,16,19)
+pesos.bo=round(conv*pesos,2)
+```
+3. Una clínica ofrece un programa de adelgazamiento. Una revisión de sus registros encontró las siguientes cantidades de pérdida de peso, en kg., para una muestra aleatoria de $24$ de sus clientes al final de un programa de 4 meses:
+\begin{align*}
+& `r paste(pesos.bo[1:12],sep="  ")`\\
+& `r paste(pesos.bo[13:24],sep="  ")`
+\end{align*}
+Suponemos que la población de las pérdidas de peso es normal.
+
+    a. Encuentre un intervalo de confianza del $99\%$ para la media poblacional.
+    a. Sin hacer los cálculos, explique si un intervalo de confianza del $90\%$ para la media de la población sería más ancho, más estrecho o igual que el encontrado en el apartado anterior.
+
+
+## Solución
+a. Como la varianza de la población $\sigma^2$ es desconocida, el intervalo de confianza para la media poblacional $\mu$ usa la distribución $t_{n-1}$ y tiene la expresión siguiente:
+$$
+\left(\overline{x}-t_{1-\frac{\alpha}{2},n-1}\cdot\frac{s}{\sqrt{n}},\overline{x}+t_{1-\frac{\alpha}{2},n-1}\cdot\frac{s}{\sqrt{n}}\right).
+$$
+En nuestro caso:
+
+* $\overline{x}=`r round(mean(pesos.bo),3)`$.
+* $s=`r round(sd(pesos.bo),3)`.$
+* $\alpha =0.01$, por tanto $t_{1-\frac{\alpha}{2},n-1}=t_{`r 1-0.01/2`,23}=`r round(qt(1-0.01/2,23),3)`$.
+
+El intervalo de confianza será:
+$$
+\left(`r round(mean(pesos.bo),3)`-`r round(qt(1-0.01/2,23),3)`\cdot\frac{`r round(sd(pesos.bo),3)`}{\sqrt{24}},`r round(mean(pesos.bo),3)`-`r round(qt(1-0.01/2,23),3)`\cdot\frac{`r round(sd(pesos.bo),3)`}{\sqrt{24}}\right)=(`r round(mean(pesos.bo)-qt(0.995,23)*sd(pesos.bo)/sqrt(24),3)`,`r round(mean(pesos.bo)+qt(0.995,23)*sd(pesos.bo)/sqrt(24),3)`).
+$$
+
+b. El intervalo de confianza del $90\%$ sería más estrecho ya que cuánto menor es la confianza, más estrecho es el intervalo de confianza ya que el margen de error, que es la mitad de la longitud del mismo, disminuye.\newline
+Recordemos que el margen de error vale $ME=t_{1-\frac{\alpha}{2},n-1}\cdot\frac{s}{\sqrt{n}}$. Si $\alpha$ aumenta ya que disminuimos  el nivel de confianza $1-\alpha$, el percentil $t_{1-\frac{\alpha}{2}}$ disminuirá ya que $1-\frac{\alpha}{2}$ disminuye y el $ME$ disminuirá al tener como factor el percentil anterior $1-\frac{\alpha}{2}$.
+
+\newpage
+## Intervalos de confianza para la propoción
+
+4. Una aerolínea de Malasia quería determinar si los clientes estarían interesados en pagar una tarifa fija de $10$ euros por acceso ilimitado a Internet durante vuelos de larga distancia. De una muestra aleatoria de $200$ clientes, $125$ indicaron que estarían dispuestos a pagar esta tarifa. Con los datos de esta encuesta, determine el intervalo de confianza del $99\%$ estimado para la proporción de la población de los clientes de la aerolínea que estarían dispuestos a pagar esta tarifa por el uso de Internet.
+
+
+## Solución
+
+Para calcular el intervalo de confianza para la proporción poblacional $p$ de clientes interesados en pagar una tarifa fija de $10$ euros por acceso ilimitado a Internet durante vuelos de larga distancia necesitamos:
+
+* la proporción muestral $\hat{p}=\frac{125}{200}=`r 125/200`,$
+* la estimación de la desviación típica de la proporción poblacional
+$$
+s_{\hat{p}}=\sqrt{\frac{\hat{p}\cdot (1-\hat{p})}{n}}=\sqrt{\frac{`r 125/200`\cdot (1-`r 125/200`)}{200}}=`r round(sqrt((125/200)*(1-125/200)/200),3)`,
+$$
+* el percentil $z_{1-\frac{\alpha}{2}}=z_{0.995}=`r round(qnorm(0.995),3)`.$
+
+El intervalo de confianza pedido será:
+\begin{align*}
+& \left(\hat{p}-z_{1-\frac{\alpha}{2}}\cdot \sqrt{\frac{\hat{p}\cdot (1-\hat{p})}{n}},\hat{p}+z_{1-\frac{\alpha}{2}}\cdot \sqrt{\frac{\hat{p}\cdot (1-\hat{p})}{n}}\right)\\ & =\left(`r 125/200`-`r round(qnorm(0.995),3)`\cdot \sqrt{\frac{`r 125/200`\cdot (1-`r 125/200`)}{200}},`r 125/200`+`r round(qnorm(0.995),3)`\cdot \sqrt{\frac{`r 125/200`\cdot (1-`r 125/200`)}{200}}\right)\\ & =(`r round(125/200-qnorm(0.995)*sqrt((125/200)*(1-125/200)/200),3)`,`r round(125/200+qnorm(0.995)*sqrt((125/200)*(1-125/200)/200),3)`)
+\end{align*}
+\newpage
+
+5. En una muestra aleatoria de $95$ empresas manufactureras, $67$ indicaron que su empresa obtuvo la certificación ISO en los últimos dos años. Encuentre un intervalo de confianza del $99\%$ para la proporción de la población de empresas que han sido certificadas en los últimos 2 años.
+
+
+## Solución
+
+Para calcular el intervalo de confianza para la proporción poblacional $p$ de empresas que obtuvieron la certificación ISO en los últimos dos años necesitamos:
+
+* la proporción muestral $\hat{p}=\frac{67}{95}=`r round(67/95,3)`,$
+* la estimación de la desviación típica de la proporción poblacional
+$$
+s_{\hat{p}}=\sqrt{\frac{\hat{p}\cdot (1-\hat{p})}{n}}=\sqrt{\frac{`r round(67/95,3)`\cdot (1-`r round(67/95,3)`)}{95}}=`r round(sqrt((67/95)*(1-67/95)/95),3)`,
+$$
+* el percentil $z_{1-\frac{\alpha}{2}}=z_{0.995}=`r round(qnorm(0.995),3)`.$
+
+El intervalo de confianza pedido será:
+\begin{align*}
+& \left(\hat{p}-z_{1-\frac{\alpha}{2}}\cdot \sqrt{\frac{\hat{p}\cdot (1-\hat{p})}{n}},\hat{p}+z_{1-\frac{\alpha}{2}}\cdot \sqrt{\frac{\hat{p}\cdot (1-\hat{p})}{n}}\right)\\ & =\left(`r round(67/95,3)`-`r round(qnorm(0.995),3)`\cdot \sqrt{\frac{`r round(67/95,3)`\cdot (1-`r round(67/95,3)`)}{95}},`r round(67/95,3)`+`r round(qnorm(0.995),3)`\cdot \sqrt{\frac{`r round(67/95,3)`\cdot (1-`r round(67/95,3)`)}{95}}\right)\\ & =(`r round(67/95-qnorm(0.995)*sqrt((67/95)*(1-67/95)/95),3)`,`r round(67/95+qnorm(0.995)*sqrt((67/95)*(1-67/95)/95),3)`)
+\end{align*}
+
+\newpage
+
+## Intervalos de confianza para la varianza
+
+6. Un psicólogo quiere estimar la varianza de las puntuaciones de las pruebas de los empleados. Una muestra aleatoria de $18$ puntuaciones tuvo una desviación estándar muestral de $10.4$. Encuentre un intervalo de confianza del $90\%$ para la varianza de la población. ¿Cuáles son las suposiciones, si las hay, para calcular este intervalo?
+
+## Solución
+
+Para hallar un intervalo de confianza para la varianza de las puntuaciones de las pruebas de los empleados necesitamos:
+
+* la varianza muestral $s^2=10.4^2 =`r 10.4^2`$.
+* los percentiles $\chi_{\frac{\alpha}{2},n-1}^2$ y $\chi_{1-\frac{\alpha}{2},n-1}^2$. En nuestro caso, $\alpha=0.1$. Los percentiles valen:
+$$
+\chi_{\frac{\alpha}{2},n-1}^2 =  \chi_{0.05,17}^2 = `r round(qchisq(0.05,17),3)`,\quad
+\chi_{1-\frac{\alpha}{2},n-1}^2 =  \chi_{0.95,17}^2 = `r round(qchisq(0.95,17),3)`.
+$$
+El intervalo de confianza será:
+$$
+\left(\frac{(n-1)\cdot s^2}{\chi_{1-\frac{\alpha}{2},n-1}^2},\frac{(n-1)\cdot s^2}{\chi_{\frac{\alpha}{2},n-1}^2}\right)=\left(\frac{17\cdot `r 10.4^2`}{`r round(qchisq(0.95,17),3)`},\frac{17\cdot `r 10.4^2`}{`r round(qchisq(0.05,17),3)`}\right)=(`r round(17*10.4^2/qchisq(0.95,17),3)`,`r round(17*10.4^2/qchisq(0.05,17),3)`).
+$$
+Para que el intervalo de confianza anterior sea correcto, necesitamos suponer que la población de las puntuaciones de las pruebas de los empleados sigue una distribución normal.
+\newpage
+
+7. Un fabricante está preocupado por la variabilidad de los niveles de impurezas contenidas en los envíos de materia prima de un proveedor. Una muestra aleatoria de $15$ envíos mostró una desviación estándar de $2.36$ en la concentración de niveles de impurezas. Asume normalidad.
+    
+    a. Encuentre un intervalo de confianza del $95\%$ para la varianza de la población.
+    a. ¿Un intervalo de confianza del 99% para esta varianza, sería más ancho o más estrecho que el encontrado en el apartado anterior?
+    
+    
+## Solución
+
+a. Para hallar un intervalo de confianza para la varianza de los niveles de impurezas contenidas en los envíos de materia prima del proveedor necesitamos:
+
+* la varianza muestral $s^2=2.36^2 =`r 2.36^2`$.
+* los percentiles $\chi_{\frac{\alpha}{2},n-1}^2$ y $\chi_{1-\frac{\alpha}{2},n-1}^2$. En nuestro caso, $\alpha=0.05$. Los percentiles valen:
+$$
+\chi_{\frac{\alpha}{2},n-1}^2 =  \chi_{0.025,14}^2 = `r round(qchisq(0.025,14),3)`,\quad
+\chi_{1-\frac{\alpha}{2},n-1}^2 =  \chi_{0.975,17}^2 = `r round(qchisq(0.975,14),3)`.
+$$
+El intervalo de confianza será:
+$$
+\left(\frac{(n-1)\cdot s^2}{\chi_{1-\frac{\alpha}{2},n-1}^2},\frac{(n-1)\cdot s^2}{\chi_{\frac{\alpha}{2},n-1}^2}\right)=\left(\frac{14\cdot `r 2.36^2`}{`r round(qchisq(0.975,14),3)`},\frac{14\cdot `r 2.36^2`}{`r round(qchisq(0.025,14),3)`}\right)=(`r round(14*2.36^2/qchisq(0.975,14),3)`,`r round(14*2.36^2/qchisq(0.025,14),3)`).
+$$
+
+b. Si en lugar de calcular un intervalo de confianza del $95\%$ calculamos un intervalo de confianza del $99\%$ con los mismos datos anteriores, dicho intervalo será más ancho. Veámoslo: 
+* el percentil $\chi_{0.005,14}^2$ será más pequeño que el percentil $\chi_{0.025,14}^2$:
+$\chi_{0.005,14}^2<\chi_{0.025,14}^2$ y por tanto, 
+$\frac{(n-1)\cdot s^2}{\chi_{0.005,14}^2}>\frac{(n-1)\cdot s^2}{\chi_{0.025,14}^2}$,
+* el percentil $\chi_{0.995,14}^2$ será más grande que el percentil $\chi_{0.975,14}^2$:
+$\chi_{0.995,14}^2 > \chi_{0.975,14}^2$ y por tanto, $\frac{(n-1)\cdot s^2}{\chi_{0.995,14}^2}<\frac{(n-1)\cdot s^2}{\chi_{0.975,14}^2}$.
+
+En resumen:
+$$
+\frac{(n-1)\cdot s^2}{\chi_{0.005,14}^2}-\frac{(n-1)\cdot s^2}{\chi_{0.995,14}^2} > \frac{(n-1)\cdot s^2}{\chi_{0.025,14}^2}-\frac{(n-1)\cdot s^2}{\chi_{0.975,14}^2},
+$$
+es decir, la amplitud del intervalo de confianza para la varianza poblacional $\sigma^2$ es más ancho al $99\%$ con respecto al $95\%$ de confianza.

@@ -1,0 +1,406 @@
+---
+title: "Problemas de Estadística Descriptiva. Resumen. Soluciones"
+author: ""
+date: ""
+output:
+  pdf_document: default
+              
+  html_document: default
+---
+
+1. Un aeropuerto importante contrató recientemente al consultor Manuel López para estudiar el problema de los retrasos en el tráfico aéreo. En la siguiente tabla se puede observar la cantidad de minutos que los aviones llegaron tarde en una muestra de vuelos:
+```{r,echo=FALSE}
+minutos=c("0<10","10<20","20<30","30<40","40<50","50<60")
+num.vuelos=c(30,25,13,6,5,4)
+minutos.left=seq(from=0,to=50,by=10)
+minutos.right=minutos.left+10
+minutos.pm = (minutos.left+minutos.right)/2
+tabla=rbind(minutos,num.vuelos)
+tabla=as.data.frame(tabla)
+colnames(tabla)=c()
+rownames(tabla)=c("Minutos de retraso","Número de vuelos")
+library(knitr)
+library(kableExtra)
+knitr::kable(tabla,escape=FALSE)  %>%
+  kable_styling(position = "center")
+```
+a. Estime el número medio de minutos de retraso.
+a. Estime la varianza y la desviación estándar de la muestra.
+
+
+## Solución
+a. Para calcular el número medio de minutos de retraso, construimos la tabla siguiente donde la última fila en rojo hay las sumas las frecuencias y del producto de las frecuencias por los valores centrales:
+```{r,echo=FALSE}
+tabla2=data.frame(minutos,num.vuelos,minutos.pm,num.vuelos*minutos.pm)
+names(tabla2)=c("Minutos de retraso","Frecuencia $f_i$ (número de vuelos)","Valores centrales $m_i$","$f_i\\cdot m_i$")
+rownames(tabla2)=c()
+sumas.tabla2=c("",sum(num.vuelos),"",sum(minutos.pm*num.vuelos))
+tabla2=rbind(tabla2,sumas.tabla2)
+tabla2[7,1]="Sumas"
+knitr::kable(tabla2,align='crr',escape=FALSE)  %>%
+  kable_styling(position = "center") %>% 
+row_spec(7,bold="TRUE",color="red")
+```
+El número medio de minutos de retraso será:
+$$
+\overline{x}=\frac{`r sum(minutos.pm*num.vuelos)`}{`r sum(num.vuelos)`}=`r round(sum(minutos.pm*num.vuelos)/sum(num.vuelos),3)`.
+$$
+b. Para hallar la varianza y desviación típica, añadimos las columnas siguientes a la tabla anterior:
+
+```{r,echo=FALSE}
+options(scipen=999)
+media.retraso=sum(minutos.pm*num.vuelos)/sum(num.vuelos)
+tabla3=data.frame(minutos,num.vuelos,minutos.pm,num.vuelos*minutos.pm,round(minutos.pm-media.retraso,3),round(minutos.pm-media.retraso,3)^2,round((minutos.pm-media.retraso)^2*num.vuelos,3))
+names(tabla3)=c("Minutos","$f_i$","$m_i$","$f_i\\cdot m_i$","$m_i-\\overline{x}$","$(m_i-\\overline{x})^2$","$f_i\\cdot (m_i-\\overline{x})^2$")
+rownames(tabla3)=c()
+sumas.tabla3=c("",sum(num.vuelos),"",sum(minutos.pm*num.vuelos),"","",round(sum(num.vuelos*(minutos.pm-media.retraso)^2),3))
+tabla3=rbind(tabla3,sumas.tabla3)
+tabla3[7,1]="Sumas"
+knitr::kable(tabla3,align='crrrrrr',escape=FALSE)  %>%
+  kable_styling(position = "center") %>% 
+row_spec(7,bold="TRUE",color="red")
+```
+La varianza será:
+$$
+s_x^2=\frac{`r round(sum(num.vuelos*(minutos.pm-media.retraso)^2),3)`}{`r sum(num.vuelos)`-1}=\frac{`r round(sum(num.vuelos*(minutos.pm-media.retraso)^2),3)`}{`r sum(num.vuelos)`-1}=`r round(sum(num.vuelos*(minutos.pm-media.retraso)^2)/(sum(num.vuelos)-1),3)`.
+$$
+La desviación típica será:
+$$
+s_x=\sqrt{s_x^2}=\sqrt{`r round(var(rep(minutos.pm,num.vuelos)),6)`}=`r round(sd(rep(minutos.pm,num.vuelos)),3)`.
+$$
+
+
+
+\newpage
+2. Considere las siguientes cuatro poblaciones:
+* $1, 2, 3, 4, 5, 6, 7, 8$
+* $1, 1, 1, 1, 8, 8, 8, 8$
+* $1, 1, 4, 4, 5, 5, 8, 8$
+* $-6, -3, 0, 3, 6, 9, 12, 15$
+
+Todas estas poblaciones tienen la misma media. Sin hacer los cálculos, organice las poblaciones de acuerdo con las magnitudes de sus varianzas, de menor a mayor. Luego calcule cada una de las variaciones manualmente.
+
+## Solución
+```{r,echo=FALSE}
+poblaciones=matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 1, 1, 1, 1, 8, 8, 8, 8,1, 1, 4, 4, 5, 5, 8, 8, -6, -3, 0, 3, 6, 9, 12, 15),nrow=4,byrow=TRUE)
+```
+La media común de las 4 poblaciones vale $`r mean(poblaciones[1,])`$.
+
+Observamos que están ordenadas. La población con menos varianza estará entre la primera y la tercera que es dónde las diferencias con la media es más pequeña. Sin embargo, en la tercera es donde habrá diferencias más acentuadas ya que los valores extremos $1$ y $8$ se repiten más. En resumen las poblaciones con menos varianza serían: la primera y seguidamente la tercera.
+
+Luego quedan la segunda y la cuarta. Es claro que el rango de valores en la cuarta es mucho mayor que en la segunda. Por tanto, las poblaciones que vienen en orden de menos a más varianza serían la segunda y por último la cuarta.
+
+Calculemos seguidamente las varianzas a mano:
+
+* Primera población:
+```{r,echo=FALSE}
+valores=poblaciones[1,]
+tabla4=cbind(valores,valores-mean(poblaciones[1,]),(valores-mean(poblaciones[1,]))^2)
+colnames(tabla4)=c("$x_i$","$x_i-4.5$","$(x_i-4.5)^2$")
+sumas.tabla4=c("","",sum((poblaciones[1,]-mean(poblaciones[1,]))^2))
+tabla4=rbind(tabla4,sumas.tabla4)
+rownames(tabla4)=c()
+tabla4[9,1]="Sumas"
+knitr::kable(tabla4,align='crr',escape=FALSE)  %>%
+  kable_styling(position = "center") %>% 
+row_spec(9,bold="TRUE",color="red")
+```
+La varianza de la primera población será: $s_{x,1}^2=\frac{`r sum((poblaciones[1,]-mean(poblaciones[1,]))^2)`}{`r length(poblaciones[1,])-1`}=`r var(poblaciones[1,])`.$
+
+
+* Segunda población:
+```{r,echo=FALSE}
+valores=poblaciones[2,]
+tabla4=cbind(valores,valores-mean(poblaciones[2,]),(valores-mean(poblaciones[2,]))^2)
+colnames(tabla4)=c("$x_i$","$x_i-4.5$","$(x_i-4.5)^2$")
+sumas.tabla4=c("","",sum((poblaciones[2,]-mean(poblaciones[2,]))^2))
+tabla4=rbind(tabla4,sumas.tabla4)
+rownames(tabla4)=c()
+tabla4[9,1]="Sumas"
+knitr::kable(tabla4,align='crr',escape=FALSE)  %>%
+  kable_styling(position = "center") %>% 
+row_spec(9,bold="TRUE",color="red")
+```
+La varianza de la segunda población será: $s_{x,2}^2=\frac{`r sum((poblaciones[2,]-mean(poblaciones[2,]))^2)`}{`r length(poblaciones[2,])-1`}=`r var(poblaciones[2,])`.$
+
+* Tercera población:
+```{r,echo=FALSE}
+valores=poblaciones[3,]
+tabla4=cbind(valores,valores-mean(poblaciones[3,]),(valores-mean(poblaciones[3,]))^2)
+colnames(tabla4)=c("$x_i$","$x_i-4.5$","$(x_i-4.5)^2$")
+sumas.tabla4=c("","",sum((poblaciones[3,]-mean(poblaciones[3,]))^2))
+tabla4=rbind(tabla4,sumas.tabla4)
+rownames(tabla4)=c()
+tabla4[9,1]="Sumas"
+knitr::kable(tabla4,align='crr',escape=FALSE)  %>%
+  kable_styling(position = "center") %>% 
+row_spec(9,bold="TRUE",color="red")
+```
+La varianza de la tercera población será: $s_{x,3}^2=\frac{`r sum((poblaciones[3,]-mean(poblaciones[3,]))^2)`}{`r length(poblaciones[3,])-1`}=`r var(poblaciones[3,])`.$
+
+* Cuarta población:
+```{r,echo=FALSE}
+valores=poblaciones[4,]
+tabla4=cbind(valores,valores-mean(poblaciones[4,]),(valores-mean(poblaciones[4,]))^2)
+colnames(tabla4)=c("$x_i$","$x_i-4.5$","$(x_i-4.5)^2$")
+sumas.tabla4=c("","",sum((poblaciones[4,]-mean(poblaciones[4,]))^2))
+tabla4=rbind(tabla4,sumas.tabla4)
+rownames(tabla4)=c()
+tabla4[9,1]="Sumas"
+knitr::kable(tabla4,align='crr',escape=FALSE)  %>%
+  kable_styling(position = "center") %>% 
+row_spec(9,bold="TRUE",color="red")
+```
+La varianza de la cuarta población será: $s_{x,4}^2=\frac{`r sum((poblaciones[4,]-mean(poblaciones[4,]))^2)`}{`r length(poblaciones[4,])-1`}=`r var(poblaciones[4,])`.$
+
+Por tanto, se cumple, tal como vaticinamos:
+$$
+s_{x,1}^2 < s_{x,3}^2 < s_{x,2}^2 < s_{x,4}^2. 
+$$
+\newpage
+3. Los tiempos en minutos que están $50$ clientes en un supermercado local para realizar la compra son los siguientes:
+```{r,echo=FALSE}
+set.seed(2020)
+tiempos=round(rnorm(50,25,5),2)
+tabla=matrix(tiempos,nrow=5)
+tabla=as.data.frame(tabla)
+rownames(tabla)=c()
+colnames(tabla)=c()
+knitr::kable(tabla,escape=FALSE)  %>%
+  kable_styling(position = "center")
+```
+a. Calcular el tiempo medio que tardan los $50$ clientes.
+a. Calcular la varianza y la desviación típica de los tiempos.
+a. Calcular el percentil 90.
+a. Calcular los $5$ números resumen.
+a. Calcular el coeficiente de variación.
+
+
+## Solución:
+a. El tiempo medio será:
+$$
+\overline{x}=\frac{`r tiempos[1]`+\cdots +`r tiempos[length(tiempos)]`}{`r length(tiempos)`}=\frac{`r sum(tiempos)`}{`r length(tiempos)`}=`r mean(tiempos)`.
+$$
+b. La varianza de los tiempos será:
+$$
+s_{x}^2 =\left(\frac{`r tiempos[1]`^2+\cdots +`r tiempos[length(tiempos)]`^2}{`r length(tiempos)`}-`r mean(tiempos)`^2\right)\cdot\frac{`r length(tiempos)`}{`r length(tiempos)-1`}=\left(\frac{`r sum(tiempos^2)`}{`r length(tiempos)`}-`r mean(tiempos)`^2\right)\cdot\frac{`r length(tiempos)`}{`r length(tiempos)-1`}=`r var(tiempos)`.
+$$
+La desviación típica será:
+$$
+s_x=\sqrt{s_x^2}=\sqrt{`r round(var(tiempos),4)`}=`r round(sd(tiempos),4)`.
+$$
+
+
+c. Para calcular el percentil 90, primero ordenamos los tiempos:
+```{r,echo=FALSE}
+tiempos.ordenados=sort(tiempos)
+tabla2=matrix(tiempos.ordenados,nrow=5,byrow=TRUE)
+tabla2=as.data.frame(tabla2)
+rownames(tabla2)=c()
+colnames(tabla2)=c()
+tabla2[,5]=cell_spec(tabla2[,5],color=ifelse(tabla2[,5] ==31.49,"red","black"))
+knitr::kable(tabla2,escape=FALSE)  %>%
+  kable_styling(position = "center")
+```
+El percentil 90 es el que deja a su "izquierda" el $90\%$ de los valores. Por tanto, deja a su izquierda $0.9\cdot `r length(tiempos)`=`r 0.9*length(tiempos)`$ valores. El percentil 90 será el valor que ocupa el lugar $`r 0.9*length(tiempos)`$ en los tiempos ordenados. Dicho valor vale $`r tiempos.ordenados[0.9*length(tiempos)]`.$ (en rojo)
+
+d. Los cinco números resumen son el mínimo, el primer cuartil, la mediana, el segundo cuartil y el máximo:
+
+* el mínimo vale: $`r min(tiempos)`$.
+* el primer cuartil es el que deja a su izquierda el $25\%$ de los datos, es decir, es la mediana de los $`r length(tiempos)/2`$ primeros datos que correspondería al valor que ocupa el lugar $`r (length(tiempos)/2+1)/2`$. Dicho valor vale: 
+$Q_1 = `r tiempos.ordenados[(length(tiempos)/2+1)/2]`.$
+* la mediana es el que deja a su izquierda el $50\%$ de los datos. Correspondería a la semisuma de los dos valores centrales que ocupan los lugares $`r length(tiempos)/2`$ y $`r length(tiempos)/2+1`$. Dichos valores son $`r tiempos.ordenados[length(tiempos)/2]`$ y $`r tiempos.ordenados[length(tiempos)/2+1]`$. La mediana será, pues,
+$Q_2 = \frac{`r tiempos.ordenados[length(tiempos)/2]`+`r tiempos.ordenados[length(tiempos)/2+1]`}{2}=`r (tiempos.ordenados[length(tiempos)/2]+ tiempos.ordenados[length(tiempos)/2+1])/2`.$
+
+* el tercer cuartil es el que deja a su izquierda el $75\%$ de los datos, es decir, es la mediana de los $`r length(tiempos)/2`$ últimos datos que correspondería al valor que ocupa el lugar $`r length(tiempos)/2`+`r (length(tiempos)/2+1)/2`=`r length(tiempos)/2+(length(tiempos)/2+1)/2`$. Dicho valor vale: 
+$Q_3 = `r tiempos.ordenados[length(tiempos)/2+(length(tiempos)/2+1)/2]`.$
+* el máximo vale: $`r max(tiempos)`$.
+
+e. El coeficiente de variación será:
+$$
+\mathrm{CV}=\frac{s_x}{\overline{x}}=\frac{`r round(sd(tiempos),4)`}{`r mean(tiempos)`}=`r round(sd(tiempos)/mean(tiempos),4)`.
+$$
+
+\newpage
+4. La tabla siguiente nos da unos indicadores socio-económicos para cada una de las 47 provincias de habla francesa de Suiza en 1888:
+```{r,echo=FALSE}
+tabla=swiss
+colnames(tabla)=c("Fertilidad","Agricultura","Examen","Educación","Católicos","Mortalidad infantil")
+knitr::kable(tabla,escape=FALSE)  %>%
+  kable_styling(position = "center")
+```
+donde:
+
+* Fertilidad: indica el índice de fertilidad de la provincia,
+* Agricultura: indica el porcentaje de hombres que se dedican a la agricultura,
+* Examen: indica el porcentaje de reclutas que reciben la calificación más alta en el examen del ejército,
+* Educación: indica el porcentaje de reclutas que tienen una educación superior a la primaria,
+* Católicos: indica el porcentaje de católicos,
+* Mortalidad infantil: indica el porcentaje de bebés que viven menos de un año.
+
+a. Dar la tabla de frecuencias de la variable Educación.
+a. Calcula la media y la varianza de la variable Educación como datos agrupados.
+a. Calcular los cuartiles de la variable Educación. Realizar un diagrama de caja de la variable Fertilidad según el cuartil dónde esté la provincia correspondiente. Es decir, dibujar 4 diagramas de caja para la variable Fertilidad, uno para las provincias que estén en el primer cuartil de la variable Educación, otro para las provincias que estén en el segundo cuartil de la variable Educación y lo mismo para los cuartiles tercero y cuarto.
+Comentar los resultados observados.
+
+
+## Solución
+
+a. La tabla de frecuencias de la variable Educación es la siguiente:
+```{r,echo=FALSE}
+valores.educacion=swiss$Education
+tabla = as.data.frame(table(valores.educacion))
+rownames(tabla)=c()
+names(tabla)=c("Educación","Frecuencia $f_i$")
+knitr::kable(tabla,align='rc',escape=FALSE)  %>%
+  kable_styling(position = "center")
+```
+
+b. Para calcular la media de la variable Educación, construimos la tabla siguiente:
+```{r,echo=FALSE}
+xi=sort(unique(valores.educacion))
+fi=tabla[,2]
+tabla2=data.frame(xi,fi,xi*fi)
+names(tabla2)=c("Valores educación $x_i$","$f_i$","$f_i\\cdot x_i$")
+rownames(tabla2)=c()
+sumas.tabla2=c("",sum(fi),sum(xi*fi))
+tabla2=rbind(tabla2,sumas.tabla2)
+tabla2[20,1]="Sumas"
+knitr::kable(tabla2,align='crr',escape=FALSE)  %>%
+  kable_styling(position = "center") %>% 
+row_spec(20,bold="TRUE",color="red")
+```
+La media será:
+$$
+\overline{x}=\frac{`r sum(xi*fi)`}{`r sum(fi)`}=`r round(mean(swiss$Education),6)`.
+$$
+
+Para calcular la varianza, hacemos la tabla siguiente:
+```{r,echo=FALSE}
+xi=sort(unique(valores.educacion))
+fi=tabla[,2]
+mitjana=sum(xi*fi)/sum(fi)
+tabla3=data.frame(xi,fi,xi*fi,round(xi-mitjana,3),round((xi-mitjana)^2,3),round(fi*(xi-mitjana)^2,3))
+names(tabla3)=c("Valores educación $x_i$","$f_i$","$f_i\\cdot x_i$","$x_i-\\overline{x}$","$(x_i-\\overline{x})^2$","$f_i\\cdot (x_i-\\overline{x})^2$")
+rownames(tabla3)=c()
+sumas.tabla3=c("",sum(fi),sum(xi*fi),"","",round(sum(fi*(xi-mitjana)^2),3))
+tabla3=rbind(tabla3,sumas.tabla3)
+tabla3[20,1]="Sumas"
+knitr::kable(tabla3,align='crrrrr',escape=FALSE)  %>%
+  kable_styling(position = "center") %>% 
+row_spec(20,bold="TRUE",color="red")
+```
+La varianza y la desviación típica serán, pues,
+$$
+s_x^2 = \frac{`r round(sum(fi*(xi-mitjana)^2),3)`}{`r sum(fi)`-1}=`r round(var(swiss$Education),6)`,\quad s_x=\sqrt{`r round(var(swiss$Education),6)`}=`r round(sd(swiss$Education),6)`.
+$$
+
+c. Para hallar los cuartiles de la variable Educación, primero los ordenamos:
+```{r,echo=FALSE}
+educacion.ordenados=sort(swiss$Education)
+fila1=educacion.ordenados[1:20]
+fila2=educacion.ordenados[21:40]
+fila3=c(educacion.ordenados[41:47],rep("",20-7))
+tabla8=rbind(fila1,fila2,fila3)
+tabla8=as.data.frame(tabla8)
+colnames(tabla8)=c()
+rownames(tabla8)=c()
+tabla8[,12]=cell_spec(tabla8[,12],color=ifelse(tabla8[,12] ==6,"red","black"))
+tabla8[,4]=cell_spec(tabla8[,4],color=ifelse(tabla8[,4] ==8,"green","black"))
+tabla8[,16]=cell_spec(tabla8[,16],color=ifelse(tabla8[,16] ==12,"magenta","black"))
+knitr::kable(tabla8,align='rrrrrrrrrrrrrrrrrrrrrrrr',escape=FALSE)  %>%
+  kable_styling(position = "center")
+```
+
+Los cuartiles de la variable Educación serían los siguientes:
+
+
+* el primer cuartil es el que deja a su izquierda el $25\%$ de los datos, es decir, es la mediana de los $`r floor(dim(swiss)[1]/2)`$ primeros datos que correspondería al valor que ocupa el lugar $`r (floor(dim(swiss)[1]/2)+1)/2`$. Dicho valor vale: 
+$Q_1 = `r educacion.ordenados[(floor(dim(swiss)[1]/2)+1)/2]`.$ (en rojo)
+* la mediana es el que deja a su izquierda el $50\%$ de los datos. Correspondería al valor que ocupa el lugar $`r (dim(swiss)[1]+1)/2`$. Dichos valor es $`r educacion.ordenados[(dim(swiss)[1]+1)/2]`$. (en verde)
+* el tercer cuartil es el que deja a su izquierda el $75\%$ de los datos, es decir, es la mediana de los $`r floor(dim(swiss)[1]/2)`$ últimos datos que correspondería al valor que ocupa el lugar $24+12=`r 24+12`$. Dicho valor vale: 
+$Q_3 = `r educacion.ordenados[24+12]`.$ (en magenta)
+
+A continuación mostramos la tabla con las variables Educación, Fertilidad y una variable nueva que nos indica en qué cuartil se encuentra la provincia dependiendo de su valor respecto de la variable Educación.
+```{r,echo=FALSE}
+cuartil1=quantile(swiss$Education,0.25)
+cuartil2=quantile(swiss$Education,0.5)
+cuartil3=quantile(swiss$Education,0.75)
+Educacion.agrupada=ifelse(swiss$Education <=cuartil1,"Q1",ifelse(swiss$Education <= cuartil2, "Q2",ifelse(swiss$Education <= cuartil3,"Q3","Q4")))
+Educacion.agrupada = as.factor(Educacion.agrupada)
+tabla9=data.frame(swiss$Education,swiss$Fertility,Educacion.agrupada)
+rownames(tabla9)=rownames(swiss)
+colnames(tabla9)=c("Educación","Fertilidad","Cuartil respecto educación")
+knitr::kable(tabla9,align='rrr',escape=FALSE)  %>%
+  kable_styling(position = "center")
+```
+
+Los diagramas de caja pedidos de la variable Fertilidad dependiendo del cuartil en dónde están las provincias respecto de la variable Educación son los siguientes:
+
+```{r,echo=FALSE}
+boxplot(tabla9$Fertilidad ~ tabla9$`Cuartil respecto educación`,xlab="Cuartiles de la variable Educación",ylab="Fertilidad")
+```
+Observamos un índice de fertilidad mayor en las provincias con un nivel de educación de los reclutas menor pero también hay más dispersión de índice de fertilidad en aquellas provincias con un porcentaje mayor de reclutas con educación superior a la primaria.
+
+\newpage
+5. Usando los datos de la tabla anterior, queremos estudiar la posible relación entre las variables Fertilidad y Examen.
+* Realiza un gráfico de puntos de las variables anteriores, indicando en el eje $X$ o abscisas la variable Examen y en el $Y$, la variable $Fertilidad$.
+* Calcula la covarianza y la correlación entre las variables anteriores. ¿A qué conclusión llegas? 
+
+
+## Solución
+
+* El gráfico pedido es el siguiente:
+
+```{r,echo=FALSE}
+plot(swiss$Examination,swiss$Fertility,xlab="% de reclutas con porcentaje más alto examen del ejército",ylab="Índice de fertilidad",pch=19)
+
+```
+
+* Para calcular la covarianza, primero hay que calcular las medias.
+
+La media de la variable Examen vale:
+$$
+\overline{X}=\frac{`r sum(swiss$Examination)`}{`r dim(swiss)[1]`}=`r round(mean(swiss$Examination),3)`.
+$$
+
+La media de la variable Fertilidad vale:
+$$
+\overline{Y}=\frac{`r sum(swiss$Fertility)`}{`r dim(swiss)[1]`}=`r round(mean(swiss$Fertility),3)`.
+$$
+
+Para calcular la Para ello, realizamos la tabla siguiente:
+
+```{r,echo=FALSE}
+X=swiss$Examination
+Y=swiss$Fertility
+difX=X-mean(X)
+difY=Y-mean(Y)
+difX2=(X-mean(X))^2
+difY2=(Y-mean(Y))^2
+prodDifs=difX*difY
+tabla11=data.frame(X,Y,difX,difX2,difY,difY2,prodDifs)
+tabla10=data.frame(X,Y,round(difX,3),round(difX2,3),round(difY,3),round(difY2,3),round(prodDifs,3))
+sumes=apply(tabla11,2,sum)
+tabla10=rbind(tabla10,round(sumes,3))
+knitr::kable(tabla10,col.names=c("$X$","$Y$","$X_i-\\overline{X}$","$(X_i-\\overline{X})^2$","$Y_i-\\overline{Y}$","$(Y_i-\\overline{Y})^2$","$(X_i-\\overline{X})(Y_i-\\overline{Y})$"),escape=FALSE) %>% 
+row_spec(48,bold="TRUE",color="red")
+nn=length(X)
+```
+
+La covarianza será, pues:
+$$
+\mathrm{cov}(X,Y)=\frac{`r round(sumes[7],3)`}{`r length(X)`-1}=`r round(cov(X,Y),3)`.
+$$
+
+Para calcular el coeficiente de correlación $r$ entre $X$ e $Y$, necesitamos calcular primeramente las varianzas correspondientes:
+$$
+s_X^2=\frac{`r round(sum((X-mean(X))^2),4)`}{`r nn-1`}=`r round(var(X),4)`,\quad s_Y^2=\frac{`r round(sum((Y-mean(Y))^2),4)`}{`r nn-1`}=`r round(var(Y),4)`.
+$$
+
+El coeficiente de correlación será:
+$$
+r=\frac{\mathrm{cov}(X,Y)}{s_X\cdot s_Y}=\frac{`r round(cov(X,Y),4)`}{\sqrt{`r round(var(X),4)`}\cdot\sqrt{`r round(var(Y),4)`}}=`r round(cor(X,Y),4)`.
+$$
+
+Vemos que hay una correlación negativa entre las variables. Esto significa que a medida que el porcentaje de reclutas que reciben la calificación más alta en el examen del ejército aumenta, se espera un índice de fertilidad menor aunque hay que decir también que dicha correlación indica que la relación lineal entre las variables anteriores no es muy acentuada.
