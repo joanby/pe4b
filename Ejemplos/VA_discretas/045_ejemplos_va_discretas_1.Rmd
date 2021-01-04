@@ -1,0 +1,234 @@
+---
+title: "Ejemplos variables aleatorias discretas"
+author: "Ricardo Alberich, Juan Gabriel Gomila y Arnau Mir"
+date: ''
+output:
+  beamer_presentation: 
+    theme: Warsaw
+    includes: 
+      in_header: "preamble.tex"
+  slidy_presentation:
+    incremental: no
+  ioslides_presentation:
+    incremental: no
+---
+
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Ventas  en Taquería Rodríguez
+
+En la \red{Taquería Rodríguez} se calcula que la variable aleatoria $X$= \blue{número de tacos  vegetarianos vendidos} un día cualquiera entre la 3 y las 5  de la tarde sigue la siguiente  distribución de probabilidad:
+
+\begin{center}
+\begin{tabular}{|r|r|}
+\hline
+$x$ & $P_X(x)=P(X=x)$\\
+\hline
+$0$ & $0.15$\\
+$1$ & $0.18$\\
+$2$ & $0.32$\\
+$3$ & $0.35$\\
+\hline
+\end{tabular}
+\end{center}
+
+
+Cada taco tiene un precio de 3 euros.
+
+## Ventas  en Taquería Rodríguez
+
+
+
+1. Dibujar la función de probabilidad
+2. Calcular y dibujar la función de distribución.
+3. Calcular la probabilidad de vender al menos dos tacos vegetales.
+
+
+## Dibujar la función de probabilidad
+
+
+
+```{r barplot00, echo=FALSE,fig.height=5}
+library(ggplot2)
+df=data.frame(x=c(0,1,2,3),probabilidad=c(0.15,0.18,0.32,0.35))
+ggplot(data=df,aes(x=x,y=probabilidad))+ geom_bar(stat="identity", fill="steelblue")
+```
+
+
+
+
+## Dibujar la función de probabilidad
+
+
+```{r plot_prob_taco, echo=FALSE}
+df=data.frame(x=c(0,1,2,3),probabilidad=c(0.15,0.18,0.32,0.35))
+aux=rep(0,8)
+aux[seq(2,8,2)]=df$probabilidad
+plot(x=df$x,y=df$probabilidad,
+  ylim=c(0,0.45),xlim=c(-1,5),xlab="x",
+  ylab="Función de probabilidad",
+  main="Función de probabilidad P(X=x)")
+lines(x=rep(0:3,each=2),y=aux, type = "h", lty = 2,col="blue")
+```
+
+## Dibujar la función de probabilidad
+
+```{r barplot0, echo=FALSE,fig.height=5}
+library(ggplot2)
+ggplot(data=df,aes(x=x,y=probabilidad))+ geom_point()
+```
+
+
+
+## Calcular y dibujar la función de distribución
+
+
+\begin{center}
+\begin{tabular}{|r|r|r|}
+\hline
+$x$ & $P_X(x)=P(X=x)$ & $F_X(x)=P(X\leq x)$\\
+\hline
+$0$ & $0.15$ & $0.15$\\
+$1$ & $0.18$ & $0.33$\\
+$2$ & $0.32$ & $0.65$\\
+$3$ & $0.35$ & $1.00$\\
+\hline
+\end{tabular}
+\end{center}
+
+
+
+## Calcular y dibujar la función de distribución
+
+
+$$F_X(x)=P(X\leq x) =\left\{
+\begin{array}{ll}
+0 & \mbox { si } x<0 \\
+0.15 & \mbox { si } 0\leq x<1  \\
+0.33 & \mbox { si } 1\leq x<2  \\
+0.65 & \mbox { si } 2\leq x<3  \\
+1.00 & \mbox { si }  x\geq 3  \\
+\end{array}
+\right.
+$$
+
+
+## Calcular y dibujar la función de distribución
+
+
+```{r distribucion, echo=FALSE,fig.height=5}
+FF=function(x){
+  sapply(x,FUN=function(x){
+    if(x<0){return(0)}
+  if(x>=0 & x<1){return(0.15)}
+  if(x>=1 & x<2){return(0.33)}
+  if(x>=2 & x<3){return(0.65)}
+  if(x>=3 ){return(1)}
+  })
+}
+curve(FF(x),
+  xlim=c(-1,4),col="blue",ylab="Función de distribución",
+  main="Función de distribución P(X<=x)")
+```
+
+
+##  Stock patinetes eléctricos.
+
+
+* \red{Ciclos Lucho} es un comercio de venta de bicicletas que  tiene un almacen y varias tiendas. 
+
+* Desde hace unos años también vende bicicletas y patinetes eléctricos. 
+* En particular  una de las tiendas el  modelo de patinete eléctrico el P37 se está vendiendo muy bien.
+
+##  Stock patinetes eléctricos.
+
+
+Por los datos de los últimos meses se estima que la distribución del número de ventas diarias  en esa tienda es:
+
+```{r}
+x=0:7
+set.seed(23)
+prob=sample(1:100,8)
+prob=round(prob/sum(prob),2)
+df=data.frame(x,prob,cumprob=cumsum(prob),xprob=x*prob,x2prob=x^2*prob,dif2=(x-mean(x)^2),dif2prob=(x-mean(x)^2)*prob,mayor=1-cumsum(prob),pc=cumsum(prob)*100,mayotpc=100-cumsum(prob)*100)
+
+#library(xtable)
+#print(xtable(df[,1:2]),type = "latex", include.rownames =FALSE )
+#print(xtable(df[,1:3]),type = "latex", include.rownames =FALSE )
+#print(xtable(df[,c(1:3,8:10)]),type = "latex", include.rownames =FALSE )
+
+```
+
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|r|r|}
+  \hline
+x & prob \\ 
+  \hline
+  0 & 0.09 \\ 
+    1 & 0.09 \\ 
+    2 & 0.23 \\ 
+    3 & 0.14 \\ 
+    4 & 0.14 \\ 
+    5 & 0.11 \\ 
+    6 & 0.15 \\ 
+    7 & 0.05 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+
+
+Se pide 
+
+a. Calcular la función de distribución
+b. En qué nos puede ayudar estos datos a la hora de pedir stock al almacen principal de Ciclos Lucho.
+
+
+## Stock patinetes eléctricos. Calcular la función de distribución
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrr}
+  \hline
+$x$ & $P_x(x)$  & $F_X(x)$ \\ 
+  \hline
+  0 & 0.09 & 0.09 \\ 
+    1 & 0.09 & 0.18 \\ 
+    2 & 0.23 & 0.41 \\ 
+    3 & 0.14 & 0.55 \\ 
+    4 & 0.14 & 0.69 \\ 
+    5 & 0.11 & 0.80 \\ 
+    6 & 0.15 & 0.95 \\ 
+    7 & 0.05 & 1.00 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+
+
+## Stock patinetes eléctricos. Petición de stocks
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrr}
+  \hline
+$x$ & $P_x(x)$  & $F_X(x)$  & $P(X> x)$ & $F_X(x)$ \% & $P(X> x)$ \% \\ 
+  \hline
+  0 & 0.09 & 0.09 & 0.91 & 9.00 & 91.00 \\ 
+    1 & 0.09 & 0.18 & 0.82 & 18.00 & 82.00 \\ 
+    2 & 0.23 & 0.41 & 0.59 & 41.00 & 59.00 \\ 
+    3 & 0.14 & 0.55 & 0.45 & 55.00 & 45.00 \\ 
+    4 & 0.14 & 0.69 & 0.31 & 69.00 & 31.00 \\ 
+    5 & 0.11 & 0.80 & 0.20 & 80.00 & 20.00 \\ 
+    6 & 0.15 & 0.95 & 0.05 & 95.00 & 5.00 \\ 
+    7 & 0.05 & 1.00 & 0.00 & 100.00 & 0.00 \\ 
+   \hline
+\end{tabular}
+\end{table}
