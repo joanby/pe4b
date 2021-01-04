@@ -295,7 +295,7 @@ lineal de $X$ de forma que $$E(Z)=0 \mbox{ y } Var(Z)=1$$
 
 ## V.a con distribución uniforme, $U(a,b)$
 
-Distribución uniforme | $U(a,b)$
+Distribución uniforme $X$ | $U(a,b)$
 ----:|:-----
 Dominio | $D_X=(a,b)$
 $f_{X}(x)$ |$\left\{\begin{array}{ll}\frac1{b-a}, & \mbox{si } a<x<b,\\ 0,  & \mbox{en cualquier otro caso.}\end{array} \right.$
@@ -321,14 +321,14 @@ curve(punif(x,a,b),xlim=c(a-1,b+1),ylim=c(0,1.1),
 
 ## V.a. con distribución exponencial, $Exp(\lambda)$
 
-$X$ | $Exp(\lambda)$
+Distribución exponencial $X$ | $Exp(\lambda)$
 ------:|:------
 $D_X=$  | $(0,+\infty)$ 
 $f_{X}(x)=$ | $\left\{\begin{array}{ll}
-\lambda e^{-\lambda x} & \mbox{ si }  x>0\\
+\lambda \cdot e^{-\lambda x} & \mbox{ si }  x>0\\
 0 & \mbox{ si } x\leq 0
 \end{array}\right.$
-$F_X(x)=P(X\leq X)=$ | $\left\{\begin{array}{ll} 0 &\mbox{si } x\leq 0\\
+$F_X(x)=P(X\leq x)=$ | $\left\{\begin{array}{ll} 0 &\mbox{si } x\leq 0\\
 1-e^{-\lambda x}& \mbox{si } x>0\end{array}\right.$
 $E(X)=\frac{1}{\lambda}$ | $Var(X)=\frac{1}{\lambda^2}$
 
@@ -347,9 +347,11 @@ curve(pexp(x,rate=lambda),xlim=c(-0.05,qexp(0.999,10)),ylim=c(0,1.1),col="blue",
 par(mfrow=c(1,1))
 ```
 
+
+
 ## V.a. con distribución normal, $N(\mu,\sigma)$
 
-$X$  | $N(\mu,\sigma)$ 
+Distribución normal $X$  | $N(\mu,\sigma)$ 
 -----:|:--------
 $D_X=$ | $\mathbb{R}=(-\infty,+\infty)$
 $f_{X}(x)$ |$=\frac{1}{\sqrt{2\pi\cdot\sigma^2}}\cdot e^{\frac{-(x-\mu)^2}{2\cdot \sigma^2}}\mbox{ para todo }x\in \mathbb{R}.$
@@ -411,3 +413,47 @@ En particular si  $X$ sigue una $N(\mu,\sigma)$, tomando $a=\frac1{\sigma}$ y $b
 
 $$Z={{X-\mu}\over {\sigma}}$$
 se distribuye $N(0,1)$, es decir $E(X)=0$ y $Var(X)=1$.
+
+## Gráficas interactivas parámetros normal
+
+
+```{r NORMAL_plots1_interactivo, echo = FALSE}
+fluidPage(
+fluidRow(
+  column(3,
+         sliderInput("m1", label = "mu1",
+              min = -10, max = 10, value =0 , step = 0.05)
+         ),
+  column(3,
+          sliderInput("s1", label = "sigma1",
+                     min =0.1, max = 5, value = 1, step = 0.1)
+         ),
+  column(3,
+         sliderInput("m2", label="mu2", value=4, min = -10, max = 10, step = 0.05)
+         ),
+  column(3,
+          sliderInput("s2", label = "sigma2",
+                     min =0.1, max = 5, value = 1, step = 0.1)
+         )
+  
+)
+)
+
+renderPlot({
+  m1=input$m1
+  m2=input$m2
+  s1=input$s1
+  s2=input$s2
+  mins2=min(c(s1^2,s2^2))
+m=min(c(qnorm(0.01,m1,s1),qnorm(0.01,m2,s2)))
+M=max(c(qnorm(0.99,m1,s1),qnorm(0.99,m2,s2)))
+
+curve(dnorm(x,m1,s1),xlim=c(m,M),ylim=c(0,1/sqrt(2*pi*mins2)),col="red",lty=1)
+legend("toplef",legend=c(expression(N(mu[1],sigma[1])),expression(N(mu[2],sigma[2]))),col=c("red","blue"),lty=c(1,2))
+curve(dnorm(x,m2,s2),add=TRUE,col="blue",lty=2)
+})
+
+```
+
+
+
