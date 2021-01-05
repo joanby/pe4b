@@ -144,4 +144,45 @@ qq <- ggplot(data = df, mapping = aes(sample = uniforme)) +
 qq
 ```
 
- 
+
+##  Tiempo de espera servicio en un servicio telefónico de atención al cliente.
+
+
+La compañía de telecomunicaciones Ricardo's Phone (RP) presume de que el tiempo de espera ($T$) en un servicio de atención al cliente sigue una  distribución exponencial con parámetro $\lambda=1$ minuto.
+
+
+
+Se pide:
+
+a. Calcular la probabilidad de esperar más de 4 minutos a ser atendido.
+b. El valor esperado y la varianza de $T$.
+c. Calcular  e interpretar $P(0.4< T < 2)$.
+
+
+##  Tiempo de espera servicio en un servicio telefónico de atención al cliente.
+
+
+
+
+
+
+
+##  Tiempo  entre dos averías en una flota de camiones.
+
+La compañía de transportes TRANSA  dispone de una amplia flota de autobuses  de viajeros y de camiones  de transporte de mercancías.
+
+La compañía dispone de un servicio para responder de forma ágil a las averías que puedan sufrir sus autobuses y camiones.
+
+
+Se  define avería grave cuando implica que se tine que mandar otro vehículo de forma urgente para sustituir al averiado. Se estima que el tiempo transcurrido entre dos averías graves  sigue una ley exponencial de parámetro $\lambda=25$ días. 
+
+
+
+
+Se pide:
+
+a. Calcular la probabilidad  que en un mes no se produzca ninguna averia grave .
+b. El valor esperado y la varianza del tiempo entre dos averías graves.
+c. Calcular  e interpretar $P(0.4< T < 2)$.
+##  Tiempo  entre dos llegadas de aviones a un aeropuerto.
+

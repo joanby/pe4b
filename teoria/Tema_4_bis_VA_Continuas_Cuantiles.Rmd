@@ -1,0 +1,228 @@
+---
+title: "Tema 4 - Variables Aleatorias continuas"
+author: "Ricardo Alberich, Juan Gabriel Gomila y  Arnau Mir"
+date: 
+runtime: shiny
+output: 
+  ioslides_presentation: 
+    css: Mery_style.css
+    keep_md: no
+    logo: Images/matriz_mov.gif
+    widescreen: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+# Cuantiles de variables aleatorias
+
+
+## Cuantiles
+
+<div class="definition"> 
+**Cuantiles** 
+</div>
+
+Si  $X$ es una v.a. con dominio $D_X$ y  $0<p<1$ llamaremos cuantil de orden $p$ al menor valor  perteneciente al dominio $x_p\in D_X$ tal que 
+
+$$P(X\leq x_p)\geq p.$$
+
+En `R`, cada distribución $X$ tiene la función `qX(p,...)` que devuelve precisamente el cuantil $x_p$ tal que $P(X\leq x_p)\geq p.$
+
+
+
+## Cuantiles
+
+<div class="example">
+
+Consideremos una v.a. $X$ de distribución $B(5,0.5)$. 
+
+Los cuantiles $x_{0.3}$, $x_{0.6}$ y $x_{0.8}$ son los siguientes:
+
+```{r quantile1, sixe="small"}
+qbinom(c(0.3,0.6,0.8),5,0.5)
+```
+</div>
+
+## Cuantiles
+
+<div class="example">
+Calculemos a mano, el valor $x_{0.3}$ y verifiquemos que da el mismo resultado que nos ha dado `R`.
+
+La función de distribución de $X$ es:
+$$
+\small{
+F_x(x)=P(X\leq x)=
+\left\{
+\begin{array}{ll}
+0, & x< 0, \\
+0.03125, & \mbox{ si } 0 \leq x< 1, \\
+0.18750, & \mbox{ si } 1 \leq x< 2, \\
+0.50000, & \mbox{ si } 2 \leq x< 3, \\
+0.81250, & \mbox{ si } 3 \leq x< 4, \\
+0.96875, & \mbox{ si } 4 \leq x< 5, \\
+1.00000, & \mbox{ si }  5\leq x. \\
+\end{array}
+\right.}
+$$
+</div>
+
+## Cuantiles
+
+<div class="example">
+El cuantil $p=0.3$ es el  primer valor $x\in D_X$  tal que $F_X(x)=P(X\leq x_{0.3})\geq 0.3$. Mirando la expresión anterior, comprobamos que $x_{0.3}=2$ ya que $F_X(2)=P(X\leq 2)=0.5 \geq 0.3$.
+</div>
+
+
+
+## Cuantiles
+
+Dada una variable aleatoria $X$, si existe la inversa de la función de distribución de $X$, $F_X^{-1}$, el cuantil de orden $p$ sería el valor que tiene la función $F_X^{-1}$ en $p$: $x_p=F^{-1}(p)$.
+
+En caso de no existir la inversa, dado $p$, definimos el conjunto $A_p$ como:
+
+$$
+A_p =\{x\in\mathbb{R},\ |\ F_X(x)\geq p\}.
+$$
+
+Entonces el cuantil $p$ es el mínimo del conjunto $A_p$ considerando sólo valores del dominio de la variable: $x_p =\displaystyle\min_{x\in D_X}(A_p)$. Este mínimo siempre existirá y nos da una fórmula explícita para calcular los cuantiles de cualquier variable aleatoria.
+
+
+
+
+
+## Un ejemplo gráficas cuantiles $B(n,p)$ y $Po(\lambda)$.
+
+
+```{r cuantiles_graficosPOBIN, echo = FALSE}
+fluidPage(
+fluidRow(
+  column(3,
+         sliderInput("nq", label = "Par. n B(n,p)",
+              min = 1, max = 20, value =10 , step = 1)
+         ),
+  column(3,
+          sliderInput("pq", label = "Par. p B(n,p)",
+                     min = 0.01, max = 0.99, value = 0.5, step = 0.1)
+         ),
+  column(3,
+         sliderInput("qq", label=" Cuantil q", value=0.75, min = 0.01, max = 0.99, step = 0.01)
+         ),
+  column(3,
+         sliderInput("lq", label="Par. lambda Po(lambda)", value=5, min = 1, max = 20, step = 1)
+         )
+  )
+)
+
+  
+renderPlot({
+  n=input$nq
+  p=input$pq
+  q=input$qq
+  lambda=input$lq
+  par(mfrow=c(1,2))
+  #n=10;p=0.5;q=0.75;lambda=5
+  #xx=c(seq(min(a,x),min(b,x),by=0.001))
+  probsB=pbinom(0:n,n,p)
+  curve(pbinom(x,n,p),xlim=c(0-0.25,n+0.25),ylim=c(0,max(probsB+0.05,0.1)),
+        col="blue",main=paste0("Función distribución\n B(n=",n,", p=",p,")"),
+        ylab=paste0("dbinom(x,",n,", ",p,")"),yaxt="n")
+  segments(x0 = qbinom(q,n,p),y0 = 0,x1 = qbinom(q,n,p),y1 = q,lty=2,col="red")
+  segments(x0 = qbinom(q,n,p),y0 = q,x1 = -0.25,y1 = q,lty=2,col="red")
+  ytick=c(0.0,q,1)
+  axis(side=2, at=ytick, labels = TRUE)
+  axis(side=1, at=qbinom(q,n,p), labels = TRUE)
+  curve(ppois(x,lambda),xlim=c(0-0.25,2.5*lambda),ylim=c(0,1+0.1),
+        col="blue",main=paste0("Función distribución \n Po(lambda=",lambda,")"),
+        ylab=paste0("dpois(x, lambda",lambda,")"),yaxt="n")
+  segments(x0 = qpois(q,lambda),y0 = 0,x1 = qpois(q,lambda),y1 = q,lty=2,col="red")
+  segments(x0 = qpois(q,lambda),y0 = q,x1 = -0.25,y1 = q,lty=2,col="red")
+  ytick=c(0.0,q,1)
+  axis(side=2, at=ytick, labels = TRUE)
+  axis(side=1, at=qpois(q,lambda), labels = TRUE)
+  par(mfrow=c(1,1))
+})
+```
+
+
+
+
+## Cuantiles para la variable aleatoria Normal
+
+
+Sea $X$ una va.a $N(\mu.sigma)$  el cuartil $0<p<1$ será aquel valor de $x_p$ tal que $P(X\leq x_p)=p)$.
+ 
+Para calcularlo recurrimos a funciones ya programadas. Por ejemplo en R es  para una $N(\mu=1,\sigma=2)$ y $p=0.75$
+
+```{r}
+qnorm(p=0.75,mean=1,sd=2)
+```
+## Cuantiles para la variable aleatoria Normal
+
+Los cuantiles $0.25$, $0.5$ y $0.75$ reciben el nombre de primer, cuartil, segundo cuartil o mediana y tercer cuartil. También se sule hablar  de deciles  y de centiles a los cuantiles que dividen en 10 partes  o en 100 partes la muestra.
+
+ 
+```{r}
+qnorm(p=c(0.25,0.5,0.75),mean=1,sd=2)
+```
+ 
+ 
+## Gráficas interactivas parámetros normal
+
+
+```{r NORMAL_plots1_interactivo, echo = FALSE}
+fluidPage(
+fluidRow(
+  column(3,
+         sliderInput("m1", label = "mu",
+              min = -10, max = 10, value =0 , step = 0.05)
+         ),
+  column(3,
+          sliderInput("s1", label = "sigma",
+                     min =0.1, max = 5, value = 1, step = 0.1)
+         ),
+  column(3,
+         sliderInput("p", label="cuantil p", value=0.95, min = 0.001, max = 0.999, step = 0.001)
+         )
+)
+)
+
+renderPlot({
+  m1=input$m1
+  s1=input$s1
+  p=input$p
+  mins2=s1^2
+m=qnorm(0.0001,m1,s1)
+M=qnorm(0.9999,m1,s1)
+
+x0=qnorm(p,m1,s1)
+x=seq(m,x0-0.001,(x0-m)/500)
+cord.x <- c(x,x0)  # valores x de densidad de z
+cord.y <- c(dnorm(x,m1,s1),0)
+
+par(mfrow=c(1,2))
+curve(dnorm(x,m1,s1),xlim=c(m,M),ylim=c(0,1/sqrt(2*pi*mins2)),col="blue",lty=1,main="Función de densidad")
+polygon(cord.x, cord.y, col = "cadetblue1")
+text(x=x[250],y=cord.y[200],labels = p,col="black")
+axis(1,at=x0,round(x0,4),las=2)
+
+curve(pnorm(x,m1,s1),xlim=c(m,M),ylim=c(0,1),col="blue",lty=1,main="Función de distribuición.")
+#legend("toplef",legend=c(expression(N(mu[1],sigma[1]))),col=c("red"),lty=c(1))
+segments(x0,0,x0,pnorm(x0,m1,s1),lty=2,col="red")
+segments(x0,pnorm(x0,m1,s1),m-0.5,pnorm(x0,m1,s1),lty=2,col="red")
+axis(1,at=x0,round(x0,4),las=2)
+axis(2,at=p,round(p,4),las=2)
+par(mfrow=c(1,1))
+})
+```
+
+
+
+
+
+
+
+
