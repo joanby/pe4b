@@ -140,10 +140,10 @@ curve(FF(x),
 ##  Stock patinetes eléctricos.
 
 
-* \red{Ciclos Lucho} es un comercio de venta de bicicletas que  tiene un almacen y varias tiendas. 
+* \red{Ciclos Lucho} es un comercio de venta de bicicletas que  tiene un almacén y varias tiendas. 
 
 * Desde hace unos años también vende bicicletas y patinetes eléctricos. 
-* En particular  una de las tiendas el  modelo de patinete eléctrico el P37 se está vendiendo muy bien.
+* En particular  en una de las tiendas el  modelo de patinete eléctrico el P37 se está vendiendo muy bien.
 
 ##  Stock patinetes eléctricos.
 
@@ -188,14 +188,14 @@ $x$ & $P_X(x)=P(X=x)$ \\
 Se pide 
 
 a. Calcular la función de distribución
-b. En qué nos puede ayudar estos datos a la hora de pedir stock al almacen principal de Ciclos Lucho.
+b. En qué nos puede ayudar estos datos a la hora de pedir stock al almacén principal de Ciclos Lucho.
 
 
 ## Stock patinetes eléctricos. Calcular la función de distribución
 
 \begin{table}[ht]
 \centering
-\begin{tabular}{rrr}
+\begin{tabular}{|r|rr|}
   \hline
 $x$ & $P_X(x)$  & $F_X(x)$ \\ 
   \hline
@@ -217,7 +217,7 @@ $x$ & $P_X(x)$  & $F_X(x)$ \\
 
 \begin{table}[ht]
 \centering
-\begin{tabular}{rrrrrr}
+\begin{tabular}{|r|rrrrr|}
   \hline
 $x$ & $P_x(x)$  & $F_X(x)$  & $P(X> x)$ & $F_X(x)$ \% & $P(X> x)$ \% \\ 
   \hline
@@ -323,7 +323,7 @@ La variable ingreso es $I=3\cdot X$ por lo tanto
 $$\mu_I=E(I)=E(3\cdot X)=3\cdot E(X)=3 \cdot 1.87=`r 3*1.87`\mbox{ euros }.$$
 
 
-$$\sigma^2_I=Var(I)=Var(3\cdot X)=3\cdot Var(x)=3^2\cdot 1.1131=`r 9*1.1131`.$$
+$$\sigma^2_I=Var(I)=Var(3\cdot X)=3^2\cdot Var(X)=9\cdot 1.1131=`r 9*1.1131`.$$
  
  $$\sigma_I=+\sqrt{\sigma^2_I}=+\sqrt{9\cdot 1.1131}= `r sqrt(9*1.1131)`.$$
  
@@ -331,9 +331,10 @@ $$\sigma^2_I=Var(I)=Var(3\cdot X)=3\cdot Var(x)=3^2\cdot 1.1131=`r 9*1.1131`.$$
 ##  Stock patinetes eléctricos. Esperanza y varianza
 
 
-* \red{Ciclos Lucho} es un comercio de venta de bicicletas que  tiene un almacen y varias tiendas. 
+* \red{Ciclos Lucho} es un comercio de venta de bicicletas que  tiene un almacén y varias tiendas. 
 * Desde hace unos años también vende bicicletas y patinetes eléctricos. 
 * En particular  una de las tiendas el  modelo de patinete eléctrico el P37 se está vendiendo muy bien.
+* Denotemos por $X$= \blue{Número de patinentes P37 vendidos en un día}.
 
 ##  Stock patinetes eléctricos. Esperanza y varianza
 
@@ -393,13 +394,13 @@ df2$x2prob=df2$x^2*df2$prob
 #df2
 #print(xtable(df2,digits=c(0,0,2,2,4,6,0,2)),type = "latex", include.rownames =FALSE )
 ```
-% latex table generated in R 4.0.3 by xtable 1.8-4 package
-% Mon Jan 04 20:30:02 2021
+
+\scriptsize
 \begin{table}[ht]
 \centering
-\begin{tabular}{rrrrrrr}
+\begin{tabular}{|r|rrrrrr}
   \hline
-x & prob & xprob & dif & difprob & x2 & x2prob \\ 
+$x$ & $P_X(x)$ & $x\cdot P_X(x)$  & $(x-\mu)^2$ & $(x-\mu)^2\cdot P_X(x)$ & $x^2$ & $x^2\cdot P_X(x)$ \\ 
   \hline
 0 & 0.09 & 0.00 & 11.0889 & 0.998001 & 0 & 0.00 \\ 
   1 & 0.09 & 0.09 & 5.4289 & 0.488601 & 1 & 0.09 \\ 
@@ -413,17 +414,19 @@ x & prob & xprob & dif & difprob & x2 & x2prob \\
 Suma & 1 & $\mu=3.3300$ &  & $\sigma^2=4.0211$  & & $E(X^2)=15.1100$ \\ \hline
 \end{tabular}
 \end{table}
+\normalsize
+
+
+##  Stock patinetes eléctricos. Esperanza y varianza
 
 
 
+\begin{eqnarray*}
+\sigma_X^2&=&Var(X)=E((X-\mu)^2)=4.0211.\\
+\\
+\sigma_X^2&=&Var(X)=E(X^2)-\mu^2=15.1100-3.3300^2\\ \qquad & =& 15.1100-`r 3.3300^2`=
+`r 15.1100- 3.3300^2`.\\
+\\
+\sigma_X &=& +\sqrt{\sigma_X^2}=+\sqrt{4.0211}= `r sqrt(4.0211)`.
+\end{eqnarray*}
 
-
-
-$$\sigma_X^2=Var(X)=E((X_\mu)^2)=4.0211.$$
-
-
-
-$$\sigma_X^2=Var(X)=E(X^2)-\mu^2=15.1100-3.3300^2=15.1100-`r 3.3300^2`=`r 15.1100- 3.3300^2`.$$
-
-
-$$\sigma_X=+\sqrt{\sigma_X^2}=+\sqrt{4.0211}= `r sqrt(4.0211)`.$$
