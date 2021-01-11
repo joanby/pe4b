@@ -3279,7 +3279,7 @@ P((X,Y)\in B) ={\int\int}_B f_{XY}(x,y)\quad  dx dy.
 <li>Dado un valor fijo \(y\in D_Y\) definimos la distribución condicional de la v.a. \(Y\) condicionada a que \(X=x\) como</li>
 </ul>
 
-<p>\[f_{Y|Y=x}(y)=\frac{f_{XY}(x,y)}{f_X(x)},\mbox{  para todo } Y\in D_Y.\]</p>
+<p>\[f_{Y|X=x}(y)=\frac{f_{XY}(x,y)}{f_X(x)},\mbox{  para todo } Y\in D_Y.\]</p>
 
 </article></slide><slide class=""><hgroup><h2>Distibuciones condicionales e independencia</h2></hgroup><article  id="distibuciones-condicionales-e-independencia">
 
@@ -3339,8 +3339,8 @@ Var(X+Y)&amp;&amp;\\
 <p><l class="prop"> Propiedad: </l> Sea \((X,Y)\) una variable aleatoria bidimensional entonces se cumple que:</p>
 
 <ul>
-<li>\(E(X+Y)=E(X)+E(Y)=\mu_X+ \mu_y\).</li>
-<li>Si \(X\) e \(Y\) son independientes entonces \(E(X\cdot Y)=E(X)\cdot E(Y)=\mu_X\cdot \mu_y\).</li>
+<li>\(E(X+Y)=E(X)+E(Y)=\mu_X+ \mu_Y\).</li>
+<li>Si \(X\) e \(Y\) son independientes entonces \(E(X\cdot Y)=E(X)\cdot E(Y)=\mu_X\cdot \mu_Y\).</li>
 <li>Si \(X\) e \(Y\) son independientes entonces \(Var(X+Y)=Var(X)+ Var(Y)=\sigma_X^2+ \sigma_y^2\).</li>
 </ul>
 
@@ -3356,7 +3356,7 @@ Cov(X,Y)=E(X\cdot Y)-E(X)\cdot E(Y)=E(X\cdot Y)-\mu_X\cdot \mu_Y,
 
 <p><l class="prop">Propiedad. </l> Si las variables \(X\) e \(Y\) son <strong>independientes</strong>, entonces \(Cov(X,Y)=0\).</p>
 
-<p>Es una consecuencia de que si \(X\) e \(Y\) son independientes entonces que vimos que \(E(X\cdot Y)=E(X)\cdot E(Y) =\mu_X\cdot \mu_y\).</p>
+<p>Es una consecuencia de que si \(X\) e \(Y\) son independientes entonces que vimos que \(E(X\cdot Y)=E(X)\cdot E(Y) =\mu_X\cdot \mu_Y\).</p>
 
 </article></slide><slide class=""><hgroup><h2>Covarianza entre las variables</h2></hgroup><article  id="covarianza-entre-las-variables">
 
@@ -3483,8 +3483,8 @@ Cor(Y,X) &amp; Cor(Y,Y)
 
 <p>\[
  \Sigma=\left(\begin{matrix}
- \sigma_{1}^2 &amp; \sigma_{12}\\
- \sigma_{21} &amp;  \sigma_{2}^2
+ \sigma_{X}^2 &amp; \sigma_{XY}\\
+ \sigma_{XY} &amp;  \sigma_{Y}^2
  \end{matrix}\right).
 \]</p>
 
@@ -3528,24 +3528,24 @@ F_{X_1,X_2,\ldots, X_n}(x_1,x_2,&amp;\ldots&amp;,x_n)=P(X_1\leq x_1,X_2\leq x_2,
 
 <p><l class="definition"> Vector de medias </l></p>
 
-<p>Si denotamos $E(X )=$ para \(i=1,2,\ldots,n\) el <strong>vector de medias</strong> es \[E(X_1,X_2,\ldots,X_n)=(E(X_1),E(X_2),\ldots,E(X_n))=(\mu_1,\mu_2,\ldots,\mu_n).\]</p>
+<p>Si denotamos \(E(X_i)=\mu_i\) para \(i=1,2,\ldots,n\) el <strong>vector de medias</strong> es \[E(X_1,X_2,\ldots,X_n)=(E(X_1),E(X_2),\ldots,E(X_n))=(\mu_1,\mu_2,\ldots,\mu_n).\]</p>
 
 <p><l class="definition"> Covarianza y varianzas </l></p>
 
-<p>Si denotamos \(\sigma_{ij}=Cov(X ,X )\) para todo \(i,j\) en \(1,2,\ldots n\) entonces tenemos que</p>
+<p>Si denotamos \(\sigma_{ij}=Cov(X_i,X_j)\) para todo \(i,j\) en \(1,2,\ldots n\) entonces tenemos que</p>
 
 <ul>
-<li>\(\sigma_{ii}=Cov(X_i ,X_j )=\sigma_{ii}=\sigma_{i} ^2.\)</li>
-<li>\(\sigma_{ij}=Cov(X_i ,X_j )=Cov(X ,X )=\sigma_{ji}.\)</li>
+<li>\(\sigma_{ii}=Cov(X_i,X_i )=\sigma_{ii}=\sigma_{i} ^2.\)</li>
+<li>\(\sigma_{ij}=Cov(X_i,X_j )=Cov(X_j,X_i)=\sigma_{ji}.\)</li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Conceptos básicos</h2></hgroup><article  id="conceptos-básicos-1">
 
-<p>Si denotamos \(\rho_{ij}=Cor(X_i ,X_j )\) para todo \(i,j\) en \(1,2,\ldots n\) entonces tenemos que</p>
+<p>Si denotamos \(\rho_{ij}=Cor(X_i,X_j)\) para todo \(i,j\) en \(1,2,\ldots n\) entonces tenemos que</p>
 
 <ul>
-<li>\(\rho_{ii}=Cor(X_i ,X_i )=1.\)</li>
-<li>\(\rho_{ij}=Cor(X_i ,X_j )=Cor(X_j ,X_i)=\rho_{ji}.\)</li>
+<li>\(\rho_{ii}=Cor(X_i,X_i)=1.\)</li>
+<li>\(\rho_{ij}=Cor(X_i,X_j)=Cor(X_j,X_i)=\rho_{ji}.\)</li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Matrices de varianzas-covarianzas y de correlaciones</h2></hgroup><article  id="matrices-de-varianzas-covarianzas-y-de-correlaciones">

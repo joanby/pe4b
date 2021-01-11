@@ -114,7 +114,7 @@ conjunta se define como
 \[F_{XY}(x,y)=P(X\leq x,Y\leq y).\]
 \end{frame}
 
-\begin{frame}{Función de distribución acumulada función de densidad}
+\begin{frame}{Función de distribución acumulada, función de densidad}
 \protect\hypertarget{funciuxf3n-de-distribuciuxf3n-acumulada-funciuxf3n-de-densidad}{}
 Definición función de densidad conjunta
 
@@ -130,6 +130,11 @@ Llamaremos dominio de la variable conjunta a
 Es decir es el conjunto de valores posibles que toma la v.a. \((X,Y)\).
 \end{frame}
 
+\begin{frame}{Gráfica de una función de densidad}
+\protect\hypertarget{gruxe1fica-de-una-funciuxf3n-de-densidad}{}
+\begin{center}\includegraphics{Tema_4_VA_Continuas_multidimensionales_files/figure-beamer/unnamed-chunk-1-1} \end{center}
+\end{frame}
+
 \begin{frame}{Propiedades de la función de densidad conjunta}
 \protect\hypertarget{propiedades-de-la-funciuxf3n-de-densidad-conjunta}{}
 Sea \((X,Y)\) una \textbf{variable aleatoria bidimensional continua} con
@@ -140,12 +145,12 @@ propiedades:
 
 \begin{itemize}
 \item
-  \[\int_{-\infty}^{+\infty} f_{XY}(x,y)\quad  dx dy=1.\]
+  \[\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty} f_{XY}(x,y)\quad  dx dy=1.\]
 \item
   Sea \(B\) un subconjunto cualquiera del dominio \(D_{XY}\). El valor
   de la probabilidad \(P((X,Y)\in B)\) se puede calcular de la forma
   siguiente: \[
-  P((X,Y)\in B) ={\int\int}_B f_{XY}(x,y)\quad  dx dy=1.
+  P((X,Y)\in B) ={\int\int}_B f_{XY}(x,y)\quad  dx dy.
   \]
 \end{itemize}
 
@@ -160,10 +165,10 @@ recinto \(B\).
 \begin{frame}{Variables aleatorias marginales y su distribución}
 \protect\hypertarget{variables-aleatorias-marginales-y-su-distribuciuxf3n}{}
 Consideremos una variable aleatoria \textbf{bidimensional continua
-\((X,Y)\)} con \textbf{función de probabilidad conjunta} \(f_{XY}(x,y)\)
-y coon domicio \(D_{XY}\).
+\((X,Y)\)} con \textbf{función de densidad conjunta} \(f_{XY}(x,y)\) y
+con dominio \(D_{XY}\).
 
-La tabla de la \textbf{función de densidad conjunta} contiene suficiente
+La de la \textbf{función de densidad conjunta} contiene suficiente
 información para obtener las \textbf{funciones de densidad} de las
 variables \(X\) e \(Y\).
 
@@ -188,9 +193,9 @@ calculan usando las expresiones siguientes:
 
 \begin{itemize}
 \item
-  \(f_X(x)= \displaystyle \int_{-\infty}^{+\infty} f(x,y)\quad dy.\)
+  \(f_X(x)= \int_{-\infty}^{+\infty} f_{XY}(x,y)\quad dy.\)
 \item
-  \(f_Y(y)= \displaystyle \int_{-\infty}^{+\infty} f(x,y)\quad dx.\)
+  \(f_Y(y)= \int_{-\infty}^{+\infty} f_{XY}(x,y)\quad dx.\)
 \end{itemize}
 \end{frame}
 
@@ -207,9 +212,10 @@ Dada una variable aleatoria bidimensional continua \((X,Y)\) con dominio
 \(D_{XY}\)
 
 Así que al menos todos los sucesos de la forma
-\(P\left(X\leq x_i,\  Y\leq y\right)\) deberán ser independientes. Esto
-implicará que cualesquiera dos sucesos de cada variables con
-inpedendientes.
+\(P\left(X\leq x ,\  Y\leq y\right)\) deberán ser independientes.
+
+Esto implicará que cualesquiera dos sucesos de cada variables con
+independientes.
 \end{frame}
 
 \begin{frame}{Independencia de variables aleatorias continuas}
@@ -237,9 +243,9 @@ de las siguientes condiciones:
 \begin{itemize}
 \tightlist
 \item
-  \(E(X)=\displaystyle\int_{x\in D_X} x\cdot f_X(x)\quad dx.\)
+  \(E(X)=\int_{-\infty}^{+\infty} x\cdot f_X(x)\quad dx.\)
 \item
-  \(E(Y)=\displaystyle\int_{y\in D_Y} y\cdot f_Y(y)\quad dy.\)
+  \(E(Y)=\int_{-\infty}^{+\infty} y\cdot f_Y(y)\quad dy.\)
 \item
   \(\sigma_X^2=Var(X)=E(X-E(X))=E(X)-E(X)^2.\)
 \item
@@ -256,7 +262,7 @@ de las siguientes condiciones:
   de la v.a. \(X\) condicionada a que \(Y=y\) como
 \end{itemize}
 
-\[f_{X/Y=y}(x)=\frac{f_{XY}(x,y)}{f_Y(y)},\mbox{  para todo } x\in D_X.\]
+\[f_{X|Y=y}(x)=\frac{f_{XY}(x,y)}{f_Y(y)},\mbox{  para todo } x\in D_X.\]
 
 \begin{itemize}
 \tightlist
@@ -265,7 +271,7 @@ de las siguientes condiciones:
   de la v.a. \(Y\) condicionada a que \(X=x\) como
 \end{itemize}
 
-\[f_{Y/X=x}(y)=\frac{f_{XY}(x,y)}{f_X(x)},\mbox{  para todo } Y\in D_Y.\]
+\[f_{Y|X=x}(y)=\frac{f_{XY}(x,y)}{f_X(x)},\mbox{  para todo } Y\in D_Y.\]
 \end{frame}
 
 \begin{frame}{Distibuciones condicionales e independencia}
@@ -314,31 +320,40 @@ Definición:
 Sea \((X,Y)\) una variable aleatoria bidimensional continua y
 \(g(X,Y): \mathbb{R}^2\mapsto \mathbb{R}\) una función de esa variable
 bidimensional entonces
-\(E(g(X,Y))=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty} g(x,y) \cdot f_{XY}(x,y) \quad dx dy.\)
 
-En particular:
-
-\begin{itemize}
-\tightlist
-\item
-  \(\displaystyle E(X+Y)=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty} f_{XY}(x,y) \quad dx dy=\mu_X+\mu_Y.\)
-\item
-  \(\displaystyle Var(X+Y)=E\left(\left(X+Y-E(X+Y)\right)^2\right)=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}(x+y-(\mu_X+\mu_Y))^2\cdot f_{XY}(x,y) \quad dx dy.\)
-\end{itemize}
+\[E(g(X,Y))=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty} g(x,y) \cdot f_{XY}(x,y) \quad dx dy.\]
 \end{frame}
 
 \begin{frame}{Esperanzas de funciones de v.a. continuas bidimensionales}
 \protect\hypertarget{esperanzas-de-funciones-de-v.a.-continuas-bidimensionales-1}{}
+Propiedad: En particular:
+
+\[
+E(X+Y)=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty} (x+y)\cdot f_{XY}(x,y) \quad dx dy=\mu_X+\mu_Y.
+\]
+
+\[ 
+\begin{eqnarray*}
+Var(X+Y)&&\\
+&=&E\left(\left(X+Y-E(X+Y)\right)^2\right)\\
+&=&
+\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}(x+y-(\mu_X+\mu_Y))^2\cdot f_{XY}(x,y) \quad dx dy.
+\end{eqnarray*}
+\]
+\end{frame}
+
+\begin{frame}{Esperanzas de funciones de v.a. continuas bidimensionales}
+\protect\hypertarget{esperanzas-de-funciones-de-v.a.-continuas-bidimensionales-2}{}
 Propiedad: Sea \((X,Y)\) una variable aleatoria bidimensional entonces
 se cumple que:
 
 \begin{itemize}
 \tightlist
 \item
-  \(E(X+Y)=E(X)+E(Y)=\mu_X+ \mu_y\).
+  \(E(X+Y)=E(X)+E(Y)=\mu_X+ \mu_Y\).
 \item
   Si \(X\) e \(Y\) son independientes entonces
-  \(E(X\cdot Y)=E(X)\cdot E(Y)=\mu_X\cdot \mu_y\).
+  \(E(X\cdot Y)=E(X)\cdot E(Y)=\mu_X\cdot \mu_Y\).
 \item
   Si \(X\) e \(Y\) son independientes entonces
   \(Var(X+Y)=Var(X)+ Var(Y)=\sigma_X^2+ \sigma_y^2\).
@@ -350,9 +365,7 @@ se cumple que:
 
 \begin{frame}{Medida de la variación conjunta: covarianza}
 \protect\hypertarget{medida-de-la-variaciuxf3n-conjunta-covarianza}{}
-El \textbf{momento conjunto centrado en las medias para \(k=1\) y
-\(l=1\)} se denomina \textbf{covarianza} entre las variables \(X\) e
-\(Y\): \[
+Se denomina \textbf{covarianza} entre las variables \(X\) e \(Y\): \[
 \sigma_{XY}=Cov(X,Y)=E((X-\mu_X)(Y-\mu_Y)).
 \] La covarianza puede calcularse también con: \[
 Cov(X,Y)=E(X\cdot Y)-E(X)\cdot E(Y)=E(X\cdot Y)-\mu_X\cdot \mu_Y,
@@ -362,7 +375,7 @@ Propiedad. Si las variables \(X\) e \(Y\) son \textbf{independientes},
 entonces \(Cov(X,Y)=0\).
 
 Es una consecuencia de que si \(X\) e \(Y\) son independientes entonces
-que vimos que \(E(X\cdot Y)=E(X)\cdot E(Y) =\mu_X\cdot \mu_y\).
+que vimos que \(E(X\cdot Y)=E(X)\cdot E(Y) =\mu_X\cdot \mu_Y\).
 \end{frame}
 
 \begin{frame}{Covarianza entre las variables}
@@ -403,17 +416,6 @@ variables \(X\) e \(Y\):
   Var(X+Y)=Var(X)+Var(Y).
   \]
 \end{itemize}
-\end{frame}
-
-\begin{frame}{Coeficiente de correlación}
-\protect\hypertarget{coeficiente-de-correlaciuxf3n}{}
-La \textbf{covarianza} depende de las unidades en las que se midan las
-variables \(X\) e \(Y\) ya que si \(a>0\) y \(b>0\), entonces: \[
-Cov(a\cdot X,b\cdot Y)=a\cdot b\cdot Cov(X,Y).
-\] Por tanto, si queremos ``medir'' la relación que existe entre las
-variables \(X\) e \(Y\) tendremos que ``normalizar'' la
-\textbf{covarianza} definiendo el \textbf{coeficiente de correlación}
-entre las variables \(X\) e \(Y\):
 \end{frame}
 
 \begin{frame}{Coeficiente de correlación entre las variables}
@@ -506,7 +508,10 @@ Sea \((X,Y)\) una variable bidimensional Notemos que
 \item
   \(\rho_{X Y}= Cor(X,Y)=Cor(Y,X)= \rho_{Y X}.\)
 \end{itemize}
+\end{frame}
 
+\begin{frame}{Matriz de varianzas-covarianzas y matriz de correlaciones}
+\protect\hypertarget{matriz-de-varianzas-covarianzas-y-matriz-de-correlaciones-2}{}
 Se denomina matriz de correlaciones a
 
 \[
@@ -514,17 +519,20 @@ R=
 \left(
 \begin{matrix}Cor(X,X) &  Cor(X,Y)\\
 Cor(Y,X) & Cor(Y,Y)
-\end{matrix}\rith)
+\end{matrix}
+\right)
 =
 \left(
 \begin{matrix} 
 1 &  \rho_{XY}\\ 
-\rho_{Y X} & 1\end{matrix}\rith)
-=
+\rho_{Y X} & 1
+\end{matrix}
+\right)=
 \left(
 \begin{matrix}
 1 &  \rho_{XY}\\ \rho_{X Y} & 1
-\end{matrix}\rith).
+\end{matrix}
+\right).
 \]
 \end{frame}
 
@@ -549,12 +557,15 @@ y por
 
 \[
  \Sigma=\left(\begin{matrix}
- \sigma_{1}^2 & \sigma_{12}\\
- \sigma_{21} &  \sigma_{2}^2
+ \sigma_{X}^2 & \sigma_{XY}\\
+ \sigma_{XY} &  \sigma_{Y}^2
  \end{matrix}\right).
 \]
+\end{frame}
 
-diremos que el vector
+\begin{frame}{Definición de distribción normal bivariante}
+\protect\hypertarget{definiciuxf3n-de-distribciuxf3n-normal-bivariante-1}{}
+Diremos que el vector
 \(\left(\begin{array}{c} X \\ Y\end{array}\right)\) sigue una ley
 \textbf{normal o gaussiana bidimensional} \(N(\mathbb{b},\sigma)\) si su
 densidad es
@@ -564,9 +575,9 @@ f_{XY}=\frac{1}{\sqrt{(2\pi)^2\cdot \mathrm{det}(\Sigma)}} \cdot e^{-\frac{1}{2}
 \]
 \end{frame}
 
-\begin{frame}{Gráfica de la distribución gaussiana bidimensional}
-\protect\hypertarget{gruxe1fica-de-la-distribuciuxf3n-gaussiana-bidimensional}{}
-\begin{center}\includegraphics{Tema_4_VA_Continuas_multidimensionales_files/figure-beamer/unnamed-chunk-1-1} \end{center}
+\begin{frame}{Gráfica de la distribución gaussiana \((X,Y)\).}
+\protect\hypertarget{gruxe1fica-de-la-distribuciuxf3n-gaussiana-xy.}{}
+\begin{center}\includegraphics{Tema_4_VA_Continuas_multidimensionales_files/figure-beamer/unnamed-chunk-2-1} \end{center}
 \end{frame}
 
 \hypertarget{distribuciones-multidimensionales}{%
@@ -582,7 +593,11 @@ Consideremos un vector compuesto de \(n\) variables aleatorias continuas
 Su \textbf{función de densidad de probabilidad} es una función
 \(f_{X_1,X_2,\ldots, X_n}:\mathbb{R}^n\mapsto [0,+\infty)\) tal que
 
-\[F_{X_1,X_2,\ldots, X_n}(x_1,x_2,\ldots,x_n)=P(X_1\leq x1,X_2\leq x_2,\ldots, X_n\leq x_n)=\int_{-\infty}^{x1}\int_{-\infty}^{x2}\cdots \int_{-\infty}^{xn} f(t_1,t_3,\ldots,t_n)\quad dt_1 dt_2\cdots dt_n.\]
+\[
+\begin{eqnarray*}
+F_{X_1,X_2,\ldots, X_n}(x_1,x_2,&\ldots&,x_n)=P(X_1\leq x_1,X_2\leq x_2,\ldots, X_n\leq x_n)\\&=&\int_{-\infty}^{x1}\int_{-\infty}^{x2}\cdots \int_{-\infty}^{xn} f(t_1,t_3,\ldots,t_n)\quad dt_1 dt_2\cdots dt_n.
+\end{eqnarray*}
+\]
 \end{frame}
 
 \begin{frame}{Independencia}
@@ -616,9 +631,9 @@ Si denotamos \(\sigma_{ij}=Cov(X_i,X_j)\) para todo \(i,j\) en
 \begin{itemize}
 \tightlist
 \item
-  \(\sigma_{ii}=Cov(X_i,X_i)=\sigma_{ii}=\sigma_i^2.\)
+  \(\sigma_{ii}=Cov(X_i,X_i )=\sigma_{ii}=\sigma_{i} ^2.\)
 \item
-  \(\sigma_{ij}=Cov(X_i,X_j)=Cov(X_j,X_i)=\sigma_{ji}.\)
+  \(\sigma_{ij}=Cov(X_i,X_j )=Cov(X_j,X_i)=\sigma_{ji}.\)
 \end{itemize}
 \end{frame}
 
@@ -638,15 +653,21 @@ Si denotamos \(\rho_{ij}=Cor(X_i,X_j)\) para todo \(i,j\) en
 
 \begin{frame}{Matrices de varianzas-covarianzas y de correlaciones}
 \protect\hypertarget{matrices-de-varianzas-covarianzas-y-de-correlaciones}{}
-\[\Sigma=\pmatrix{ \sigma_{1}^2 & \sigma_{12} & \ldots & \sigma_{1n}\\
+\[\Sigma=
+\left(\begin{matrix}
+\sigma_{1}^2 & \sigma_{12} & \ldots & \sigma_{1n}\\
  \sigma_{21} & \sigma_{2}^2 & \ldots & \sigma_{2n}\\
  \vdots & \vdots & \ddots& \vdots\\
  \sigma_{n1} & \sigma_{n2} & \ldots & \sigma_{n}^2
- }, \qquad R=\pmatrix{ 1 & \rho_{12} & \ldots & \rho_{1n}\\
+ \end{matrix}\right)
+ , \qquad 
+ R=\left(\begin{matrix}
+ 1 & \rho_{12} & \ldots & \rho_{1n}\\
  \rho_{21} & 1 & \ldots & \rho_{2n}\\
  \vdots & \vdots & \ddots& \vdots\\
  \rho_{n1} & \rho_{n2} & \ldots & 1
- }.\]
+ \end{matrix}\right).
+ \]
 \end{frame}
 
 \end{document}
