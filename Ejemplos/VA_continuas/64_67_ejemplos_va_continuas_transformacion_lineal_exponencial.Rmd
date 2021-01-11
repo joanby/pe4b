@@ -20,11 +20,11 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## Coste de la climatización de una piscina (64 205)
+## Coste de la climatización de una piscina 
 
-Un hotel de alta montaña con pistas de esquí dispone de una piscina  climatizada se estima que en el mes más frío  el coste de $Y$ de la factura energética en euros depende de otra variable aleatoria $T$ que es la temperatura media del mes en grados centígrados según la siguiente relación lineal $Y=1000-6\cdot T$.
+Un hotel de alta montaña con pistas de esquí dispone de una \red{piscina  climatizada} se estima que en el mes más frío  el coste de \blue{$Y$ de la factura energética en euros depende de otra variable aleatoria $T$} que es la temperatura media del mes en grados Celsius  según la siguiente relación lineal \blue{$Y=1000-6\cdot T$}.
 
-Supongamos que la temperatura de ese ese mes sigue una distribución  con media $\mu_T=E(T)=-5$ grados y varianza $\sigma_X^2=Var(X)=4.$
+Supongamos que la temperatura de ese  mes sigue una \blue{distribución normal  con media $\mu_T=E(T)=-5$ grados y varianza $\sigma_T^2=Var(T)=4.$}
 
 * Calcular la media del coste.
 * Calcular la desviación típica del coste.
@@ -32,35 +32,62 @@ Supongamos que la temperatura de ese ese mes sigue una distribución  con media 
 
 ## Coste de la climatización de una piscina 
 
-Solución
+Recordemos que 
+
+* \red{$E(a\cdot X+b)=a\cdot E(X)+b$}
+* \red{$Var(a\cdot X+b)=a^2\cdot Var(X)$}
+
+\begin{eqnarray*}
+\mu_Y&=&E(Y)=E(1000-6\cdot T)=1000-6\cdot E(T)\\
+&=& 1000-6\cdot (-5)=1000+30=1030.
+\end{eqnarray*}
 
 
+
+\begin{eqnarray*}
+\sigma_Y^2&=& Var(Y)=Var(1000-6\cdot T)=(-6)^2\cdot Var(T)\\
+&=&
+36\cdot 4=144.
+\end{eqnarray*}
+
+
+
+$\sigma_Y=+\sqrt{\sigma_Y^2}=+\sqrt{144}=12.$
 
 ## Transformación de una v.a. $X\equiv N(\mu,\sigma)$ en una normal estándar 
 
-Recordemos que si $X\equiv N(\mu,\sigma)$ entonces $Z=\frac{X-\mu}{\sigma}\equiv N(0,1).$
+Recordemos que si \red{$X\equiv N(\mu,\sigma)$ entonces $Z=\frac{X-\mu}{\sigma}\equiv N(0,1)$}.
 
+
+\blue{
 $$
 F_X(x)=P(X\leq x)=P\left(\frac{X-\mu}{\sigma}\leq \frac{x-\mu}{\sigma}\right)=P\left(Z\leq \frac{x-\mu}{\sigma}\right).
 $$
+}
 
 
 ## Transformación de una v.a. $X\equiv N(\mu,\sigma)$ en una normal estándar 
 
-Por ejemplo supongamos que $X$ es una $N(\mu=1,sigma=2)$
+Por ejemplo supongamos que $X$ es una $N(\mu=1,\sigma=2)$
+Recordemos que 
+
+\red{$P(X\leq x)= P\left(\frac{X-\mu}{\sigma}\leq \frac{x-\mu}{\sigma}\right)=P\left(Z\leq \frac{x-\mu}{\sigma}\right)$}
 
 Calculemos $P(X\leq 1.25)$ de forma directa con $R$ es 
 
 ```{r probs_normal,echo=TRUE}
 pnorm(1.25,mean=1,sd=2)
 ```
+
+## Transformación de una v.a. $X\equiv N(\mu,\sigma)$ en una normal estándar 
+
 Aproximando con una normal estándar
 
-$P(X\leq 1.25)=\left(\frac{X-1}{2}\leq \frac{1.25-1}{2}\right)=P\left(Z\leq \frac{2.25-\mu}{\sigma}\right)$
+\blue{$P(X\leq 1.25)=P\left(\frac{X-1}{2}\leq \frac{1.25-1}{2}\right)=P\left(Z\leq \frac{1.25-1}{2}\right)$}
 
 
 
-```{r}
+```{r, echo=TRUE}
 mu=1
 sigma=2
 (1.25-mu)/sigma
@@ -70,46 +97,260 @@ pnorm(0.125,mean=0,sd=1)
 
 ## Cartera de valores 
 
-Supongamos que disponemos de cartera  de renta variable que tiene un valor medio de 500000 euros una desviación estándar de 15000  
+Supongamos que disponemos de \red{cartera  de renta variable} que tiene un \blue{valor medio de 500000 euros una desviación estándar de 15000}.
 
-Si $X$ es el valor de la cartera y asumimos que tiene distribución aproximadamente normal ¿cuál es la probabilidad de que el valor de la cartera se encuentre entre 485000 y 520000 euros.
-
+Si $X$ es el valor de la cartera y asumimos que tiene distribución aproximadamente normal \blue{¿cuál es la probabilidad de que el valor de la cartera se encuentre entre 485000 y 520000 euros?}
 
 
 ## Cartera de valores 
+
+
+Sea $X$ la variable nos da el valor actual de la cartera de valores.  Nos dicen que $X$ es aproximadamente 
+$N(\mu=500000,\sigma=15000)$
+
+
+
+\begin{eqnarray*}
+P(485000< X\leq 520000 )&=& P(X\leq 520000)-P(X\leq 485000)\\
+&=& F_X(520000)-F_X(485000)\\
+&=& 
+`r round(pnorm(520000,mean=500000,sd=15000),4)`-`r round(pnorm(485000,mean=500000,sd=15000),4)`\\
+&=& `r round(pnorm(520000,mean=500000,sd=15000),4)-round(pnorm(485000,mean=500000,sd=15000),4)`
+\end{eqnarray*}
+
+## Cartera de valores 
+
+```{r probs1, echo=TRUE}
+pnorm(520000,mean=500000,sd=15000)
+pnorm(485000,mean=500000,sd=15000)
+pnorm(520000,mean=500000,sd=15000)-
+  pnorm(485000,mean=500000,sd=15000)
+```
+
+## Cartera de valores 
+
+
+\begin{eqnarray*}
+P(485000< X\leq 520000 )&=&P(X\leq 520000)-P(X\leq 485000)\\
+&=& P\left(Z\leq \frac{520000-500000}{15000}\right)\\ && -
+P\left(Z\leq \frac{485000-500000}{15000}\right)\\
+&=& F_Z(`r round((520000-500000)/15000,4)`)-F_Z(`r round((485000-500000)/15000,4)`)\\
+&=& `r pnorm((520000-500000)/15000,mean=0,sd=1)`-`r pnorm((485000-500000)/15000,mean=0,sd=1)`\\ & =&
+`r pnorm((520000-500000)/15000,mean=0,sd=1)-  pnorm((485000-500000)/15000,mean=0,sd=1)`
+\end{eqnarray*}
+
+
+## Cartera de valores 
+
+```{r probs2, echo=TRUE}
+pnorm((520000-500000)/15000,mean=0,sd=1)
+pnorm((485000-500000)/15000,mean=0,sd=1)
+pnorm((520000-500000)/15000,mean=0,sd=1)-
+  pnorm((485000-500000)/15000,mean=0,sd=1)
+```
  
+
+##  Tiempo de espera  en un servicio telefónico de atención al cliente
+
+
+La compañía de \red{telecomunicaciones Ricardo's Phone (RP)} presume de que el tiempo de espera ($T$) en un servicio de atención al cliente sigue una  \blue{distribución exponencial con parámetro $\lambda=1$ minuto}.
+
+
+
+Se pide:
+
+* Calcular la probabilidad de esperar más de 4 minutos a ser atendido.
+* El valor esperado y la varianza de $T$.
+* Calcular  e interpretar $P(0.4< T < 2)$.
+
+
+##  Tiempo de espera  en un servicio telefónico de atención al cliente
+
+
+
+La v.a. $T$ \red{tiempo de espera en minutos} sigue una ley $Exp(\lambda=1)$. 
+
+Sabemos que 
+\blue{
+$$
+F_T(t)=\left\{
+\begin{array}{rr}
+1-e^{-\lambda\cdot  t}=1-e^{-t}  & \mbox{ si } t >0\\
+0 & \mbox{ si } t\leq 0\end{array}
+\right..
+$$
+}
+
+
+Entonces $P(T> 4)=1-P(T\leq 4)=1-F_T(4)=1-\left(1-e^{-4}\right)=e^{-4}=`r exp(-4)`.$
+
+##  Tiempo de espera  en un servicio telefónico de atención al cliente
+
+Sabemos también que 
+
+\blue{$E(T)=\frac{1}{\lambda}=\frac{1}{1}=1$} y \blue{$Var(T)=\frac{1}{\lambda^2}=\frac{1}{1^2}=1.$}
+
+Por último 
+
+\begin{eqnarray*}
+P(0.4< T < 2) &=& P(T<2)-P(T\leq 0.4)=F_T(2)-F_T(0.4)\\
+&=& 1-e^{-2}-(1-e^{-0.4})=e^{-0.4}-e^{-2}\\
+&=& `r exp(-0.4)`-`r exp(-2)`=`r exp(-0.4)-exp(-2)`.
+\end{eqnarray*}
+
+
+##  Tiempo  entre dos averías en una flota de vehículos de transporte 
+
+La \red{compañía de transportes EURTRANSA}  dispone de una amplia flota de autobuses  de viajeros y de camiones  de transporte de mercancías.
+
+La compañía dispone de un servicio para responder de forma ágil a las averías que puedan sufrir sus autobuses y camiones.
+
+
+Se  define avería grave cuando implica que se tiene que mandar otro vehículo de forma urgente para sustituir al averiado. 
+
+Se estima que el \blue{tiempo transcurrido entre dos averías graves  sigue una ley exponencial de parámetro $\lambda=\frac{1}{25}$ días}. 
+
+
+##  Tiempo  entre dos averías en una flota de vehículos de transporte 
+
+Se pide:
+
+* El valor esperado y la varianza del tiempo entre dos averías graves
+* Calcular la probabilidad  que en un mes no se produzca ninguna avería grave .
+* Calcular  e interpretar $P(15< T < 30)$.
+
+##  Tiempo  entre dos averías en una flota de vehículos de transporte 
+
+
+
+La v.a. $T$ \red{tiempo entre dos averías graves} sigue una ley $Exp(\lambda=\frac{1}{25})$. 
+
+
+
+$$E(T)=\frac{1}{\lambda}=\frac{1}{\frac{1}{15}}=15\mbox{ días.}$$ 
+
+y 
+
+$$Var(T)=\frac{1}{\lambda^2}=\frac{1}{\left(\frac{1}{15}\right)^2}=15^5=255$$
+
+Su desviación típica es $\sigma_T=15$ días.
+
+##  Tiempo  entre dos averías en una flota de vehículos de transporte 
+
+Sabemos que  la función de distribución es 
+\blue{
+$$
+F_T(t)=\left\{
+\begin{array}{rr}
+1-e^{-\lambda\cdot t}=1-e^{-\frac{1}{15}\cdot t}  & \mbox{ si } t >0\\
+0 & \mbox{ si } t\leq 0\end{array}
+\right..
+$$}
+
+
+Por lo tanto la probabilidad de que en un mes (30 días)  no se produzca una avería grave es 
+
+
+$$P(T>30)=1-P(T\leq 30)=1-(1-e^{-\frac{1}{15}\cdot 30})=e^{-2}=`r exp(-2)`.$$
+
+##  Tiempo  entre dos averías en una flota de vehículos de transporte 
+
+
+Por último 
+
+\begin{eqnarray*}
+P(15< T < 30)&=&P(T<30)-P(T\leq 20)=F_T(30)-F_T(15)\\
+&=& 1-e^{-2}-(1-e^{-1})=e^{-1}-e^{-2}\\
+&=& `r exp(-1)`-`r exp(-2)`=`r exp(-1)-exp(-2)`.
+\end{eqnarray*}
+
+
+
+
+## Gráficos cuantil cuantil (QQ-plots)
  
+
+\blue{Gráficos cuantil-cuantil, cuantiles muestrales.}
+
+
+
+* Recordemos que dada un \red{v.a. $X$ el cuantil de orden $0<p<1$ es aquel valor tal que $P(X\leq x_p)=p$}.
+
+* Cuando tomamos una muestra podemos construir los llamados \blue{cuantiles muestrales} que consisten en asignar a cada observación la proporción  de la muestra que  es \blue{menor o igual} que  ese valor en la muestra ordenada.  
+
+
+## Gráficos cuantil cuantil (QQ-plots)
  
-## Cuantiles  de una distribución. Cuantiles de la distribución normal. 
+
+
+
+
+```{r}
+set.seed(22)
+muestra=round(rnorm(10),4)
+#muestra
+#sort(muestra)
+#round(qnorm(c(1:10)/10),4)
+```
+
+\scriptsize
+```
+cuantil muestral 
+-1.6157 -0.9222 -0.7929 -0.7639 -0.0840 0.0820 0.7430 0.8616 0.9366 2.0029
+p        
+ 0.1     0.2     0.3     0.4     0.5     0.6   0.7    0.8   0.9     1.0
+```
+\normalsize
+
+Podemos comparar, por ejemplo, estos cuantiles  con los \blue{cuantiles teóricos de una  $N(0,1)$}
+
+\scriptsize
+```
+cuantil teórico
+-1.2816 -0.8416 -0.5244 -0.2533 0.0000 0.2533 0.5244 0.8416  1.2816 Inf
+p
+ 0.1     0.2     0.3     0.4    0.5    0.6    0.7     0.8     0.9    1.0
+```
+\normalsize
+
+## Gráficos cuantil cuantil (QQ-plots)
+
+Como ejemplo aquí tenemos una \blue{muestra aleatoria ordenada de una distribución desconocida}.
+
+
+
+Comparando estas cantidades podemos visualizar si la distribución de la muestra discrepa de la distribución teórica.
+
+Para visualizar estas discrepancias se dibujan los \blue{gráficos cuantil-cuantil más conocidos por su nombre en inglés QQ-plots }.
+
+## Gráficos cuantil cuantil (QQ-plots)
  
- 
- 
-## Gráficos cuantil cuantil (QQplots)
- 
- 
- 
+
+\red{Generamos 100 valores  aleatorios de una $N(0,1)$.}
  
 ```{r qqplot,warnings=FALSE,include=FALSE}
 library(qqplotr,quietly=TRUE)
 set.seed(2021)
 df <- data.frame(normal = round(rnorm(100,0,1),4))
 ```
-
+\scriptsize
 ```{r qqplot_print,size="scriptsize"}
 print(df$normal,width = 60)
 ```
-
+\normalsize
   
 
-## Gráficos cuantil cuantil (QQplots)
- 
- 
+## Gráficos cuantil cuantil (QQ-plots)
+
+\red{Ordenamos los  100 valores  aleatorios.}
+
+\scriptsize
 ```{r qqplot2}
 print(sort(df$normal),width = 60)
 ```
+\normalsize
 
-
-## Gráficos cuantil cuantil (QQplots)
+## Gráficos cuantil cuantil (QQ-plots)
  
 ```{r qqplot3}
 qq <- ggplot(data = df, mapping = aes(sample = normal)) +
@@ -120,20 +361,22 @@ qq <- ggplot(data = df, mapping = aes(sample = normal)) +
 qq
 ```
  
-## Gráficos cuantil cuantil (QQplots)
+## Gráficos cuantil cuantil (QQ-plots)
 
 
 
-Generamos 100 valores  aleatorios de una $U(0,10)$.
+\red{Generamos 100 valores aleatorios de una $U(0,10)$
+y  los ordenamos.}
 
+\scriptsize
 ```{r}
 set.seed(2021)
 df <- data.frame(uniforme = round(runif(100,min=0,max=10),4))
 print(sort(df$uniforme),width = 60)
 ```
+\normalsize
 
-
-## Gráficos cuantil cuantil (QQplots)
+## Gráficos cuantil cuantil (QQ-plots)
 
 ```{r}
 qq <- ggplot(data = df, mapping = aes(sample = uniforme)) +
@@ -143,46 +386,4 @@ qq <- ggplot(data = df, mapping = aes(sample = uniforme)) +
     labs(x = "Cuantiles teóricos normal", y = "Cuantiles de la muestra uniforme")
 qq
 ```
-
-
-##  Tiempo de espera servicio en un servicio telefónico de atención al cliente.
-
-
-La compañía de telecomunicaciones Ricardo's Phone (RP) presume de que el tiempo de espera ($T$) en un servicio de atención al cliente sigue una  distribución exponencial con parámetro $\lambda=1$ minuto.
-
-
-
-Se pide:
-
-a. Calcular la probabilidad de esperar más de 4 minutos a ser atendido.
-b. El valor esperado y la varianza de $T$.
-c. Calcular  e interpretar $P(0.4< T < 2)$.
-
-
-##  Tiempo de espera servicio en un servicio telefónico de atención al cliente.
-
-
-
-
-
-
-
-##  Tiempo  entre dos averías en una flota de camiones.
-
-La compañía de transportes TRANSA  dispone de una amplia flota de autobuses  de viajeros y de camiones  de transporte de mercancías.
-
-La compañía dispone de un servicio para responder de forma ágil a las averías que puedan sufrir sus autobuses y camiones.
-
-
-Se  define avería grave cuando implica que se tine que mandar otro vehículo de forma urgente para sustituir al averiado. Se estima que el tiempo transcurrido entre dos averías graves  sigue una ley exponencial de parámetro $\lambda=25$ días. 
-
-
-
-
-Se pide:
-
-a. Calcular la probabilidad  que en un mes no se produzca ninguna averia grave .
-b. El valor esperado y la varianza del tiempo entre dos averías graves.
-c. Calcular  e interpretar $P(0.4< T < 2)$.
-##  Tiempo  entre dos llegadas de aviones a un aeropuerto.
 

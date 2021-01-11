@@ -109,7 +109,7 @@ fluidRow(
                      min = 0.01, max = 0.99, value = 0.5, step = 0.1)
          ),
   column(3,
-         sliderInput("qq", label=" Cuantil q", value=0.75, min = 0.01, max = 0.99, step = 0.01)
+         sliderInput("qq", label=" Cuantil p", value=0.75, min = 0.01, max = 0.99, step = 0.01)
          ),
   column(3,
          sliderInput("lq", label="Par. lambda Po(lambda)", value=5, min = 1, max = 20, step = 1)
@@ -153,7 +153,7 @@ renderPlot({
 ## Cuantiles para la variable aleatoria Normal
 
 
-Sea $X$ una va.a $N(\mu.sigma)$  el cuartil $0<p<1$ será aquel valor de $x_p$ tal que $P(X\leq x_p)=p)$.
+Sea $X$ una v.a. $N(\mu,\sigma)$  el cuartil $0<p<1$ será aquel valor de $x_p$ tal que $P(X\leq x_p)=p$.
  
 Para calcularlo recurrimos a funciones ya programadas. Por ejemplo en R es  para una $N(\mu=1,\sigma=2)$ y $p=0.75$
 
@@ -162,7 +162,7 @@ qnorm(p=0.75,mean=1,sd=2)
 ```
 ## Cuantiles para la variable aleatoria Normal
 
-Los cuantiles $0.25$, $0.5$ y $0.75$ reciben el nombre de primer, cuartil, segundo cuartil o mediana y tercer cuartil. También se sule hablar  de deciles  y de centiles a los cuantiles que dividen en 10 partes  o en 100 partes la muestra.
+Los cuantiles $0.25$, $0.5$ y $0.75$ reciben el nombre de primer, cuartil, segundo cuartil o mediana y tercer cuartil. También se suele hablar  de deciles  y de centiles a los cuantiles que dividen en 10 partes  o en 100 partes la muestra.
 
  
 ```{r}
@@ -210,7 +210,6 @@ text(x=x[250],y=cord.y[200],labels = p,col="black")
 axis(1,at=x0,round(x0,4),las=2)
 
 curve(pnorm(x,m1,s1),xlim=c(m,M),ylim=c(0,1),col="blue",lty=1,main="Función de distribuición.")
-#legend("toplef",legend=c(expression(N(mu[1],sigma[1]))),col=c("red"),lty=c(1))
 segments(x0,0,x0,pnorm(x0,m1,s1),lty=2,col="red")
 segments(x0,pnorm(x0,m1,s1),m-0.5,pnorm(x0,m1,s1),lty=2,col="red")
 axis(1,at=x0,round(x0,4),las=2)

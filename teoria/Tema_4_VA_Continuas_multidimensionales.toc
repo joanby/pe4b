@@ -1,0 +1,6 @@
+\beamer@sectionintoc {1}{Variables aleatorias bidimensionales continuas}{2}{0}{1}
+\beamer@sectionintoc {2}{Distribuciones marginales}{6}{0}{2}
+\beamer@sectionintoc {3}{Esperanzas de funciones de v.a. continuas bidimensionales. Covarianza y correlación}{15}{0}{3}
+\beamer@sectionintoc {4}{Covarianza y correlación}{18}{0}{4}
+\beamer@sectionintoc {5}{La distribución normal bivariante}{28}{0}{5}
+\beamer@sectionintoc {6}{Distribuciones multidimensionales}{31}{0}{6}
