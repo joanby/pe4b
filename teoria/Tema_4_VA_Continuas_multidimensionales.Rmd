@@ -126,9 +126,9 @@ Consideremos una variable aleatoria **bidimensional continua $(X,Y)$** con **fun
 
 La de la **función de densidad conjunta** contiene suficiente información para obtener las **funciones de densidad** de las variables $X$ e $Y$. 
 
-Dichas variables $X$ e $Y$ se denominan **variables marginales** y sus correspondientes **funciones de densidad**, **funciones de densidad marginales** $f_X$ de la variable $X$ y $f_Y$ de la variable $Y$.
+Dichas variables $X$ e $Y$ se denominan **variables marginales** y sus correspondientes **funciones de densidad**, **funciones de densidad marginales** $f_X$ de la variable $X$ con dominio$D_X$ y $f_Y$ de la variable $Y$ con dominio $D_Y$.
 
-Veamos cómo obtener $f_X$ y $f_Y$ a partir de la tabla $f_{XY}$.
+Veamos cómo obtener $f_X$ y $f_Y$ a partir de la densidad conjunta $f_{XY}$.
 
 ## Funciones de probabilidad marginales
 <l class="prop">Proposición. Cálculo de las funciones de densidad marginales. </l>
@@ -182,8 +182,8 @@ Diremos que  $X$ e $Y$ son independientes si se cumple al menos una de las sigui
 
 * $E(X)=\int_{-\infty}^{+\infty} x\cdot f_X(x)\quad dx.$
 * $E(Y)=\int_{-\infty}^{+\infty} y\cdot f_Y(y)\quad dy.$
-* $\sigma_X^2=Var(X)=E(X-E(X))=E(X)-E(X)^2.$
-* $\sigma_Y^2=Var(Y)=E(Y-E(Y))=E(Y)-E(Y)^2.$
+* $\sigma_X^2=Var(X)=E\left((X-E(X))^2\right)=E(X^2)-E(X)^2.$
+* $\sigma_Y^2=Var(Y)=E\left((Y-E(Y))^2\right)=E(Y^2)-E(Y)^2.$
 
 ## Distibuciones condicionales
 
@@ -438,15 +438,21 @@ $$
 $$
 
 
-## Definición  de distribción normal bivariante
+## Definición  de distribución normal bivariante
 
-Diremos que el vector $\left(\begin{array}{c} X \\ Y\end{array}\right)$ sigue una ley **normal o gaussiana bidimensional** $N(\mathbb{b},\sigma)$ si su densidad es 
+Diremos que el vector $\left(\begin{array}{c} X \\ Y\end{array}\right)$ sigue una ley **normal o gaussiana bidimensional** 
+$$
+N\left(\mathbf{\mu}=\left(\begin{array}{c}\mu_X \\ \mu_Y\end{array}\right),\Sigma=\left(\begin{matrix}
+ \sigma_{X}^2 & \sigma_{XY}\\
+ \sigma_{XY} &  \sigma_{Y}^2
+ \end{matrix}\right)\right)
+ $$ si su densidad es 
 
 
 
 
 $$
-f_{XY}=\frac{1}{\sqrt{(2\pi)^2\cdot \mathrm{det}(\Sigma)}} \cdot e^{-\frac{1}{2} ((x,y)-\mathbf{\mu})^t\cdot \Sigma^{-1}\cdot  ((x,y)-\mathbf{\mu})^t}.
+f_{XY}(x,y)=\frac{1}{\sqrt{(2\pi)^2\cdot \mathrm{det}(\Sigma)}} \cdot e^{-\frac{1}{2} ((x,y)-\mathbf{\mu})^t\cdot \Sigma^{-1}\cdot  ((x,y)-\mathbf{\mu})}.
 $$
 
 
