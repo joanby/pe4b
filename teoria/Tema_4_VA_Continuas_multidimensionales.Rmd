@@ -1,5 +1,5 @@
 ---
-title: "Tema 4 - Variables Aleatorias continuas multidimensionales"
+title: "Tema 4 - Variables aleatorias continuas multidimensionales"
 author: "Ricardo Alberich, Juan Gabriel Gomila y  Arnau Mir"
 date: ''
 output:
@@ -12,6 +12,7 @@ output:
   beamer_presentation: 
     keep_tex: yes
 ---
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)

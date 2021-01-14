@@ -1,0 +1,57 @@
+---
+title: "Distribución F  de FisherSnedecor"
+author: "Ricardo Alberich, Juan Gabriel Gomila y  Arnau Mir"
+date: ''
+---
+
+
+
+
+# La distribución $F$ de Fisher
+
+## La distribución $F$ de Fisher
+
+La distribución $F_{n,m}$ de Fisher, donde $n,m$ son los grados de libertad se define como el cociente de dos variables chi2 independientes de $n$ y $m$ grados de libertad, respectivamente:
+${\chi_{n}^2}/{\chi_m^2}$.
+
+Su función de densidad tiene la siguiente expresión:
+$$
+f_{F_{n,m}}(x)=\frac{\Gamma\left(\frac{n+m}2\right)\cdot\left(\frac{m}{n}\right)^{m/2}x^{(m-2)/2}}
+{\Gamma\left(\frac{n}2\right)\Gamma\left(\frac{m}2\right)\left(1+\frac{m}{n}x\right)^{(m+n)/2}},
+\mbox{ si $x\geq 0$,}
+$$
+
+donde $\Gamma(x)=\int_0^{\infty} t^{x-1}e^{-t}\, dt,$ si $x> 0$.
+
+Se trata de una distribución no simétrica.
+
+## La distribución $F$ de Fisher
+
+Gráfica de la función de densidad de algunas distribuciones $F$ de Fisher.
+
+
+
+```{r fplot,echo=FALSE}
+curve(df(x, df1=1, df2=1), xlim = c(0, 5), ylim = c(0, 1),
+      col = "black", ylab = "densidad", xlab = "x")
+legend("topright",  legend = c("F gl=1,1", "F gl=2,2",
+                              "F gl=3,4", "F gl=4,6",
+                              "F gl=5,10", "F gl=6,12"),
+       fill = c("black", "brown", "green", "tomato", 
+                "pink", "darkblue"),cex = 0.8)
+                curve(df(x, df1 = 2, df2=2), col = "brown", add = TRUE)
+curve(df(x, df1 = 3, df2=4), col = "green", add = TRUE)
+curve(df(x, df1 = 4, df2=6), col = "tomato", add = TRUE)
+curve(df(x, df1 = 5, df2=10), col = "pink", add = TRUE)
+curve(df(x, df1 = 6, df2=12), col = "darkblue", add = TRUE)
+```
+
+
+
+## cñsjdfñsjfdñl
+
+```{r}
+curve(dnorm(x,01))
+```
+
+
