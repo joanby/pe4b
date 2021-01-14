@@ -19,7 +19,7 @@ La distribución $F_{n,m}$ de Fisher, donde $n,m$ son los grados de libertad se 
 
 $$F_{n,m}=\frac{\chi_{n}^2/n}{\chi_m^2/m}.$$
 $$E(F_{n,m})=\frac{m}{m-2}\mbox{,  si } m>2.$$
-$$Var(F_{n,m})=\frac{2\cdot m^2\cdot (n+m)-2)}{n\cdot (m-2)^2\cdot /m-4)}\mbox{ , si } m>4.$$
+$$Var(F_{n,m})=\frac{2\cdot m^2\cdot (n+m-2)}{n\cdot (m-2)^2\cdot (m-4)}\mbox{ , si } m>4.$$
 
 
 
@@ -37,11 +37,11 @@ $$
 
 donde $\Gamma(x)=\int_0^{\infty} t^{x-1}e^{-t}\, dt,$ si $x> 0$.
 
-Se trata de una distribución no simétrica.
 
 
 
-Por la propia definición de 
+
+De la propia definición se deduce fácilmente que
 
 $$F_{n,m}=\frac{\chi_{n}^2/n}{\chi_m^2/m}=\frac{1}{\frac{\chi_{m}^2/m}{\chi_n^2/n}}=\frac{1}{F_{m,n}}.$$
 

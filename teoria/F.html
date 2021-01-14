@@ -3167,7 +3167,7 @@ slide:not(.current) .plotly.html-widget{
 
 <p>La distribución \(F_{n,m}\) de Fisher, donde \(n,m\) son los grados de libertad se define como el cociente de dos variables \(\chi^2\) independientes de \(n\) y \(m\) grados de libertad, respectivamente:</p>
 
-<p>\[F_{n,m}=\frac{\chi_{n}^2/n}{\chi_m^2/m}.\] \[E(F_{n,m})=\frac{m}{m-2}\mbox{,  si } m&gt;2.\] \[Var(F_{n,m})=\frac{2\cdot m^2\cdot (n+m)-2)}{n\cdot (m-2)^2\cdot /m-4)}\mbox{ , si } m&gt;4.\]</p>
+<p>\[F_{n,m}=\frac{\chi_{n}^2/n}{\chi_m^2/m}.\] \[E(F_{n,m})=\frac{m}{m-2}\mbox{,  si } m&gt;2.\] \[Var(F_{n,m})=\frac{2\cdot m^2\cdot (n+m-2)}{n\cdot (m-2)^2\cdot (m-4)}\mbox{ , si } m&gt;4.\]</p>
 
 </article></slide><slide class=""><hgroup><h2>La distribución \(F\) de Fisher</h2></hgroup><article  id="la-distribución-f-de-fisher-2">
 
@@ -3179,9 +3179,7 @@ f_{F_{n,m}}(x)=\frac{\Gamma\left(\frac{n+m}2\right)\cdot\left(\frac{m}{n}\right)
 
 <p>donde \(\Gamma(x)=\int_0^{\infty} t^{x-1}e^{-t}\, dt,\) si \(x&gt; 0\).</p>
 
-<p>Se trata de una distribución no simétrica.</p>
-
-<p>Por la propia definición de</p>
+<p>De la propia definición se deduce fácilmente que</p>
 
 <p>\[F_{n,m}=\frac{\chi_{n}^2/n}{\chi_m^2/m}=\frac{1}{\frac{\chi_{m}^2/m}{\chi_n^2/n}}=\frac{1}{F_{m,n}}.\]</p>
 
