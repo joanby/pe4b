@@ -66,5 +66,69 @@ curve(df(x, df1 = 5, df2=10), col = "pink", add = TRUE)
 curve(df(x, df1 = 6, df2=12), col = "darkblue", add = TRUE)
 ```
 
+## Ejemplo de cálculo con R en una $F$ de Fisher $F_{n,m}$
+
+
+Sea   consideremos una $F$ de Fisher $F_{n=5,m=10}$
+
+$P(F_{5,10}\leq 8)$   y  cuantil $x_{\alpfa=0.05}  se calculan así  
+
+
+
+```{r}
+pf(8,df1 = 5,df2=10)
+qf(0.05,df1 = 5,df2=10)
+```
+
+## Ejemplo de cálculo con R en una $F$ de Fisher $F_{n,m}$
+
+su densidad   en $x=8$ es  
+
+$$F_{5,10}(8)=\frac{\Gamma\left(\frac{5+10}2\right)\cdot\left(\frac{10}{5}\right)^{10/2}8^{(10-2)/2}}
+{\Gamma\left(\frac{5}2\right)\Gamma\left(\frac{10}2\right)\left(1+\frac{10}{5}8\right)^{(10+5)/2}}.
+$$
+
+
+
+
+
+
+## Ejemplo de cálculo con R en una $F$ de Fisher $F_{n,m}$ con  una hoja de cálculo
+
+
+
+
+## Curiosidades de la función $\Gamma$.
+
+
+$\Gamma(n+)=n!=1\cdot 2\cdot \ldots\cdot n$
+
+$\Gamma(\frac{1}{2})=+\sqrt(\pi).$
+
+```{r}
+n=c(1,2,3,4,5)
+factorial(n)
+gamma(n+1)
+gamma(1/2)
+sqrt(pi)
+gamma(1/2)
+sqrt(pi)
+```
+
+
+## Curiosidades de la distribución $F_{n,m}.
+
+$$
+P(F_{5,10}\leq 8)=P\left(\frac{1}{F_{5,10}} \geq \frac{1}{8}\right)=1-P\left(\frac{1}{F_{5,10}} \leq \frac{1}{8}\right)=P\left(F_{10,8}\leq \frac{1}{8}\right).
+$$
+
+
+
+```{r}
+pf(8,df1=5,df2=10)
+1-pf(1/8,df1=10,df2=5)
+```
+
+
 
 
