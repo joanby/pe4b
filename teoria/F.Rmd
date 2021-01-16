@@ -30,9 +30,9 @@ $$Var(F_{n,m})=\frac{2\cdot m^2\cdot (n+m-2)}{n\cdot (m-2)^2\cdot (m-4)}\mbox{ ,
 
 Su función de densidad tiene la siguiente expresión:
 $$
-f_{F_{n,m}}(x)=\frac{\Gamma\left(\frac{n+m}2\right)\cdot\left(\frac{m}{n}\right)^{m/2}x^{(m-2)/2}}
-{\Gamma\left(\frac{n}2\right)\Gamma\left(\frac{m}2\right)\left(1+\frac{m}{n}x\right)^{(m+n)/2}},
-\mbox{ si $x\geq 0$,}
+f_{F_{n,m}}(x)=\frac{\Gamma\left(\frac{n+m}2\right)}{\Gamma\left(\frac{n}2\right)\Gamma\left(\frac{m}2\right)}\cdot
+\left(\frac{n}{m}\right)^{n/2} \cdot x^{n/2-1}\cdot \left(1+\frac{n}{m}\cdot x\right)^{-(m+n)/2}
+\mbox{, si } x\geq 0.
 $$
 
 donde $\Gamma(x)=\int_0^{\infty} t^{x-1}e^{-t}\, dt,$ si $x> 0$.
@@ -71,7 +71,7 @@ curve(df(x, df1 = 6, df2=12), col = "darkblue", add = TRUE)
 
 Sea   consideremos una $F$ de Fisher $F_{n=5,m=10}$
 
-$P(F_{5,10}\leq 8)$   y  cuantil $x_{\alpfa=0.05}  se calculan así  
+$P(F_{5,10}\leq 8)$   y  cuantil $x_{\alpha=0.05}$  se calculan así  
 
 
 
@@ -84,10 +84,14 @@ qf(0.05,df1 = 5,df2=10)
 
 su densidad   en $x=8$ es  
 
-$$F_{5,10}(8)=\frac{\Gamma\left(\frac{5+10}2\right)\cdot\left(\frac{10}{5}\right)^{10/2}8^{(10-2)/2}}
-{\Gamma\left(\frac{5}2\right)\Gamma\left(\frac{10}2\right)\left(1+\frac{10}{5}8\right)^{(10+5)/2}}.
+$$f_{5,10}(8)=\frac{\Gamma\left(\frac{5+10}2\right)}{\Gamma\left(\frac{5}2\right)\Gamma\left(\frac{10}2\right)}\cdot
+\left(\frac{5}{10}\right)^{5/2} \cdot 8^{5/2-1}\cdot \left(1+\frac{5}{10}\cdot 8\right)^{-(5+10)/2}.
 $$
 
+```{r}
+df(8,df1=5,df2=10)
+gamma((5+10)/2)/(gamma(5/2)*gamma(10/2))*(5/10)^(5/2)*8^(5/2-1)*(1+5/10*8)^(-(10+5)/2)
+```
 
 
 
@@ -95,15 +99,18 @@ $$
 
 ## Ejemplo de cálculo con R en una $F$ de Fisher $F_{n,m}$ con  una hoja de cálculo
 
+```{r fisher_captura,echo=FALSE}
+knitr::include_graphics("Images/Fisher_sheet.PNG")
+```
 
 
 
 ## Curiosidades de la función $\Gamma$.
 
 
-$\Gamma(n+)=n!=1\cdot 2\cdot \ldots\cdot n$
+$\Gamma(n+1)=n!=1\cdot 2\cdot \ldots\cdot n$
 
-$\Gamma(\frac{1}{2})=+\sqrt(\pi).$
+$\Gamma\left(\frac{1}{2}\right)=+\sqrt{\pi}.$
 
 ```{r}
 n=c(1,2,3,4,5)
@@ -116,13 +123,13 @@ sqrt(pi)
 ```
 
 
-## Curiosidades de la distribución $F_{n,m}.
+## Curiosidades de la distribución $F_{n,m}$.
 
 $$
-P(F_{5,10}\leq 8)=P\left(\frac{1}{F_{5,10}} \geq \frac{1}{8}\right)=1-P\left(\frac{1}{F_{5,10}} \leq \frac{1}{8}\right)=P\left(F_{10,8}\leq \frac{1}{8}\right).
+\begin{eqnarray*}
+P(F_{5,10}\leq 8)&=& P\left(\frac{1}{F_{5,10}} \geq \frac{1}{8}\right)=1-P\left(\frac{1}{F_{5,10}} \leq \frac{1}{8}\right)\\&=& 1-P\left(F_{10,8}\leq \frac{1}{8}\right).
+\end{eqnarray*}
 $$
-
-
 
 ```{r}
 pf(8,df1=5,df2=10)
