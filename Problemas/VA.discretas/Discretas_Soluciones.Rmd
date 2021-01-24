@@ -1,0 +1,383 @@
+---
+title: "Problemas variables aleatorias discretas"
+author: ""
+date: ""
+output:
+  pdf_document: default
+  header-includes: \usepackage{textcomp,eurosym,lmodern,textcomp}
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+options(scipen=999)
+library(tidyverse)
+library("ggpubr")
+```
+
+
+
+
+
+1.  Un fabricante de patinetes eléctricos calcula la proporción del número de   patinetes  vendidos ($X$)  que han reclamado en el periodo de garantía a corregir alguna avería incluida en la garantía. Los datos se  resumen en la siguiente tabla:
+\begin{center}
+\begin{tabular}{|l||r|r|r|r|r|}
+\multicolumn{6}{c}{\vphantom{R}}\\
+\hline
+Número de veces $x$    & 0    & 1    &  2   &  3   &  4 \\
+\hline
+Proporción    $P(X=x)$ & 0.38 & 0.37 & 0.19 & 0.05 & 0.01
+\\\hline \multicolumn{6}{c}{\vphantom{R}}
+\end{tabular}
+\end{center}
+    a. Dibuja el gráfico de la función de distribución de probabilidad.
+    a. Dibuja el gráfico de la función de distribución de probabilidad acumulada.
+    a. Calcula media de el número de reclamaciones en el periodo de garantía.
+    a. Calcula varianza de el número de reclamaciones en le periodo de garantía.
+  
+**Solución**
+
+
+
+```{r plotsa1_patinete, echo=FALSE,message=FALSE,fig.height=3}
+df=data.frame(x=0:4,p=c(0.38,0.37, 0.19 , 0.05 , 0.01))
+probability_plot1= ggscatter(df,x="x",y="p",color="blue")+labs(title="Gráfico función de probabilidad de X")+ theme(plot.title = element_text(size=10))
+
+bar_plot1 <- ggbarplot(df, x = "x", y = "p", color = "blue",fill="blue")+labs(title="Diagrams de barras probabilidad de X")+ theme(plot.title = element_text(size=10))
+ggarrange(probability_plot1,bar_plot1,ncol=2)
+```
+
+
+```{r plotsb1_patinete, echo=FALSE,message=FALSE,fig.height=3}
+p0=c(0.38,0.37, 0.19 , 0.05 , 0.01)
+x0=0:4
+m=sum(p0*x0)
+x2=sum(p0*x0^2)
+m2=m^2
+var=x2-m^2
+p=c(0,0.38,0.37, 0.19 , 0.05 , 0.01,0)
+df=data.frame(x=c(-1,0:5),p=p,F=cumsum(p))
+F_plot1= ggplot()+ geom_step(data=df, mapping=aes(x=x, y=F), direction="vh", linetype=1) +
+geom_point(data=df, mapping=aes(x=x, y=F, color="red")) +  labs(title="Función de distribución\n acumulada de X",y="FX(x)=P(X<=x)")+scale_x_continuous(name="x", breaks=df$x) +
+  scale_y_continuous(name="FX(x)=P(X<=x)", breaks=df$F[c(1:4,7)])+ theme(legend.position="none")
+
+ 
+bar_F_plot1 <- ggbarplot(df, x = "x", y = "F", color = "blue",fill="blue")+
+  labs(title="Diagrama de barras\n distribución X",y="FX(x)=P(X<=x)")+ theme(plot.title = element_text(size=10))
+
+ggarrange(F_plot1,bar_F_plot1,ncol=2)
+```
+
+
+\begin{eqnarray*}
+E(X)&=&\sum_{x=0}^4 x\cdot P_X(x)\\
+&=& 0 \cdot 0.38+1 \cdot 0.37+2 \cdot 0.19+3 \cdot 0.05+4 \cdot 0.01=`r m`.
+\end{eqnarray*}
+
+\begin{eqnarray*}
+Var(X)&=&E(X^2)-E(X)^2=\sum_{x=0}^4 x^2\cdot P_X(x)-E(X)^2\\
+&=& 0^2 \cdot 0.38+1^2 \cdot 
+0.37+2^2 \cdot 0.19+3^2 \cdot 0.05+4^2 \cdot 0.01-`r m`^2\\&=&
+`r x2`-`r m2`=`r var`.
+\end{eqnarray*}
+
+
+\newpage
+
+
+
+2. La  empresa  CAT4ALL  de ágapes/catering para eventos: fiestas, bodas, congresos. Contrata a  la empresa CATERISIMO  para que le le consiga clientes por su portal de  internet. El número de contratos mensuales que han conseguido a través de la mediación de  de CATERISIMO han sido:
+\begin{center}
+\begin{tabular}{|l||r|r|r|r|r|r|r|}
+\multicolumn{8}{c}{\vphantom{R}}\\
+\hline
+Número de eventos $x$ & 14  & 15  &  16 &  17 &  18 & 19 & 20 \\
+\hline
+Proporción  $P(X=x)$      & 0.06&0.13 &0.24 &0.24 &0.12 &0.1 &0.11
+\\\hline \multicolumn{8}{c}{\vphantom{R}}
+\end{tabular}
+\end{center}
+    a. Dibuja el gráfico de la función de distribución de probabilidad.
+    b. Dibuja el gráfico de la función de distribución de probabilidad acumulada.
+    c. Calcula media del número  de contratos por mes.
+    d. Calcula varianza del número  de contratos por mes.
+    e. Reproduce con un ordenador (R, python, Excel, Libre Office, Google Spreadsheets,...), los cálculos de la media y la varianza,
+  
+    
+    
+**Solución**
+
+
+
+```{r plotsa1_catering, echo=FALSE,message=FALSE,fig.height=3}
+df=data.frame(x=14:20,p=c(0.06, 0.13 , 0.24, 0.24 ,0.12 ,0.1 ,0.11))
+probability_plot1= ggscatter(df,x="x",y="p",color="blue")+labs(title="Gráfico función de probabilidad de X")+ theme(plot.title = element_text(size=8))+scale_x_continuous(name="x", breaks=df$x) +
+  scale_y_continuous(name="PX(x)=P(X=x)", breaks=df$p)+theme(axis.text.x = element_text(size=10),
+          axis.text.y = element_text(size=9))+theme(axis.text.x = element_text(size=10),
+          axis.text.y = element_text(size=10))
+
+bar_plot1 <- ggbarplot(df, x = "x", y = "p", color = "blue",fill="blue")+labs(title="Diagrams de barras probabilidad de X")+ theme(plot.title = element_text(size=8))+scale_x_continuous(name="x", breaks=df$x) +
+  scale_y_continuous(name="PX(x)=P(X=x)", breaks=df$p)+theme(axis.text.x = element_text(size=10),
+          axis.text.y = element_text(size=10))+theme(axis.text.x = element_text(size=8),
+          axis.text.y = element_text(size=10))
+
+
+
+ggarrange(probability_plot1,bar_plot1,ncol=2)
+```
+
+
+```{r plotsb1_catering2, echo=FALSE,message=FALSE,fig.height=3}
+p0=c(0.06, 0.13 , 0.24, 0.24 ,0.12 ,0.1 ,0.11)
+x0=14:20
+m=sum(p0*x0)
+x2=sum(p0*x0^2)
+m2=m^2
+var=x2-m^2
+p=c(0,p0,0)
+df=data.frame(x=c(13:21),p=p,F=cumsum(p))
+F_plot1= ggplot()+ geom_step(data=df, mapping=aes(x=x, y=F), direction="vh", linetype=1) +
+geom_point(data=df, mapping=aes(x=x, y=F, color="red")) +  labs(title="Función de distribución\n acumulada de X",y="FX(x)=P(X<=x)")+scale_x_continuous(name="x", breaks=df$x) +
+  scale_y_continuous(name="FX(x)=P(X<=x)", breaks=df$F[c(1:6,8)])+ theme(legend.position="none")+theme(axis.text.x = element_text(size=10), axis.text.y = element_text(size=9))
+
+bar_F_plot1 <- ggbarplot(df, x = "x", y = "F", color = "blue",fill="blue")+
+  labs(title="Diagrama de barras\n distribución X",y="FX(x)=P(X<=x)")+ theme(plot.title = element_text(size=10))
+
+ggarrange(F_plot1,bar_F_plot1,ncol=2)
+```
+
+
+\begin{eqnarray*}
+\renewcommand*{\arraystretch}{0.5}
+E(X)&=&\sum_{x=14}^{20} x\cdot P_X(x)\\
+&=&  14\cdot  0.06+ 15\cdot 0.13+16 \cdot 0.24 +17\cdot 0.24+18 \cdot 0.12+ 19 \cdot 0.1+20 \cdot 0.11   =`r m`.
+\end{eqnarray*}
+
+\begin{eqnarray*}
+Var(X)&=&E(X^2)-E(X)^2=\sum_{x=14}^20 x^2\cdot P_X(x)-E(X)^2\\
+&=&  14^2\cdot  0.06+ 15^2\cdot 0.13+16^2 \cdot 0.24 +17^2\cdot 0.24+18^2 \cdot 0.12+ 19^2 \cdot 0.1+20^2 \cdot 0.11-`r m`^2\\&=&
+`r x2`-`r m2`=`r var`.
+\end{eqnarray*}
+    
+    
+    
+    
+    
+\newpage
+
+
+3. Ha llegado  al puerto  de Barcelona una partida  muy grande de latas de caviar CAVIARFRIO de 1KG.  El transportista sabe que la partida  contiene un 10\% de latas con defectos visibles en el exterior (golpes, deformaciones, arañazos). Supongamos que encargamos $n=10$ latas  que se escogen al azar de esta partida. Sea $X$ el número de latas defectuosas entre las $n$ latas.
+
+    a. Modelar mediante una distribución binomial la función de probabilidad del número de latas con defecto entre las tres.
+    b. Calcule la  función probabilidad del número de latas defectuosas.
+    c. Calcule la  función de distribución del número de latas defectuosas.
+    d. Calcule la  media  del número de latas defectuosas.
+    e. Calcule la  varianza y la desviación típica   del número de latas defectuosas.
+  
+  
+**Solución**
+  
+La variable $X$ sigue una distribución $B(n=3,p=0.01)$ es una binomial con probabilidad de ·éxito· $P(\mbox{lata defectuosa})=0.01.$
+
+  
+  En este caso sabemos que
+  
+\begin{eqnarray*}
+\renewcommand*{\arraystretch}{0.5}
+P_X(x)=P(X=x)&=&\left\{\begin{array}{ll}{n\choose x}\cdot  p^x\cdot  (1-p)^{n-x} & \mbox{ si } x=0,1,\ldots,n\\  0  & \mbox{ en otro caso.}\end{array}\right.\\
+&=&\left\{\begin{array}{ll}{3\choose x}\cdot  0.01^x\cdot  (1-0.01)^{n-x} & \mbox{ si } x=0,1,3,3\\  0  & \mbox{ en otro caso.}\end{array}\right.
+\end{eqnarray*}
+
+
+
+Luego 
+
+$$
+\renewcommand*{\arraystretch}{0.5}
+P_X(x)=P(X=x)=
+\left\{\begin{array}{ll}
+{3\choose 0}\cdot  0.01^0\cdot  (0.99)^{3}=`r round(dbinom(0,3,0.01),4)` & \mbox{ si } x=0\\
+{3\choose 1}\cdot  0.01^1\cdot  (0.99)^{2}=`r round(dbinom(1,3,0.01),4)` & \mbox{ si } x=1\\
+{3\choose 2}\cdot  0.01^2\cdot  (0.99)^{1}=`r round(dbinom(2,3,0.01),4)` & \mbox{ si } x=2\\
+{3\choose 3}\cdot  0.01^3\cdot  (0.99)^{0}=`r round(dbinom(3,3,0.01),4)` & \mbox{ si } x=3\\
+0 & \mbox{ en otro caso.}
+\end{array}
+\right.
+$$
+
+
+
+
+$$F_X(x)=P(X\leq X)=\left\{\begin{array}{ll}
+0 & \mbox{ si } x< 0 \\
+{3\choose 0}\cdot  0.01^x\cdot  (0.99)^{3}=`r round(pbinom(0,3,0.01),4)` & \mbox{ si } 0\leq x <1\\
+{3\choose 1}\cdot  0.01^x\cdot  (0.99)^{2}=`r round(pbinom(1,3,0.01),4)` & \mbox{ si } 1\leq x <2\\
+{3\choose 2}\cdot  0.01^x\cdot  (0.99)^{1}=`r round(pbinom(2,3,0.01),4)` & \mbox{ si } 2\leq x <3\\
+{3\choose 3}\cdot  0.01^x\cdot  (0.99)^{0}=`r round(pbinom(3,3,0.01),4)` & \mbox{ si } 3\leq x \\
+\end{array}
+\right.
+$$
+
+
+
+
+$E(X)=n\cdot p=3\cdot 0.01=`r 3*0.01`.$
+$Var(X)=n\cdot p \cdot (1-p)=3\cdot 0.01 \cdot (1-0.01)=`r 3*0.01*(1-0.01)`.$
+
+    
+\newpage
+    
+4. Un asesor  de un Banco recibe el encargado de llamar a sus clientes para ofrecerles un crédito los días previos al Black Friday. Supongamos que  tiene una gran lista de clientes y que los va llamando de forma sucesiva hasta que  consigue contratar el primer crédito y que la probabilidad de que un cliente escogido al azar contrate el producto es  $p=0.15$. Sea $X$ el número de llamadas fracasadas  para conseguir la primera venta.
+    a. Modelar con alguna distribución notable discreta la distribución de probabilidad de $X$. Si es necesario añadir alguna condición adicional al problema.
+    b. Calcular  la función de probabilidad y de probabilidad acumulada de $X$.
+    c. Calcular  la esperanza y la desviación típica de $X$.
+    d. El asesor ya ha hecho 20 llamadas consecutivas sin éxito ¿Cuál es la probabilidad de que eso pase?
+
+**Solución**
+
+Claramente $X$ sigue una distribución geométrica  $Ge(p=0.15)$ con probabilidad de "éxito"\break 
+$P(\mbox{ contratar crédito en una llamada})=0.15.$ Hay que suponer independencia entre los clientes.
+
+Es una $Ge(p=0.15)$  con dominio $D_X=\{0,1,2,3,\ldots\}$ pues podemos tener éxito en la primera llamada y no el número de fracasos será $X=0$.
+
+
+\begin{eqnarray*}
+\renewcommand*{\arraystretch}{0.5}
+P_X(x)= P(X=x)&=&
+\left\{\begin{array}{ll}{n\choose x}\cdot  p^x\cdot  (1-p)^{n-x} & \mbox{ si } x=0,1,\ldots,n\\  0  & \mbox{ en otro caso.}\end{array}\right.\\
+&=&\left\{\begin{array}{ll}{n\choose x}\cdot  0.15^x\cdot  (1-0.15)^{n-x} & \mbox{ si } x=0,1,\ldots,n\\  0  & \mbox{ en otro caso.}\end{array}\right.
+\end{eqnarray*}
+
+
+
+
+\begin{eqnarray*}
+\renewcommand*{\arraystretch}{0.5}
+F_X(x)=P(X\leq X)&=&
+\left\{\begin{array}{ll} 0 & \mbox{ si } x<0\\
+  1- (1-0.15)^{k+1} & \mbox{ si } \left\{ \begin{array}{l}k\leq x< k+1\\\mbox{para } k=0,1,2,\ldots\end{array}
+    \right.\end{array}\right.\\
+    &=&
+    \left\{\begin{array}{ll} 0 & \mbox{ si } x<0\\
+  1- (0.85)^{k+1} & \mbox{ si } \left\{ \begin{array}{l}k\leq x< k+1\\\mbox{para } k=0,1,2,\ldots\end{array}
+    \right.\end{array}\right.
+\end{eqnarray*}
+
+
+```{r geom4, include=FALSE}
+p=0.15
+m=(1-p)/p
+sigma=(1-p)/(p^2)
+```
+
+
+$$E(X)=\frac{1-p}{p}=\frac{1-0.15}{0.15}=`r round(m,4)`$$  
+
+
+$$\sigma_X^2=Var(X)=\frac{1-p}{p^2}=\frac{1-0.15}{0.15^2}=`r round(sigma,4)`$$
+
+\newpage
+
+5.  Nuestro socio Pablo Andrés Obrador está  considerando invertir 1000 €  y está escogiendo  entre tres fondos de inversión que en su publicidad ofrecen como ejemplo estás tres modalidades:
+    • Fondo 1: Un beneficio de 10000€  con  probabilidad 20\% o en caso contrario perder toda la inversión. 
+    • Fondo 2: Un beneficio de 10000€  con  probabilidad 45\%, o  un beneficio de  500€ con probabilidad 30\%,  o perder 500€ con probabilidad del  25\%.
+    • Fondo 3: Un beneficio seguro de 400€.
+    a. Calcula los valores esperados y desviaciones típica de los  beneficios en cada caso.
+    b. ¿Qué elección le recomendarías a Pablo Andrés?
+    
+    
+    
+**Solución**    
+
+Para el **Fondo 1** : Un beneficio de 10000€  con  probabilidad 20\% o en caso contrario perder toda la inversión. 
+
+```{r prob5_discretas, include=FALSE}
+m=-1000*0.8+10000*0.2
+m
+x2=(-1000)^2*0.8+(10000)^2*0.2
+x2
+m2=m^2
+m2
+sigma2=x2-m2
+sigma2
+sigma=sqrt(sigma2)
+sigma
+```
+
+
+$E(X)= -1000 \cdot 0.8 + 10000\cdot 0.2=`r round(m,4)`.$
+
+
+$$
+\sigma_X= +\sqrt{\sigma_X^2}=+\sqrt{E(X^2)-E(X)^2}=
++\sqrt{-1000^2 \cdot 0.8 + 10000^2\cdot 0.2-`r m `^2}=
++\sqrt{`r round(sigma2,4)`}=`r round(sigma,4)`.
+$$
+Para el **Fondo 2**: Un beneficio de 10000€  con  probabilidad 45\%, o  un beneficio de  500€ con probabilidad 30\%,  o perder 500€ con probabilidad del  25\%.
+
+```{r prob5_discretas2, include=FALSE}
+m=-500*0.25+500*0.3+10000*0.45
+m
+x2=(-500)^2*0.25+500^2*0.3+10000^2*0.45
+x2
+m2=m^2
+m2
+sigma2=x2-m2
+sigma2
+sigma=sqrt(sigma2)
+sigma
+```
+
+
+$E(X)= -500\cdot 0.25+500\cdot 0.3+10000\cdot 0.45=`r round(m,4)`.$
+
+
+$$
+\sigma_X= +\sqrt{\sigma_X^2}=+\sqrt{E(X^2)-E(X)^2}=
++\sqrt{(-500)^2\cdot 0.25+500^2\cdot  0.3+10000^2\cdot 0.45-`r m `^2}=
++\sqrt{`r round(sigma2,4)`}=`r round(sigma,4)`.
+$$
+Para el **Fondo 3**: Renta fija un beneficio seguro de 400€.
+
+$E(X)=400$  y $Var(X)=0$
+
+
+
+Qué nos quedaríamos si fuera nuestra inversión, pues depende de nuestra aversión al riesgo y de la utilizada que tenga para nosotros 1000€.
+
+ El mejor fondo por ganancia esperada es el segundo  pero tiene una gran varianza, el primer fondo  tiene la segunda mejor ganancia espera pero una varianza más pequeña pero alta respeto al valor esperado. EL tercero es el que tiene ganancia más pequeña pero varianza 0 es decir ganancia segura de 400€. Yo me quedaría el tercero, 1000 .
+
+
+\newpage
+
+6.  Un comercio de venta de Tabacos decide también  hacer de puesto de recogida de pequeñas entregas de una distribuidora.  El número de paquetes diario que le llegan para  que los destinatarios los recojan sigue es una variable aleatoria $X$ con $\lambda=13$.
+    a.  Modela  función de probabilidad de  $X$ con una distribución Poisson.
+    b.  Calcular $E(X)$ y $Var(X)$.
+    c. El comerciante dispone de un espacio para almacenar unos 20 paquetes. ¿Cuál es la probabilidad de que lleguen más paquetes y ocupe todo el espacio? Utiliza un ordenador para este cálculo
+
+
+**Solución**
+
+En  caso $X=Po(\lambda=13)$ una Poisson  modela el número de paquetes recibidos por día$.
+
+$E(X)=\lambda=13$ y $Var(X)=\frac{1}{\lambda}=\frac{1}{13}=`r round(1/13,4)`.$
+
+
+
+Para el apartado c. nos piden la probabilidad de que el pequeño almacén se sature $P(X>20)=1-P(X\leq 20)$. 
+
+Por ejemplo con R el cálculo es
+
+
+
+```{r}
+ppois(20,lambda = 13)
+1-ppois(20,lambda = 13)
+```
+
+La probabilidad de que $P(X>20)=1-P(X\leq 20)\approx 1-`r round(ppois(20,lambda = 13),4)`=`r round(1-ppois(20,lambda = 13),4)`.$
+
+
+
+
+
+

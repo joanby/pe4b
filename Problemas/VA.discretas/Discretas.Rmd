@@ -61,7 +61,7 @@ Proporción  $P(X=x)$      & 0.06&0.13 &0.24 &0.24 &0.12 &0.1 &0.11
     
 \newpage
     
-4. Un asesor  de un Banco recibe el encargado de llamar a sus clientes para ofrecerles un crédito los días previos al Black Friday. Supongamos que  tiene una gran lista de clientes y que los va llamando de forma sucesiva hasta que  consigue contratar el primer crédito y que la probabilidad de que un cliente escogido al azar contrate el producto es  $p=0.15$. Sea $X$ el número de llamadas necesarias para conseguir la primera venta
+4. Un asesor  de un Banco recibe el encargado de llamar a sus clientes para ofrecerles un crédito los días previos al Black Friday. Supongamos que  tiene una gran lista de clientes y que los va llamando de forma sucesiva hasta que  consigue contratar el primer crédito y que la probabilidad de que un cliente escogido al azar contrate el producto es  $p=0.15$. Sea $X$ el número de llamadas fracasadas  para conseguir la primera venta.
     a. Modelar con alguna distribución notable discreta la distribución de probabilidad de $X$. Si es necesario añadir alguna condición adicional al problema.
     b. Calcular  la función de probabilidad y de probabilidad acumulada de $X$.
     c. Calcular  la esperanza y la desviación típica de $X$.
