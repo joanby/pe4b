@@ -1,0 +1,85 @@
+---
+title: "Problemas variables aleatorias discretas"
+author: ""
+date: ""
+output:
+  pdf_document: default
+  header-includes: \usepackage{textcomp,eurosym,lmodern,textcomp}
+  html_document: default
+---
+
+```{r,echo=FALSE}
+options(scipen=999)
+```
+
+
+
+
+
+1.  Un fabricante de patinetes eléctricos calcula la proporción del número de   patinetes  vendidos ($X$)  que han reclamado en el periodo de garantía a corregir alguna avería incluida en la garantía. Los datos se  resumen en la siguiente tabla:
+\begin{center}
+\begin{tabular}{|l||r|r|r|r|r|}
+\multicolumn{6}{c}{\vphantom{R}}\\
+\hline
+Número de veces $x$    & 0    & 1    &  2   &  3   &  4 \\
+\hline
+Proporción    $P(X=x)$ & 0.38 & 0.37 & 0.19 & 0.05 & 0.01
+\\\hline \multicolumn{6}{c}{\vphantom{R}}
+\end{tabular}
+\end{center}
+    a. Dibuja el gráfico de la función de distribución de probabilidad.
+    a. Dibuja el gráfico de la función de distribución de probabilidad acumulada.
+    a. Calcula media de el número de reclamaciones en el periodo de garantía.
+    a. Calcula varianza de el número de reclamaciones en le periodo de garantía.
+  
+
+2. La  empresa  CAT4ALL  de ágapes/catering para eventos: fiestas, bodas, congresos. Contrata a  la empresa CATERISIMO  para que le le consiga clientes por su portal de  internet. El número de contratos mensuales que han conseguido a través de la mediación de  de CATERISIMO han sido:
+\begin{center}
+\begin{tabular}{|l||r|r|r|r|r|r|r|}
+\multicolumn{8}{c}{\vphantom{R}}\\
+\hline
+Número de eventos $x$ & 14  & 15  &  16 &  17 &  18 & 19 & 20 \\
+\hline
+Proporción  $P(X=x)$      & 0.06&0.13 &0.24 &0.24 &0.12 &0.1 &0.11
+\\\hline \multicolumn{8}{c}{\vphantom{R}}
+\end{tabular}
+\end{center}
+    a. Dibuja el gráfico de la función de distribución de probabilidad.
+    a. Dibuja el gráfico de la función de distribución de probabilidad acumulada.
+    a. Calcula media del número  de contratos por mes.
+    a. Calcula varianza del número  de contratos por mes.
+    a. Reproduce con un ordenador (R, python, Excel, Libre Office, Google Spreadsheets,...), los cálculos de la media y la varianza,
+  
+    
+3. Ha llegado  al puerto  de Barcelona una partida  muy grande de latas de caviar CAVIARFRIO de 1KG.  El transportista sabe que la partida  contiene un 10\% de latas con defectos visibles en el exterior (golpes, deformaciones, arañazos). Supongamos que encargamos $n=10$ latas  que se escogen al azar de esta partida. Sea $X$ el número de latas defectuosas entre las $n$ latas.
+
+    a. Modelar mediante una distribución binomial la función de probabilidad del número de latas con defecto entre las tres.
+    b. Calcule la  función probabilidad del número de latas defectuosas.
+    c. Calcule la  función de distribución del número de latas defectuosas.
+    d. Calcule la  media  del número de latas defectuosas.
+    e. Calcule la  varianza y la desviación típica   del número de latas defectuosas.
+    
+\newpage
+    
+4. Un asesor  de un Banco recibe el encargado de llamar a sus clientes para ofrecerles un crédito los días previos al Black Friday. Supongamos que  tiene una gran lista de clientes y que los va llamando de forma sucesiva hasta que  consigue contratar el primer crédito y que la probabilidad de que un cliente escogido al azar contrate el producto es  $p=0.15$. Sea $X$ el número de llamadas necesarias para conseguir la primera venta
+    a. Modelar con alguna distribución notable discreta la distribución de probabilidad de $X$. Si es necesario añadir alguna condición adicional al problema.
+    b. Calcular  la función de probabilidad y de probabilidad acumulada de $X$.
+    c. Calcular  la esperanza y la desviación típica de $X$.
+    d. El asesor ya ha hecho 20 llamadas consecutivas sin éxito ¿Cuál es la probabilidad de que eso pase?
+
+
+
+5.  Nuestro socio Pablo Andrés Obrador está  considerando invertir 1000 €  y está escogiendo  entre tres fondos de inversión que en su publicidad ofrecen como ejemplo estás tres modalidades:
+    • Fondo 1: Un beneficio de 10000€  con  probabilidad 20\% o en caso contrario perder todas la inversión. 
+    • Fondo 2: Un beneficio de 10000€  con  probabilidad 45\%, o  un beneficio de  500€ con probabilidad 30\%,  o perder 500€ con probabilidad del  25\%.
+    • Fondo 3: Un beneficio seguro de 400€.
+    a. Calcula los valores esperados y desviaciones típica de los  beneficios en cada caso.
+    b. ¿Qué elección le recomendarías a Pablo Andrés?
+
+6.  Un comercio de venta de Tabacos decide también  hacer de puesto de recogida de pequeñas entregas de una distribuidora.  El número de paquetes diario que le llegan para  que los destinatarios los recojan sigue es una variable aleatoria $X$ con $\lambda=13$.
+    a.  Modela  función de probabilidad de  $X$ con una distribución Poisson.
+    b. Calcular $E(X)$ y $Var(X)$.
+    c. El comerciante dispone de un espacio para almacenar unos 20 paquetes. ¿Cuál es la probabilidad de que lleguen más paquetes y ocupe todo el espacio? Utiliza un ordenador para este cálculo
+
+
+
