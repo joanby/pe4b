@@ -1,0 +1,74 @@
+---
+title: "Ejemplos contrates  de hipótesis de una media"
+author: "Ricardo Alberich, Juan Gabriel Gomila y Arnau Mir"
+date: ''
+output:
+  beamer_presentation: 
+    theme: Warsaw
+    includes: 
+      in_header: "preamble.tex"
+  slidy_presentation:
+    incremental: no
+  ioslides_presentation:
+    incremental: no
+---
+
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+##  Prueba  plan de organización cadena de  producción
+
+
+La empresa ALUMINIA CALIFORNIA SUR (ALCASU) por sugerencia del comité sindical ha modificado los puestos y tareas de su cadena de producción de un tipo  específico de ventanas de aluminio con gran demanda. 
+
+En la actualizad se espera fabricar una media $\mu=100$  unidades por hora  con una desviación típica de $\sigma=9$.  El jefe de producción  no quiere aceptar definitivamente la  modificación s salvo que se tenga evidencia de que  la media de producción es definitivamente superior a la de la organización anterior.
+
+
+
+##  Prueba  plan de organización cadena de  producción
+
+Para asegurarlo plantea el siguiente contrastes
+
+$$
+\left\{\begin{array}{l}
+H_0:\mu\leq 80\\ H_1:\mu> 80
+\end{array}
+\right.
+$$
+
+Necesita una muestra aleatoria, y controla durante n=25 horas la producción obteniendo los siguientes resultados
+
+
+
+```{r data, echo=FALSE}
+set.seed(31133)
+x=rnorm(25,83,9)
+m=round(mean(x))
+m
+x
+```
+
+Resultado que la media de la muestra es $\overline{x}=`r m`.$ suponemos que $X$=$ número de unidades fabricadas por hora es aproximadamente normal y que $\sigma=9$ sigue siendo conocida.
+
+
+Entonces el estadístico de contraste es al nivel de siginificación $\alpha=0.05$ es 
+
+
+Rechazar $H_0$ si  
+$Z= \frac{\overline{x}-80}{\frac{\sigma}{\sqrt{n}}}= \frac{`r m`-80}{\frac{9}{\sqrt{25}}}.$
+
+
+
+
+
+
+
+
+
+
+
+

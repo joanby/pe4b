@@ -1,0 +1,88 @@
+---
+title: "Ejemplos contrates  de hipótesis de una media"
+author: "Ricardo Alberich, Juan Gabriel Gomila y Arnau Mir"
+date: ''
+output:
+  beamer_presentation: 
+    theme: Warsaw
+    includes: 
+      in_header: "preamble.tex"
+  slidy_presentation:
+    incremental: no
+  ioslides_presentation:
+    incremental: no
+---
+
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+##  Prueba  plan de organización cadena de  producción
+
+
+La empresa ALUMINIA CALIFORNIA SUR (ALCASU) por sugerencia del comité sindical ha modificado los puestos y tareas de su cadena de producción de un tipo  específico de ventanas de aluminio con gran demanda. 
+
+En la actualizad se espera fabricar una media $\mu=100$  unidades por hora  con una desviación típica de $\sigma=9$.  El jefe de producción  no quiere aceptar definitivamente la  modificación s salvo que se tenga evidencia de que  la media de producción es definitivamente superior a la de la organización anterior.
+
+
+
+##  Prueba  plan de organización cadena de  producción
+
+Para asegurarlo plantea el siguiente contraste
+
+$$
+\left\{\begin{array}{l}
+H_0:\mu\leq 80\\ H_1:\mu> 80
+\end{array}
+\right.
+$$
+
+Necesita una muestra aleatoria, y controla durante n=25 horas la producción obteniendo los siguientes resultados
+
+
+
+```{r data, echo=FALSE,size="scriptsize"}
+options(width = 50)
+set.seed(31133)
+x=round(rnorm(36,83,9),2)
+m=round(mean(x))
+```
+
+
+```
+89.25  75.65  94.73  88.58  94.55  82.60  82.48  82.68
+83.90 101.08  89.54  72.22  79.99  75.49  76.44  66.79
+65.73  86.84  78.52  72.88  85.40  84.70  82.95  92.13
+91.40  85.47  72.13  85.28  74.21  86.16  81.09  88.38
+84.79  75.14  86.24  63.11
+```
+
+##  Prueba  plan de organización cadena de  producción
+
+La media de la muestra es $\overline{x}=`r m`.$ Si suponemos que $X$=$ número de unidades fabricadas por hora es aproximadamente normal y que $\sigma=9$ sigue siendo conocida.
+
+
+Entonces el estadístico de contraste es al nivel de siginificación $\alpha=0.05$ es 
+
+
+Rechazar $H_0$ si  
+
+$$Z= \frac{\overline{x}-80}{\frac{\sigma}{\sqrt{n}}}= \frac{`r m`-80}{\frac{9}{\sqrt{25}}}=\frac{2}{\frac{9}{5}}=\frac{10}{9}>z_{0.05}=1.645.$$
+
+
+Como $\frac{10}{9}=`r round(10/9,4)`\not> 1.645$ 
+
+
+
+
+
+
+
+
+
+
+
+
