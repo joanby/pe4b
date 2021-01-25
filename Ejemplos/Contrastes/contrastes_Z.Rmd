@@ -35,7 +35,7 @@ Para asegurarlo plantea el siguiente contraste
 
 $$
 \left\{\begin{array}{l}
-H_0:\mu\leq 80\\ H_1:\mu> 80
+H_0:\mu\leq 90\\ H_1:\mu> 90
 \end{array}
 \right.
 $$
@@ -47,17 +47,17 @@ Necesita una muestra aleatoria, y controla durante n=25 horas la producción obt
 ```{r data, echo=FALSE,size="scriptsize"}
 options(width = 50)
 set.seed(31133)
-x=round(rnorm(36,83,9),2)
+x=round(rnorm(36,94,9),2)
 m=round(mean(x))
 ```
 
 
 ```
-89.25  75.65  94.73  88.58  94.55  82.60  82.48  82.68
-83.90 101.08  89.54  72.22  79.99  75.49  76.44  66.79
-65.73  86.84  78.52  72.88  85.40  84.70  82.95  92.13
-91.40  85.47  72.13  85.28  74.21  86.16  81.09  88.38
-84.79  75.14  86.24  63.11
+93.61  99.83  95.93 109.16 103.73  82.80  74.09  88.77
+79.99  83.21  76.11  87.35  78.74 100.84  84.25  96.67  
+94.68  88.67 102.79 107.99  88.84  91.02  90.08  90.98
+85.31 100.25  86.65 105.73  99.58 105.55  93.60  93.48
+93.68  94.90 112.08 100.54
 ```
 
 ##  Prueba  plan de organización cadena de  producción
@@ -70,10 +70,10 @@ Entonces el estadístico de contraste es al nivel de siginificación $\alpha=0.0
 
 Rechazar $H_0$ si  
 
-$$Z= \frac{\overline{x}-80}{\frac{\sigma}{\sqrt{n}}}= \frac{`r m`-80}{\frac{9}{\sqrt{25}}}=\frac{2}{\frac{9}{5}}=\frac{10}{9}>z_{0.05}=1.645.$$
+$$Z= \frac{\overline{x}-90}{\frac{\sigma}{\sqrt{n}}}= \frac{`r m`-90}{\frac{9}{\sqrt{25}}}=\frac{`r m-90`}{\frac{9}{5}}=\frac{`r 5* (m-90)`}{9}>z_{0.05}=1.645.$$
 
 
-Como $\frac{10}{9}=`r round(10/9,4)`\not> 1.645$ 
+Como $\frac{15}{9}=`r round(15/9,4)`\not> 1.645$  no podemos  rechar que la producción haya superado la media de $80$ unidades.
 
 
 
