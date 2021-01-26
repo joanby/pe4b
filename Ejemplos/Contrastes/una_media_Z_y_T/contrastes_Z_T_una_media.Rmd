@@ -4,8 +4,10 @@ author: "Ricardo Alberich, Juan Gabriel Gomila y Arnau Mir"
 date: ''
 output:
   beamer_presentation: 
-      
-      er: "preamble.tex"
+    incremental: yes
+    theme: Warsaw
+    includes: 
+      in_header: "preamble.tex"
     toc: no
   slidy_presentation:
     incremental: yes

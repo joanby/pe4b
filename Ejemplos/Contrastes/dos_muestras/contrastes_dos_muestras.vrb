@@ -1,0 +1,11 @@
+\frametitle{Guía rápida}
+\protect\hypertarget{guuxeda-ruxe1pida-3}{}
+\begin{itemize}[<+->]
+\item
+  \texttt{fisher.test}, para realizar tests exactos de Fisher para
+  contrastar dos proporciones usando muestras independientes.
+\item
+  \texttt{mcnemar.test}, para realizar tests bilaterales de McNemar para
+  contrastar dos proporciones usando muestras emparejadas. No dispone de
+  los parámetros \texttt{alternative} ni \texttt{conf.level}.
+\end{itemize}
