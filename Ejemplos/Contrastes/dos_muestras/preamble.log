@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.1.11)  26 JAN 2021 19:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.1.11)  26 JAN 2021 23:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -6,20 +6,8 @@ entering extended mode
 (./preamble.tex
 LaTeX2e <2020-10-01> patch level 4
 L3 programming layer <2021-01-09> xparse <2020-03-03>
-
-! LaTeX Error: \usepackage before \documentclass.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1 \usepackage{
-                amsmath,color,array,booktabs,algorithm2e,eurosym}
-\usepackage may only appear in the document preamble, i.e.,
-between \documentclass and \begin{document}.
-
 ! Undefined control sequence.
-l.4 \setbeamertemplate
+l.2 \setbeamertemplate
                       {navigation symbols}{}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -34,7 +22,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4 \setbeamertemplate{n
+l.2 \setbeamertemplate{n
                         avigation symbols}{}
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -57,7 +45,7 @@ Missing character: There is no o in font nullfont!
 Missing character: There is no l in font nullfont!
 Missing character: There is no s in font nullfont!
 ! Undefined control sequence.
-l.5 \setbeamertemplate
+l.3 \setbeamertemplate
                       {footline}[page number]
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -85,28 +73,6 @@ Missing character: There is no b in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no ] in font nullfont!
-! Undefined control sequence.
-<argument> \titlepage 
-                      
-l.7         \titlepage
-                      
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> \tableofcontents 
-                            
-l.9     \frame{\tableofcontents}
-                                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 )
 ! Emergency stop.
 <*> preamble.tex
@@ -115,11 +81,11 @@ and I'll forget about whatever was undefined.
 
  
 Here is how much of TeX's memory you used:
- 22 strings out of 481211
- 441 string characters out of 5912143
+ 16 strings out of 481211
+ 393 string characters out of 5912143
  266327 words of memory out of 5000000
- 17079 multiletter control sequences out of 15000+600000
+ 17073 multiletter control sequences out of 15000+600000
  403430 words of font info for 27 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 13i,3n,15p,105b,25s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 13i,0n,15p,106b,16s stack positions out of 5000i,500n,10000p,200000b,80000s
 !  ==> Fatal error occurred, no output PDF file produced!
