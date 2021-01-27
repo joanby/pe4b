@@ -28,12 +28,12 @@ library(MASS)
 
 **Ejemplo**
 
-Un jefe de marketing quiere evaluar  la eficacia de dos  estrategias de ventas  $M_1$ y $M_2$.
-Se quiere averiguar si las vetas  medias en euros de  cada campaña son iguales.
+Un \blue{jefe de marketing quiere evaluar  la eficacia de dos  estrategias de ventas  $M_1$ y $M_2$}.
+Se quiere averiguar si \red{las ventas  medias en euros de  cada campaña son iguales}.
 
 Para ello se han realizado dos  muestras  seleccionando al azar un conjunto de clientes para  la estrategia $M_1$ y  otro para la $M_2$.
 
-Desconocemos las dos desviaciones típicas poblaciones $\sigma_1$ y $\sigma_2$ de cada una de las valoraciones de la campaña.
+\red{Desconocemos las dos desviaciones típicas poblacionales} $\sigma_1$ y $\sigma_2$ de cada una de las valoraciones de la campaña.
 </div>
 
 ## Comparación de  las medias de  las ventas con dos estrategias de marketing
@@ -53,14 +53,16 @@ Las dos muestras se han seleccionado de forma independientes y sus tamaños son 
 La variable que se mide es el número de unidades vendidas
 
 Las medias y las desviaciones típicas de las ventas en euros son:
+
 $$
-\overline{X}_1= `r media1` ,\  \overline{X}_2=`r media2`,\ 
-\widetilde{S}_1=`r s1`,\  \widetilde{S}_2=`r s2`.
+\overline{x}_1= `r media1` ,\  \overline{x}_2=`r media2`,\ 
+\widetilde{s}_1=`r s1`,\  \widetilde{s}_2=`r s2`.
 $$
 
 </div>
 
 ## Comparación de  las medias de  las ventas con dos estrategias de marketing
+
 <div class="example-sol">
 
 ```{r,echo=FALSE}
@@ -84,22 +86,36 @@ H_0:\mu_1-\mu_2=0,\\
 H_1:\mu_1- \mu_2<0,
 \end{array}\right.
 $$
+</div>
 
-donde $\mu_1$ y $\mu_2$ representan las ventas medias en euros para cada una de las dos campañas de marketing $M_1$ y $M_2$.
+## Comparación de  las medias de  las ventas con dos estrategias de marketing $\sigma_1=\sigma_2$
+
+<div class="example-sol">
+
+Donde \blue{$\mu_1$ y $\mu_2$ representan las ventas medias en euros} para cada una de las dos campañas de marketing $M_1$ y $M_2$.
 
 Consideremos los dos casos anteriores:
 
-* Caso 1: Suponemos $\sigma_1=\sigma_2$.
+* Caso 1: \red{Suponemos $\sigma_1=\sigma_2$}.
 
 El **estadístico de contraste** es:
 
 $$
-T=\frac{\overline{X}_1-\overline{X}_2}
-{\sqrt{(\frac1{n_1}+\frac1{n_2})\cdot 
-\frac{((n_1-1)\widetilde{S}_1^2+(n_2-1)\widetilde{S}_2^2)}
-{(n_1+n_2-2)}}}\sim t_{`r n1`+`r n2`-2}=t_{`r n1+n2-2`},$
-cuyo valor, usando los valores correspondientes de las muestras, será:
-$t_0=\frac{`r media1`-`r media2`}{\sqrt{(\frac1{`r n1`}+\frac1{`r n2`})\frac{(`r n1-1`\cdot `r s1`^2+`r n2-1`\cdot `r s2`^2)}{`r n1+n2-2`}}}=`r round((media1-media2)/sqrt((1/n1+1/n2)*((n1-1)*s1^2+(n2-1)*s2^2)/(n1+n2-2)),3)`.
+T=\frac{\overline{x}_1-\overline{x}_2}{\sqrt{(\frac1{n_1}+\frac1{n_2})\cdot 
+\frac{((n_1-1)\widetilde{s}_1^2+(n_2-1)\widetilde{s}_2^2)}
+{(n_1+n_2-2)}}}\sim t_{`r n1`+`r n2`-2}=t_{`r n1+n2-2`},
+$$
+</div>
+
+## Comparación de  las medias de  las ventas con dos estrategias de marketing $\sigma_1=\sigma_2$
+
+<div class="example-sol">
+
+
+Usando los valores correspondientes de las muestras,  su valor es:
+
+$$
+t_0=\frac{`r media1`-`r media2`}{\sqrt{(\frac1{`r n1`}+\frac1{`r n2`})\frac{(`r n1-1`\cdot `r s1`^2+`r n2-1`\cdot `r s2`^2)}{`r n1+n2-2`}}}=`r round((media1-media2)/sqrt((1/n1+1/n2)*((n1-1)*s1^2+(n2-1)*s2^2)/(n1+n2-2)),3)`.
 $$
 
 </div>
@@ -108,509 +124,90 @@ $$
 <div class="example-sol">
 
 El $p$-valor será, en este caso: 
-$P(t_{`r n1+n2-2`}<`r round((media1-media2)/sqrt((1/n1+1/n2)*((n1-1)*s1^2+(n2-1)*s2^2)/(n1+n2-2)),3)`)\approx `r round(pt((media1-media2)/sqrt((1/n1+1/n2)*((n1-1)*s1^2+(n2-1)*s2^2)/(n1+n2-2)),n1+n2-2),3)`,$
+
+$P(t_{`r n1+n2-2`}<`r round((media1-media2)/sqrt((1/n1+1/n2)*((n1-1)*s1^2+(n2-1)*s2^2)/(n1+n2-2)),4)`)\approx 
+`r round(pt((media1-media2)/sqrt((1/n1+1/n2)*((n1-1)*s1^2+(n2-1)*s2^2)/(n1+n2-2)),n1+n2-2),3)`,$
 valor muy pequeño.
 
-La decisión que tomamos, por tanto, es rechazar la hipótesis de que son iguales, en favor de que los estudiantes del grado $G_1$ tardan menos tiempo en realizar la tarea que los estudiantes del grado $G_2$.
+La decisión que tomamos, por tanto, es\red{rechazar la hipótesis de que son iguales, en favor de que ventas medias de la estrategia $M_1$ son más menores que las de la estrategia  $M_2$}.
+
+</div>
+
+
+
+
+## Comparación de  las medias de  las ventas con dos estrategias de marketing caso varianzas distintas
+
+<div class="example-sol">
+Consideremos ahora el otro caso:
+
+* Caso 2: \red{Suponemos $\sigma_1\neq \sigma_2$}.
+
+
+
+El **estadístico de contraste** será, en este caso:
+$T=\frac{\overline{X}_1-\overline{X}_2}{\sqrt{\frac{\widetilde{S}_1^2}{n_1}+\frac{\widetilde{S}_2^2}{n_2}}}\sim t_f$
+donde
+
+```{r echo=FALSE}
+f=(s1^2/n1+s2^2/n2)^2/((1/(n1-1))*(s1^2/n1)^2+(1/(n2-1))*(s2^2/n2)^2)
+T0=round((media1-media2)/sqrt(s1^2/n1+s2^2/n2),4)
+```
+
+$$
+f=\frac{ \left( \frac{`r s1`^2}{`r n1`}+\frac{`r s1`^2}{`r n2`}\right)^2}
+{\frac1{`r n1-1`}\left(\frac{`r s1`^2}{`r n1`}\right)^2+\frac1{`r n2-1`}\left(\frac{`r s2`^2}{`r n2`}\right)^2}=`r f`
+.
+$$
 
 </div>
 
 ## Comparación de  las medias de  las ventas con dos estrategias de marketing caso varianzas distintas
 <div class="example-sol">
-Consideremos ahora el otro caso:
-
-* Caso 2: Suponemos $\sigma_1\neq \sigma_2$.
-
-El **estadístico de contraste** será, en este caso:
-$T=\frac{\overline{X}_1-\overline{X}_2}{\sqrt{\frac{\widetilde{S}_1^2}{n_1}+\frac{\widetilde{S}_2^2}{n_2}}}\sim t_f$
-donde
-$$
-f=\left\lfloor\frac{ \left( \frac{`r s1`^2}{`r n1`}+\frac{`r s1`^2}{`r n2`}\right)^2}
-{\frac1{`r n1-1`}\left(\frac{`r s1`^2}{`r n1`}\right)^2+\frac1{`r n2-1`}\left(\frac{`r s2`^2}{`r n2`}\right)^2}\right\rfloor -2
-=\lfloor `r round((s1^2/n1+s2^2/n2)^2/((1/(n1-1))*(s1^2/n1)^2+(1/(n2-1))*(s2^2/n2)^2),2)`=`r (s1^2/n1+s2^2/n2)^2/((1/(n1-1))*(s1^2/n1)^2+(1/(n2-1))*(s2^2/n2)^2)`.
-$$
-
-</div>
-
-## Ejemplo
-<div class="example-sol">
 El valor que toma el estadístico anterior será: 
 $$
-t_0=\frac{`r media1`-`r media2`}{\sqrt{\frac{`r s1`^2}{`r n1`}+\frac{`r s2`^2}{`r n2`}}}=`r round((media1-media2)/sqrt(s1^2/n1+s2^2/n2),3)`.
+t_0=\frac{`r media1`-`r media2`}{\sqrt{\frac{`r s1`^2}{`r n1`}+\frac{`r s2`^2}{`r n2`}}}=`r T0`.
 $$
 
 El **$p$-valor** del contraste será: 
-$P(t_{`r floor((s1^2/n1+s2^2/n2)^2/((1/(n1-1))*(s1^2/n1)^2+(1/(n2-1))*(s2^2/n2)^2))-2`}\leq 
-`r round((media1-media2)/sqrt(s1^2/n1+s2^2/n2),3)`)=
-`r round(pt((media1-media2)/sqrt(s1^2/n1+s2^2/n2),floor((s1^2/n1+s2^2/n2)^2/((1/(n1-1))*(s1^2/n1)^2+(1/(n2-1))*(s2^2/n2)^2))-2),3)`,$ valor muy pequeño.
+$P(t_{`r f`}\leq `r T0`)=`r round(pt(T0,f),6)`,$ valor muy pequeño.
 
-La decisión que tomamos en este caso es la misma que en el caso anterior: rechazar la hipótesis de que los tiempos de ejecución son iguales, en favor de que los alumnos del grado $G_1$ tardan menos tiempo en realizar la tarea que los alumnos del grado $G_2$.
+
+</div>
+
+## Comparación de  las medias de  las ventas con dos estrategias de marketing caso varianzas distintas
+
+<div class="example-sol">
+La decisión que tomamos en este caso es la misma que en el caso anterior: \blue{rechazar la hipótesis de que las ganancias medias de ejecución son iguales, en favor de que las ventas bajo $M_1$ son menores que bajo $M_2$}.
  
 
-La decisión final, al haber decidido lo mismo en los dos casos, será concluir que los alumnos del grado   $G_1$ tardan menos tiempo en realizar la tarea que los alumnos del grado $G_2$.
-
-</div>
-
-## Contrastes para dos medias independientes en `R`: función `t.test`
-
-Recordemos la sintaxis básica de la función `t.test` es
-
-```{r,eval=FALSE}
-t.test(x, y, mu=..., alternative=..., conf.level=..., paired=..., 
-       var.equal=..., na.omit=...)
-```
-
-donde los nuevos parámetros para realizar un contraste de dos medias independientes son:
-
-* `x` es el vector de datos de la primera muestra.
-
-*  `y` es el vector de datos de la segunda muestra.
-
-## Contraste de $\mu$ de normal con $\sigma$ desconocida en `R`: función `t.test`
-
-*  Podemos sustituir los vectores `x` e `y` por una fórmula `variable1~variable2` que indique que separamos la variable numérica `variable1` en dos vectores definidos por los niveles de un factor `variable2` de dos niveles (o de otra variable asimilable a un factor de dos niveles, como por ejemplo una variable numérica que solo tome dos valores diferentes). 
-
-* Parámetro `alternative`:
-     * Si llamamos $\mu_x$ y $\mu_y$ a las medias de las poblaciones de las que hemos extraído las muestras $x$ e $y$, respectivamente, entonces
-`"two.sided"` representa la hipótesis alternativa  $H_1: \mu_x
-\neq \mu_y$; `"less"` indica que la hipótesis alternativa es $H_1: \mu_x< \mu_y$; y `"greater"`, que la hipótesis alternativa es $H_1: \mu_x> \mu_y$. 
-
-## Contraste de $\mu$ de normal con $\sigma$ desconocida en `R`: función `t.test`
-
-*  El parámetro `var.equal` solo lo tenemos que especificar si llevamos a cabo un contraste de dos medias usando muestras independientes, y en este caso sirve para indicar si queremos considerar las dos varianzas poblacionales iguales (igualándolo a TRUE) o diferentes (igualándolo a FALSE, que es su valor por defecto).
-
-## Ejemplo
-<div class="exercise">
-**Ejercicio**
-
-Imaginemos ahora que nos planteamos si la media de la longitud del pétalo es la misma para las flores de las especies setosa y versicolor.
-</div>
-
-<div class="example-sol">
-Para ello seleccionamos una muestra de tamaño 40 flores para cada especie:
-```{r}
-set.seed(45)
-flores.elegidas.setosa = sample(1:50,40,replace=TRUE)
-flores.elegidas.versicolor = sample(51:100,40,replace=TRUE)
-```
-
-Las muestras serán las siguientes:
-```{r}
-muestra.setosa = iris[flores.elegidas.setosa,]
-muestra.versicolor = iris[flores.elegidas.versicolor,]
-```
+La decisión final, al haber decidido lo mismo en los dos casos, será concluir  que \red{la estrategia $M_1$ tiene ganancia media menor que la $M_2$}.
 
 </div>
 
 
-## Ejemplo
-<div class="example-sol">
-El contraste planteado se realiza de la forma siguiente:
-```{r}
-t.test(muestra.setosa$Petal.Length,muestra.versicolor$Petal.Length,
-       alternative="two.sided")
-```
-</div>
 
 
-## Ejemplo
-<div class="example-sol">
-El contraste realizado es de dos muestras independientes:
-$$
-\left.
-\begin{array}{ll}
-H_0: & \mu_{{setosa}} =\mu_{{versicolor}}, \\
-H_1: & \mu_{{setosa}} \neq \mu_{{versicolor}},
-\end{array}
-\right\}
-$$
-donde $\mu_{{setosa}}$ representa la media de la longitud del pétalo de las flores de la especie setosa y $\mu_{{versicolor}}$, la media de la longitud del pétalo de las flores de la especie versicolor.
+## Contrastes para dos proporciones $p_1$ y $p_2$: Seguros de vida en créditos al consumo.
 
-El p-valor del contraste ha sido pràcticamente cero, lo que nos hace concluir que tenemos evidencias suficientes para concluir que las medias de la longitud del pétalo son diferentes para las dos especies. 
-
-De hecho, las medias de cada una de la dos muestras son `r t.test(muestra.setosa$Petal.Length,muestra.versicolor$Petal.Length,alternative="two.sided")[[5]][1]` y `r t.test(muestra.setosa$Petal.Length,muestra.versicolor$Petal.Length,alternative="two.sided")[[5]][2]`, valores muy diferentes.
-</div>
-
-## Ejemplo
-<div class="example-sol">
-El intervalo de confianza al 95% de confianza para la diferencia de medias $\mu_{{setosa}}-\mu_{{versicolor}}$ asociado al contraste anterior vale, si nos fijamos en el "output" del `t.test`:
-```{r}
-t.test(muestra.setosa$Petal.Length,muestra.versicolor$Petal.Length,
-       alternative="two.sided")$conf.int
-```
-intervalo que no contiene el valor cero y está totalmente a la izquierda de cero. Por tanto, debemos rechazar la hipótesis nula.
-</div>
-
-## Ejemplo
-<div class="example-sol">
-Fijémonos que hemos considerado que las varianzas de las dos variables son diferentes. Si las hubiésemos considerado iguales, tendríamos que hacer:
-```{r}
-t.test(muestra.setosa$Petal.Length,muestra.versicolor$Petal.Length,
-       alternative="two.sided",var.equal = TRUE)
-```
-</div>
-
-## Ejemplo
-
-<div class="example-sol">
-En este caso, el p-valor también es despreciable, por lo que llegamos a la misma conclusión anterior: las medias son diferentes.
-
-Más adelante veremos cómo realizar un contraste de varianzas para comprobar si éstas son iguales o no y por tanto, actuar en consecuencia con el parámetro `var.equal`.
-</div>
-
-
-## Contrastes para dos proporciones $p_1$ y $p_2$
-
-## Test de Fisher
-Tenemos dos variables aleatorias $X_1$ y $X_2$ Bernoulli de proporciones $p_1$ y $p_2$
-
-Tomamos m.a.s. de cada una y obtenemos la tabla siguiente:
-
-<div class="center">
-|         | $X_1$ | $X_2$ | Total |
-|----------|------|-------|--------|
-| Éxitos | $n_{11}$ | $n_{12}$ | $n_{1\bullet}$ |
-| Fracasos | $n_{21}$ | $n_{22}$ | $n_{2\bullet}$ |
-| Total | $n_{\bullet 1}$ | $n_{\bullet 2}$ | $n_{\bullet\bullet}$    |
-</div>
-
-## Test de Fisher
-donde $n_{11}$ es la cantidad de éxitos en la primera muestra, $n_{12}$, la cantidad de éxitos en la segunda muestra, $n_{21}$, la cantidad de fracasos en la primera muestra y $n_{22}$, la cantidad de fracasos en la segunda muestra.
-
-De la misma forma, $n_{1\bullet}$, es la cantidad total de éxitos en las dos muestras y $n_{2\bullet}$ la cantidad total de fracasos en las dos muestras.
-
-Por último, $n_{\bullet 1}$ es el tamaño de la primera muestra, $n_{\bullet 2}$, el tamaño de la segunda muestra y $n_{\bullet\bullet}=n_{\bullet 1}+n_{\bullet 2}$ es la suma de los dos tamaños.
-
-
-## Test de Fisher
-
-Supongamos $p_1=p_2$.
-
-Para hallar la probabilidad de obtener $n_{11}$ éxitos para la variable $X_1$ podemos razonar de la forma siguiente:
-
-En una bolsa tenemos $n_{1\bullet}$ bolas E y $n_{2\bullet}$ bolas F. La probabilidad anterior sería la probabilidad de obtener $n_{11}$ bolas E si escogemos $n_{\bullet 1}$ de golpe.
-
-Sea $X$ una variable hipergeométrica de parámetros $H(n_{1\bullet},n_{2\bullet},n_{\bullet1})$. La probabilidad anterior sería: $P(X=n_{11})$.
-
-Usaremos la variable anterior $X$ como estadístico de contraste.
-
-## Test de Fisher
-
-Nos planteamos los contrastes siguientes:
-
-<ol type="a">
-  <li> $\left\{\begin{array}{l}
-H_0:p_1=p_2,\\
-H_1:p_1> p_2.
-\end{array}\right.$
- </li>
-
-  <li> $\left\{\begin{array}{l}
-H_0:p_1=p_2,\\
-H_1:p_1< p_2.
-\end{array}\right.$ </li>
-
-  <li> $\left\{\begin{array}{l}
-H_0:p_1=p_2,\\
-H_1:p_1\neq p_2.
-\end{array}\right.$ </li>
-</ol>
-
-## Test de Fisher
-
-Los **p-valores** serán los siguientes:
-
-<ol type="a">
-  <li> $p$-valor: $P(H(n_{1\bullet},n_{2\bullet},n_{\bullet1})\geq n_{11})$. </li>
-
-  <li> $p$-valor: $P(H(n_{1\bullet},n_{2\bullet},n_{\bullet1})\leq n_{11})$. </li>
-
-  <li> $p$-valor: $2\min\{P(H\leq n_{11}), P(H\geq n_{11})\}$. </li>
-</ol>
-
-
-## Ejemplo
-<div class="example">
-**Ejemplo**
-
-Para determinar si el Síndrome de Muerte Repentina del Bebé (SIDS) tiene componiendo genético, se consideran los casos de SIDS en parejas de gemelos monocigóticos y dicigóticos. Sea: 
-
-* $p_1$: proporción de parejas de gemelos monocigóticos con algún caso de SIDS donde solo un hermano la sufrió.
-
-* $p_2$: proporción de parejas de gemelos dicigóticos con algún caso de SIDS donde solo un hermano la sufrió.
-
-Si el SIDS tiene componiendo genético, es de esperar que $p_1<p_2$.
-</div>
-<div class="example-sol">
-Nos piden realizar el contraste siguiente:
-$$
-\left\{\begin{array}{l}
-H_0:p_1=p_2,\\
-H_1:p_1< p_2.
-\end{array}\right.
-$$
-
-</div>
-
-## Ejemplo
-<div class="example-sol">
-En un estudio (*Peterson et al, 1980*), se obtuvieron los datos siguientes:
-
-<div class="center">
-| Casos de SIDS | Monocigóticos | Dicigóticos | Total |
-|----------|------|-------|--------|
-| Uno | 23 | 35 | `r 23+35` |
-| Dos | 1 | 2 | 3 |
-| Total | 24 | 37 | `r 23+35+3`    |
-</div>
-
-## Ejemplo
-<div class="example-sol">
-El **p-valor** del contraste anterior sería: $P(H(58,3,24)\leq 23)$:
-```{r}
-phyper(23,58,3,24)
-```
-
-Al obtener un $p$-valor grande, podemos concluir que no tenemos evidencias suficientes para rechazar la hipótesis nula y por tanto, el SID no tiene componente genética.
-</div>
-
-
-## Test de Fisher en `R`
-
-* El test exacto de Fisher está implementado en la función `fisher.test`. Su sintaxis es 
-
-```{r, eval=FALSE}
-fisher.test(x, alternative=..., conf.level=...)
-```
-donde
-
-*  `x` es la matriz  anterior,  donde recordemos que los números de éxitos van en la primera fila y los de fracasos en la segunda, y las poblaciones se ordenan por columnas.
-
-## Test de Fisher en `R`. Ejemplo
+ Contraste de dos proporciones muestras independientes tamaños muestrales grandes
 
 <div class="exercise">
-**Ejercicio**
+Se toman una muestra de \blue{100 créditos al consumo  en la Región A  y  otra  muestra de 50  créditos de la Región B}.
 
-Realicemos el contraste anterior de igualdad de proporciones de madres fumadores de raza blanca y negra usando el test de Fisher.
-</div>
+Se quiere saber si las \red{proporciones de contratos de crédito con seguro  de vida  son iguales en ambas regiones}.
 
-<div class="example-sol">
-En primer lugar calculamos las etiquetas de las madres de cada raza:
-```{r}
-madres.raza.blanca = rownames(birthwt[birthwt$race==1,])
-madres.raza.negra = rownames(birthwt[birthwt$race==2,])
-```
-Seguidamente, elegimos las muestras de tamaño 50 de cada raza y creamos las muestras correspondientes:
-```{r}
-set.seed(2000)
-madres.elegidas.blanca=sample(madres.raza.blanca,50,replace=TRUE)
-madres.elegidas.negra = sample(madres.raza.negra,50, replace=TRUE)
-muestra.madres.raza.blanca = birthwt[madres.elegidas.blanca,]
-muestra.madres.raza.negra = birthwt[madres.elegidas.negra,]
-```
+En la muestra región A, 20 hipotecas tienen seguro, y en la región B son 12.
 
-</div>
-
-## Test de Fisher en `R`. Ejemplo
-
-<div class="example-sol">
-
-Definimos ahora una nueva tabla de datos que contenga la información de las dos muestras consideradas:
-```{r}
-muestra.madres = rbind(muestra.madres.raza.blanca,muestra.madres.raza.negra)
-```
-
-A continuación calculamos la matriz para usar en el test de Fisher:
-```{r}
-(matriz.fisher=table(muestra.madres$smoke,muestra.madres$race))
-```
-
-</div>
-
-
-## Test de Fisher en `R`. Ejemplo
-
-<div class="example-sol">
-La matriz anterior no es correcta ya que la primera fila debería ser la fila de "éxitos" y es la fila de "fracasos".
-
-Lo arreglamos permutando las filas:
-```{r}
-(matriz.fisher = rbind(matriz.fisher[2,],matriz.fisher[1,]))
-```
-
-
-</div>
-
-
-## Test de Fisher en `R`. Ejemplo
-
-<div class="example-sol">
-Por último realizamos el contraste:
-```{r}
-fisher.test(matriz.fisher)
-```
-
-
-</div>
-
-## Test de Fisher en `R`. Ejemplo
-
-<div class="example-sol">
-
-El p-valor del contraste ha sido `r round(fisher.test(matriz.fisher)$p.value,4)`, valor mayor que 0.1. Concluimos que no tenemos evidencias para rechazar que las proporciones de madres fumadoras de razas blanca y negra sean iguales.
-
-
-O, dicho de otra manera, no rechazamos la hipótesis nula de igualdad de proporciones.
-</div>
-
-<div class="exercise">
-**Ejercicio**
-
-Como el test de Fisher es exacto, dejamos como ejercicio repetir el experimento anterior pero en lugar de tomando muestras de tamaño 50, tomando muestras de tamaño más pequeño como por ejemplo 10.
-</div>
-
-<l class="important">¡Atención!</l>
-
-Hay que ir con cuidado con la interpretación del intervalo de confianza que da esta función: no es ni para la diferencia de las proporciones ni para su cociente, sino para su **odds ratio**: el cociente
-$$
-\Big({\frac{p_b}{1-p_b}}\Big)\Big/\Big({\frac{p_n}{1-p_n}}\Big).
-$$  
-
-
-## Introducción a las **odds**
-
-<l class="definition"> Odds </l>
-
-El **odds** de un suceso $A$ es el cociente
-$$
-\mbox{Odds}(A)=\frac{P(A)}{1-P(A)},
-$$
-donde $P(A)$ es la probabilidad que suceda $A$ y mide cuántas veces es más probable $A$ que su contrario. 
-
-
-Las *odds* son una función creciente de la probabilidad, y por lo tanto
-$$
-\mbox{Odds}(A)<\mbox{Odds}(B)\Longleftrightarrow P(A)<P(B).
-$$
-
-## Ejemplo
-
-Esto permite comparar *odds* en vez de probabilidades, con la misma conclusión. 
-
-<div class="example-sol">
-Por ejemplo, en nuestro caso, como el intervalo de confianza para la *odds ratio* va de `r round( fisher.test(matriz.fisher)$conf.int[1],4)` a  `r round( fisher.test(matriz.fisher)$conf.int[2],4)`. En particular, contiene el 1, por lo que no podemos rechazar que 
-
-$$
-\Big({\frac{p_b}{1-p_b}}\Big)\Big/\Big({\frac{p_n}{1-p_n}}\Big)=1,
-$$
-es decir, no podemos rechazar que 
-$$
-\frac{p_b}{1-p_b}=\frac{p_n}{1-p_n}
-$$
-y esto es equivalente a $p_b=p_n$. 
-</div>
-
-
-## Ejemplo
-
-<div class="example-sol">
-
-Si, por ejemplo, el intervalo de confianza hubiera ido de 0 a 0.8, entonces la conclusión a este nivel de confianza hubiera sido que
-$$
-\Big({\frac{p_b}{1-p_b}}\Big)\Big/\Big({\frac{p_n}{1-p_n}}\Big)<1
-$$
-es decir,  que 
-$$
-\frac{p_b}{1-p_b}<\frac{p_n}{1-p_n}
-$$
-y esto es equivalente a $p_b<p_n$.
-
-
-
-## Contraste para dos proporciones: muestras grandes
-
-Supongamos ahora que tenemos dos variables aleatorias $X_1$ y $X_2$ de Bernoulli de parámetros $p_1$ y $p_2$.
-
-Consideremos una m.a.s. de cada variable aleatoria de tamaños $n_1$ y $n_2$, respectivamente, grandes ($n_1,n_2\geq 50$ o 100):
-$$
-\begin{array}{l}
-X_{1,1}, X_{1,2},\ldots, X_{1,n_1},\mbox{ de }X_1,\\
-X_{2,1}, X_{2,2},\ldots, X_{2,n_2},\mbox{ de }X_2.
-\end{array}
-$$
-Sean $\widehat{p}_1$ y $\widehat{p}_2$ sus proporciones muestrales.
-
-Suponemos que los números de éxitos y de fracasos en cada muestra son $\geq 5$ o  10).
-
-
-## Contraste para dos proporciones: muestras grandes
-
-Nos planteamos los contrastes siguientes como en el caso del test de Fisher:
-
-<ol type="a">
-  <li> $\left\{\begin{array}{l}
-H_0:p_1=p_2,\\
-H_1:p_1> p_2.
-\end{array}\right.$
- </li>
-
-  <li> $\left\{\begin{array}{l}
-H_0:p_1=p_2,\\
-H_1:p_1< p_2.
-\end{array}\right.$ </li>
-
-  <li> $\left\{\begin{array}{l}
-H_0:p_1=p_2,\\
-H_1:p_1\neq p_2.
-\end{array}\right.$ </li>
-</ol>
-
-## Contraste para dos proporciones: muestras grandes
-
-El **estadístico de contraste** para los contrastes anteriores es:
-$$Z=\frac{\widehat{p}_1 -\widehat{p}_2}{
-\sqrt{\Big(\frac{n_1 \widehat{p}_1 +n_2 \widehat{p}_2}{n_1
-+n_2}\Big)\Big(1-\frac{n_1 \widehat{p}_1 +n_2 \widehat{p}_2}{n_1
-+n_2}\Big)\Big(\frac1{n_1}+\frac1{n_2}
-\Big)}},$$
-que, usando el *Teorema Central del Límite* y suponiendo cierta la hipótesis nula $H_0:p_1=p_2$, tiene aproximadamente una distribución $N(0,1)$.
-
-Sea $z_0$ el valor del **estadístico de contraste** usando las proporciones muestrales $\widehat{p}_1$ y $\widehat{p}_2$.
-
-## Contraste para dos proporciones: muestras grandes
-
-Los **p-valores** serán los siguientes:
-
-<ol type="a">
-  <li> $p$-valor: $P(Z\geq z_0)$. </li>
-
-  <li> $p$-valor: $P(Z\leq z_0)$. </li>
-
-  <li> $p$-valor: $2 P(Z \geq |z_0|)$. </li>
-</ol>
-
-
-## Ejemplo
-<div class="exercise">
-**Ejercicio**
-
-Se toman una muestra de ADN de 100 individuos con al menos tres generaciones
-familiares en la isla de Mallorca, y otra de 50 individuos con al menos tres generaciones
-familiares en la isla de Menorca.
-
-Se quiere saber si un determinado alelo de un gen es presente con la misma proporción en las dos poblaciones.
-
-En la muestra mallorquina, 20 individuos lo tienen, y en la muestra menorquina, 12.
-
-Contrastar la hipótesis de igualdad de proporciones al
+Queremos contrastar la hipótesis de igualdad de proporciones al
 nivel de significación $0.05$, y calcular el intervalo de confianza
 para la diferencia de proporciones para este $\alpha$.
 </div>
 
-## Ejemplo
+## Contrastes para dos proporciones $p_1$ y $p_2$: Seguros de vida en créditos al consumo.
 
 <div class="example-sol">
-Fijémonos que los tamaños de las muestras (100 y 50) son bastante grandes
+Fijémonos que \red{los tamaños de las muestras (100 y 50) son bastante grandes}.
 
 El contraste pedido es el siguiente:
 $$
@@ -619,7 +216,14 @@ H_0:p_1=p_2,\\
 H_1:p_1\neq p_2,
 \end{array}\right.
 $$
-donde $p_1$ y $p_2$ representan las proporciones de individuos que tienen el alelo en el gen para los individuos de la isla de Mallorca y Menora, respectivamente.
+donde $p_1$ y $p_2$ representan las proporciones de créditos que tienen seguro  vida  las regiones A y B, respectivamente.
+
+
+</div>
+
+## Contrastes para dos proporciones $p_1$ y $p_2$: Seguros de vida en créditos al consumo.
+
+<div class="example-sol">
 
 El **estadístico de contraste** será:
 $Z=\frac{\widehat{p}_1 -\widehat{p}_2}{
@@ -637,18 +241,24 @@ p1=x1/n1
 p2=x2/n2
 ```
 Las proporciones muestrales serán: $\widehat{p}_1 =\frac{`r x1`}{`r n1`}=`r x1/n1`$, $\widehat{p}_2 = \frac{`r x2`}{`r n2`}=`r x2/n2`$.
+</div>
 
+## Contrastes para dos proporciones $p_1$ y $p_2$: Seguros de vida en créditos al consumo.
+
+<div class="example-sol">
 Si hallamos el valor que toma el **estadístico de contraste** para las proporciones muestrales anteriores, obtenemos:
 $$z_0=\frac{`r p1` -`r p2`}{
 \sqrt{\Big(\frac{`r x1`+`r x2`}{`r n1`+`r n2`}\Big)\Big(1-\frac{`r x1` +`r x2`}{`r n1`+`r n2`}\Big)\Big(\frac1{`r n1`}+\frac1{`r n2`}\Big)}}=`r round((p1-p2)/sqrt(((x1+x2)/(n1+n2))*(1-(x1+x2)/(n1+n2))*(1/n1+1/n2)),3)`.$$
 
 </div>
 
-## Ejemplo
+## Contrastes para dos proporciones $p_1$ y $p_2$: Seguros de vida en créditos al consumo.
+
 <div class="example-sol">
 El **$p$-valor** será: $2\cdot P(Z\geq |`r round((p1-p2)/sqrt(((x1+x2)/(n1+n2))*(1-(x1+x2)/(n1+n2))*(1/n1+1/n2)),3)`|)=`r round(2*pnorm(abs((p1-p2)/sqrt(((x1+x2)/(n1+n2))*(1-(x1+x2)/(n1+n2))*(1/n1+1/n2))),lower.tail=FALSE),3)`.$
 
-Decisión: como el $p$-valor es grande y mayor que $\alpha=0.05$, aceptamos la hipótesis que las dos proporciones son la misma al no tener evidencias suficientes para rechazarla.
+Decisión: \blue{como el $p$-valor es grande y mayor que $\alpha=0.05$, aceptamos la hipótesis que las dos proporciones 
+son la misma al no tener evidencias suficientes para rechazarla}.
 
 El intervalo de confianza para $p_1-p_2$
 al nivel de confianza $(1-\alpha)\cdot 100\%$ en un contraste bilateral es
@@ -666,7 +276,14 @@ $$
 \right)
 \end{array}
 $$
-que, en nuestro caso será:
+</div>
+
+## Contrastes para dos proporciones $p_1$ y $p_2$: Seguros de vida en créditos al consumo.
+
+<div class="example-sol">
+
+
+en nuestro caso es:
 
 $$
 (`r p1` -`r p2`-`r round(qnorm(0.975),3)`\cdot `r round(sqrt(((x1+x2)/(n1+n2))*(1-(x1+x2)/(n1+n2))*(1/n1+1/n2)),3)`, `r p1`-`r p2` +`r round(qnorm(0.975),3)`\cdot `r round(sqrt(((x1+x2)/(n1+n2))*(1-(x1+x2)/(n1+n2))*(1/n1+1/n2)),3)`) =(`r round(p1-p2-qnorm(0.975)*sqrt(((x1+x2)/(n1+n2))*(1-(x1+x2)/(n1+n2))*(1/n1+1/n2)),3)`,`r round(p1-p2+qnorm(0.975)*sqrt(((x1+x2)/(n1+n2))*(1-(x1+x2)/(n1+n2))*(1/n1+1/n2)),3)`).
@@ -678,406 +295,31 @@ Observemos que contiene el 0. Por tanto no podemos rechazar que $p_1-p_2=0$ lleg
 
 
 
-## Contrastes para dos proporciones en `R`
-
-* En `R` está implementado en la función `prop.test`, que además también sirve  para contrastar dos proporciones por medio de muestras independientes grandes. Su sintaxis es
-
-```{r, eval=FALSE}
-prop.test(x, n, p =..., alternative=..., conf.level=...)
-```
-
-donde:
-
-*  `x` en el caso de un contraste de dos proporciones es un vector de dos números naturales cuyas componentes son los números de éxitos en las dos muestras.
 
 
-## Contrastes para proporciones en `R`
 
-* Cuando estamos trabajando con dos muestras, `n` es el vector de dos entradas de sus tamaños. 
+##  Uso de datos móviles con dos tipos de tarifas:BigA y BigB
 
-*  El significado de `alternative` y `conf.level`, y sus posibles valores, son los usuales.
-
-
-## Contrastes para proporciones en `R`. Ejemplo
 
 <div class="example">
-**Ejemplo**
 
-Siguiendo el ejemplo anterior,
-contrastemos otra vez si la proporción de madres fumadoras de raza blanca es la misma que la proporción de madres fumadoras de raza negra pero usando ahora la función `prop.test`.
-
-
-</div>
-
-
-<div class="example-sol">
-En primer lugar, calculamos cuántas madres fumadores hay de cada muestra:
-```{r}
-table(muestra.madres.raza.blanca$smoke)
-table(muestra.madres.raza.negra$smoke)
-```
-</div>
-
-
-## Contrastes para proporciones en `R`. Ejemplo
-
-<div class="example-sol">
-```{r}
-n.blanca = table(muestra.madres.raza.blanca$smoke)[2] # número de madres fumadoras 
-# de raza blanca
-n.negra = table(muestra.madres.raza.negra$smoke)[2] # número de madres fumadoras 
-# de raza negra
-```
-
-Tenemos un total de `r table(muestra.madres.raza.blanca$smoke)[2]` madres fumadoras de raza blanca entre las 50 de la muestra y `r table(muestra.madres.raza.negra$smoke)[2]` madres fumadores de raza negra entre las 50 de la muestra.
-
-Finalmente, realizamos el contraste planteado:
-$$
-\left.
-\begin{array}{ll}
-H_0: & p_b = p_n, \\
-H_1: & p_b \neq p_n,
-\end{array}
-\right\}
-$$
-donde $p_b$ y $p_n$ representan las proporciones de madres fumadoras de raza blanca y negra, respectivamente.
-
-
-
-</div>
-
-
-## Contrastes para proporciones en `R`. Ejemplo
-
-<div class="example-sol">
-El contraste en `R` se realizaría de la forma siguiente:
-```{r}
-prop.test(c(n.blanca,n.negra),c(50,50))
-```
-
-
-</div>
-
-
-## Contrastes para proporciones en `R`. Ejemplo
-<div class="example-sol">
-El p-valor del contraste ha sido `r round(prop.test(c(n.blanca,n.negra),c(50,50))$p.value,4)`, muy parecido al del test de Fisher, y mayor que 0.1. Concluimos otra vez que no tenemos evidencias para rechazar que las proporciones de madres fumadoras de razas blanca y negra sean iguales.
-
-Si nos fijamos en el intervalo de confianza para la diferencia de proporciones: 
-```{r}
-prop.test(c(n.blanca,n.negra),c(50,50))$conf.int
-```
-vemos que el 0 está dentro de dicho intervalo, hecho que reafirma nuestra conclusión.
-
-</div>
-
-## Contrastes de dos muestras más generales
-
-## Introducción
-
-Dado un parámetro $\theta$ ($\theta$ puede ser la media $\mu$, la proporción $p$, etc.) y dadas dos poblaciones $X_1$ y $X_2$ cuyas distribuciones dependen de parámetros $\theta_1$ y $\theta_2$, hemos realizado contrastes en los que la hipótesis nula era de la forma $H_0:\theta_1 = \theta_2$, o $H_0:\theta_1 - \theta_2=0$.
-
-Existen contrastes más generales del tipo:
-$$
-\left\{\begin{array}{l}
-H_0:\theta_1-\theta_2=\Delta\\
-H_1:\theta_1-\theta_2<\Delta\mbox{ o }\theta_1-\theta_2>\Delta\mbox{ o }\theta_1-\theta_2\neq\Delta
-\end{array}\right.
-$$
-con $\Delta\in \mathbb{R}$.
-
-## Cambios en los estadísticos de contraste
-
-Para realizar los contrastes anteriores, se pueden usar los mismos **estadísticos** que en el caso en que $H_0:\theta_1 - \theta_2=0$ realizando los cambios siguientes:
-
-* Si $\theta =\mu$, la media, hay que sustituir $\overline{X}_1-\overline{X}_2$ en el numerador del **estadístico** por $\overline{X}_1-\overline{X}_2-\Delta$.
-
-* Si $\theta =p$, proporción muestral, hay que sustituir $\widehat{p}_1-\widehat{p}_2$ en el numerdor del **estadístico** por  $\widehat{p}_1-\widehat{p}_2-\Delta$.
-
-## Ejemplo
-<div class="example">
-**Ejemplo**
-
-Tenemos dos tratamientos, A y B, de una dolencia. Tratamos 50 enfermos con A y 100 con B. 20 enfermos tratados con A y 25 tratados con B manifiestan haber sentido malestar general durante los 7 días posteriores a iniciar el tratamiento.
-
-¿Podemos concluir, a un nivel de significación del 5\%, que A produce malestar general en una proporción de los enfermos que es 5 puntos porcentuales superior a la proporción de los enfermos en que lo produce B?
-
-</div>
-
-## Ejemplo
-<div class="example-sol">
-Sean $p_1$ la proporción de enfermos en que A produce malestar general y
-$p_2$, la proporción de enfermos en que B produce malestar general.
-
-El contraste a realizar es el siguiente:
-$$
-\left\{\begin{array}{l}
-H_0:p_1\leq p_2+0.05,\\
-H_1:p_1>p_2+0.05.
-\end{array}\right.
-$$
-
-El **estadístico de contraste** es el siguiente:
-$$
-Z=\frac{\widehat{p}_1 -\widehat{p}_2-\Delta}{
-\sqrt{\Big(\frac{n_1 \widehat{p}_1 +n_2 \widehat{p}_2}{n_1
-+n_2}\Big)\Big(1-\frac{n_1 \widehat{p}_1 +n_2 \widehat{p}_2}{n_1
-+n_2}\Big)\Big(\frac1{n_1}+\frac1{n_2}
-\Big)}},
-$$
-que, si la hipótesis nula es cierta, sigue aproximadamente la distribución $N(0,1)$.
-</div>
-
-```{r,echo=FALSE}
-x1=20
-x2=25
-n1=50
-n2=100
-p1=x1/n1
-p2=x2/n2
-Delta=0.05
-```
-
-
-## Ejemplo
-<div class="example-sol">
-Las proporciones y los tamaños muestrales son:
-$\widehat{p}_1=0.4$, $\widehat{p}_2=0.25$, $n_1=50$, $n_2=100$ y el valor de $\Delta$ será $\Delta=0.05$.
-
-El valor que toma el **estadístico de contraste** es:
-$$
-z_0=\frac{`r p1`-`r p2`-`r Delta`}{
-\sqrt{\Big(\frac{`r x1`+`r x2`}{`r n1`+`r n2`}\Big)\Big(1-\frac{`r x1`+`r x2`}{`r n1`+`r n2`}\Big)\Big(\frac1{`r n1`}+\frac1{`r n2`}\Big)}}=`r round((p1-p2-Delta)/sqrt(((x1+x2)/(n1+n2))*(1-((x1+x2)/(n1+n2)))*(1/n1+1/n2)),3)`.
-$$
-
-El **$p$-valor** del contraste será: $P(Z\geq `r round((p1-p2-Delta)/sqrt(((x1+x2)/(n1+n2))*(1-((x1+x2)/(n1+n2)))*(1/n1+1/n2)),3)`)= `r round(pnorm((p1-p2-Delta)/sqrt(((x1+x2)/(n1+n2))*(1-((x1+x2)/(n1+n2)))*(1/n1+1/n2)),lower.tail=FALSE),3)`.$
-
-Decisión: como el **$p$-valor** es relativamente grande y mayor que $\alpha=0.05$, no tenemos indicios para rechazar la hipótesis que $p_1-p_2$ es inferior o igual a un $5\%$.
-
-</div>
-
-## Ejemplo
-<div class="example-sol">
-
-Si hallamos el **intervalo de confianza** para $p_1-p_2$
-al nivel de confianza $(1-\alpha)\cdot 100\%$, obtenemos:
-
-$$
-\begin{array}{l}
-\left(\widehat{p}_1-\widehat{p}_2+z_{\alpha}\sqrt{\Big(\frac{n_1 \widehat{p}_1 +n_2 \widehat{p}_2}{n_1
-+n_2}\Big)\Big(1-\frac{n_1 \widehat{p}_1 +n_2 \widehat{p}_2}{n_1
-+n_2}\Big)\Big(\frac1{n_1}+\frac1{n_2}
-\Big)},\infty
-\right) =  \\
-\left(`r p1`-`r p2` `r round(qnorm(0.05),3)`\sqrt{\left(\frac{`r n1` \cdot `r p1` +`r n2`\cdot `r p2`}{`r n1`
-+`r n2`}\right)\left(1-\frac{`r n1` \cdot `r p1` +`r n2`\cdot `r p2`}{`r n1`
-+`r n2`}\right)\left(\frac1{`r n1`}+\frac1{`r n2`}\right)},\infty\right) = \\
-(`r round(p1-p2+qnorm(0.05)*sqrt(((x1+x2)/(n1+n2))*(1-((x1+x2)/(n1+n2)))*(1/n1+1/n2)),3)`,\infty)
-\end{array}
-$$
-
-
-Nos fijamos que el intervalo anterior contiene el valor $\Delta =0.05$, razón que nos reafirma la decisión tomada de no rechazar que $p_1\leq p_2+ 0.05$ pero, en cambio, no contiene el valor $0$ y por tanto, podríamos rechazar que $p_1=p_2$.
-
-</div>
-
-## Contrastes para dos varianzas
-
-## Introducción
-
-Dadas dos poblaciones de distribución normal e indpendientes, nos planteamos si las varianzas de dichas poblaciones son iguales o diferentes.
-
-Una aplicación del contraste de varianzas es decidir qué opción elegir en el marco de una comparación de medias de muestras independientes.
-
-Tenemos dos variables aleatorias $X_1$ y $X_2$ normales de desviaciones típicas $\sigma_1$, $\sigma_2$ desconocidas
-
-Suponemos que tenemos una m.a.s de cada variable:
-$$
-\begin{array}{l}
-X_{1,1}, X_{1,2},\ldots, X_{1,n_1}\mbox{ de }X_1\\
-X_{2,1}, X_{2,2},\ldots, X_{2,n_2}\mbox{ de }X_2
-\end{array}
-$$
-Sean $\widetilde{S}_1^2$ y $\widetilde{S}_2^2$ sus varianzas muestrales.
-
-## Contrastes planteados
-Nos planteamos los contrastes siguientes:
-
-<ol type="a">
-  <li> $\left\{\begin{array}{l}
-H_0:\sigma_1=\sigma_2, \quad \left(\mbox{ o } H_0:\dfrac{\sigma_1^2}{\sigma_2^2}=1\right),\\
-H_1:\sigma_1 > \sigma_2.
-\end{array}
-\right.$ </li>
-
-  <li> $\left\{\begin{array}{l}
-H_0:\sigma_1=\sigma_2, \quad \left(\mbox{ o } H_0:\dfrac{\sigma_1^2}{\sigma_2^2}=1\right),\\
-H_1:\sigma_1 < \sigma_2.
-\end{array}
-\right.$ </li>
-
-  <li> $\left\{\begin{array}{l}
-H_0:\sigma_1=\sigma_2, \quad \left(\mbox{ o } H_0:\dfrac{\sigma_1^2}{\sigma_2^2}=1\right),\\
-H_1:\sigma_1 \neq \sigma_2.
-\end{array}
-\right.$ </li>
-</ol>
-
-## Estadístico de contraste
-
-Se emplea el siguiente **estadístico de contraste**:
-$$
-F=\frac{\widetilde{S}_1^2}{\widetilde{S}_2^2}
-$$
-que, si las dos poblaciones son normales y la hipótesis nula $H_0:\sigma_1=\sigma_2$ es cierta, tiene distribución $F$ de Fisher con grados de libertad $n_1-1$ y $n_2-1$.
-
-Sea $f_0$ el valor que toma usando las desviaciones típicas muestrales.
-
-## La distribución $F$ de Fisher
-
-La distribución $F_{n,m}$ de Fisher, donde $n,m$ son los grados de libertad se define como el cociente de dos variables chi2 independientes de $n$ y $m$ grados de libertad, respectivamente:
-${\chi_{n}^2}/{\chi_m^2}$.
-
-Su función de densidad tiene la siguiente expresión:
-$$
-f_{F_{n,m}}(x)=\frac{\Gamma\left(\frac{n+m}2\right)\cdot\left(\frac{m}{n}\right)^{m/2}x^{(m-2)/2}}
-{\Gamma\left(\frac{n}2\right)\Gamma\left(\frac{m}2\right)\left(1+\frac{m}{n}x\right)^{(m+n)/2}},
-\mbox{ si $x\geq 0$,}
-$$
-donde $\Gamma(x)=\int_0^{\infty} t^{x-1}e^{-t}\, dt,$ si $x> 0$.
-
-Se trata de una distribución no simétrica.
-
-## La distribución $F$ de Fisher
-Gráfica de la función de densidad de algunas distribuciones $F$ de Fisher.
-<div class="center">
-```{r, echo=FALSE,fig=TRUE}
-curve(df(x, df1=1, df2=1), xlim = c(0, 5), ylim = c(0, 1),
-      col = "black", ylab = "densidad", xlab = "x")
-legend("topright",  legend = c("F gl=1,1", "F gl=2,2",
-                              "F gl=3,4", "F gl=4,6",
-                              "F gl=5,10", "F gl=6,12"),
-       fill = c("black", "brown", "green", "tomato", 
-                "pink", "darkblue"),cex = 0.8)
-curve(df(x, df1 = 2, df2=2), col = "brown", add = TRUE)
-curve(df(x, df1 = 3, df2=4), col = "green", add = TRUE)
-curve(df(x, df1 = 4, df2=6), col = "tomato", add = TRUE)
-curve(df(x, df1 = 5, df2=10), col = "pink", add = TRUE)
-curve(df(x, df1 = 6, df2=12), col = "darkblue", add = TRUE)
-```
-</div>
-
-## p-valores
-
-Los **$p$-valores** asociados a los contrastes anteriores son:
-
-<ol type="a">
-  <li> $p$-valor: $P(F_{n_1-1,n_2-1}\geq f_0)$. </li>
-
-  <li> $p$-valor: $P(F_{n_1-1,n_2-1}\leq f_0)$. </li>
-
-  <li> $p$-valor: $\min\{2\cdot P(F_{n_1-1,n_2-1}\leq f_0),2\cdot P(F_{n_1-1,n_2-1}\geq f_0)\}$. </li>
-</ol>
-
-
-## Ejemplo
-<div class="exercise">
-**Ejercicio**
-
-Consideramos el ejemplo donde queríamos comparar los tiempos de realización de una tarea 
-entre estudiantes de dos grados $G_1$ y $G_2$. Suponemos que estos tiempos siguen distribuciones normales.
-
-Disponemos de dos muestras independientes de los tiempos usados por los estudiantes de cada grado para realizar la tarea. Los tamaños de cada muestra son $n_1=n_2=40$. 
-
-Las desviaciones típicas
-muestrales de los tiempos empleados para cada muestra son:
-$$
-\widetilde{S}_1=1.201,\quad \widetilde{S}_2=1.579
-$$
-
-Contrastar la hipótesis de igualdad de varianzas al
-nivel de significación $0.05$.
-
-</div>
-
-## Ejemplo
-<div class="example-sol">
-El contraste planteado es el siguiente:
-$$
-\left\{\begin{array}{l}
-H_0:\sigma_1=\sigma_2,\\
-H_1:\sigma_1\neq \sigma_2,
-\end{array}\right.
-$$
-donde $\sigma_1$ y $\sigma_2$ son las desviaciones típicas de los tiempos empleados para realizar la tarea por los estudiantes de los grados $G_1$ y $G_2$, respectivamente.
-
-El **estadístico de contraste** para el contraste anterior es: $F=\frac{\widetilde{S}_1^2}{\widetilde{S}_2^2}\sim F_{39,39}$.
-
-```{r,echo=FALSE}
-s1=1.201
-s2=1.579
-n1=40
-n2=40
-f0=s1^2/s2^2
-```
-
-
-Dicho estadístico toma el siguiente valor:
-$f_0=\frac{`r s1`^2}{`r s2`^2}=`r round(s1^2/s2^2,3)`.$
-
-</div>
-
-## Ejemplo
-<div class="example-sol">
-El **$p$-valor** para el contraste anterior será:
-$$
-\begin{array}{l}
-\min\{2\cdot P(F_{n_1-1,n_2-1}\leq f_0),2\cdot P(F_{n_1-1,n_2-1}\geq f_0)\}= \\
-\min\{2\cdot P(F_{n_1-1,n_2-1}\leq `r round(f0,3)`),2\cdot P(F_{n_1-1,n_2-1}\geq `r round(f0,3)`)\} 
-= \\ \min\{`r round(2*pf(f0,n1-1,n2-1),3)`,`r round(2*pf(f0,n1-1,n2-1,lower.tail=FALSE),3)`\}=`r round(min(2*pf(f0,n1-1,n2-1),2*(pf(f0,n1-1,n2-1,lower.tail=FALSE))),3)`.
-\end{array}
-$$
-
-Decisión: como que el $p$-valor es moderado pero mayor que $\alpha=0.05$, no podemos rechazar la hipótesis que las dos varianzas sean iguales.
-
-
-Concluimos que no tenemos evidencias suficientes para rechazar que $\sigma_1= \sigma_2$. 
-
-Por tanto, en el contraste de las dos medias, tendríamos que suponer que las varianzas de las dos poblaciones son la misma.
-
-
-## Ejemplo
-<div class="example-sol">
-
-El **intervalo de confianza** para $\frac{\sigma_1^2}{\sigma_2^2}$
-al nivel de confianza $(1-\alpha)\cdot 100\%$ es
-$$
-\left(\frac{\widetilde{S}_1^2}{\widetilde{S}_2^2}\cdot F_{n_1-1,n_2-1,\frac{\alpha}2},\frac{\widetilde{S}_1^2}{\widetilde{S}_2^2}\cdot F_{n_1-1,n_2-1,1-\frac{\alpha}2}\right) =
-\left(\frac{`r s1`^2}{`r s2`^2}\cdot F_{`r n1-1`,`r n2-1`,0.025},\frac{`r s1`^2}{`r s2`^2}\cdot F_{`r n1-1`,`r n2-1`,0.975}\right)=(`r round((s1^2/s2^2)*qf(0.025,n1-1,n2-1),3)`,`r round((s1^2/s2^2)*qf(0.975,n1-1,n2-1),3)`)
-$$
-Observemos que el intervalo de confianza anterior contiene el valor 1, hecho que reafirma la decisión tomada de no rechazar la hipótesis de igualdad de varianzas.
-
-</div>
-
-## Ejemplo
-<div class="example">
-**Ejemplo**
-Se desea comparar la actividad motora espontánea de un grupo de 25 ratas control y otro de 36 ratas desnutridas. Se midió el número de veces que pasaban ante una célula fotoeléctrica durante 24 horas. Los datos obtenidos fueron los siguientes:
+Se desea comparar el \blue{consumo de datos en Gigas con dos tipos de tarifas  de datos móviles BigA y BigB}. Se toma una muestra de  25  usuarios de la tarifa BigA y 36  de la BigB.
+Se midió  el consumo mensual  en Gigas de los usuarios de cada una de las muestras. El resumen de los resultados se muestra en la siguiente tabla.
 </div>
 
 <div class="center">
 | | $n$    | $\overline{X}$  | $\widetilde{S}$ |
 |-------------------|-------------------|---------|----------|
-| 1. Control   | 25 | $869.8$     | $106.7$ |
-| 2. Desnutridas | 36 | $665$ | $133.7$ |
+| 1. BigA   | 25 | $869.8$     | $106.7$ |
+| 2. BigB  | 36 | $665$ | $133.7$ |
 </div>
 
 
 <div class="example">
 
-¿Se observan diferencias significativas entre el grupo de control y el grupo desnutrido? 
+\red{¿Se observan diferencias significativas entre BigA y BigB?} 
 
-Supondremos que los datos anteriores provienen de poblaciones normales.
+Supondremos que los datos anteriores provienen de poblaciones aproximadamente normales.
 
 </div>
 
@@ -1090,9 +332,9 @@ H_0:\mu_1=\mu_2,\\
 H_1:\mu_1\neq \mu_2,
 \end{array}\right.
 $$
-donde $\mu_1$ y $\mu_2$ representan los valores medios del número de veces que las ratas de control y desnutridas pasan ante la célula fotoeléctrica, respectivamente.
+donde $\mu_1$ y $\mu_2$ representan los valores medios de consumo de las tarifas BigA y BigB, respectivamente.
 
-Antes de nada, tenemos que averiguar si las varianzas de los dos grupos son iguales o no ya que es un parámetro a usar en el contraste a realizar.
+Antes de nada, tenemos que \red{averiguar si las varianzas de los dos grupos son iguales o no} ya que es un parámetro a usar en el contraste a realizar.
 
 Por tanto, en primer lugar, realizaremos el contraste:
 $$
@@ -1101,7 +343,7 @@ H_0:\sigma_1=\sigma_2\\
 H_1:\sigma_1\neq \sigma_2
 \end{array}\right.
 $$
-donde $\sigma_1$ y $\sigma_2$ representan las desviaciones típicas del número de veces que las ratas de control y desnutridas pasan ante la célula fotoeléctrica, respectivamente.
+donde $\sigma_1$ y $\sigma_2$ representan las desviaciones típicas de las tarifas BigA y BigB, respectivamente..
 
 </div>
 
@@ -1119,7 +361,7 @@ f0=s1^2/s2^2
 ## Ejemplo
 <div class="example-sol">
 
-El **Estadístico de contraste** para el contraste anterior vale: $F=\frac{\widetilde{S}_1^2}{\widetilde{S}_2^2}\sim F_{24,35}.$
+El **Estadístico de contraste** para el contraste anterior es: $F=\frac{\widetilde{S}_1^2}{\widetilde{S}_2^2}\sim F_{24,35}.$
 
 El valor que toma es el siguiente: $f_0=\frac{`r s1`^2}{`r s2`^2}=`r round(s1^2/s2^2,3)`.$
 
@@ -1131,7 +373,7 @@ $$
 = \\ \min\{`r round(2*pf(f0,n1-1,n2-1),3)`,`r round(2*pf(f0,n1-1,n2-1,lower.tail=FALSE),3)`\}=`r round(min(2*pf(f0,n1-1,n2-1),2*(pf(f0,n1-1,n2-1,lower.tail=FALSE))),3)`.
 \end{array}
 $$
-El **$p$-valor** es un valor grande, por tanto, concluimos que no podemos rechazar la hipótesis nula y decidimos que las varianzas de las dos poblaciones son iguales.
+El **$p$-valor** es un valor grande, por tanto, concluimos que no podemos rechazar la hipótesis nula y decidimos que las varianzas del consumo de daos de ambas tarifas son iguales.
 
 </div>
 
@@ -1156,191 +398,47 @@ $t_0=\frac{`r x1`-`r x2`}{\sqrt{(\frac1{`r n1`}+\frac1{`r n2`})\cdot
 \frac{`r n1-1`\cdot `r s1`^2+`r n2-1`\cdot `r s2`^2}
 {`r n1`+`r n2`-2}}}=`r round((x1-x2)/sqrt((1/n1+1/n2)*((n1-1)*s1^2+(n2-1)*s2^2)/(n1+n2-2)),3)`.$
 
+
+</div>
+
+## Ejemplo
+<div class="example-sol">
+
 El **$p$-valor** del contraste será:
 $p=2\cdot P(t_{`r n1+n2-2`}\geq `r round((x1-x2)/sqrt((1/n1+1/n2)*((n1-1)*s1^2+(n2-1)*s2^2)/(n1+n2-2)),3)`)\approx 
 `r round(2*pt((x1-x2)/sqrt((1/n1+1/n2)*((n1-1)*s1^2+(n2-1)*s2^2)/(n1+n2-2)),n1+n2-2,lower.tail=FALSE),3)`.$
 
-Decisión: como el **$p$-valor** es prácticamente nulo, concluimos que tenemos evidencias suficientes para rechazar la hipótesis nula y por tanto hay diferencias entre las ratas de control y las desnutridas entre el número de veces que pasan ante la célula fotoeléctrica.
-</div>
-
-## Contrastes para varianzas en `R`
-
-La función para efectuar este test en `R` es `var.test`y su sintaxis básica es la misma que la de `t.test` para dos muestras:
-```{r,eval=FALSE}
-var.test(x, y, alternative=..., conf.level=...)
-```
-donde  `x` e `y` son los dos vectores de datos, que se pueden especificar mediante una fórmula como en el caso de `t.test`, y el parámetro `alternative` puede tomar los tres mismos valores que en los tests anteriores.
-
-
-## Contrastes para varianzas en `R`. Ejemplo
-<div class="exercise">
-**Ejercicio**
-
-Recordemos que cuando explicábamos el contraste para dos medias independientes, contrastamos si las medias de las longitudes del pétalo para las especies setosa y versicolor eran iguales o no pero necesitábamos saber si las varianzas eran iguales o no para poder tenerlo en cuenta en la función `t.test`. 
-
-Veamos ahora si podemos considerar las varianzas iguales o no. 
-
-Las muestras eran `muestra.setosa` y `muestra.versicolor`. 
-
+Decisión:\blue{como el **$p$-valor** es prácticamente nulo, concluimos que tenemos evidencias suficientes para rechazar la hipótesis nula y por tanto hay diferencias   en el consumo medio entre la tarifa BigA y la BigB}.
 </div>
 
 
 
-## Contrastes para varianzas en `R`. Ejemplo
 
-<div class="example-sol">
-Realicemos el contraste de igualdad de varianzas:
-```{r}
-var.test(muestra.setosa$Petal.Length,muestra.versicolor$Petal.Length)
-```
+## Ejemplo  contraste de  medias emparejadas, comparación de dos algoritmos de fidelización.
 
-
-</div>
-
-## Contrastes para varianzas en `R`. Ejemplo
-
-<div class="example-sol">
-El p-valor del contraste ha sido prácticamente cero. Por tanto, concluimos que tenemos evidencias suficientes para afirmar que las varianzas de las longitudes del pétalo de las flores de las especies setosa y versicolor son diferentes. 
-
-Si nos fijamos en el intervalo de confianza en el cociente de varianzas $\frac{\sigma^2_{{ setosa}}}{\sigma^2_{{versicolor}}}$,
-```{r}
-var.test(muestra.setosa$Petal.Length,muestra.versicolor$Petal.Length)$conf.int
-```
-vemos que no contiene el valor 1, de hecho está a la izquierda de él. Este hecho nos hace reafirmar la conclusión anterior.
-
-Para que el contraste anterior tenga sentido, hemos de suponer que las longitudes del pétalo de las flores de las especies setosa y versicolor siguen distribuciones normales.
-
-</div>
-
-## Contrastes para varianzas
-
-* Hemos insistido en que el test F solo es válido si las dos poblaciones cuyas varianzas comparamos son normales. 
-
-* ¿Qué podemos hacer si dudamos de su normalidad? Usar un test no paramétrico que no presuponga esta hipótesis. 
-
-* Hay diversos tests no paramétricos para realizar contrastes bilaterales de dos varianzas. Aquí os recomendamos el **test de Fligner-Killeen**, implementado en la función `fligner.test`. 
-
-  * Se aplica o bien a una `list` formada por las dos muestras, o bien a una fórmula que separe un vector numérico en dos muestras por medio de un factor de dos niveles.
-  
-  
-## Contrastes para varianzas. Ejemplo.
-
-<div class="example-sol">
-Realicemos el contraste previo de igualdad de varianzas usando el test no paramétrico anterior para ver si llegamos a la misma conclusión:
-```{r}
-fligner.test(list(muestra.setosa$Petal.Length,muestra.versicolor$Petal.Length))
-```
-Como el p-valor vuelve a ser insignificante, llegamos a la misma conclusión anterior: tenemos evidencias suficientes para afirmar que las varianzas de las longitudes del pétalo de las flores de las especies setosa y versicolor son diferentes.
-
-La ventaja de este test es que no necesitamos la normalidad de las muestras, aunque su potencia, que explicaremos más adelante, sea inferior.
-</div>
-
-
-## Muestras emparejadas
-
-## Introducción
-
-Las muestras consideradas hasta el momento se han supuesto **independientes**.
-
-Un caso completamente diferente es cuando las dos muestras corresponden a los mismos
-individuos o a individuos emparejados por algún factor.
-
-Ejemplos:
-
-* Se estudia el estado de una dolencia a los mismos individuos antes y después de un tratamiento.
-
-* Se mide la incidencia de cáncer en parejas de hermanos gemelos.
-
-En estos casos, se habla de **muestras emparejadas**, o **paired samples** en inglés.
-
-
-## Introducción
-
-Para decidir si hay diferencias entre los valores de dos **muestras emparejadas**, el contraste más común consiste a calcular las diferencias de los valores de cada una de las parejas de muestras y realizar un
-contraste para averiguar si la media de las diferencias es 0.
-
-<l class="observ"> Observación: </l>
-El **diseño experimental** para realizar un contraste de **muestras emparejadas** se tiene que fijar **antes** de la **recogida de datos**.
-
-## Contrastes de medias de muestras emparejadas
-
-En el caso de un contraste de muestras emparejadas, sean $X_1$ y $X_2$ las variables correspondientes y sean
-$$
-\begin{array}{l}
-X_{1,1}, X_{1,2},\ldots, X_{1,n},\mbox{ de }X_1\\
-X_{2,1}, X_{2,2},\ldots, X_{2,n},\mbox{ de }X_2
-\end{array}
-$$
-las m.a.s. de cada una de las variables correspondientes a las dos muestras.
-
-Fijémonos que, al ser la muestras emparejadas, los tamaños de las mismas deben ser iguales.
-
-Consideramos la variable diferencia $D=X_1-X_2$. La m.a.s. de $D$ construida a partir de las muestras anteriores será:
-$$
-D_1 =X_{1,1}-X_{2,1}, \ D_2=X_{1,2}-X_{2,2},\ldots, D_n=X_{1,n}-X_{2,n}.
-$$
-
-
-## Contrastes de medias de muestras emparejadas
-
-Los contastes planteados son los siguientes:
-<ol type="a">
-  <li> $\left\{\begin{array}{l}
-H_0:\mu_1=\mu_2,\\
-H_1:\mu_1> \mu_2.
-\end{array}\right.$
- </li>
-
-  <li> $\left\{\begin{array}{l}
-H_0:\mu_1=\mu_2,\\
-H_1:\mu_1< \mu_2.
-\end{array}\right.$ </li>
-
-  <li> $\left\{\begin{array}{l}
-H_0:\mu_1=\mu_2,\\
-H_1:\mu_1\neq \mu_2.
-\end{array}\right.$ </li>
-</ol>
-
-## Contrastes de medias de muestras emparejadas
-
-que, escritos en términos de la media de la variable diferencia $D$, $\mu_d$, serán:
-<ol type="a">
-  <li> $\left\{\begin{array}{l}
-H_0:\mu_d=0,\\
-H_1:\mu_d> 0.
-\end{array}\right.$
- </li>
-
-  <li> $\left\{\begin{array}{l}
-H_0:\mu_d=0,\\
-H_1:\mu_d< 0.
-\end{array}\right.$ </li>
-
-  <li> $\left\{\begin{array}{l}
-H_0:\mu_d=0,\\
-H_1:\mu_d\neq 0.
-\end{array}\right.$ </li>
-</ol>
-
-## Contrastes de medias de muestras emparejadas
-
-O sea, hemos reducido un contraste de medias de dos muestras dependientes a un contraste de una sola media de una sola muestra. 
-
-A partir de aquí, podemos calcular los **p-valores** y los **intervalos de confianza** de los contrates anteriores usando las expresiones de los contrastes de una media de una sola media vistos anteriormente.
-
-## Ejemplo de medias emparejadas
 <div class="example">
 **Ejemplo de medias emparejadas**
 
-Disponemos de dos algoritmos de alineamiento de proteínas. Los dos producen resultados de la misma calidad.
+Disponemos de \blue{dos algoritmos de fidelización de clientes de un  juego  para móviles mediante el regalo de tiempo sin anuncios  o vidas en el  juego}. Los dos producen resultados de la misma calidad.
 
-Estamos interesados en saber cuál de los dos algoritmos es *más eficiente*, en el sentido de tener un tiempo de ejecución más corto. Suponemos que dichos tiempos de ejecución siguen leyes normales.
+Estamos interesados en saber cuál de los dos algoritmos es *más eficiente*, en el sentido de consumir menos en nuestros servidores al dar  un tiempo de ejecución más corto. Suponemos que dichos \red{tiempos de ejecución siguen leyes normales}.
 
-Tomamos una muestra de proteínas y les aplicamos los dos algoritmos, anotando los tiempos de ejecución sobre cada proteína.
+Tomamos una muestra de  jugadores y les aplicamos los dos algoritmos, anotando los tiempos de ejecución sobre cada jugador.
+
+</div>
+
+
+
+
+## Ejemplo  contraste de  medias emparejadas, comparación de dos algoritmos de fidelización.
+
+<div class="example">
 
 Los resultados obtenidos son:
 
+
+
+\scriptsize
 </div>
 <div class="center">
 |  | 1| 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
@@ -1348,6 +446,7 @@ Los resultados obtenidos son:
 algoritmo 1 | 8.1 | 11.9 | 11.4 | 12.9 | 9.0 | 7.2 | 12.4 | 6.9 | 8.9 | 8.3 |
 algoritmo 2 | 6.9 | 6.7 | 8.3 | 8.6 | 18.9 | 7.9 | 7.4 | 8.7 | 7.9 | 12.4 |
 diferencias | 1.2 | 5.2 | 3.1 | 4.3 | -9.9 | -0.7 | 5.0 | -1.8 | 1.0 | -4.1 |
+\normalsize
 </div>
 
 
@@ -1357,13 +456,13 @@ diferencias = c( 1.2, 5.2, 3.1, 4.3, -9.9, -0.7, 5.0, -1.8, 1.0, -4.1)
 
 
 
-## Ejemplo de medias emparejadas
+## Ejemplo  contraste de  medias emparejadas, comparación de dos algoritmos de fidelización.
 <div class="example-sol">
-La media y la desviación típica muestrales de las difencias son $\overline{d}=`r mean(diferencias)`,$ $\tilde s_d = `r round(sd(diferencias),3)`.$
+La media y la desviación típica muestrales de las diferencias son $\overline{d}=`r mean(diferencias)`,$ $\tilde s_d = `r round(sd(diferencias),3)`.$
 
 Queremos contrastar la igualdad de medias con el test que corresponda. Y si son diferentes, decidir cuál tiene mayor tiempo de ejecución.
 
-O sea, queremos realizar el contraste siguiente:
+Queremos realizar el contraste siguiente:
 $$
 \left\{\begin{array}{l}
 H_0:\mu_1=\mu_2,\\
@@ -1372,6 +471,15 @@ H_1:\mu_1\neq \mu_2,
 $$
 donde $\mu_1$ y $\mu_2$ son los tiempos de ejecución de los algoritmos 1 y 2, respectivamente.
 
+
+</div>
+
+
+
+
+## Ejemplo  contraste de  medias emparejadas, comparación de dos algoritmos de fidelización.
+
+<div class="example">
 Escribimos el contraste anterior en función de $\mu_d$, la media de las diferencias de los tiempos de ejecución entre los dos algoritmos:
 $$
 \left\{\begin{array}{l}
@@ -1384,7 +492,7 @@ $$
 
 </div>
 
-## Ejemplo de medias emparejadas
+## Ejemplo  contraste de  medias emparejadas, comparación de dos algoritmos de fidelización.
 <div class="example-sol">
 
 El **estadístico de contraste** para el contraste anterior es $T=\frac{\overline{d}}{\widetilde{S}_d/\sqrt{n}},$
@@ -1394,420 +502,7 @@ Dicho estadístico toma el siguiente valor usando los valores muestrales: $t_0=\
 
 El **$p$-valor** del contraste anterior será: $p=2\cdot p(t_{`r length(diferencias)-1`} > |`r round(mean(diferencias)/(sd(diferencias)/sqrt(length(diferencias))),3)`|) =`r round(2*pt(mean(diferencias)/(sd(diferencias)/sqrt(length(diferencias))),length(diferencias)-1,lower.tail=FALSE),3)`.$
 
-Es un valor grande. Por tanto, no tenemos evidencias suficientes para rechazar la  hipótesis nula y concluimos que los tiempos de ejecución de los dos algoritmos es el mismo.
+Es un valor grande. \blue{Por tanto, no tenemos evidencias suficientes para rechazar la  hipótesis nula y concluimos que los tiempos de ejecución de los dos algoritmos es el mismo}.
 
 </div>
 
-
-## Contrastes para medias emparejadas en `R`. El test t
-
-Recordemos la sintaxis básica del test t en `R`
-
-```{r,eval=FALSE}
-t.test(x, y, mu=..., alternative=..., conf.level=..., paired=..., 
-       var.equal=..., na.omit=...)
-```
-
-donde el único parámetro para indicarle si las muestras son emparejadas o independientes es el parámetro `paired`:
-con `paired=TRUE` indicamos que las muestras son emparejadas, y con `paired=FALSE` (que es su valor por defecto) que  son independientes. 
-
-
-## Ejemplo de dos muestras dependientes con `R`
-<div class="exercise">
-**Ejercicio**
-
-Nos planteamos si la longitud del sépalo supera la longitud del pétalo para las flores de la especie virginica en la tabla de datos `iris`.
-
-En este caso se trataría de un contraste de medias dependientes:
-$$
-\left.
-\begin{array}{ll}
-H_0: & \mu_{{sépalo,virginica}} =\mu_{{pétalo,virginica}}, \\
-H_1: & \mu_{{sépalo,virginica}} > \mu_{{pétalo,virginica}},
-\end{array}
-\right\}
-$$
-donde $\mu_{{sépalo,virginica}}$ y $\mu_{{pétalo,virginica}}$ son las longitudes del sépalo y del pétalo de las flores de la especie virginica.
-
-</div>
-
-## Ejemplo de dos muestras dependientes con `R`
-<div class="example-sol">
-Para realizar dicho contraste, vamos a considerar una muestra de 40 flores de la especie virgínica y sobre **las mismas flores** calcular las longitudes del sépalo y del pétalo.
-
-En primer lugar seleccionamos las flores de la muestra:
-```{r}
-set.seed(100)
-flores.elegidas.virginica=sample(101:150,40,replace=TRUE)
-```
-La muestra elegida será:
-```{r}
-muestra.virginica = iris[flores.elegidas.virginica,]
-```
-
-</div>
-
-## Ejemplo de dos muestras dependientes con `R`
-<div class="example-sol">
-El contraste a realizar es el siguiente:
-```{r}
-t.test(muestra.virginica$Sepal.Length,muestra.virginica$Petal.Length,
-       paired=TRUE,alternative="greater")
-```
-
-
-</div>
-
-## Ejemplo de dos muestras dependientes con `R`
-<div class="example-sol">
-Vemos que el p-valor del contraste es prácticamente nulo, lo que nos hace concluir que tenemos evidencias suficientes para afirmar que la longitud del sépalo es superior a la longitud del pétalo para las flores de la especie virginica.
-
-Fijémonos que la media de la diferencia entre las medias de las longitudes del sépalo y del pétalo vale `r t.test(muestra.virginica$Sepal.Length,muestra.virginica$Petal.Length,paired=TRUE,alternative="greater")[[5]]`, valor suficientemente alejado del cero para poder afirmar que la media de la longitud del sépalo es superior a la media de la longitud del pétalo.
-</div>
-
-
-## Ejemplo de dos muestras dependientes con `R`
-<div class="example-sol">
-El intervalo de confianza al 95% de confianza para la diferencia de medias asociado al contraste anterior vale:
-```{r}
-t.test(muestra.virginica$Sepal.Length,muestra.virginica$Petal.Length,
-       paired=TRUE,alternative="greater")$conf.int
-```
-intervalo que no contiene el cero y que está a la derecha del mismo, lo que nos hace reafirmar que tenemos evidencias suficientes para rechazar la hipótesis nula $H_0$.
-</div>
-
-
-## Contrastes de proporciones de muestras emparejadas
-
-Supongamos que evaluamos dos características dicotómicas sobre una misma muestra de $n$ sujetos. Resumimos los resultados obtenidos en la tabla siguiente:
-
-$$
-\begin{array}{r|c}
- & \ \mbox{Característica 1}\  \\
-\mbox{Característica 2} &\ \ \, \mbox{Sí}\qquad \mbox{No}\\\hline
- \mbox{Sí} & \quad\ \  a \qquad \ \ \, b\quad  \\
- \mbox{No} & \quad\ \   c  \qquad \ \ \, d\quad
- \end{array}
-$$
-
-
-## Contrastes para proporciones. Muestras emparejadas
-
-Se cumple $a+b+c+d=n$. Esta tabla quiere decir, naturalmente, que $a$ sujetos de la muestra tuvieron la característica 1 y la característica 2, que $b$ sujetos de la muestra tuvieron la característica 2 y pero no tuvieron la característica 2, etc.
-
-
-Vamos a llamar $p_{1}$ a la proporción poblacional de individuos con la característica 1, y $p_{2}$ a la proporción poblacional de individuos con la característica 2. 
-
-Queremos contrastar la hipótesis nula $H_{0}:p_1=p_2$ contra alguna hipótesis alternativa. En este caso, no pueden usarse las funciones `prop.test` o  `fisher.test`. 
-
-
-## Contrastes para proporciones. Muestras emparejadas
-
-La solución es realizar el contraste bilateral: (o los unilaterales asociados)
-$$
-\left\{\begin{array}{l}
-H_{0}:p_1=p_2,\\
-H_{1}:p_1\neq p_2.
-\end{array}\right.
-$$
-Dicho contraste tiene sentido cuando $n$ es grande y el número $b+c$ de **casos discordantes** (en los que una característica da Sí y la otra da No) es razonablemente grande, pongamos $\geq 20$. 
-
-## Contrastes para proporciones. Muestras emparejadas
-
-El **estadístico de contraste** para el contraste anterior es $Z=\frac{\frac{b}{n}-\frac{c}{n}}{\sqrt{\frac{b+c}{n^2}}}$, cuya distribución aproximada es una $N(0,1)$.
-Sea $z_0$ el valor que toma sobre los valores muestrales.
-
-Por tanto el **$p$-valor** será: $p=2\cdot p(Z > |z_0|)$.
-
-<div class="exercise">
-**Ejercicio**
-
-Hallar los **$p$-valores** para los contrastes unilaterales.
-</div>
-
-## Ejemplo de proporciones emparejadas
-<div class="example">
-**Ejemplo de proporciones emparejadas**
-
-Se toma una muestra de $1000$ personas afectadas por migraña. Se les facilita un fármaco porque aligere los síntomas. 
-
-Después de la administración se les pregunta si han notado alivio en el dolor.
-
-Al cabo de un tiempo se suministra a los mismos individuos un placebo y se les vuelve a preguntar si han notado o no mejora. 
-
-Nos preguntamos si es más efectivo el fármaco que el placebo en base a los resultados del estudio:
-
-</div>
-
-<div class="center">
-| Fármaco/Placebo  | Si | No |
-|--|--|---|
-| Si | 300 | 62 |
-| No | 38 | 600 |
-</div>
-
-
-## Ejemplo de proporciones emparejadas
-<div class="example-sol">
-
-El contraste que nos piden realizar es el siguiente:
-$$
-\left\{\begin{array}{l}
-H_0:p_1=p_2\\
-H_1:p_1> p_2
-\end{array}\right.
-$$
-donde $p_1$ y $p_2$ representan las proporciones de gente que encuentra mejora con el fármaco y el placebo, respectivamente.
-
-```{r,echo=FALSE}
-a=300
-b=62
-c=38
-d=600
-n=a+b+c+d
-```
-
-El estadístico de contraste para el contraste anterior es: $Z=\frac{\frac{b}{n}-\frac{c}{n}}{\sqrt{\frac{b+c}{n^2}}}$, cuya distribución aproximada es una $N(0,1)$, donde $a=`r a`$, $b=`r b`$, $c=`r c`$ y $d=`r d`$ en nuestro caso. 
-
-El valor que toma dicho estadístico es: $z_0 = \frac{\frac{`r b`}{`r n`}-\frac{`r c`}{`r n`}}{\sqrt{\frac{`r b`+`r c`}{`r n`^2}}} =`r round((b/n-c/n)/sqrt((b+c)/n^2),3)`.$
-
-</div>
-
-
-## Ejemplo de proporciones emparejadas
-<div class="example-sol">
-
-Este contraste solo es válido cuando la muestra es grande y el número de *casos discordantes* $b+d$ (`r b+c` en nuestro caso) es "bastante grande", $\geq 20$.
-
-
-
-
-El **$p$-valor** para el contraste considerado es $P(Z>`r round((b/n-c/n)/sqrt((b+c)/n^2),3)`)=`r round(pnorm((b/n-c/n)/sqrt((b+c)/n^2),lower.tail=FALSE),3)`,$
-pequeño. 
-
-Por lo tanto, concluimos que tenemos evidencias suficientes para rechazar la hipótesis nula y poder afirmar que el fármaco es más efectivo que el placebo.
-
-</div>
-
-## Contrastes para proporciones de muestras emparejadas en `R`
-
-
-En `R` podemos usar el  **test de McNemar**, que se lleva a cabo con la instrucción `mcnemar.test`. Su sintaxis básica es
-
-```{r, eval=FALSE}
-mcnemar.test(X)
-```
-
-donde `X` es la matriz $\left(\begin{array}{cc}
-a & b\\ c& d
-\end{array}\right)$
-que corresponde a la tabla anterior. 
-
-## Contrastes para proporciones de muestras emparejadas en `R`. Ejemplo
-
-<div class="exercise">
-**Ejercicio**
-
-Usando la tabla de datos **birthw** del paquete **MASS**, vamos a ver si la proporción de madres fumadoras es la misma que la proporción de madres hipertensas.
-
-Para ello, vamos a considerar una muestra de 30 madres y vamos a realizar el contraste correspondiente.
-
-</div>
-
-<div class="example-sol">
-
-En primer lugar elegimos las madres y consideramos la muestra correspondiente:
-```{r}
-set.seed(333)
-madres.elegidas.prop.empar = sample(1:189,30,replace=TRUE)
-muestra.madres.prop.empar = birthwt[madres.elegidas.prop.empar,]
-```
-
-
-</div>
-
-## Contrastes para proporciones de muestras emparejadas en `R`. Ejemplo
-
-<div class="example-sol">
-Seguidamente, calculamos la matriz para usar en el contraste:
-```{r}
-(matriz.prop.empar = table(muestra.madres.prop.empar$smoke,muestra.madres.prop.empar$ht))
-```
-Fijémonos que dicha matriz no es correcta ya que $a=`r matriz.prop.empar[2,2]`$, $b=`r matriz.prop.empar[2,1]`$, $c=`r matriz.prop.empar[1,2]`$ y $d=`r matriz.prop.empar[1,1]`$. Arreglamos la matriz:
-```{r}
-matriz.prop.empar = rbind(matriz.prop.empar[2,],matriz.prop.empar[1,])
-matriz.prop.empar = cbind(matriz.prop.empar[,2],matriz.prop.empar[,1])
-```
-
-
-
-</div>
-
-## Contrastes para proporciones de muestras emparejadas en `R`. Ejemplo
-
-<div class="example-sol">
-Comprobamos que es correcta:
-```{r}
-matriz.prop.empar
-```
-</div>
-
-
-## Contrastes para proporciones de muestras emparejadas en `R`. Ejemplo
-
-<div class="example-sol">
-Por último, realizamos el contraste planteado:
-```{r}
-mcnemar.test(matriz.prop.empar)
-```
-
-
-
-</div>
-
-## Contrastes para proporciones de muestras emparejadas en `R`. Ejemplo
-
-
-<div class="example-sol">
-Hemos obtenido un p-valor de `r round(mcnemar.test(matriz.prop.empar)$p.value,4)`, valor que está entre 0.05 y 0.1, la llamada zona de penumbra donde no se puede tomar una decisión clara.
-
-Podemos decir, si consideramos que el p-valor es suficientemente grande, que no tenemos evidencias suficientes para aceptar que la proporción de madres fumadoras y con hipertensión sea diferente.
-
-En otras palabras, no rechazamos la hipótesis nula $H_0$.
-
-Ahora bien, hay que tener en cuenta que el p-valor no es demasiado grande para tal conclusión.
-
-</div>
-
-
-## Contrastes para proporciones. Muestras emparejadas. 
-
-Otra posibilidad para realizar un contraste de dos proporciones usando muestras emparejadas, que no requiere de ninguna hipótesis sobre los tamaños de las muestras,  es usar de manera adecuada la función `binom.test`.
-
-Para explicar este método, consideremos la tabla siguiente, donde ahora damos las probabilidades poblacionales de las cuatro combinaciones de resultados:
-$$
-\begin{array}{r|c}
- & \ \mbox{Característica 1}\  \\
-\mbox{Característica 2} &\quad \ \!\mbox{Sí}\qquad\quad\, \mbox{No}\quad \\\hline
- \mbox{Sí} & \quad \  p_{11}  \qquad\quad p_{01}\quad  \\
- \mbox{No} & \quad \  p_{10} \qquad\quad  p_{00}\quad
- \end{array}
-$$
-
-## Contrastes para proporciones. Muestras emparejadas. 
-
-De esta manera $p_1=p_{11}+p_{10}$ y $p_2=p_{11}+p_{01}$. 
-
-Entonces,  $p_1=p_2$ es equivalente a $p_{10}=p_{01}$ y cualquier hipótesis alternativa se traduce en la misma desigualdad, pero para $p_{10}$ y $p_{01}$: 
-
-* $p_1\neq p_2$ es equivalente a $p_{10}\neq p_{01}$; 
-
-* $p_1< p_2$ es equivalente a $p_{10}< p_{01}$; y 
-
-* $p_1> p_2$ es equivalente a $p_{10}> p_{01}$. 
-
-Por lo tanto podemos traducir el contraste sobre $p_1$ y $p_2$ al mismo contraste sobre $p_{10}$ y $p_{01}$. 
-
-## Contrastes para proporciones. Muestras emparejadas. 
-
-La gracia ahora está en que si la hipótesis nula $p_{10}=p_{01}$ es cierta, entonces, en el total de casos discordantes, el número de sujetos en los que la característica 1 da Sí y la característica 2 da No sigue una ley binomial con $p=0.5$.
-
-Por lo tanto, podemos efectuar el contraste usando un test binomial exacto tomando 
-
-* como muestra los casos discordantes de nuestra muestra, de tamaño $b+c$, 
-
-* como éxitos los sujetos  que han dado Sí en la característica 1 y No en la característica 2, de tamaño $c$, 
-
-* con proporción a contrastar $p=0.5$ y con hipótesis alternativa la que corresponda. 
-
-## Contrastes para proporciones. Muestras emparejadas. 
-
-La ventaja de este test es que su validez no requiere de ninguna hipótesis sobre los tamaños de las muestras.  El inconveniente es que el intervalo de confianza que nos dará será para $p_{10}/(p_{10}+p_{01})$, y no permite obtener un intervalo de confianza para la diferencia o el cociente de las probabilidades $p_1$ y $p_2$ de interés.
-
-
-## Contrastes para proporciones de muestras emparejadas en `R`. Ejemplo
-
-<div class="exercise">
-**Ejercicio**
-
-
-Volvamos a realizar el contraste anterior usando este método.
-</div>
-
-<div class="example-sol">
-
-Recordemos que la matriz de proporciones era:
-```{r}
-matriz.prop.empar
-```
-
-</div>
-
-
-## Contrastes para proporciones de muestras emparejadas en `R`. Ejemplo
-
-<div class="example-sol">
-
-Por tanto, el tamaño de nuestra muestra será:
-```{r}
-(n=matriz.prop.empar[1,2]+matriz.prop.empar[2,1])
-```
-
-
-El número de éxitos será:
-```{r}
-(éxitos=matriz.prop.empar[2,1])
-```
-</div>
-
-## Contrastes para proporciones de muestras emparejadas en `R`. Ejemplo
-
-<div class="example-sol">
-El contraste a realizar será:
-```{r}
-binom.test(éxitos,n,p=0.5)
-```
-
-</div>
-
-## Contrastes para proporciones de muestras emparejadas en `R`. Ejemplo
-
-<div class="example-sol">
-Vemos que el p-valor es parecido usando el método anterior y por tanto, las conclusiones son las mismas.
-
-</div>
-
-
-## Guía rápida
-
-Excepto en las que decimos lo contrario, todas las funciones para realizar contrastes que damos a continuación admiten los parámetros `alternative`, que sirve para especificar el tipo de contraste (unilateral en un sentido u otro o bilateral), y  `conf.level`, que sirve para indicar el nivel de confianza $1-\alpha$.  Sus valores por defecto son contraste bilateral y nivel de confianza 0.95.
-
-
-
-## Guía rápida
-   
-*  `t.test` realiza tests t para contrastar una o dos medias (tanto usando muestras independientes como emparejadas). Aparte de `alternative` y  `conf.level`, sus parámetros principales son:
-
-     *  `mu` para especificar el valor de la media que queremos contrastar en un test de una media.
-
-     *  `paired` para indicar si en un contraste de dos medias usamos muestras independientes o emparejadas.
-
-     *  `var.equal` para indicar en un contraste de dos medias usando muestras independientes si las varianzas poblacionales son iguales o diferentes.
-
-*  `sigma.test`, para realizar tests $\chi^2$ para contrastar una varianza (o una desviación típica). Dispone de los parámetros `sigma` y `sigmasq` para indicar, respectivamente, la desviación típica o la varianza a contrastar.
-
-## Guía rápida
-
-*  `var.test`, para realizar tests F para contrastar dos varianzas (o dos desviaciones típicas). 
-
-*  `fligner.test`, para realizar tests no paramétricos de Fligner-Killeen para contrastar dos varianzas (o dos desviaciones típicas). No dispone de los parámetros `alternative` (solo sirve para contastes bilaterales) ni `conf.level` (no calcula intervalos de confianza).
-
-*  `binom.test`, para realizar tests binomiales exactos para contrastar una proporción. Dispone del parámetro  `p` para indicar la proporción a contrastar.
-
-*  `prop.test`, para realizar tests aproximados para contrastar  una proporción o dos proporciones de poblaciones usando muestras independientes.  También dispone del parámetro  `p` para indicar la proporción a contrastar en un contraste de una proporción.
-
-## Guía rápida
-
-*  `fisher.test`, para realizar tests exactos de Fisher para contrastar dos proporciones usando muestras independientes. 
-
-*  `mcnemar.test`, para realizar tests bilaterales de McNemar para contrastar dos proporciones usando muestras emparejadas. No dispone de los parámetros `alternative`  ni `conf.level`.

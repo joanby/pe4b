@@ -1,11 +1,23 @@
-\frametitle{Guía rápida}
-\protect\hypertarget{guuxeda-ruxe1pida-3}{}
+\frametitle{Comparación de las medias de las ventas con dos estrategias de marketing caso varianzas distintas}
+\protect\hypertarget{comparaciuxf3n-de-las-medias-de-las-ventas-con-dos-estrategias-de-marketing-caso-varianzas-distintas}{}
+Consideremos ahora el otro caso:
+
 \begin{itemize}
+\tightlist
 \item
-  \texttt{fisher.test}, para realizar tests exactos de Fisher para
-  contrastar dos proporciones usando muestras independientes.
-\item
-  \texttt{mcnemar.test}, para realizar tests bilaterales de McNemar para
-  contrastar dos proporciones usando muestras emparejadas. No dispone de
-  los parámetros \texttt{alternative} ni \texttt{conf.level}.
+  Caso 2: Suponemos \(\sigma_1\neq \sigma_2\).
 \end{itemize}
+
+El \textbf{estadístico de contraste} será, en este caso:
+\(T=\frac{\overline{X}_1-\overline{X}_2}{\sqrt{\frac{\widetilde{S}_1^2}{n_1}+\frac{\widetilde{S}_2^2}{n_2}}}\sim t_f\)
+donde
+
+\begin{verbatim}
+## [1] 107.3646
+\end{verbatim}
+
+\[
+f=\frac{ \left( \frac{6.2^2}{60}+\frac{6.2^2}{50}\right)^2}
+{\frac1{59}\left(\frac{6.2^2}{60}\right)^2+\frac1{49}\left(\frac{5.57^2}{50}\right)^2}=107.364576
+.
+\]
