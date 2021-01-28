@@ -1,23 +1,21 @@
-\frametitle{Comparación de las medias de las ventas con dos estrategias de marketing caso varianzas distintas}
-\protect\hypertarget{comparaciuxf3n-de-las-medias-de-las-ventas-con-dos-estrategias-de-marketing-caso-varianzas-distintas}{}
-Consideremos ahora el otro caso:
-
-\begin{itemize}
-\tightlist
-\item
-  Caso 2: Suponemos \(\sigma_1\neq \sigma_2\).
-\end{itemize}
-
-El \textbf{estadístico de contraste} será, en este caso:
-\(T=\frac{\overline{X}_1-\overline{X}_2}{\sqrt{\frac{\widetilde{S}_1^2}{n_1}+\frac{\widetilde{S}_2^2}{n_2}}}\sim t_f\)
-donde
-
+\frametitle{Comparación de las medias de las ventas con dos estrategias de marketing}
+\protect\hypertarget{comparaciuxf3n-de-las-medias-de-las-ventas-con-dos-estrategias-de-marketing-2}{}
 \begin{verbatim}
-## [1] 107.3646
+## [1] 6.2
 \end{verbatim}
 
-\[
-f=\frac{ \left( \frac{6.2^2}{60}+\frac{6.2^2}{50}\right)^2}
-{\frac1{59}\left(\frac{6.2^2}{60}\right)^2+\frac1{49}\left(\frac{5.57^2}{50}\right)^2}=107.364576
-.
+\begin{verbatim}
+## [1] 101.78
+\end{verbatim}
+
+El contraste a realizar es el siguiente: \[
+\left\{\begin{array}{l}
+H_0:\mu_1=\mu_2,\\
+H_1:\mu_1< \mu_2,
+\end{array}\right.
+\Longleftrightarrow
+\left\{\begin{array}{l}
+H_0:\mu_1-\mu_2=0,\\
+H_1:\mu_1- \mu_2<0,
+\end{array}\right.
 \]

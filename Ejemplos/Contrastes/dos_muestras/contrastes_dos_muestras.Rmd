@@ -31,9 +31,9 @@ library(MASS)
 Un \blue{jefe de marketing quiere evaluar  la eficacia de dos  estrategias de ventas  $M_1$ y $M_2$}.
 Se quiere averiguar si \red{las ventas  medias en euros de  cada campaña son iguales}.
 
-Para ello se han realizado dos  muestras  seleccionando al azar un conjunto de clientes para  la estrategia $M_1$ y  otro para la $M_2$.
+Para ello se han realizado dos  muestras  seleccionando al azar un conjunto de clientes para  la estrategia $M_1$ y  otro para la $M_2$. Se muestre la variable $X$= venta en euros para cada observación/cliente.
 
-\red{Desconocemos las dos desviaciones típicas poblacionales} $\sigma_1$ y $\sigma_2$ de cada una de las valoraciones de la campaña.
+\red{Desconocemos las dos desviaciones típicas poblacionales} $\sigma_1$ y $\sigma_2$ de  de las ventas para cada una de las campañas.
 </div>
 
 ## Comparación de  las medias de  las ventas con dos estrategias de marketing
@@ -48,15 +48,15 @@ n1=60
 n2=50
 ```
 
-Las dos muestras se han seleccionado de forma independientes y sus tamaños son  $n_1=`r n1`$ y $n_2=`r n2`$ respectivamente. 
+Las dos muestras se han seleccionado de forma independiente y sus tamaños son  $n_1=`r n1`$ y $n_2=`r n2`$ respectivamente. 
 
-La variable que se mide es el número de unidades vendidas
 
-Las medias y las desviaciones típicas de las ventas en euros son:
+
+Las medias y las desviaciones típicas muestrales de las ventas en euros son:
 
 $$
 \overline{x}_1= `r media1` ,\  \overline{x}_2=`r media2`,\ 
-\widetilde{s}_1=`r s1`,\  \widetilde{s}_2=`r s2`.
+ {s}_1=`r s1`,\   {s}_2=`r s2`.
 $$
 
 </div>
@@ -72,6 +72,22 @@ s1=6.20
 s2=5.57
 n1=60
 n2=50
+set.seed(100)
+m1=media1
+m2=media2
+x1=rnorm(n1,m1,s1)
+x2=rnorm(n2,m2,s2)
+x1_tip=scale(x1)
+x1=s1*x1_tip+m1
+sd(x1)
+mean(x1)
+x2_tip=scale(x2)
+x2=s2*x2_tip+m2
+#sd(x2)
+#mean(x2)
+#t.test(x1,x2,"less",var.equal = TRUE)
+#t.test(x1,x2,"less",var.equal = FALSE)
+#round((media1-media2)/sqrt((1/n1+1/n2)*((n1-1)*s1^2+(n2-1)*s2^2)/(n1+n2-2)),3)
 ```
 
 El contraste a realizar es el siguiente:
@@ -102,7 +118,7 @@ El **estadístico de contraste** es:
 
 $$
 T=\frac{\overline{x}_1-\overline{x}_2}{\sqrt{(\frac1{n_1}+\frac1{n_2})\cdot 
-\frac{((n_1-1)\widetilde{s}_1^2+(n_2-1)\widetilde{s}_2^2)}
+\frac{((n_1-1) {s}_1^2+(n_2-1) {s}_2^2)}
 {(n_1+n_2-2)}}}\sim t_{`r n1`+`r n2`-2}=t_{`r n1+n2-2`},
 $$
 </div>
@@ -129,7 +145,7 @@ $P(t_{`r n1+n2-2`}<`r round((media1-media2)/sqrt((1/n1+1/n2)*((n1-1)*s1^2+(n2-1)
 `r round(pt((media1-media2)/sqrt((1/n1+1/n2)*((n1-1)*s1^2+(n2-1)*s2^2)/(n1+n2-2)),n1+n2-2),3)`,$
 valor muy pequeño.
 
-La decisión que tomamos, por tanto, es\red{rechazar la hipótesis de que son iguales, en favor de que ventas medias de la estrategia $M_1$ son más menores que las de la estrategia  $M_2$}.
+La decisión que tomamos, por tanto, es \red{rechazar la hipótesis de que son iguales, en favor de que ventas medias de la estrategia $M_1$ son más menores que las de la estrategia  $M_2$}.
 
 </div>
 
@@ -146,7 +162,7 @@ Consideremos ahora el otro caso:
 
 
 El **estadístico de contraste** será, en este caso:
-$T=\frac{\overline{X}_1-\overline{X}_2}{\sqrt{\frac{\widetilde{S}_1^2}{n_1}+\frac{\widetilde{S}_2^2}{n_2}}}\sim t_f$
+$T=\frac{\overline{X}_1-\overline{X}_2}{\sqrt{\frac{ {S}_1^2}{n_1}+\frac{ {S}_2^2}{n_2}}}\sim t_f$
 donde
 
 ```{r echo=FALSE}
@@ -155,8 +171,12 @@ T0=round((media1-media2)/sqrt(s1^2/n1+s2^2/n2),4)
 ```
 
 $$
-f=\frac{ \left( \frac{`r s1`^2}{`r n1`}+\frac{`r s1`^2}{`r n2`}\right)^2}
-{\frac1{`r n1-1`}\left(\frac{`r s1`^2}{`r n1`}\right)^2+\frac1{`r n2-1`}\left(\frac{`r s2`^2}{`r n2`}\right)^2}=`r f`
+f=
+\frac{ \left( \frac{s_1^2}{ n_1}+\frac{s_2^2}{n_2}\right)^2}
+{\frac1{n_1-1}\left(\frac{s_1^2}{n_1}\right)^2+\frac1{n_2-1}\left(\frac{s_2^2}
+{n_2}\right)^2}=
+\frac{ \left( \frac{`r s1`^2}{`r n1`}+\frac{`r s2`^2}{`r n2`}\right)^2}
+{\frac1{`r n1-1`}\left(\frac{`r s1`^2}{`r n1`}\right)^2+\frac1{`r n2-1`}\left(\frac{`r s2`^2}{`r n2`}\right)^2}=`r round(f,4)`
 .
 $$
 
@@ -210,6 +230,7 @@ para la diferencia de proporciones para este $\alpha$.
 Fijémonos que \red{los tamaños de las muestras (100 y 50) son bastante grandes}.
 
 El contraste pedido es el siguiente:
+
 $$
 \left\{\begin{array}{l}
 H_0:p_1=p_2,\\
@@ -225,12 +246,15 @@ donde $p_1$ y $p_2$ representan las proporciones de créditos que tienen seguro 
 
 <div class="example-sol">
 
-El **estadístico de contraste** será:
-$Z=\frac{\widehat{p}_1 -\widehat{p}_2}{
+El **estadístico de contraste** es:
+
+$$
+Z=\frac{\widehat{p}_1 -\widehat{p}_2}{
 \sqrt{\Big(\frac{n_1 \widehat{p}_1 +n_2 \widehat{p}_2}{n_1
 +n_2}\Big)\Big(1-\frac{n_1 \widehat{p}_1 +n_2 \widehat{p}_2}{n_1
 +n_2}\Big)\Big(\frac1{n_1}+\frac1{n_2}
-\Big)}}.$
+\Big)}}.
+$$
 
 ```{r,echo=FALSE}
 n1=100
@@ -240,15 +264,22 @@ x2=12
 p1=x1/n1
 p2=x2/n2
 ```
-Las proporciones muestrales serán: $\widehat{p}_1 =\frac{`r x1`}{`r n1`}=`r x1/n1`$, $\widehat{p}_2 = \frac{`r x2`}{`r n2`}=`r x2/n2`$.
+Las proporciones muestrales son: 
+
+$$
+\widehat{p}_1 =\frac{`r x1`}{`r n1`}=`r x1/n1`,\quad \widehat{p}_2 = \frac{`r x2`}{`r n2`}=`r x2/n2`.
+$$
+
 </div>
 
 ## Contrastes para dos proporciones $p_1$ y $p_2$: Seguros de vida en créditos al consumo.
 
 <div class="example-sol">
 Si hallamos el valor que toma el **estadístico de contraste** para las proporciones muestrales anteriores, obtenemos:
-$$z_0=\frac{`r p1` -`r p2`}{
-\sqrt{\Big(\frac{`r x1`+`r x2`}{`r n1`+`r n2`}\Big)\Big(1-\frac{`r x1` +`r x2`}{`r n1`+`r n2`}\Big)\Big(\frac1{`r n1`}+\frac1{`r n2`}\Big)}}=`r round((p1-p2)/sqrt(((x1+x2)/(n1+n2))*(1-(x1+x2)/(n1+n2))*(1/n1+1/n2)),3)`.$$
+$$
+z_0=\frac{`r p1` -`r p2`}{
+\sqrt{\Big(\frac{`r x1`+`r x2`}{`r n1`+`r n2`}\Big)\Big(1-\frac{`r x1` +`r x2`}{`r n1`+`r n2`}\Big)\Big(\frac1{`r n1`}+\frac1{`r n2`}\Big)}}=`r round((p1-p2)/sqrt(((x1+x2)/(n1+n2))*(1-(x1+x2)/(n1+n2))*(1/n1+1/n2)),3)`.
+$$
 
 </div>
 
@@ -288,6 +319,7 @@ en nuestro caso es:
 $$
 (`r p1` -`r p2`-`r round(qnorm(0.975),3)`\cdot `r round(sqrt(((x1+x2)/(n1+n2))*(1-(x1+x2)/(n1+n2))*(1/n1+1/n2)),3)`, `r p1`-`r p2` +`r round(qnorm(0.975),3)`\cdot `r round(sqrt(((x1+x2)/(n1+n2))*(1-(x1+x2)/(n1+n2))*(1/n1+1/n2)),3)`) =(`r round(p1-p2-qnorm(0.975)*sqrt(((x1+x2)/(n1+n2))*(1-(x1+x2)/(n1+n2))*(1/n1+1/n2)),3)`,`r round(p1-p2+qnorm(0.975)*sqrt(((x1+x2)/(n1+n2))*(1-(x1+x2)/(n1+n2))*(1/n1+1/n2)),3)`).
 $$
+
 Observemos que contiene el 0. Por tanto no podemos rechazar que $p_1-p_2=0$ llegando a la misma conclusión que con el **$p$-valor**.
 </div>
 
@@ -308,7 +340,7 @@ Se midió  el consumo mensual  en Gigas de los usuarios de cada una de las muest
 </div>
 
 <div class="center">
-| | $n$    | $\overline{X}$  | $\widetilde{S}$ |
+| | $n$    | $\overline{x}$  | s |
 |-------------------|-------------------|---------|----------|
 | 1. BigA   | 25 | $869.8$     | $106.7$ |
 | 2. BigB  | 36 | $665$ | $133.7$ |
@@ -323,7 +355,7 @@ Supondremos que los datos anteriores provienen de poblaciones aproximadamente no
 
 </div>
 
-## Ejemplo
+## Uso de datos móviles con dos tipos de tarifas:BigA y BigB
 <div class="example-sol">
 El contraste a realizar es el siguiente:
 $$
@@ -358,10 +390,10 @@ f0=s1^2/s2^2
 ```
 
 
-## Ejemplo
+## Uso de datos móviles con dos tipos de tarifas:BigA y BigB
 <div class="example-sol">
 
-El **Estadístico de contraste** para el contraste anterior es: $F=\frac{\widetilde{S}_1^2}{\widetilde{S}_2^2}\sim F_{24,35}.$
+El **Estadístico de contraste** para el contraste anterior es: $F=\frac{ {S}_1^2}{ {S}_2^2}\sim F_{24,35}.$
 
 El valor que toma es el siguiente: $f_0=\frac{`r s1`^2}{`r s2`^2}=`r round(s1^2/s2^2,3)`.$
 
@@ -377,7 +409,7 @@ El **$p$-valor** es un valor grande, por tanto, concluimos que no podemos rechaz
 
 </div>
 
-## Ejemplo
+## Uso de datos móviles con dos tipos de tarifas:BigA y BigB
 <div class="example-sol">
 Realicemos a continuación el contraste pedido:
 $$
@@ -390,7 +422,7 @@ $$
 El **estadístico de contraste** al suponer que $\sigma_1= \sigma_2$, será:
 $T=\frac{\overline{X}_1-\overline{X}_2}
 {\sqrt{(\frac1{n_1}+\frac1{n_2})\cdot 
-\frac{(n_1-1)\widetilde{S}_1^2+(n_2-1)\widetilde{S}_2^2}
+\frac{(n_1-1) {S}_1^2+(n_2-1) {S}_2^2}
 {n_1+n_2-2}}}\sim t_{`r n1+n2-2`}$.
 
 El valor que toma dicho estadístico en los valores muestrales vale:
@@ -458,7 +490,7 @@ diferencias = c( 1.2, 5.2, 3.1, 4.3, -9.9, -0.7, 5.0, -1.8, 1.0, -4.1)
 
 ## Ejemplo  contraste de  medias emparejadas, comparación de dos algoritmos de fidelización.
 <div class="example-sol">
-La media y la desviación típica muestrales de las diferencias son $\overline{d}=`r mean(diferencias)`,$ $\tilde s_d = `r round(sd(diferencias),3)`.$
+La media y la desviación típica muestrales de las diferencias son $\overline{d}=`r mean(diferencias)`,$ $ s_d = `r round(sd(diferencias),3)`.$
 
 Queremos contrastar la igualdad de medias con el test que corresponda. Y si son diferentes, decidir cuál tiene mayor tiempo de ejecución.
 
@@ -495,7 +527,7 @@ $$
 ## Ejemplo  contraste de  medias emparejadas, comparación de dos algoritmos de fidelización.
 <div class="example-sol">
 
-El **estadístico de contraste** para el contraste anterior es $T=\frac{\overline{d}}{\widetilde{S}_d/\sqrt{n}},$
+El **estadístico de contraste** para el contraste anterior es $T=\frac{\overline{d}}{ {S}_d/\sqrt{n}},$
 que tiene distribución $t_{n-1}=t_{`r length(diferencias)-1`}$. 
 
 Dicho estadístico toma el siguiente valor usando los valores muestrales: $t_0=\frac{`r mean(diferencias)`}{`r round(sd(diferencias),3)`/\sqrt{`r length(diferencias)`}}=`r round(mean(diferencias)/(sd(diferencias)/sqrt(length(diferencias))),3)`.$

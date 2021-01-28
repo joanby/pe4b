@@ -1,0 +1,28 @@
+\frametitle{Prueba plan de organización cadena de producción \(p\) valor \(T\)-student}
+\protect\hypertarget{prueba-plan-de-organizaciuxf3n-cadena-de-producciuxf3n-p-valor-t-student}{}
+Como ya hemos dicho la forma más habitual de resolver un contrate de
+hipótesis es calcular su \(p\)-valor.
+
+En este caso el \(p\)-valor mirando en las tablas de contrastes viene
+dado por
+\(P(t_{n-1}> t_0)=P(t_{24}> 0.3052)=1-P(t_{n-1}\leq 0.3052)=0.3814.\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t0}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.3052
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{round}\NormalTok{(}\DecValTok{1}\OperatorTok{{-}}\KeywordTok{pt}\NormalTok{(t0,}\DataTypeTok{df=}\DecValTok{25{-}1}\NormalTok{),}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.3814
+\end{verbatim}

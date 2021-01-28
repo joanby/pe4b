@@ -61,8 +61,10 @@ m=round(mean(x),4)
 mu0=90
 sigma=9
 z0=round((m-mu0)/(sigma/sqrt(n)),4)
-#z0
-z0.05=round(qnorm(0.05,0,1),4)
+z0
+alpha=0.05
+z0.95=round(qnorm(1-alpha,0,1),4)
+z0.05=round(qnorm(alpha,0,1),4)
 ```
 
 
@@ -86,17 +88,17 @@ Entonces el \red{estadístico de contraste es al nivel de significación $\alpha
 
 Rechazar $H_0$ si  
 
-$$z_0= \frac{\overline{x}-`r mu0` }{\frac{\sigma}{\sqrt{n}}}= \frac{`r m`-`r mu0`}{\frac{`r sigma`}{\sqrt{`r n ` }}}=\frac{`r m-mu0`}{\frac{`r sigma`}{`r sqrt(n)`}}=`r z0`>z_{0.05}=`r -z0.05`.$$
+$$z_0= \frac{\overline{x}-`r mu0` }{\frac{\sigma}{\sqrt{n}}}= \frac{`r m`-`r mu0`}{\frac{`r sigma`}{\sqrt{`r n ` }}}=\frac{`r m-mu0`}{\frac{`r sigma`}{`r sqrt(n)`}}=`r z0`>z_{1-0.05}=`r z0.95`.$$
 
 
-Como $z_0=`r round(15/9,4)` > 1.645$  no podemos  aceptar  que la producción  no haya superado la media de $90$ unidades.
+Como $z_0=`r z0` \not> 1.645$  no podemos  aceptar  que la producción  no haya superado la media de $90$ unidades.
 
 
 
 ##  Prueba  plan de organización cadena de  producción
 
 
-Por lo tanto debemos concluir que \blue{la nueva organización puede que no  mejore el proceso de producción}. Si los trabajadores están más satisfechos producen un poco más, \red{aunque notemos que la media a aumentado en $0.5$ unidades} esto puede deberse  la aleatoriedad de toda prueba.
+Por lo tanto debemos concluir que \blue{la nueva organización puede que no  mejore el proceso de producción}. Si los trabajadores están más satisfechos producen un poco más, \red{aunque notemos que la media ha aumentado en $0.5$ unidades} esto puede deberse  la aleatoriedad de toda prueba.
 
 
 
@@ -150,7 +152,7 @@ Luego podemos decir que  al menos \red{el 95\% de la veces que repitamos el expe
 
 
 $$
-\left(`r m`+ `r z0.05`\cdot \frac{`r sigma`}{\sqrt{`r n`}},+\infty\right)=
+\left(`r m` -`r -z0.05`\cdot \frac{`r sigma`}{\sqrt{`r n`}},+\infty\right)=
 \left(`r round(m+  z0.05*sigma/sqrt(n),4)`,+\infty\right).
 $$
 
@@ -231,10 +233,10 @@ $$\overline{x}=\frac{\sum x}{n}=\frac{`r sum(x)`}{`r n`}=`r m`.$$
 
 
 \begin{eqnarray*}
-s_X&=&\sqrt{\frac{\sum x^2}{n}-\overline{x}^2}=
-    \sqrt{\frac{`r sumax2`}{`r n`}-`r m`^2}\\
+s_X&=&\sqrt{\frac{n}{n-1}\left(\frac{\sum x^2}{n}-\overline{x}^2\right)}=
+    \sqrt{\frac{25}{24}\left(\frac{`r sumax2`}{`r n`}-`r m`^2\right)}\\
     &=&
-\sqrt{`r sumax2/n- m^2`}=`r round(sumax2/n- m^2,4)`.
+\sqrt{`r n/(n-1)*( sumax2/n- m^2)`}=`r sigma`.
 \end{eqnarray*}
 
 
@@ -245,14 +247,14 @@ La media de la muestra es $\overline{x}=`r m`.$ Si suponemos que $X$= número de
 $t_{n-1}= \frac{\overline{x}-90}{\frac{s_x}{\sqrt{n}}}.$ \red{sigue una ley de $T$ de student con $n-1$ grados de libertad.}
 
 
-\blue{El estadístico de contraste es al nivel de significación $\alpha=0.05$  e: Rechazar $H_0$ si }
+\blue{La región de rechazo al nivel de significación $\alpha=0.05$  es: Rechazar $H_0$ si }
 
 $$
-t_0= \frac{\overline{x}-`r mu0` }{\frac{\sigma}{\sqrt{n}}}= \frac{`r m`-`r mu0`}{\frac{`r sigma`}{\sqrt{`r n ` }}}=\frac{`r m-mu0`}{\frac{`r sigma`}{`r sqrt(n)`}}=`r t0`>t_{0.05,n-1}=`r - t0.05`.
+t_0= \frac{\overline{x}-`r mu0` }{\frac{s_x}{\sqrt{n}}}= \frac{`r m`-`r mu0`}{\frac{`r sigma`}{\sqrt{`r n ` }}}=\frac{`r m-mu0`}{\frac{`r sigma`}{`r sqrt(n)`}}=`r t0`>t_{1-0.05,n-1}=`r - t0.05`.
 $$
 
 
-Como $t_0=`r t0` > `r t0.05`$  no podemos  aceptar  que la producción  no haya superado la media de $90$ unidades.
+Como $t_0=`r t0` \not > `r t0.05`$  no podemos  aceptar  que la producción  no haya superado la media de $90$ unidades.
 
 
 
@@ -281,12 +283,10 @@ round(1-pt(t0,df=25-1),4)
 ```
 ##  Prueba  plan de organización cadena de  producción $p$ valor $T$-student
 
-\blue{Con google sheets}
 
 
-
-```{r, echo=FALSE,out.width = "66%"}
-knitr::include_graphics("una_media_contraste1_sigma_conocida.png")
+```{r, echo=FALSE,out.width = "100%"}
+knitr::include_graphics("una_media_contraste1_sigma_Desconocida_3.png")
 ```
 
 
@@ -301,7 +301,7 @@ Mirando en las \blue{tablas la fórmula del intervalo de confianza  para la alte
 
 
 $$
-\left(\overline{x}+t_{\alpha,n-1}\frac{\sigma}{\sqrt{n}},+\infty\right)
+\left(\overline{x}+t_{\alpha,n-1}\frac{\tilde{s}_x}{\sqrt{n}},+\infty\right)
 $$
 
 
@@ -311,7 +311,7 @@ Luego podemos decir que  \red{al menos el 95\% de la veces que repitamos el expe
 
 
 $$
-\left(`r m`+ `r  t0.05`\cdot \frac{`r sigma`}{\sqrt{`r n`}},+\infty\right)=
+\left(`r m`- `r  -t0.05`\cdot \frac{`r sigma`}{\sqrt{`r n`}},+\infty\right)=
 \left(`r round(m+  t0.05*sigma/sqrt(n),4)`,+\infty\right).
 $$
 
@@ -321,7 +321,7 @@ $$
 ##  Prueba  plan de organización cadena de  producción $p$ valor e intervalos de confianza $T$-student
 
 
-```{r, echo=FALSE,out.width = "90%"}
+```{r, echo=FALSE,out.width = "100%"}
 knitr::include_graphics("una_media_contraste1_sigma_Desconocida_3.png")
 ```
 
