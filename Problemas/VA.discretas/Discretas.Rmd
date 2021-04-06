@@ -5,8 +5,8 @@ date: ''
 output:
   word_document: default
   header-includes: \usepackage{textcomp,eurosym,lmodern,textcomp}
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ```{r,echo=FALSE}
