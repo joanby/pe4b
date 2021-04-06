@@ -11,7 +11,7 @@
 
 
 
-<title>Problemas de Muestreo</title>
+<title>Problemas variables aleatorias discretas</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -59,6 +59,15 @@ if (!!window.navigator.userAgent.match("MSIE 8")) {
 !function(a){"use strict";a.matchMedia=a.matchMedia||function(a){var b,c=a.documentElement,d=c.firstElementChild||c.firstChild,e=a.createElement("body"),f=a.createElement("div");return f.id="mq-test-1",f.style.cssText="position:absolute;top:-100em",e.style.background="none",e.appendChild(f),function(a){return f.innerHTML='&shy;<style media="'+a+'"> #mq-test-1 { width: 42px; }</style>',c.insertBefore(e,d),b=42===f.offsetWidth,c.removeChild(e),{matches:b,media:a}}}(a.document)}(this),function(a){"use strict";function b(){u(!0)}var c={};a.respond=c,c.update=function(){};var d=[],e=function(){var b=!1;try{b=new a.XMLHttpRequest}catch(c){b=new a.ActiveXObject("Microsoft.XMLHTTP")}return function(){return b}}(),f=function(a,b){var c=e();c&&(c.open("GET",a,!0),c.onreadystatechange=function(){4!==c.readyState||200!==c.status&&304!==c.status||b(c.responseText)},4!==c.readyState&&c.send(null))};if(c.ajax=f,c.queue=d,c.regex={media:/@media[^\{]+\{([^\{\}]*\{[^\}\{]*\})+/gi,keyframes:/@(?:\-(?:o|moz|webkit)\-)?keyframes[^\{]+\{(?:[^\{\}]*\{[^\}\{]*\})+[^\}]*\}/gi,urls:/(url\()['"]?([^\/\)'"][^:\)'"]+)['"]?(\))/g,findStyles:/@media *([^\{]+)\{([\S\s]+?)$/,only:/(only\s+)?([a-zA-Z]+)\s?/,minw:/\([\s]*min\-width\s*:[\s]*([\s]*[0-9\.]+)(px|em)[\s]*\)/,maxw:/\([\s]*max\-width\s*:[\s]*([\s]*[0-9\.]+)(px|em)[\s]*\)/},c.mediaQueriesSupported=a.matchMedia&&null!==a.matchMedia("only all")&&a.matchMedia("only all").matches,!c.mediaQueriesSupported){var g,h,i,j=a.document,k=j.documentElement,l=[],m=[],n=[],o={},p=30,q=j.getElementsByTagName("head")[0]||k,r=j.getElementsByTagName("base")[0],s=q.getElementsByTagName("link"),t=function(){var a,b=j.createElement("div"),c=j.body,d=k.style.fontSize,e=c&&c.style.fontSize,f=!1;return b.style.cssText="position:absolute;font-size:1em;width:1em",c||(c=f=j.createElement("body"),c.style.background="none"),k.style.fontSize="100%",c.style.fontSize="100%",c.appendChild(b),f&&k.insertBefore(c,k.firstChild),a=b.offsetWidth,f?k.removeChild(c):c.removeChild(b),k.style.fontSize=d,e&&(c.style.fontSize=e),a=i=parseFloat(a)},u=function(b){var c="clientWidth",d=k[c],e="CSS1Compat"===j.compatMode&&d||j.body[c]||d,f={},o=s[s.length-1],r=(new Date).getTime();if(b&&g&&p>r-g)return a.clearTimeout(h),h=a.setTimeout(u,p),void 0;g=r;for(var v in l)if(l.hasOwnProperty(v)){var w=l[v],x=w.minw,y=w.maxw,z=null===x,A=null===y,B="em";x&&(x=parseFloat(x)*(x.indexOf(B)>-1?i||t():1)),y&&(y=parseFloat(y)*(y.indexOf(B)>-1?i||t():1)),w.hasquery&&(z&&A||!(z||e>=x)||!(A||y>=e))||(f[w.media]||(f[w.media]=[]),f[w.media].push(m[w.rules]))}for(var C in n)n.hasOwnProperty(C)&&n[C]&&n[C].parentNode===q&&q.removeChild(n[C]);n.length=0;for(var D in f)if(f.hasOwnProperty(D)){var E=j.createElement("style"),F=f[D].join("\n");E.type="text/css",E.media=D,q.insertBefore(E,o.nextSibling),E.styleSheet?E.styleSheet.cssText=F:E.appendChild(j.createTextNode(F)),n.push(E)}},v=function(a,b,d){var e=a.replace(c.regex.keyframes,"").match(c.regex.media),f=e&&e.length||0;b=b.substring(0,b.lastIndexOf("/"));var g=function(a){return a.replace(c.regex.urls,"$1"+b+"$2$3")},h=!f&&d;b.length&&(b+="/"),h&&(f=1);for(var i=0;f>i;i++){var j,k,n,o;h?(j=d,m.push(g(a))):(j=e[i].match(c.regex.findStyles)&&RegExp.$1,m.push(RegExp.$2&&g(RegExp.$2))),n=j.split(","),o=n.length;for(var p=0;o>p;p++)k=n[p],l.push({media:k.split("(")[0].match(c.regex.only)&&RegExp.$2||"all",rules:m.length-1,hasquery:k.indexOf("(")>-1,minw:k.match(c.regex.minw)&&parseFloat(RegExp.$1)+(RegExp.$2||""),maxw:k.match(c.regex.maxw)&&parseFloat(RegExp.$1)+(RegExp.$2||"")})}u()},w=function(){if(d.length){var b=d.shift();f(b.href,function(c){v(c,b.href,b.media),o[b.href]=!0,a.setTimeout(function(){w()},0)})}},x=function(){for(var b=0;b<s.length;b++){var c=s[b],e=c.href,f=c.media,g=c.rel&&"stylesheet"===c.rel.toLowerCase();e&&g&&!o[e]&&(c.styleSheet&&c.styleSheet.rawCssText?(v(c.styleSheet.rawCssText,e,f),o[e]=!0):(!/^([a-zA-Z:]*\/\/)/.test(e)&&!r||e.replace(RegExp.$1,"").split("/")[0]===a.location.host)&&("//"===e.substring(0,2)&&(e=a.location.protocol+e),d.push({href:e,media:f})))}w()};x(),c.update=x,c.getEmValue=t,a.addEventListener?a.addEventListener("resize",b,!1):a.attachEvent&&a.attachEvent("onresize",b)}}(this);
 };
 </script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script>
 
 /**
@@ -231,11 +240,6 @@ color: #d14;
     </style>
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -248,32 +252,6 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
 
 
 
@@ -284,10 +262,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -304,6 +278,9 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
@@ -316,7 +293,6 @@ summary {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -380,119 +356,62 @@ summary {
 
 
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
-<h1 class="title toc-ignore">Problemas de Muestreo</h1>
+<h1 class="title toc-ignore">Problemas variables aleatorias discretas</h1>
 <h4 class="author"></h4>
 
 </div>
 
 
-<div id="probelamas-v.a.-discretas" class="section level1">
-<h1>Probelamas v.a. discretas</h1>
 <ol style="list-style-type: decimal">
-<li>Un fabricante de patinetes eléctricos calcula la proporción del número de patinetes vendidos que han reclamado en el periodo de garantía a corregir alguna avería incluida en la garantía. Los datos se resumen en la siguiente tabla:</li>
-</ol>
-<table>
-<thead>
-<tr class="header">
-<th>Número de veces</th>
-<th>0</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Proporción</td>
-<td>0.38</td>
-<td>0.37</td>
-<td>0.19</td>
-<td>0.05</td>
-<td>0.01</td>
-</tr>
-</tbody>
-</table>
-<pre><code>a. Dibuja el gráfico de la función de distribución de probabilidad.
-a. Dibuja el gráfico de la función de distribución de probabilidad acumulada.
-a. Calcula media de el número de reclamaciones en le periodo de garantía.
-a. Calcula varianza de el número de reclamaciones en le periodo de garantía.</code></pre>
-<ol style="list-style-type: decimal">
-<li>La empresa CAT4ALL de ágapes/catering para eventos: fiestas, bodas, congresos. Contrata a la empresa CATERISIMO para que le le consiga clientes por su portal de internet. El número de asistentes mensuales que han sido contratados por contacto de CATERISIMO han sido:</li>
-</ol>
-<table>
-<thead>
-<tr class="header">
-<th>Número de eventos</th>
-<th>14</th>
-<th>15</th>
-<th>16</th>
-<th>17</th>
-<th>18</th>
-<th>19</th>
-<th>20</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Proporción</td>
-<td>0.06</td>
-<td>0.13</td>
-<td>0.24</td>
-<td>0.24</td>
-<td>0.12</td>
-<td>0.1</td>
-<td>0.11</td>
-</tr>
-</tbody>
-</table>
-<pre><code>a. Dibuja el gráfico de la función de distribución de probabilidad.
-a. Dibuja el gráfico de la función de distribución de probabilidad acumulada.
-a. Calcula media de el número de reclamaciones en le periodo de granatatía.
-a. Calcula varianza de el número de reclamaciones en le periodo de granatatía.
-a. Reproduce con un ordenador (R, python, Excel, Libre Office, 
-Google spread sheets,...), los cáculos de la media y la varianza,</code></pre>
-<ol style="list-style-type: decimal">
-<li>Ha llegado al puerto de Barcelona una partida muy grande de latas de caviar CAVIARFRIO de 1KG. El transportista sabe que la partida contiene un 10% de latas con defectos visibles en el exterior (golpes, deformaciones, arañazos). Supongamos que encargamos 3 latas que se escogen al azar de esta partida. Sea <span class="math inline">\(X\)</span> el número de latas defectuosas entre las 3 latas.
+<li><p>Un fabricante de patinetes eléctricos calcula la proporción del número de patinetes vendidos (<span class="math inline">\(X\)</span>) que han reclamado en el periodo de garantía a corregir alguna avería incluida en la garantía. Los datos se resumen en la siguiente tabla:</p>
 <ol style="list-style-type: lower-alpha">
-<li>Modele mediante una distribución binomial la función de probabilidad del número de latas con defecto entre las tres.</li>
+<li>Dibuja el gráfico de la función de distribución de probabilidad.</li>
+<li>Dibuja el gráfico de la función de distribución de probabilidad acumulada.</li>
+<li>Calcula media de el número de reclamaciones en el periodo de garantía.</li>
+<li>Calcula varianza de el número de reclamaciones en le periodo de garantía.</li>
+</ol></li>
+<li><p>La empresa CAT4ALL de ágapes/catering para eventos: fiestas, bodas, congresos. Contrata a la empresa CATERISIMO para que le le consiga clientes por su portal de internet. El número de contratos mensuales que han conseguido a través de la mediación de de CATERISIMO han sido:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Dibuja el gráfico de la función de distribución de probabilidad.</li>
+<li>Dibuja el gráfico de la función de distribución de probabilidad acumulada.</li>
+<li>Calcula media del número de contratos por mes.</li>
+<li>Calcula varianza del número de contratos por mes.</li>
+<li>Reproduce con un ordenador (R, python, Excel, Libre Office, Google Spreadsheets,…), los cálculos de la media y la varianza,</li>
+</ol></li>
+<li><p>Ha llegado al puerto de Barcelona una partida muy grande de latas de caviar CAVIARFRIO de 1KG. El transportista sabe que la partida contiene un 1% de latas con defectos visibles en el exterior (golpes, deformaciones, arañazos). Supongamos que encargamos <span class="math inline">\(n=3\)</span> latas que se escogen al azar de esta partida. Sea <span class="math inline">\(X\)</span> el número de latas defectuosas entre las <span class="math inline">\(n\)</span> latas.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Modelar mediante una distribución binomial la función de probabilidad del número de latas con defecto entre las tres.</li>
 <li>Calcule la función probabilidad del número de latas defectuosas.</li>
 <li>Calcule la función de distribución del número de latas defectuosas.</li>
 <li>Calcule la media del número de latas defectuosas.</li>
 <li>Calcule la varianza y la desviación típica del número de latas defectuosas.</li>
 </ol></li>
 </ol>
-</div>
-<div id="estimación-de-la-proporción" class="section level1">
-<h1>Estimación de la proporción</h1>
+<div style="page-break-after: always;"></div>
 <ol start="4" style="list-style-type: decimal">
-<li><p>En 1992, los canadienses votaron en un referéndum sobre una nueva constitución. En la provincia de Quebec, el 42,4% de los que votaron estaban a favor de la nueva constitución. Se tomó una muestra aleatoria de 100 votantes de la provincia.</p>
+<li>Un asesor de un Banco recibe el encargado de llamar a sus clientes para ofrecerles un crédito los días previos al Black Friday. Supongamos que tiene una gran lista de clientes y que los va llamando de forma sucesiva hasta que consigue contratar el primer crédito y que la probabilidad de que un cliente escogido al azar contrate el producto es <span class="math inline">\(p=0.15\)</span>. Sea <span class="math inline">\(X\)</span> el número de llamadas fracasadas para conseguir la primera venta.
 <ol style="list-style-type: lower-alpha">
-<li>¿Cuál es la media de la distribución de la proporción muestral a favor de una nueva constitución?</li>
-<li>¿Cuál es la varianza de la proporción muestral?</li>
-<li>¿Cuál es el error estándar de la proporción muestral?</li>
-<li>¿Cuál es la probabilidad de que la proporción muestral sea superior a <span class="math inline">\(0.5\)</span>?</li>
+<li>Modelar con alguna distribución notable discreta la distribución de probabilidad de <span class="math inline">\(X\)</span>. Si es necesario añadir alguna condición adicional al problema.</li>
+<li>Calcular la función de probabilidad y de probabilidad acumulada de <span class="math inline">\(X\)</span>.</li>
+<li>Calcular la esperanza y la desviación típica de <span class="math inline">\(X\)</span>.</li>
+<li>El asesor ya ha hecho 20 llamadas consecutivas sin éxito ¿Cuál es la probabilidad de que eso pase?</li>
 </ol></li>
-<li><p>Una corporación recibe <span class="math inline">\(120\)</span> solicitudes para puestos de recién graduados universitarios en negocios. Suponiendo que estos solicitantes puedan verse como una muestra aleatoria de todos esos graduados, ¿cuál es la probabilidad de que entre el <span class="math inline">\(35\%\)</span> y el <span class="math inline">\(45\%\)</span> de ellos sean mujeres si el <span class="math inline">\(40\%\)</span> de todos los recién graduados universitarios en negocios son mujeres?</p></li>
-<li><p>Supongamos que el <span class="math inline">\(50\%\)</span> de los australianos adultos creen que Australia debería postularse para albergar la próxima Copa del Mundo de rugby. Calcule la probabilidad de que más del <span class="math inline">\(56\%\)</span> de una muestra aleatoria de <span class="math inline">\(150\)</span> australianos adultos lo crea.</p></li>
-</ol>
-</div>
-<div id="estimación-de-la-varianza" class="section level1">
-<h1>Estimación de la varianza</h1>
-<ol start="7" style="list-style-type: decimal">
-<li><p>Todos los estudiantes de primer año que ingresan a una gran universidad deben recibir una prueba de matemáticas de 100 preguntas de opción múltiple. Inicialmente, en un estudio piloto, la prueba se aplicó a una muestra aleatoria de <span class="math inline">\(20\)</span> estudiantes de primer año. Suponga que, para la población de todos los estudiantes de primer año que ingresan, la distribución del número de respuestas correctas sería normal con una varianza de <span class="math inline">\(250\)</span>.</p>
+<li>Nuestro socio Pablo Andrés Obrador está considerando invertir 1000 € y está escogiendo entre tres fondos de inversión que en su publicidad ofrecen como ejemplo estás tres modalidades: • Fondo 1: Un beneficio de 10000€ con probabilidad 20% o en caso contrario perder todas la inversión. • Fondo 2: Un beneficio de 10000€ con probabilidad 45%, o un beneficio de 500€ con probabilidad 30%, o perder 500€ con probabilidad del 25%. • Fondo 3: Un beneficio seguro de 400€.
 <ol style="list-style-type: lower-alpha">
-<li>¿Cuál es la probabilidad de que la varianza de la muestra sea menor que 100?</li>
-<li>¿Cuál es la probabilidad de que la varianza muestral sea superior a 500?</li>
+<li>Calcula los valores esperados y desviaciones típica de los beneficios en cada caso.</li>
+<li>¿Qué elección le recomendarías a Pablo Andrés?</li>
 </ol></li>
-<li><p>Un proceso de producción fabrica componentes electrónicos con señales de temporización cuya duración sigue una distribución normal. Se tomó una muestra aleatoria de seis componentes y se midieron las duraciones de sus señales de tiempo. Calcular el porcentaje de la varianza de la población tal que la probabilidad de que la varianza de la muestra sea mayor que dicho porcentaje sea <span class="math inline">\(0.05.\)</span></p></li>
-<li><p>Una compañía farmacéutica produce pastillas que contienen un ingrediente activo. A la empresa le preocupa el peso medio de este ingrediente por pastilla, pero también exige que la variación (en miligramos cuadrados) no sea superior a <span class="math inline">\(1.5\)</span>. Se selecciona una muestra aleatoria de <span class="math inline">\(20\)</span> píldoras y la varianza de la muestra es <span class="math inline">\(2.05\)</span>. ¿Qué probabilidad hay de que se encuentre una varianza muestral tan alta o superior si la varianza de la población es, de hecho, <span class="math inline">\(1.5\)</span>? Suponga que la distribución de la población es normal.</p></li>
+<li>Un comercio de venta de Tabacos decide también hacer de puesto de recogida de pequeñas entregas de una distribuidora. El número de paquetes diario que le llegan para que los destinatarios los recojan sigue es una variable aleatoria <span class="math inline">\(X\)</span> con <span class="math inline">\(\lambda=13\)</span>.
+<ol style="list-style-type: lower-alpha">
+<li>Modela función de probabilidad de <span class="math inline">\(X\)</span> con una distribución Poisson.</li>
+<li>Calcular <span class="math inline">\(E(X)\)</span> y <span class="math inline">\(Var(X)\)</span>.</li>
+<li>El comerciante dispone de un espacio para almacenar unos 20 paquetes. ¿Cuál es la probabilidad de que lleguen más paquetes y ocupe todo el espacio? Utiliza un ordenador para este cálculo</li>
+</ol></li>
 </ol>
-</div>
 
 
 
@@ -521,7 +440,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

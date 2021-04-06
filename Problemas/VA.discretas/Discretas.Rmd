@@ -1,10 +1,11 @@
 ---
 title: "Problemas variables aleatorias discretas"
-author: ""
-date: ""
+author: ''
+date: ''
 output:
-  pdf_document: default
+  word_document: default
   header-includes: \usepackage{textcomp,eurosym,lmodern,textcomp}
+  pdf_document: default
   html_document: default
 ---
 
