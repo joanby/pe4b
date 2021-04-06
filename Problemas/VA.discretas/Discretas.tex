@@ -1,0 +1,232 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Problemas variables aleatorias discretas},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{Problemas variables aleatorias discretas}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Un fabricante de patinetes eléctricos calcula la proporción del número
+  de patinetes vendidos (\(X\)) que han reclamado en el periodo de
+  garantía a corregir alguna avería incluida en la garantía. Los datos
+  se resumen en la siguiente tabla:
+
+  \begin{center}
+  \begin{tabular}{|l||r|r|r|r|r|}
+  \multicolumn{6}{c}{\vphantom{R}}\\
+  \hline
+  Número de veces $x$    & 0    & 1    &  2   &  3   &  4 \\
+  \hline
+  Proporción    $P(X=x)$ & 0.38 & 0.37 & 0.19 & 0.05 & 0.01
+  \\\hline \multicolumn{6}{c}{\vphantom{R}}
+  \end{tabular}
+  \end{center}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    Dibuja el gráfico de la función de distribución de probabilidad.
+  \item
+    Dibuja el gráfico de la función de distribución de probabilidad
+    acumulada.
+  \item
+    Calcula media de el número de reclamaciones en el periodo de
+    garantía.
+  \item
+    Calcula varianza de el número de reclamaciones en le periodo de
+    garantía.
+  \end{enumerate}
+\item
+  La empresa CAT4ALL de ágapes/catering para eventos: fiestas, bodas,
+  congresos. Contrata a la empresa CATERISIMO para que le le consiga
+  clientes por su portal de internet. El número de contratos mensuales
+  que han conseguido a través de la mediación de de CATERISIMO han sido:
+
+  \begin{center}
+  \begin{tabular}{|l||r|r|r|r|r|r|r|}
+  \multicolumn{8}{c}{\vphantom{R}}\\
+  \hline
+  Número de eventos $x$ & 14  & 15  &  16 &  17 &  18 & 19 & 20 \\
+  \hline
+  Proporción  $P(X=x)$      & 0.06&0.13 &0.24 &0.24 &0.12 &0.1 &0.11
+  \\\hline \multicolumn{8}{c}{\vphantom{R}}
+  \end{tabular}
+  \end{center}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    Dibuja el gráfico de la función de distribución de probabilidad.
+  \item
+    Dibuja el gráfico de la función de distribución de probabilidad
+    acumulada.
+  \item
+    Calcula media del número de contratos por mes.
+  \item
+    Calcula varianza del número de contratos por mes.
+  \item
+    Reproduce con un ordenador (R, python, Excel, Libre Office, Google
+    Spreadsheets,\ldots), los cálculos de la media y la varianza,
+  \end{enumerate}
+\item
+  Ha llegado al puerto de Barcelona una partida muy grande de latas de
+  caviar CAVIARFRIO de 1KG. El transportista sabe que la partida
+  contiene un 1\% de latas con defectos visibles en el exterior (golpes,
+  deformaciones, arañazos). Supongamos que encargamos \(n=3\) latas que
+  se escogen al azar de esta partida. Sea \(X\) el número de latas
+  defectuosas entre las \(n\) latas.
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    Modelar mediante una distribución binomial la función de
+    probabilidad del número de latas con defecto entre las tres.
+  \item
+    Calcule la función probabilidad del número de latas defectuosas.
+  \item
+    Calcule la función de distribución del número de latas defectuosas.
+  \item
+    Calcule la media del número de latas defectuosas.
+  \item
+    Calcule la varianza y la desviación típica del número de latas
+    defectuosas.
+  \end{enumerate}
+\end{enumerate}
+
+\newpage
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Un asesor de un Banco recibe el encargado de llamar a sus clientes
+  para ofrecerles un crédito los días previos al Black Friday.
+  Supongamos que tiene una gran lista de clientes y que los va llamando
+  de forma sucesiva hasta que consigue contratar el primer crédito y que
+  la probabilidad de que un cliente escogido al azar contrate el
+  producto es \(p=0.15\). Sea \(X\) el número de llamadas fracasadas
+  para conseguir la primera venta.
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    Modelar con alguna distribución notable discreta la distribución de
+    probabilidad de \(X\). Si es necesario añadir alguna condición
+    adicional al problema.
+  \item
+    Calcular la función de probabilidad y de probabilidad acumulada de
+    \(X\).
+  \item
+    Calcular la esperanza y la desviación típica de \(X\).
+  \item
+    El asesor ya ha hecho 20 llamadas consecutivas sin éxito ¿Cuál es la
+    probabilidad de que eso pase?
+  \end{enumerate}
+\item
+  Nuestro socio Pablo Andrés Obrador está considerando invertir 1000 € y
+  está escogiendo entre tres fondos de inversión que en su publicidad
+  ofrecen como ejemplo estás tres modalidades: • Fondo 1: Un beneficio
+  de 10000€ con probabilidad 20\% o en caso contrario perder todas la
+  inversión. • Fondo 2: Un beneficio de 10000€ con probabilidad 45\%, o
+  un beneficio de 500€ con probabilidad 30\%, o perder 500€ con
+  probabilidad del 25\%. • Fondo 3: Un beneficio seguro de 400€.
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    Calcula los valores esperados y desviaciones típica de los
+    beneficios en cada caso.
+  \item
+    ¿Qué elección le recomendarías a Pablo Andrés?
+  \end{enumerate}
+\item
+  Un comercio de venta de Tabacos decide también hacer de puesto de
+  recogida de pequeñas entregas de una distribuidora. El número de
+  paquetes diario que le llegan para que los destinatarios los recojan
+  sigue es una variable aleatoria \(X\) con \(\lambda=13\).
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    Modela función de probabilidad de \(X\) con una distribución
+    Poisson.
+  \item
+    Calcular \(E(X)\) y \(Var(X)\).
+  \item
+    El comerciante dispone de un espacio para almacenar unos 20
+    paquetes. ¿Cuál es la probabilidad de que lleguen más paquetes y
+    ocupe todo el espacio? Utiliza un ordenador para este cálculo
+  \end{enumerate}
+\end{enumerate}
+
+\end{document}

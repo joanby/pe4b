@@ -51,7 +51,7 @@ Proporción  $P(X=x)$      & 0.06&0.13 &0.24 &0.24 &0.12 &0.1 &0.11
     a. Reproduce con un ordenador (R, python, Excel, Libre Office, Google Spreadsheets,...), los cálculos de la media y la varianza,
   
     
-3. Ha llegado  al puerto  de Barcelona una partida  muy grande de latas de caviar CAVIARFRIO de 1KG.  El transportista sabe que la partida  contiene un 10\% de latas con defectos visibles en el exterior (golpes, deformaciones, arañazos). Supongamos que encargamos $n=10$ latas  que se escogen al azar de esta partida. Sea $X$ el número de latas defectuosas entre las $n$ latas.
+3. Ha llegado  al puerto  de Barcelona una partida  muy grande de latas de caviar CAVIARFRIO de 1KG.  El transportista sabe que la partida  contiene un 1\% de latas con defectos visibles en el exterior (golpes, deformaciones, arañazos). Supongamos que encargamos $n=3$ latas  que se escogen al azar de esta partida. Sea $X$ el número de latas defectuosas entre las $n$ latas.
 
     a. Modelar mediante una distribución binomial la función de probabilidad del número de latas con defecto entre las tres.
     b. Calcule la  función probabilidad del número de latas defectuosas.
