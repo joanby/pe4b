@@ -1,10 +1,11 @@
 ---
 title: "Problemas variables aleatorias discretas"
-author: ""
-date: ""
+author: ''
+date: ''
 output:
-  pdf_document: default
+  word_document: default
   header-includes: \usepackage{textcomp,eurosym,lmodern,textcomp}
+  pdf_document: default
   html_document: default
 ---
 
@@ -243,8 +244,8 @@ Es una $Ge(p=0.15)$  con dominio $D_X=\{0,1,2,3,\ldots\}$ pues podemos tener éx
 \begin{eqnarray*}
 \renewcommand*{\arraystretch}{0.5}
 P_X(x)= P(X=x)&=&
-\left\{\begin{array}{ll}{n\choose x}\cdot  p^x\cdot  (1-p)^{n-x} & \mbox{ si } x=0,1,\ldots,n\\  0  & \mbox{ en otro caso.}\end{array}\right.\\
-&=&\left\{\begin{array}{ll}{n\choose x}\cdot  0.15^x\cdot  (1-0.15)^{n-x} & \mbox{ si } x=0,1,\ldots,n\\  0  & \mbox{ en otro caso.}\end{array}\right.
+\left\{\begin{array}{ll} (1-p)^x\cdot  p & \mbox{ si } x=0,1,2,\ldots\\  0  & \mbox{ en otro caso.}\end{array}\right.\\
+&=&\left\{\begin{array}{ll} (1-0.15)^x\cdot  0.15 & \mbox{ si } x=0,1,2,\ldots\\  0  & \mbox{ en otro caso.}\end{array}\right.
 \end{eqnarray*}
 
 
