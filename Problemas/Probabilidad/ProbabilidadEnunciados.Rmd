@@ -27,7 +27,7 @@ a. ¿Cuál es la probabilidad de que un analista elegido al azar que tenga más 
 a. ¿Son los eventos MBA y mayores de 35 años independientes?
 a. ¿Son los eventos MBA y mayores de 35 años mutuamente excluyentes?
 
-4. Se selecciona un jurado de 12 miembros de un panel compuesto por 8 hombres y 8 mujeres.
+4. Se selecciona un jurado de 8 miembros de un panel compuesto por 8 hombres y 8 mujeres.
 a. ¿Cuántas selecciones de jurados diferentes son posibles?
 a. Si la elección se hace al azar, ¿cuál es la probabilidad de que la mayoría de los miembros del jurado sean hombres?
 
