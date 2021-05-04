@@ -1,0 +1,191 @@
+\documentclass[landscape,spanish,16pt]{article}
+\usepackage[spanish]{babel}
+\usepackage{array,multirow}
+\usepackage{hyperref}
+\usepackage{amsfonts,amssymb,amsmath,amsthm, wasysym}
+\usepackage{listings}
+\usepackage[T1]{fontenc}        
+\usepackage[utf8]{inputenc}
+
+
+%Definitions of numbers
+\newcommand\RR{\Bbb{R}}
+\newcommand\QQ{\Bbb{Q}}
+\newcommand\CC{\Bbb{C}}
+\newcommand\ZZ{\Bbb{Z}}
+\newcommand\NN{\Bbb{N}}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+
+\usepackage{threeparttable}
+\usepackage[text={16cm,19.5cm},centering]{geometry}
+
+
+\begin{document}
+
+
+%\renewcommand{\thefootnote}{\Alph{footnote}}
+
+\newcounter{cas}
+\newcounter{aux}
+\renewcommand{\thecas}{\Roman{cas}}
+\newcommand{\posacas}{\addtocounter{cas}{1}{\bf \thecas}}
+
+\begin{center}
+\textsc{Tablas de contrastes de hipótesis más usuales I: una muestra}
+\end{center}
+\vspace*{2cm}
+
+\noindent En este documento recogemos los contrastes de hipótesis paramétricos más usuales para una muestra  que se pueden llevar a cabo ``a mano.'' Para cada contraste damos: las condiciones, el estadístico
+de contraste, la región crítica, 
+el intervalo de confianza y el p-valor.
+
+En la definición de los estadísticos hemos usado las notaciones siguientes:
+\begin{itemize}
+\item  $Z$: {Distribución normal estándard $N(0,1)$.} 
+\item $t_n$: {Distribución
+$t$ de Student con $n$ grados de libertad.} 
+\item $\chi_n^2$: {Distribución
+khi-cuadrado con $n$ grados de libertad.} 
+\item $X_\alpha$: Indica el $\alpha$-cuantil de la variable aleatoria $X$, es decir (si $X$ es continua, que es siempre el caso en este documento), el valor donde la función
+de distribución de $X_\alpha$ vale $\alpha$: $P(X\leq X_\alpha
+)=\alpha$. 
+
+Recordemos las propiedades de simetría de $Z$ y   $t$:
+\begin{itemize}
+\item Simetría de la normal: $z_\alpha = -z_{1-\alpha}.$
+\item Simetría de la $t$ de Student: $t_{n,\alpha} = -t_{n,1-\alpha}.$
+\end{itemize}
+\end{itemize}
+
+\newpage
+
+\newpage
+
+\begin{center}
+\renewcommand{\arraystretch}{1.7}
+\begin{tabular}{|c@{\hspace{1mm}}|c|c|c|c@{\hspace{1mm}}|}
+\hline
+\multicolumn{5}{|c|} {\bf Tipo de contraste y condiciones}\\ 
+\hline
+Hipótesis nula & Condiciones &Muestra&\multicolumn{1}{m{2 cm}}{
+Hipótesis alternativa}&\multicolumn{1}{|c|}{Caso}\\
+\hline\hline
+\multirow{9}{2.5 cm}{$H_0:\mu =\mu_0$} &\multirow{3}{3 cm}{Población normal o $n$ grande.\\ $\sigma$ conocida. } &  
+\multirow{3}{3cm}{$n$ observaciones independientes.} & 
+$H_1:\mu\not =\mu_0$&
+\posacas \\\cline{4-5} & & &$H_1:\mu <\mu_0$&\posacas \\\cline{4-5}
+ & & &$H_1:\mu>\mu_0$&\posacas\\\cline{2-5} & \multirow{3}{3 cm}{Población normal.\\ $\sigma$ desconocida.
+} & \multirow{3}{3cm}{$n$ observaciones independientes.}&
+$H_1:\mu\not =\mu_0$&\posacas \\\cline{4-5} & & &$H_1:\mu <\mu_0$&\posacas\\
+\cline{4-5} & & & $H_1:\mu>\mu_0$&\posacas
+\\\cline{2-5} & \multirow{3}{3 cm}{Población cualquiera.\\ $\sigma$ desconocida.\\
+ $n$ grande. } & \multirow{3}{3cm}{$n$ observaciones independientes.}&
+$H_1:\mu\not =\mu_0$&\posacas \\\cline{4-5} & & &$H_1:\mu <\mu_0$&\posacas\\
+\cline{4-5} & & & $H_1:\mu>\mu_0$&\posacas
+\\\hline
+\multirow{3}{2.5cm}{$H_0:p=p_0$}&\multirow{3}{3cm}{%
+Población Bernoulli.
+$n\geq 100$, $n\widehat{p}\geq 10$, $n(1-\widehat{p})\geq 10$
+}&\multirow{3}{3cm}{$n$ observaciones independientes.}
+&$H_1:p\not =p_0$&\posacas\\\cline{4-5} & & &
+$H_1:p <p_0$&\posacas\\\cline{4-5}& & &
+$H_1:p >p_0$&\posacas\\\hline
+\multirow{3}{2.5cm}{$H_0:\sigma^2 =\sigma_0^2$}&
+\multirow{3}{3cm}{Población Normal.\\ $\mu$ desconocida}&
+\multirow{3}{3cm}{$n$ observaciones independientes.}&
+$H_1:\sigma^2\not =\sigma_0^2$&\posacas\\\cline{4-5} & & &
+$H_1:\sigma^2 <\sigma_0^2$&\posacas\\\cline{4-5} & & &
+$H_1:\sigma^2 >\sigma_0^2$&\posacas\\\hline
+\end{tabular}
+\end{center}
+
+\setcounter{cas}{0}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{|>{\small}c@{}|c@{}|>{$\scriptstyle}c<{$}@{}|
+@{}>{$\scriptstyle}c<{$}|@{}>{$\scriptstyle}c<{$}|}
+\hline
+\multicolumn{5}{|c|} {\bf Detalles del contraste}\\ 
+\hline
+Caso&Estadístico&\multicolumn{1}{c|}{Región
+crítica}&\multicolumn{1}{c|}{Intervalo confianza}&\multicolumn{1}{c|}{$p$-valor}\\\hline\hline
+\posacas&\multirow{3}{2cm}{$Z=
+\frac{\overline{X}-\mu_0}{\frac{\sigma}{\sqrt{n}}}$\\  es $N(0,1)$}&\{Z\leq
+-z_{1-\frac{\alpha}{2}}\}\cup \{Z \geq z_{1-\frac{\alpha}{2}}\}&
+\left]\overline{X}-z_{1-\frac{\alpha}{2}}\cdot \frac{\sigma}{\sqrt{n}},
+\overline{X}+z_{1-\frac{\alpha}{2}}\cdot \frac{\sigma}{\sqrt{n}}\right[ & 2 P(Z\geq |z|) \\
+\cline{1-1}\cline{3-5}\posacas & &\{Z\leq z_{\alpha}\}&
+\left]-\infty,
+\overline{X}-z_{\alpha}\cdot \frac{\sigma}{\sqrt{n}}\right[ & P(Z \leq z)\\
+\cline{1-1}\cline{3-5}
+\posacas & &\{Z\geq z_{1-\alpha}\}&\left]
+\overline{X}-z_{1-\alpha}\cdot \frac{\sigma}{\sqrt{n}},\infty\right[& P(Z \geq z)\\\hline
+\posacas&\multirow{3}{2cm}{$T=
+\frac{\overline{X}-\mu_0}{\frac{\tilde{S}}{\sqrt{n}}}$\\
+es $t_{n-1}$}&\{T\leq
+-t_{n-1,1-\frac{\alpha}{2}}\}\cup \{T \geq t_{n-1,1-\frac{\alpha}{2}}\}&
+\left]\overline{X}-t_{n-1,1-\frac{\alpha}{2}}\cdot \frac{\tilde{S}}{\sqrt{n}},
+\overline{X}+t_{n-1,1-\frac{\alpha}{2}}\cdot 
+\frac{\tilde{S}}{\sqrt{n}}\right[ & 2P(t_{n-1} \geq |T|) \\\cline{1-1}\cline{3-5}\posacas & &
+\{T\leq t_{n-1,\alpha}\}&
+\left]-\infty,
+\overline{X}-t_{n-1,\alpha}\cdot \frac{\tilde{S}}{\sqrt{n}}\right[ & P(t_{n-1} \leq T)\\
+\cline{1-1}\cline{3-5}
+\posacas & &\{T\geq t_{n-1,1-\alpha}\}&\left]
+\overline{X}-t_{n-1,1-\alpha}\cdot
+\frac{\tilde{S}}{\sqrt{n}},\infty\right[& P(t_{n-1}\geq T)
+\\\hline
+\posacas&\multirow{3}{2cm}{$Z =
+\frac{\overline{X}-\mu_0}{\frac{\tilde{S}}{\sqrt{n}}}$\\
+es aprox.\ $N(0,1)$}&\{Z\leq
+-z_{1-\frac{\alpha}{2}}\}\cup \{Z \geq z_{1-\frac{\alpha}{2}}\}&
+\left]\overline{X}-z_{1-\frac{\alpha}{2}}\cdot \frac{\tilde{S}}{\sqrt{n}},
+\overline{X}+z_{1-\frac{\alpha}{2}}\cdot
+\frac{\tilde{S}}{\sqrt{n}}\right[  & 2 P(Z \geq |z|)\\\cline{1-1}\cline{3-5}\posacas & &
+\{Z\leq z_{\alpha}\}&
+\left]-\infty,
+\overline{X}-z_{\alpha}\cdot \frac{\tilde{S}}{\sqrt{n}}\right[ & P(Z \leq z)\\
+\cline{1-1}\cline{3-5}
+\posacas & &\{Z\geq z_{1-\alpha}\}&\left]
+\overline{X}-z_{1-\alpha}\cdot
+\frac{\tilde{S}}{\sqrt{n}},\infty\right[ & P(Z \geq z)
+\\\hline
+\posacas
+&\multirow{3}{2.5cm}{
+$Z=\frac{\widehat{p}-p_0}{\sqrt{\frac{p_0 (1-p_0)}{n}}}$\\ es $N(0,1)$} &\{Z\leq z_{\frac{\alpha}{2}}\}\cup 
+\{Z\geq z_{1-\frac{\alpha}{2}}\} &\left]\widehat{p}+z_{\frac{\alpha}{2}}\sqrt{
+\frac{\widehat{p}(1-\widehat{p})}{n}},\widehat{p}+z_{1-\frac{\alpha}{2}}\sqrt{
+\frac{\widehat{p}(1-\widehat{p})}{n}}\right[
+& 2P(Z \geq |z|)
+\\\cline{1-1}\cline{3-5}
+\posacas&
+&\{Z\leq z_{\alpha}\}&\left]-\infty,\widehat{p}-z_{\alpha}\sqrt{
+\frac{\widehat{p}(1-\widehat{p})}{n}}\right[ & P(Z\leq z)\\\cline{1-1}\cline{3-5}
+\posacas&
+&\{Z\geq z_{1-\alpha}\}&\left]\widehat{p}-z_{1-\alpha}\sqrt{
+\frac{\widehat{p}(1-\widehat{p})}{n}},\infty\right[ & P(Z \geq z) \\
+\hline
+\posacas\footnotemark
+ &\multirow{3}{2.5cm}{${\chi^2} =\frac{(n-1)\tilde{S}^2}{\sigma_0^2}/$\\ es $\chi^2_{n-1}/$}&\{\chi^2\leq
+\chi_{n-1,\frac{\alpha}{2}}^2\}\cup
+\{\chi^2\geq \chi_{n-1,1-\frac{\alpha}{2}}^2\}&
+\left]\frac{(n-1)\tilde{S}2}{\chi_{n-1,1-\frac{\alpha}{2}}^2},
+\frac{(n-1)\tilde{S}^2}{\chi_{n-1,\frac{\alpha}{2}}^2}\right[ & 
+\begin{tabular}[c]{>{$\scriptstyle}c<{$}}
+2\min\{P(\chi_{n-1}^2 \leq \chi^2), \\
+P(\chi_{n-1}^2\geq \chi^2\}
+\end{tabular}\\
+\cline{1-1}\cline{3-5}\posacas & & \{\chi^2\leq \chi_{n-1,\alpha}^2\} &
+\left]0,\frac{(n-1)\tilde{S}^2}{\chi_{n-1,\alpha}^2}\right[ & P(\chi_{n-1}^2 \leq \chi^2)\\
+\cline{1-1}\cline{3-5}\posacas & & \{\chi^2\geq \chi_{n-1,1-\alpha}^2\} &
+\left]\frac{(n-1)\tilde{S}2}{\chi_{n-1,1-\alpha}^2},\infty\right[ & P(\chi_{n-1}^2\geq \chi^2)\\\hline
+\end{tabular}
+\end{center}
+
+\footnotetext{En este caso (\textbf{XIII}),  si $\mu$ es conocida, se puede usar el estadístico
+$\chi^2 =\frac{\sum\limits_{i=1}^n {(X_i -\mu)}^2}{\sigma_0^2}$, 
+que tendrá distribución $\chi_n^2$.}
+
+\end{document}
