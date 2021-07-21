@@ -66,7 +66,7 @@ donde:
 * Mortalidad infantil: indica el porcentaje de bebés que viven menos de un año.
 
 a. Dar la tabla de frecuencias de la variable Educación.
-a. Calcula la media y la varianza de la variable Educación como datos agrupados.
+a. Calcula la media y la varianza de la variable Educación.
 a. Calcular los cuartiles de la variable Educación. Realizar un diagrama de caja de la variable Fertilidad según el cuartil dónde esté la provincia correspondiente. Es decir, dibujar 4 diagramas de caja para la variable Fertilidad, uno para las provincias que estén en el primer cuartil de la variable Educación, otro para las provincias que estén en el segundo cuartil de la variable Educación y lo mismo para los cuartiles tercero y cuarto.
 Comentar los resultados observados.
 
