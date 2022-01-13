@@ -211,7 +211,7 @@ P(\mathrm{R}|\mathrm{RE})= & 0.8,\quad P(\mathrm{R}|\mathrm{RP})=0.76,\quad P(\m
 Nos piden $P(\mathrm{R})$:
 \begin{align*}
 P(\mathrm{R})= & P(\mathrm{RE})\cdot P(\mathrm{R}|\mathrm{RE})+P(\mathrm{RP})\cdot  P(\mathrm{R}|\mathrm{RP})+P(\mathrm{CD})\cdot P(\mathrm{R}|\mathrm{CD})+P(\mathrm{SS})\cdot P(\mathrm{R}|\mathrm{SS})\\
-= & 0.1\cdot 0.8+0.57\cdot 0.76+0.24\cdot 0.51+0.09\cdot 0.14=`r 0.1*0.8+0.57*0.76+0.24*0.51+0.51*0.09`.
+= & 0.1\cdot 0.8+0.57\cdot 0.76+0.24\cdot 0.51+0.09\cdot 0.14=`r 0.1*0.8+0.57*0.76+0.24*0.51+0.14*0.09`.
 \end{align*}
 
 c. Como la probabilidad de que un cliente renueva la suscripción en febrero es más alta que renueva en enero, parece que es mejor invertir en publicidad en febrero que en enero. Sin embargo, estos valores se pueden interpretar de otro modo: como en enero se renueva menos que en febrero, es conveniente invertir en enero ya que es la época dónde se necesita un empuje para que la revista aumente sus suscripciones.
