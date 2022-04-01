@@ -8,6 +8,8 @@ output:
   html_document: default
 ---
 
+<!-- Después de lectura 99: Sesgo y eficiencia de un estimador. Estimadores máximo verosímiles -->
+
 # Estimación de la media muestral
 
 1. La vida útil de las bombillas producidas por un fabricante en particular tiene una media de 1200 horas y una desviación estándar de 400 horas. La distribución de la población es normal. Suponga que compra nueve bombillas, que pueden considerarse como una muestra aleatoria de la producción del fabricante.

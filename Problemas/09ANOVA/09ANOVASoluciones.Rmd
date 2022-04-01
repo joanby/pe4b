@@ -1,0 +1,60 @@
+---
+title: "Problemas ANOVA"
+author: ''
+date: ''
+output:
+  pdf_document: default
+  header-includes: \usepackage{textcomp,eurosym,lmodern,textcomp}
+  html_document: default
+  word_document: default
+---
+
+```{r,echo=FALSE}
+options(scipen=999)
+```
+
+
+<!-- Después lectura 59: El ejemplo de los barcos en el astillero -->
+
+## Enunciado
+
+Lee las instrucciones y el enunciado del vídeo antes de responder las preguntas.
+
+### Pregunta 1
+Calcula la suma de los cuadrados totales del ANOVA.
+
+### Solución
+58
+
+### Pregunta 2
+Calcula la suma de los cuadrados de los tratamientos del ANOVA
+
+### Solución
+43.33
+
+
+
+### Pregunta 3
+Calcula la suma de los cuadrados de los errores del ANOVA
+
+### Solución
+14.66
+
+### Pregunta 4
+¿Cual es el estadístico de contraste del ANOVA?
+
+### Solución
+7.3864
+
+### Pregunta 5
+¿Cuál es el p-valor del ANOVA?
+
+### Solución
+0.03215545
+
+### Pregunta 6
+En base a lo discutido anteriormente, escribe la conclusión del ANOVA
+
+### Solución
+Hay evidencias para rechazar la igualdad de medias
+

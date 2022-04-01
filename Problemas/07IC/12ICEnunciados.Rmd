@@ -8,6 +8,9 @@ output:
   html_document: default
 ---
 
+
+<!-- Después de lectura 111: Intervalos de confianza para dos poblaciones -->
+
 # Intervalos de confianza de la media muestral
 
 1.  Queremos estimar cuánto pagan los estudiantes, en promedio, por los libros de texto durante el primer semestre de la universidad. De una muestra aleatoria de $400$ estudiantes, se encontró que el costo medio era de `r 357.75*0.8` euros y la desviación estándar de la muestra era de `r 37.89*0.8` euros. Suponiendo que la población se distribuye normalmente, calcule el margen de error de un intervalo de confianza del $95\%$ para la media de la población.

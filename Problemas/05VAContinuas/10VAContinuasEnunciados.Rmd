@@ -8,6 +8,10 @@ output:
   html_document: default
 ---
 
+
+<!-- Después de lectura 79: Variables continuas n-dimensionales. Independencia, Covarianza y correlación. -->
+
+
 ```{r,echo=FALSE}
 options(scipen=999)
 ```
