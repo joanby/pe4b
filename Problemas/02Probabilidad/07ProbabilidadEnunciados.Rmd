@@ -7,6 +7,9 @@ output:
               
   html_document: default
 ---
+
+<!-- Después lectura 43: Odds ratio -->
+
 1. Una encuesta sobre los mejores destinos turísticos asiáticos mostró que, de 70 personas, 23 ubicaron a Singapur en primer lugar, mientras que 15 colocaron a Hong Kong en primer lugar, 11 colocaron a Shanghai en primer lugar, 7 colocaron a Beijing en primer lugar y el resto eligió Tokio. Sobre la base de estos datos, calcule lo siguiente.
 a. La probabilidad de que el destino preferido sea una ciudad de China. (En este caso específico, Hong Kong no se considera parte de China).
 a. La probabilidad de que el destino preferido no sea una ciudad china. (En este caso, Hong Kong se considera una ciudad china, incluso si está fuera de China).

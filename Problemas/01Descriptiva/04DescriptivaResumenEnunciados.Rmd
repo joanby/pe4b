@@ -8,6 +8,9 @@ output:
   html_document: default
 ---
 
+<!-- Después de tarea 3: Repaso de relación entre variables -->
+
+
 1. Un aeropuerto importante contrató recientemente al consultor Manuel López para estudiar el problema de los retrasos en el tráfico aéreo. En la siguiente tabla se puede observar la cantidad de minutos que los aviones llegaron tarde en una muestra de vuelos:
 ```{r,echo=FALSE}
 minutos=c("0<10","10<20","20<30","30<40","40<50","50<60")

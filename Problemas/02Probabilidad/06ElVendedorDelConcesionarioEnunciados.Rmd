@@ -1,0 +1,22 @@
+---
+title: "El vendedor del concesionario"
+author: ""
+date: ""
+output:
+  pdf_document: default
+              
+  html_document: default
+---
+
+<!-- Después de lectura 39: Ejemplos de aplicación de la fórmula de Bayes -->
+
+## Enunciado
+
+Lee el enunciado en el video adjunto para resolver el problema de analizar las ventas de un vendedor de coches.
+
+## Pregunta 1
+En base al enunciado del video, ¿Las personas que aceptan la cena tienen mayor probabilidad de comprar el coche?
+
+
+## Pregunta 2
+En base al enunciado del video, ¿Cuál es la probabilidad de que una persona que no acepta la cena termina comprando el coche?

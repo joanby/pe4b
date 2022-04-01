@@ -1,0 +1,25 @@
+---
+title: "Vamos a practicar el cálculo de probabilidades"
+author: ""
+date: ""
+output:
+  pdf_document: default
+              
+  html_document: default
+---
+
+<!-- Después de lectura 34: Más ejemplos de probabilidad en finanzas y negocios -->
+
+## Enunciado
+
+Lee los tres ejercicios del video adjunto para practicar lo que hemos aprendido hasta el momento.
+
+
+## Pregunta 1
+¿De cuantas formas se pueden ordenar dos vocales diferentes?
+
+## Pregunta 2
+¿Cuál es la probabilidad de no contratar ninguna mujer en el escenario número 2?
+
+## Pregunta 3
+Intenta deducir la fórmula general del escenario número 3

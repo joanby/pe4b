@@ -8,6 +8,8 @@ output:
   html_document: default
 ---
 
+<!-- Después de lectura 28: Estudio de la relación entre las variables -->
+
 1. El Hospital River Hills está interesado en determinar la efectividad de un nuevo medicamento para reducir el tiempo requerido para la recuperación completa de la cirugía de rodilla.
 La recuperación completa se mide mediante una serie de pruebas de fuerza que comparan la rodilla tratada con la rodilla no tratada. El fármaco se administró en cantidades variables a 18 pacientes durante un período de 6 meses. Para cada paciente, el número de unidades de fármaco, $X$, y los días para la recuperación completa, $Y$, vienen dados por los siguientes datos $(x, y)$:
 \begin{align*}
