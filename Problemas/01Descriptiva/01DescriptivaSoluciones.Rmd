@@ -1,0 +1,96 @@
+---
+title: "Problemas de Estadística Descriptiva I"
+author: ""
+date: ""
+output:
+  pdf_document: default
+              
+  html_document: default
+header-includes: \usepackage{tcolorbox,enumerate,hyperref}
+                 \newtcolorbox{myquote}{colback=gray!8!white, colframe=red!75!black}
+                 \renewenvironment{quote}{\begin{myquote}}{\end{myquote}}
+---
+
+# Descripción gráfica de los datos
+
+1. Describe gráficamente el tiempo (en minutos) que estos 20 estudiantes tardaron en finalizar su tarea en Udemy utilizando el gráfico adecuado:
+
+```
+6.5 5.8 4.5 6.2 4.8 7.3 4.6 3.9 4.4 5.5 
+5.2 6.7 3.0 2.4 5.0 3.6 2.9 4.0 2.8 3.6
+```    
+
+### Solución
+\begin{myquote}
+Un histograma es tal vez la mejor forma de agrupar los datos en clases para una variable continua.
+\end{myquote}
+
+2. Se ha solicitado a una muestra de 20 analistas financieros que nos den unos pronósticos de ganancias del valor de la acción de nuestra empresa para el próximo año. Los resultados son los que siguen en la siguiente tabla:
+
+| Pronostico ($ por acción) | Número de Analistas |
+|:-------------------------:|:-------------------:|
+| 4.45 < 5.95               | 2                   |
+| 5.95 < 7.45               | 8                   |
+| 7.45 < 8.95               | 4                   |
+| 8.95 < 10.45              | 3                   |
+| 10.45 < 11.95             | 2                   |
+| 11.95 < 13.45             | 1                   |
+
+  a. Representa graficamente el histograma.
+  b. Determina las frecuencias relativas. 
+  c. Determina las frecuencias acumuladas. 
+  d. Determina e interpreta las frecuencias acumulativas relativas.
+  
+### Solución
+\begin{myquote}
+Recuerda que en este caso $n = 20$, que para obtener las frecuencias relativas, debes dividir las absolutas entre n, y que para las acumuladas debes ir acumulando frecuencias de las observaciones menores o iguales a las que tengas en cada grupo.
+\end{myquote}
+
+3. ¿Cómo se suele enterar la gente sobre un producto nuevo? A una muestra aleatoria de 200 compradores en una tienda en particular se les preguntó su edad y si se enteraron del producto por medio de un amigo o por medio de un anuncio en un periódico local. Los resultados indicaron que 50 encuestados eran menores de 21 años, 90 personas estaban en el grupo de edad entre 21 y 35 y 60 encuestados tenían más de 35 años. De los menores de 21 años, 30 se enteraron del producto a través de un amigo y el resto se enteró del producto a través de un anuncio en el periódico local. Un tercio de las personas en la categoría de edad de 21 a 35 se enteró por primera vez sobre el producto a través del anuncio del periódico local; el resto de este grupo de edad se enteró del producto por medio de un amigo. Un amigo informó al 30% de las personas en la categoría de mayores de 35 años sobre el producto; el resto se enteró por el anuncio del periódico local.
+
+a. Describe los datos con una tabla cruzada. 
+b. Describe los datos gráficamente.  
+
+### Solución
+\begin{myquote}
+En la tabla cruzada piensa que tienes dos variables: edad y forma de enterarse del producto, por tanto uno irá en fila y otro en columna.
+
+En el gráfico, piensa que el diagrama de barras puede apilarse o ser representado con barras una al lado del otro para poder cruzar ambas variables.
+\end{myquote}
+
+4. Se encuesta a una muestra aleatoria de clientes para que seleccionara su refresco favorito de una lista de cinco marcas. Los resultados mostraron que 30 preferían la Marca A, 50 preferían Marca B, 46 marca preferida C, 100 marca preferida D, y 14 marcas preferidas E.
+
+a. Construye un diagrama circular. 
+b. Construye un diagrama de barras.
+
+### Solución
+\begin{myquote}
+A la hora de representar el diagrama circular, deberás hacer una regla de tres, donde la totalidad del círculo son 360º.
+\end{myquote}
+
+5. Accede a la web del Censo de Estados Unidos (https://www.census.gov) y busca un conjunto de datos que consideres interesantes. Describe qué variables tiene y de que tipo se trata cada una de ellas, así como qué tipo de gráfico utilizarías para realizar un resumen estadístico de la distribución de los mismos. 
+
+
+### Solución
+\begin{myquote}
+A ver qué variable eliges, hay miles que el censo recopila cada año!!!
+\end{myquote}
+
+6. Se ha entrevistado a una muestra aleatoria de 50 empleados que trabajaban para un gran empresa internacional para establecer si existía un vínculo entre los trabajos de los empleados en casa durante el teletrabajo originado por la pandemia del COVID19 y el lugar donde normalmente comían a la hora del almuerzo, ya sea en el comedor o en sus escritorios de trabajo habitual. Los resultados de esta investigación mostraron que el 75% del personal que trabaja desde casa normalmente comía en el comedor de casa y el 54% de los empleados que seguían yendo a la oficina normalmente almorzaba en sus escritorios donde trabajaban. Crea una tabla cruzada y un gráfico de barras para mostrar esta información de forma clara.
+
+### Solución
+\begin{myquote}
+De nuevo vuelves a tener dos variables para decidir cual va en fila y cual en la columna de la tabla cruzada
+\end{myquote}
+
+
+7. Un banco ofrece cuatro tipos de cuentas corrientes. Recientemente hemos encuestado a una muestra aleatoria de 300 clientes bancarios y se le han realizado varias preguntas. Se encontró que el 60% de los encuestados preferia la cuenta fácil; el 12%, la cuenta inteligente; el 18%, la super cuenta corriente; y el resto, la cuenta business. De los que seleccionaron la cuenta fácil, 100 eran mujeres; un tercio de los encuestados que seleccionaron la cuenta inteligente eran hombres; la mitad de los encuestados que seleccionaron la super cuenta corriente eran hombres; y el 80% de los encuestados que seleccionaron la cuenta business eran hombres.
+
+  a. Describe los datos con una tabla cruzada. 
+  b. Describe los datos gráficamente.
+
+
+### Solución
+\begin{myquote}
+Otro ejercicio similar de tablas cruzadas, decide de nuevo qué dos variables tienes entre manos y cual quieres colocar en fila y en columna.
+\end{myquote}

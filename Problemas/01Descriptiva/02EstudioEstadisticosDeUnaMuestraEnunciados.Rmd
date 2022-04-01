@@ -1,0 +1,84 @@
+---
+title: "Estudio de estadísticos de una muestra"
+author: ""
+date: ""
+output:
+  pdf_document: default
+              
+  html_document: default
+---
+
+
+<!-- Después de la lectura 25 Estadarizacón y Z-score. -->
+
+## Enunciado
+
+Responde a las siguientes preguntas, a partir de la muestra dada por las siguientes edades:
+
+23
+
+35
+
+14
+
+37
+
+38
+
+15
+
+45
+
+12
+
+40
+
+27
+
+13
+
+18
+
+19
+
+23
+
+37
+
+20
+
+28
+
+49
+
+40
+
+65
+
+31
+
+22
+
+20
+
+17
+
+32
+
+### Pregunta 1
+Obtén la suma de las edades y la edad promedio
+
+### Pregunta 2
+Obtén la varianza y la desviación típica de las edades
+
+### Pregunta 3
+Calcula el coeficiente de variación
+
+### Pregunta 4
+Comprueba que se cumple la fórmula de Chebyshev y que el $68\%$ de tus datos caben entre $\mu-\sigma$ y $\mu+\sigma$.
+
+### Pregunta 5
+Calcula cual seria la edad mediana de la población.
+
+### Pregunta 6
+Calcula los valores estandarizados de cada una de las edades de los individuos y comprueba que su promedio es 0.

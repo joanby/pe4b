@@ -8,6 +8,9 @@ output:
   html_document: default
 ---
 
+
+<!-- Después de la lectura 19 Fallos eligiendo el gráfico erróneo. -->
+
 # Descripción gráfica de los datos
 
 1. Describe gráficamente el tiempo (en minutos) que estos 20 estudiantes tardaron en finalizar su tarea en Udemy utilizando el gráfico adecuado:
