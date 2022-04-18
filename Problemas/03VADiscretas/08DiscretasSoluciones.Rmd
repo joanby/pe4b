@@ -3,9 +3,9 @@ title: "Problemas variables aleatorias discretas"
 author: ''
 date: ''
 output:
-  word_document: default
-  header-includes: \usepackage{textcomp,eurosym,lmodern,textcomp}
   pdf_document: default
+  header-includes: \usepackage{textcomp,eurosym,lmodern,textcomp}
+  word_document: default
   html_document: default
 ---
 
@@ -358,9 +358,9 @@ Qué nos quedaríamos si fuera nuestra inversión, pues depende de nuestra avers
 
 **Solución**
 
-En  caso $X=Po(\lambda=13)$ una Poisson  modela el número de paquetes recibidos por día$.
+En  caso $X=Po(\lambda=13)$ una Poisson  modela el número de paquetes recibidos por día.
 
-$E(X)=\lambda=13$ y $Var(X)=\frac{1}{\lambda}=\frac{1}{13}=`r round(1/13,4)`.$
+$E(X)=\lambda=13$ y $Var(X)=\lambda=13.$
 
 
 
