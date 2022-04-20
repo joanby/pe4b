@@ -41,10 +41,10 @@ py=rowSums(M)
 \cline{1-5}
 Rendimiento $X=x$    & 0\%    & 5\%    &  10\%   &  15\% \\
 \hline
-  0\% & 0.0421 & 0.4090 & 0.5514 & 0.8924 \\ 
-  5\% & 0.0456 & 0.4533 & 0.5726 & 0.8998 \\ 
-  10\% & 0.1029 & 0.4566 & 0.6776 & 0.9405 \\ 
-  15\% & 0.2461 & 0.5281 & 0.8830 & 0.9568 \\ 
+  0\% & 0.0049 & 0.0472 & 0.0637 & 0.1031 \\ 
+  5\% & 0.0053 & 0.0524 & 0.0661& 0.1039\\ 
+  10\% & 0.0119 & 0.0527 & 0.0783 & 0.1086 \\ 
+  15\% & 0.0284 & 0.061 & 0.102 & 0.1105\\ 
 \hline
 \end{tabular}
 \end{center}
@@ -54,6 +54,6 @@ a.  Calcular las distribuciones marginales de $X$ e $Y$
 b.  Calcular las esperanzas y desviaciones típicas de $X$ e $Y$.
 c.  ¿Son las variables $X$ e $Y$ son independientes?
 d.  Calcular la covarianza y la correlación de $X$ e  $Y$
-e.  Calcular la varianza del rendimiento conjunto a $R=10\cdot X+ 20 \cdot Y$.
+e.  Calcular la varianza del rendimiento conjunto $R=10\cdot X+ 20 \cdot Y$.
 
 
