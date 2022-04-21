@@ -208,7 +208,7 @@ La compañía dispone de un servicio para responder de forma ágil a las avería
 
 Se  define avería grave cuando implica que se tiene que mandar otro vehículo de forma urgente para sustituir al averiado. 
 
-Se estima que el \blue{tiempo transcurrido entre dos averías graves  sigue una ley exponencial de parámetro $\lambda=\frac{1}{25}$ días}. 
+Se estima que el \blue{tiempo transcurrido entre dos averías graves  sigue una ley exponencial de parámetro $\lambda=\frac{1}{15}$ días}. 
 
 
 ##  Tiempo  entre dos averías en una flota de vehículos de transporte 
@@ -223,7 +223,7 @@ Se pide:
 
 
 
-La v.a. $T$ \red{tiempo entre dos averías graves} sigue una ley $Exp(\lambda=\frac{1}{25})$. 
+La v.a. $T$ \red{tiempo entre dos averías graves} sigue una ley $Exp(\lambda=\frac{1}{15})$. 
 
 
 
