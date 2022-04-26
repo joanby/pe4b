@@ -22,12 +22,13 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-1. El tiempo $X$ que utiliza un comercial para exponer un producto cuando LO VENDE sigue, aproximadamente,
-una distribución  normal  con parámetros $\mu =3$
-minutos  45 segundos y  $\sigma = 10$ segundos.  
-    a. ¿Cuál es la probabilidad de que  consiga la venta  en menos de 4 minutos?  
-    b. ¿Y en más de 3.5 minutos? 
 
+1. El tiempo $X$ que utiliza un comercial para exponer un producto cuando LO VENDE sigue, aproximadamente,
+una distribución  normal  con parámetros $\mu =3.45$
+minutos  y  $\sigma = 1$ minuto.  
+    a. ¿Cuál es la probabilidad de que  consiga la venta  en menos de 4 minutos?  
+    b. ¿Y en más de 3.5 minutos?
+    
 2.  El tiempo $X$ que utiliza un comercial para exponer un producto cuando NO VENDE sigue, aproximadamente, una distribución  normal  con parámetros $\mu=2$ y $\sigma=0.8$.
     a. ¿Cuál  es el cuantil  $0.95$ de esta variable? Interpretarlo en el sentido de tiempo perdido por el comercial.
     b. ¿Cuál es  el tiempo perdido   en el 40\% de las llamadas más cortas?

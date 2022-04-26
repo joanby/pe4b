@@ -20,23 +20,23 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 1. El tiempo $X$ que utiliza un comercial para exponer un producto cuando LO VENDE sigue, aproximadamente,
-una distribución  normal  con parámetros $\mu =3$
-minutos  45 segundos y  $\sigma = 10$ segundos.  
+una distribución  normal  con parámetros $\mu =3.45$
+minutos  y  $\sigma = 1$ minuto.  
     a. ¿Cuál es la probabilidad de que  consiga la venta  en menos de 4 minutos?  
     b. ¿Y en más de 3.5 minutos?
     
 **Solución**
 
-Tenemos que $X$ es $N(\mu=3,\sigma=10)$   tenemos que $P(X <4)=`r round(pnorm(4,mean=3,sd=10))`$
+Tenemos que $X$ es $N(\mu=3.45,\sigma=10)$   tenemos que $P(X <4)=`r round(pnorm(4,mean=3.45,sd=1),4)`$
 
-En segundo lugar nos piden $P(>3.5)=1-P(\leq 3.5)=`r round(pnorm(3.5,mean=3,sd=10))`$
+En segundo lugar nos piden $P(>3.5)=1-P(\leq 3.5)=`r 1- round(pnorm(3.5,mean=3,sd=10),4)`$
 
 
 Los cálculos los podemos hacer con R
 
 ```{r}
-round(pnorm(4,mean=3,sd=10),4)# apartado a. P(X<4)
-round(1-pnorm(3.5,mean=3,sd=10),4)# apartado b. P(X>3.5)
+round(pnorm(4,mean=3.45,sd=1),4)# apartado a. P(X<4)
+round(1-pnorm(3.5,mean=3.45,sd=1),4)# apartado b. P(X>3.5)
 ```
 
 o con   Google sheets  (u otra hoja de cálculo)
@@ -107,7 +107,7 @@ o con   Google sheets  (u otra hoja de cálculo)
 
 
 ```{r plot3_c,echo=FALSE}
-knitr::include_graphics("prob3_cont_1.png")
+knitr::include_graphics("pro3_cont_1.png")
 ```
 
     
@@ -205,7 +205,7 @@ Con Google sheets  (u otra hoja de cálculo)
 
 
 ```{r plot7_c,echo=FALSE}
-knitr::include_graphics("prob7_cont_1.png")
+knitr::include_graphics("pro7_cont_1.png")
 ```
 
     
