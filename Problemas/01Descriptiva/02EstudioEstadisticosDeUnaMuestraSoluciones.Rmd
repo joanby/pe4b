@@ -88,8 +88,9 @@ Desviación típica 13.022
 Calcula el coeficiente de variación
 
 ### Solución
-
-CV 13.022
+$$
+CV = \frac{s_x}{\overline{x}}=\frac{13.022}{28.8}=`r 13.022/28.8`.
+$$
 
 ### Pregunta 4
 Comprueba que se cumple la fórmula de Chebyshev y que el $68\%$ de tus datos caben entre $\mu-\sigma$ y $\mu+\sigma$.
