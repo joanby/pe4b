@@ -43,7 +43,7 @@ o con   Google sheets  (u otra hoja de cálculo)
 
 
 ```{r plot1_c,echo=FALSE}
-knitr::include_graphics("pro1_cont_1.PNG")
+knitr::include_graphics("pro1_cont_1.png")
 ```
 
 \newpage
@@ -71,7 +71,7 @@ o con   Google sheets  (u otra hoja de cálculo)
 
 
 ```{r plot2_c,echo=FALSE}
-knitr::include_graphics("pro2_cont_1.PNG")
+knitr::include_graphics("pro2_cont_1.png")
 ```
 
     
