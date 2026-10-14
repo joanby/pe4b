@@ -1,5 +1,7 @@
 # Probabilidad y Estadística aplicada a Negocios
 
+> **🆕 Octubre de 2026 — rama [`update-2026`](https://github.com/joanby/pe4b/tree/update-2026):** el mismo código del curso, adaptado a R y los paquetes de hoy (R 4.5). Qué ha cambiado y por qué: [`CAMBIOS-2026.md`](https://github.com/joanby/pe4b/blob/update-2026/CAMBIOS-2026.md).
+
 ¡Bienvenido a Probabilidad y Estadística aplicada a Data Science, Negocios y Empresa! Tienes todo el curso completo en [Udemy](https://www.udemy.com/course/draft/3614402/?couponCode=60A35D0664ABE3ED6A66)
 
 ¡En este curso cubrimos lo que necesita saber sobre probabilidad y estadística para tener éxito en los negocios y en el campo de la ciencia de datos!
